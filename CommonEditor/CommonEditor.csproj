@@ -38,10 +38,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEditor">
-      <HintPath>..\Library\UnityEditor.dll</HintPath>
+      <HintPath>C:\Program Files\Unity 5.0.0f4\Editor\Data\Managed\UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\Library\UnityEngine.dll</HintPath>
+      <HintPath>C:\Program Files\Unity 5.0.0f4\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
