@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectPool", "ObjectPool\Ob
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPort", "SerialPort\SerialPort.csproj", "{42264E88-9EA8-4932-B40C-E0D1CA6E292F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graph", "Graph\Graph.csproj", "{C5AA355E-267D-4D1A-93C0-EB6932F10E79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UAnimation", "UAnimation\UAnimation.csproj", "{163347D7-7CDE-4C3B-A64D-2A8B0EE7BCC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UAnimationEditor", "UCommonEditor\UAnimationEditor.csproj", "{EA9F0126-2708-4DE6-BDCE-489FE1FCEEE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +45,18 @@ Global
 		{42264E88-9EA8-4932-B40C-E0D1CA6E292F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42264E88-9EA8-4932-B40C-E0D1CA6E292F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42264E88-9EA8-4932-B40C-E0D1CA6E292F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5AA355E-267D-4D1A-93C0-EB6932F10E79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5AA355E-267D-4D1A-93C0-EB6932F10E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5AA355E-267D-4D1A-93C0-EB6932F10E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5AA355E-267D-4D1A-93C0-EB6932F10E79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{163347D7-7CDE-4C3B-A64D-2A8B0EE7BCC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{163347D7-7CDE-4C3B-A64D-2A8B0EE7BCC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{163347D7-7CDE-4C3B-A64D-2A8B0EE7BCC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{163347D7-7CDE-4C3B-A64D-2A8B0EE7BCC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA9F0126-2708-4DE6-BDCE-489FE1FCEEE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA9F0126-2708-4DE6-BDCE-489FE1FCEEE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA9F0126-2708-4DE6-BDCE-489FE1FCEEE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA9F0126-2708-4DE6-BDCE-489FE1FCEEE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
