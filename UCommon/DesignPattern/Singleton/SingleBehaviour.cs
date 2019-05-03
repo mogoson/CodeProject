@@ -10,10 +10,13 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using UnityEngine;
+
 namespace MGS.Common.DesignPattern
 {
     /// <summary>
     /// MonoBehaviour with a single instance.
     /// </summary>
+    [AddComponentMenu("MGS/Common/DesignPattern/SingleBehaviour")]
     public sealed class SingleBehaviour : SingleMonoBehaviour<SingleBehaviour> { }
 }
