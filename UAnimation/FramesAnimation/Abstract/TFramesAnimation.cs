@@ -44,7 +44,7 @@ namespace MGS.UAnimation
         /// <summary>
         /// Refresh frames texture of animation.
         /// </summary>
-        /// <param name="frames">Animation frames, type is IEnumerable<Texture> or IEnumerable<Texture2D>.</param>
+        /// <param name="frames">Animation frames, type is IEnumerable of Texture or Texture2D.</param>
         public override void Refresh(object frames)
         {
             IEnumerable<Texture> newFrames = null;

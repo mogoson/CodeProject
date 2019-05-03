@@ -35,11 +35,17 @@ namespace MGS.UAnimation
         #endregion
 
         #region Private Method
+        /// <summary>
+        /// Component awake.
+        /// </summary>
         protected virtual void Awake()
         {
             mRenderer = GetComponent<Renderer>();
         }
 
+        /// <summary>
+        /// Component update.
+        /// </summary>
         protected virtual void Update()
         {
             mRenderer.material.mainTextureOffset += speed * coefficient * Time.deltaTime;

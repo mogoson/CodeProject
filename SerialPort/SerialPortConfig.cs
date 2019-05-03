@@ -27,24 +27,89 @@ namespace MGS.IO.Ports
     public class SerialPortConfig
     {
         #region Field and Property
+        /// <summary>
+        /// Port name of serialport.
+        /// </summary>
         public string portName = "COM1";
+
+        /// <summary>
+        /// Baud rate of serialport.
+        /// </summary>
         public int baudRate = 9600;
+
+        /// <summary>
+        /// Parity of serialport.
+        /// </summary>
         public Parity parity = Parity.None;
+
+        /// <summary>
+        /// Data bits of serialport.
+        /// </summary>
         public int dataBits = 8;
+
+        /// <summary>
+        /// Stop bits of serialport.
+        /// </summary>
         public StopBits stopBits = StopBits.One;
 
+        /// <summary>
+        /// Read buffer size of serialport.
+        /// </summary>
         public int readBufferSize = 1024;
+
+        /// <summary>
+        /// Read timeout of serialport.
+        /// </summary>
         public int readTimeout = 500;
+
+        /// <summary>
+        /// Read head of serialport frame data.
+        /// </summary>
         public byte readHead = 254;
+
+        /// <summary>
+        /// Read tail of serialport frame data.
+        /// </summary>
         public byte readTail = 255;
+
+        /// <summary>
+        /// Read count of serialport frame data.
+        /// </summary>
         public int readCount = 10;
+
+        /// <summary>
+        /// Read cycle of serialport frame data.
+        /// </summary>
         public int readCycle = 250;
 
+        /// <summary>
+        /// Write buffer size of serialport.
+        /// </summary>
         public int writeBufferSize = 1024;
+
+        /// <summary>
+        /// Write timeout size of serialport.
+        /// </summary>
         public int writeTimeout = 500;
+
+        /// <summary>
+        /// Write head of serialport frame data.
+        /// </summary>
         public byte writeHead = 254;
+
+        /// <summary>
+        /// Write tail of serialport frame data.
+        /// </summary>
         public byte writeTail = 255;
+
+        /// <summary>
+        /// Write count of serialport frame data.
+        /// </summary>
         public int writeCount = 10;
+
+        /// <summary>
+        /// Write cycle of serialport frame data.
+        /// </summary>
         public int writeCycle = 250;
         #endregion
 
@@ -57,6 +122,11 @@ namespace MGS.IO.Ports
         /// <summary>
         /// Constructor of SerialPortConfig.
         /// </summary>
+        /// <param name="portName">Port name of serialport.</param>
+        /// <param name="baudRate">Baud rate of serialport.</param>
+        /// <param name="parity">Parity of serialport.</param>
+        /// <param name="dataBits">Data bits of serialport.</param>
+        /// <param name="stopBits">Stop bits of serialport.</param>
         public SerialPortConfig(string portName, int baudRate, Parity parity, int dataBits, StopBits stopBits)
         {
             this.portName = portName;

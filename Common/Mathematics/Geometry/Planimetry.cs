@@ -72,16 +72,29 @@ namespace MGS.Common.Mathematics
             this.y = y;
         }
 
+        /// <summary>
+        /// Equals?
+        /// </summary>
+        /// <param name="obj">Target obj.</param>
+        /// <returns>Equals?</returns>
         public override bool Equals(object obj)
         {
             return base.Equals(obj);
         }
 
+        /// <summary>
+        /// Get hash code.
+        /// </summary>
+        /// <returns>Hash code.</returns>
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
 
+        /// <summary>
+        /// To string.
+        /// </summary>
+        /// <returns>String.</returns>
         public override string ToString()
         {
             return string.Format("({0}, {1})", x, y);
@@ -103,7 +116,7 @@ namespace MGS.Common.Mathematics
         /// <summary>
         /// Distance from vector v1 to v2.
         /// </summary>
-        /// <param name="p1">Vector v1.</param>
+        /// <param name="v1">Vector v1.</param>
         /// <param name="v2">Vector v2.</param>
         /// <returns>Distance from vector v1 to v2.</returns>
         public static double Distance(Vector v1, Vector v2)
@@ -119,36 +132,78 @@ namespace MGS.Common.Mathematics
             return Math.Sqrt(dx2 + dy2);
         }
 
+        /// <summary>
+        /// Operator +
+        /// </summary>
+        /// <param name="lhs">Vector1.</param>
+        /// <param name="rhs">Vector2.</param>
+        /// <returns>lhs+rhs</returns>
         public static Vector operator +(Vector lhs, Vector rhs)
         {
             return new Vector(lhs.x + rhs.x, lhs.y + rhs.y);
         }
 
+        /// <summary>
+        /// Operator -
+        /// </summary>
+        /// <param name="lhs">Vector1.</param>
+        /// <param name="rhs">Vector2.</param>
+        /// <returns>lhs-rhs</returns>
         public static Vector operator -(Vector lhs, Vector rhs)
         {
             return new Vector(lhs.x - rhs.x, lhs.y - rhs.y);
         }
 
+        /// <summary>
+        /// Operator -
+        /// </summary>
+        /// <param name="p">Vector</param>
+        /// <returns>-Vector</returns>
         public static Vector operator -(Vector p)
         {
             return new Vector(-p.x, -p.y);
         }
 
+        /// <summary>
+        /// Operator *
+        /// </summary>
+        /// <param name="lhs">Vector.</param>
+        /// <param name="rhs">double.</param>
+        /// <returns>lhs*rhs</returns>
         public static Vector operator *(Vector lhs, double rhs)
         {
             return new Vector(lhs.x * rhs, lhs.y * rhs);
         }
 
+
+        /// <summary>
+        /// Operator *
+        /// </summary>
+        /// <param name="lhs">double.</param>
+        /// <param name="rhs">Vector.</param>
+        /// <returns>lhs*rhs</returns>
         public static Vector operator *(double lhs, Vector rhs)
         {
             return rhs * lhs;
         }
 
+        /// <summary>
+        /// Operator ==
+        /// </summary>
+        /// <param name="lhs">Vector1.</param>
+        /// <param name="rhs">Vector2.</param>
+        /// <returns>lhs==rhs?</returns>
         public static bool operator ==(Vector lhs, Vector rhs)
         {
             return lhs.x == rhs.x && lhs.y == rhs.y;
         }
 
+        /// <summary>
+        /// Operator !=
+        /// </summary>
+        /// <param name="lhs">Vector1.</param>
+        /// <param name="rhs">Vector2.</param>
+        /// <returns>lhs!=rhs?</returns>
         public static bool operator !=(Vector lhs, Vector rhs)
         {
             return !(lhs == rhs);
@@ -298,11 +353,50 @@ namespace MGS.Common.Mathematics
     /// </summary>
     public enum Relation
     {
+        /// <summary>
+        /// Undefined relation.
+        /// </summary>
         Undefined = 0,
+
+        /// <summary>
+        /// Coincidence.
+        /// </summary>
         Coincidence = 1,
-        External = 2, Internal = 3,
-        Parallel = 4, Vertical = 5, Intersect = 6,
-        OutsideTangent = 7, InsideTangent = 8
+
+        /// <summary>
+        /// External.
+        /// </summary>
+        External = 2,
+
+        /// <summary>
+        /// Internal.
+        /// </summary>
+        Internal = 3,
+
+        /// <summary>
+        /// Parallel.
+        /// </summary>
+        Parallel = 4,
+
+        /// <summary>
+        /// Vertical.
+        /// </summary>
+        Vertical = 5,
+
+        /// <summary>
+        /// Intersect
+        /// </summary>
+        Intersect = 6,
+
+        /// <summary>
+        /// Outside tangent.
+        /// </summary>
+        OutsideTangent = 7,
+
+        /// <summary>
+        /// Inside tangent.
+        /// </summary>
+        InsideTangent = 8
     }
     #endregion
 

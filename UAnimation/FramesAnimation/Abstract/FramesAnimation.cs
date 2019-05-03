@@ -33,6 +33,9 @@ namespace MGS.UAnimation
         #endregion
 
         #region Protected Method
+        /// <summary>
+        /// Update animation.
+        /// </summary>
         protected virtual void Update()
         {
             index += speed * Time.deltaTime;

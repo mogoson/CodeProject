@@ -59,6 +59,9 @@ namespace MGS.Common.DesignPattern
         #endregion
 
         #region Protected Method
+        /// <summary>
+        /// Component awake.
+        /// </summary>
         protected void Awake()
         {
             if (instance == null)
@@ -78,6 +81,9 @@ namespace MGS.Common.DesignPattern
             SingleAwake();
         }
 
+        /// <summary>
+        /// SingleMonoBehaviour awake.
+        /// </summary>
         protected virtual void SingleAwake() { }
         #endregion
     }

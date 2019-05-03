@@ -30,6 +30,9 @@ namespace MGS.UAnimation
         #endregion
 
         #region Protected Method
+        /// <summary>
+        /// Component awake.
+        /// </summary>
         protected virtual void Awake()
         {
             image = GetComponent<Image>();

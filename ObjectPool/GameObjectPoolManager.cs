@@ -37,6 +37,9 @@ namespace MGS.ObjectPool
         #endregion
 
         #region Protected Method
+        /// <summary>
+        /// GameObjectPoolManager awake.
+        /// </summary>
         protected override void SingleAwake()
         {
             foreach (var poolSettings in poolsSettings)

@@ -278,10 +278,10 @@ namespace MGS.Common.Curve
 
         #region Static Method
         /// <summary>
-        /// Get curve point base on anchor points and key.
+        /// Get curve point base on anchor points and t.
         /// </summary>
         /// <param name="anchor">Anchor points of curve.</param>
-        /// <param name="key">Key is in the range(0~1).</param>
+        /// <param name="t">t is in the range(0~1).</param>
         /// <returns>Point on curve.</returns>
         public static Vector3 GetPointAt(QuadraticBezierAnchor anchor, float t)
         {

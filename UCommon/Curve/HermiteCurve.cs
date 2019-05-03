@@ -59,6 +59,11 @@ namespace MGS.Common.Curve
     public class HermiteCurve : ICurve
     {
         #region Indexer
+        /// <summary>
+        /// Get the index key frame.
+        /// </summary>
+        /// <param name="index">Index of key frame.</param>
+        /// <returns>Key frame at index.</returns>
         public VectorKeyFrame this[int index]
         {
             get
@@ -129,8 +134,19 @@ namespace MGS.Common.Curve
             get { return xCurve.preWrapMode; }
         }
 
+        /// <summary>
+        /// Curve for x.
+        /// </summary>
         protected AnimationCurve xCurve;
+
+        /// <summary>
+        /// Curve for y.
+        /// </summary>
         protected AnimationCurve yCurve;
+
+        /// <summary>
+        /// Curve for z.
+        /// </summary>
         protected AnimationCurve zCurve;
         #endregion
 
