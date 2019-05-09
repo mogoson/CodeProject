@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("MGS.UCommon")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Common code for unity project develop")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MGS.UCommon")]
