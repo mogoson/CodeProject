@@ -10,48 +10,12 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace MGS.UIMap
 {
-    /// <summary>
-    /// Flag Trail Info.
-    /// </summary>
-    [Serializable]
-    public struct TrailInfo
-    {
-        /// <summary>
-        /// Target flag.
-        /// </summary>
-        public RectTransform flag;
-
-        /// <summary>
-        /// Trail color.
-        /// </summary>
-        public Color color;
-
-        /// <summary>
-        /// Trail pixel diffuse.
-        /// </summary>
-        public int diffuse;
-
-        /// <summary>
-        /// Constructor of TrailInfo.
-        /// </summary>
-        /// <param name="flag">Target flag.</param>
-        /// <param name="color">Trail color.</param>
-        /// <param name="diffuse">Trail pixel diffuse.</param>
-        public TrailInfo(RectTransform flag, Color color, int diffuse)
-        {
-            this.flag = flag;
-            this.color = color;
-            this.diffuse = diffuse;
-        }
-    }
-
     /// <summary>
     /// Trail of flag on map.
     /// </summary>

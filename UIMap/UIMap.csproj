@@ -52,6 +52,8 @@
     <Compile Include="LocalMap.cs" />
     <Compile Include="MapFlag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Info\TerrainInfo.cs" />
+    <Compile Include="Info\TrailInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

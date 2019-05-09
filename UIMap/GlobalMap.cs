@@ -10,47 +10,11 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace MGS.UIMap
 {
-    /// <summary>
-    /// Terrain Info.
-    /// </summary>
-    [Serializable]
-    public struct TerrainInfo
-    {
-        /// <summary>
-        /// Center of terrain.
-        /// </summary>
-        public Transform center;
-
-        /// <summary>
-        /// Width of terrain.
-        /// </summary>
-        public float width;
-
-        /// <summary>
-        /// Length of terrain.
-        /// </summary>
-        public float length;
-
-        /// <summary>
-        /// Constructor of TerrainInfo.
-        /// </summary>
-        /// <param name="center">Center of terrain.</param>
-        /// <param name="width">Width of terrain.</param>
-        /// <param name="length">Length of terrain.</param>
-        public TerrainInfo(Transform center, float width, float length)
-        {
-            this.center = center;
-            this.width = width;
-            this.length = length;
-        }
-    }
-
     /// <summary>
     /// Global map.
     /// </summary>
