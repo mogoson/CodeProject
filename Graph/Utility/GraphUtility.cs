@@ -37,20 +37,20 @@ namespace MGS.Graph
         {
             if (onLoaded == null)
             {
-                LogUtility.LogError(0, "[GraphUtility] GifToFrames error: the callback can not be null.");
+                LogUtility.LogError(0, "Convert gif image to frames textures error: The callback can not be null.");
                 return;
             }
 
             if (string.IsNullOrEmpty(filePath))
             {
-                LogUtility.LogError(0, "[GraphUtility] GifToFrames error: file path can not be null.");
+                LogUtility.LogError(0, "Convert gif image to frames textures error: File path can not be null.");
                 onLoaded.Invoke(null);
                 return;
             }
 
             if (!File.Exists(filePath))
             {
-                LogUtility.LogError(0, "[GraphUtility] GifToFrames error: can not find the file {0}.", filePath);
+                LogUtility.LogError(0, "Convert gif image to frames textures error: Can not find the file {0}.", filePath);
                 onLoaded.Invoke(null);
                 return;
             }
@@ -63,7 +63,7 @@ namespace MGS.Graph
             }
             catch (Exception ex)
             {
-                LogUtility.LogError(0, "[GraphUtility] GifToFrames error: {0}.", ex.Message);
+                LogUtility.LogError(0, "Convert gif image to frames textures error: {0}.", ex.Message);
                 onLoaded.Invoke(null);
                 return;
             }
@@ -79,7 +79,7 @@ namespace MGS.Graph
         {
             if (onLoaded == null)
             {
-                LogUtility.LogError(0, "[GraphUtility] GifToFrames error: the callback can not be null.");
+                LogUtility.LogError(0, "Convert gif image to frames textures error: The callback can not be null.");
                 yield break;
             }
 
@@ -114,7 +114,7 @@ namespace MGS.Graph
         {
             if (bitmap == null)
             {
-                LogUtility.LogError(0, "[GraphUtility] GifToFrames error: the bitmap can not be null.");
+                LogUtility.LogError(0, "Convert bitmap to bytes data error: The bitmap can not be null.");
                 return null;
             }
 

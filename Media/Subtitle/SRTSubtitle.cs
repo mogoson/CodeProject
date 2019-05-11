@@ -56,19 +56,19 @@ namespace MGS.Media
         {
             if (string.IsNullOrEmpty(index) || string.IsNullOrEmpty(timeRange))
             {
-                LogUtility.LogError(0, "[SRTSubtitle] ParseToClip error: the index or timeRange is null.");
+                LogUtility.LogError(0, "Parse text to subtitle clip error: The index or timeRange is null.");
                 return null;
             }
 
             if (!int.TryParse(index, out int clipIndex))
             {
-                LogUtility.LogError(0, "[SRTSubtitle] ParseToClip error: the index {0} can not parse to int.", index);
+                LogUtility.LogError(0, "Parse text to subtitle clip error: The index {0} can not parse to int.", index);
                 return null;
             }
 
             if (!ParseToTimeRange(timeRange, out int startTime, out int endTime))
             {
-                LogUtility.LogError(0, "[SRTSubtitle] ParseToClip error: the timeRange {0} can not parse to start and end time.", timeRange);
+                LogUtility.LogError(0, "Parse text to subtitle clip error: The timeRange {0} can not parse to start and end time.", timeRange);
                 return null;
             }
 
@@ -167,13 +167,13 @@ namespace MGS.Media
 
             if (!(source is SRTSubtitleSource data))
             {
-                LogUtility.LogError(0, "[SRTSubtitle] Refresh srt subtitle error: the type of source is not SRTSubtitleSource.");
+                LogUtility.LogError(0, "Refresh srt subtitle error: The type of source is not SRTSubtitleSource.");
                 return;
             }
 
             if (string.IsNullOrEmpty(data.source))
             {
-                LogUtility.LogError(0, "[SRTSubtitle] Refresh srt subtitle error: the source data can not be null or empty.");
+                LogUtility.LogError(0, "Refresh srt subtitle error: The source data can not be null or empty.");
                 return;
             }
 
@@ -199,7 +199,7 @@ namespace MGS.Media
 
             if (source == null || source.Length < CLIP_LINES)
             {
-                LogUtility.LogError(0, "[SRTSubtitle]  Refresh srt subtitle error: the content of source can not be null.");
+                LogUtility.LogError(0, "Refresh srt subtitle error: The content of source can not be null.");
                 return;
             }
 

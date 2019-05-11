@@ -120,7 +120,7 @@ namespace MGS.IO.Ports
         /// </summary>
         private SerialPortController()
         {
-            InitializeSerialPort();
+            InitializeSerialPort(out string error);
         }
 
         /// <summary>
@@ -181,17 +181,17 @@ namespace MGS.IO.Ports
                     IsReadTimeout = false;
                     Thread.Sleep(config.readCycle);
                 }
-                catch (TimeoutException te)
+                catch (TimeoutException tEx)
                 {
-                    LogUtility.Log(0, te.Message);
+                    LogUtility.Log(0, "Read bytes from serialport buffer: {0}.", tEx.Message);
                     ClearReadBytes();
                     IsReadTimeout = true;
                     Thread.Sleep(config.readCycle);
                     continue;
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    LogUtility.LogError(0, e.Message);
+                    LogUtility.LogError(0, "Read bytes from serialport buffer error: {0}.", ex.Message);
                     readThread.Abort();
                     ClearReadBytes();
                     IsReadTimeout = false;
@@ -222,16 +222,16 @@ namespace MGS.IO.Ports
                     IsWriteTimeout = false;
                     Thread.Sleep(config.writeCycle);
                 }
-                catch (TimeoutException te)
+                catch (TimeoutException tEx)
                 {
-                    LogUtility.Log(0, te.Message);
+                    LogUtility.Log(0, "Write bytes to serialport buffer: {0}.", tEx.Message);
                     IsWriteTimeout = true;
                     Thread.Sleep(config.writeCycle);
                     continue;
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    LogUtility.LogError(0, e.Message);
+                    LogUtility.LogError(0, "Write bytes to serialport buffer error: {0}.", ex.Message);
                     writeThread.Abort();
                     IsWriteTimeout = false;
                     break;
@@ -252,14 +252,18 @@ namespace MGS.IO.Ports
         /// <summary>
         /// Initialize serialport.
         /// </summary>
-        public void InitializeSerialPort()
+        /// <param name="error">Error message.</param>
+        /// <returns>Initialize serialport use config file succeed?</returns>
+        public bool InitializeSerialPort(out string error)
         {
             //Read config and initialize serialport.
-            config = SerialPortConfigurer.Instance.ReadConfig(out string error);
+            config = SerialPortConfigurer.Instance.ReadConfig(out error);
+            var isReadConfig = true;
             if (config == null)
             {
-                //Use default config.
+                isReadConfig = false;
                 config = new SerialPortConfig();
+                LogUtility.LogWarning(0, "Initialize serialport: Read config is failed, serialport will initialize with default config.");
             }
 
             serialPort = new SerialPort(config.portName, config.baudRate, config.parity, config.dataBits, config.stopBits)
@@ -277,22 +281,31 @@ namespace MGS.IO.Ports
             //Initialize bytes array.
             readBytes = new byte[config.readCount];
             writeBytes = new byte[config.writeCount];
+            return isReadConfig;
         }
 
         /// <summary>
         /// Open serialport.
         /// </summary>
+        /// <param name="error">Error message.</param>
         /// <returns>Is succeed to open serialport?</returns>
-        public bool OpenSerialPort()
+        public bool OpenSerialPort(out string error)
         {
+            error = string.Empty;
+            if (IsOpen)
+            {
+                return true;
+            }
+
             try
             {
                 serialPort.Open();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                LogUtility.LogError(0, e.Message);
+                error = ex.Message;
+                LogUtility.LogError(0, "Open serialport error: {0}.", error);
                 return false;
             }
         }
@@ -301,31 +314,41 @@ namespace MGS.IO.Ports
         /// Close serialport.
         /// This method will try abort thread if it is alive.
         /// </summary>
+        /// <param name="error">Error message.</param>
         /// <returns>Is succeed to close serialport?</returns>
-        public bool CloseSerialPort()
+        public bool CloseSerialPort(out string error)
         {
+            error = string.Empty;
+            if (!IsOpen)
+            {
+                return true;
+            }
+
             if (IsReading)
             {
-                if (!StopRead())
+                if (!StopRead(out error))
                 {
                     return false;
                 }
             }
+
             if (IsWriting)
             {
-                if (!StopWrite())
+                if (!StopWrite(out error))
                 {
                     return false;
                 }
             }
+
             try
             {
                 serialPort.Close();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                LogUtility.LogError(0, e.Message);
+                error = ex.Message;
+                LogUtility.LogError(0, "Close serialport error: {0}.", error);
                 return false;
             }
         }
@@ -334,37 +357,44 @@ namespace MGS.IO.Ports
         /// Start thread to read.
         /// This method will try to open serialport if it is not open.
         /// </summary>
+        /// <param name="error">Error message.</param>
         /// <returns>Is succeed to start read thread?</returns>
-        public bool StartRead()
+        public bool StartRead(out string error)
         {
             //SerialPort.ReceivedBytesThreshold is not implemented in Unity.
             //SerialPort.DataReceived event is can not work in Unity.
             //So use thread to read bytes.
 
+            error = string.Empty;
+            if (IsReading)
+            {
+                return true;
+            }
+
             if (!IsOpen)
             {
-                if (!OpenSerialPort())
+                if (!OpenSerialPort(out error))
                 {
                     return false;
                 }
             }
-            if (!IsReading)
-            {
-                //readThread can not start after readThread.Abort().
-                //New read thread.
-                readThread = new Thread(ReadBytesFromBuffer) { IsBackground = true };
-            }
+
             try
             {
                 //SerialPort.DiscardInBuffer can not work in Unity.
                 //Do not do it is ok.
                 serialPort.DiscardInBuffer();
+
+                //readThread can not start after readThread.Abort().
+                //New read thread.
+                readThread = new Thread(ReadBytesFromBuffer) { IsBackground = true };
                 readThread.Start();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                LogUtility.LogError(0, e.Message);
+                error = ex.Message;
+                LogUtility.LogError(0, "Start read serialport data error: {0}.", error);
                 return false;
             }
         }
@@ -372,9 +402,16 @@ namespace MGS.IO.Ports
         /// <summary>
         /// Stop thread of read.
         /// </summary>
+        /// <param name="error">Error message.</param>
         /// <returns>Is succeed to stop read thread?</returns>
-        public bool StopRead()
+        public bool StopRead(out string error)
         {
+            error = string.Empty;
+            if (!IsReading)
+            {
+                return true;
+            }
+
             try
             {
                 readThread.Abort();
@@ -382,9 +419,10 @@ namespace MGS.IO.Ports
                 IsReadTimeout = false;
                 return true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                LogUtility.LogError(0, e.Message);
+                error = ex.Message;
+                LogUtility.LogError(0, "Stop read serialport data error: {0}.", error);
                 return false;
             }
         }
@@ -393,33 +431,40 @@ namespace MGS.IO.Ports
         /// Start thread to write.
         /// This method will try to open serialport if it is not open.
         /// </summary>
+        /// <param name="error">Error message.</param>
         /// <returns>Is succeed to start write thread?</returns>
-        public bool StartWrite()
+        public bool StartWrite(out string error)
         {
+            error = string.Empty;
+            if (IsWriting)
+            {
+                return true;
+            }
+
             if (!IsOpen)
             {
-                if (!OpenSerialPort())
+                if (!OpenSerialPort(out error))
                 {
                     return false;
                 }
             }
-            if (!IsWriting)
-            {
-                //writeThread can not start after writeThread.Abort().
-                //New write thread.
-                writeThread = new Thread(WriteBytesToBuffer) { IsBackground = true };
-            }
+
             try
             {
                 //SerialPort.DiscardOutBuffer can not work in Unity.
                 //Do not do it is ok.
                 serialPort.DiscardOutBuffer();
+
+                //writeThread can not start after writeThread.Abort().
+                //New write thread.
+                writeThread = new Thread(WriteBytesToBuffer) { IsBackground = true };
                 writeThread.Start();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                LogUtility.LogError(0, e.Message);
+                error = ex.Message;
+                LogUtility.LogError(0, "Start write data to serialport error: {0}.", error);
                 return false;
             }
         }
@@ -427,18 +472,26 @@ namespace MGS.IO.Ports
         /// <summary>
         /// Stop thread of write.
         /// </summary>
+        /// <param name="error">Error message.</param>
         /// <returns>Is succeed to stop write thread?</returns>
-        public bool StopWrite()
+        public bool StopWrite(out string error)
         {
+            error = string.Empty;
+            if (!IsWriting)
+            {
+                return true;
+            }
+
             try
             {
                 writeThread.Abort();
                 IsWriteTimeout = false;
                 return true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                LogUtility.LogError(0, e.Message);
+                error = ex.Message;
+                LogUtility.LogError(0, "Stop write data to serialport error: {0}.", error);
                 return false;
             }
         }

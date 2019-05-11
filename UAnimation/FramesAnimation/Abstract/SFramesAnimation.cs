@@ -49,7 +49,7 @@ namespace MGS.UAnimation
         {
             if (!(frames is IEnumerable<Sprite> newFrames))
             {
-                LogUtility.LogError(0, "[SFramesAnimation] Refresh error: the type of frames is not IEnumerable<Sprite>.");
+                LogUtility.LogError(0, "Refresh animation error: The type of frames is not IEnumerable<Sprite>.");
             }
             else
             {

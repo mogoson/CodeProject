@@ -31,7 +31,7 @@ namespace MGS.Common.IO
         {
             if (string.IsNullOrEmpty(path))
             {
-                LogUtility.LogError(0, "[DirectoryUtility] RequirePath error: the path can not be null.");
+                LogUtility.LogError(0, "Require path error: The path can not be null.");
                 return false;
             }
 
@@ -47,7 +47,7 @@ namespace MGS.Common.IO
             }
             catch (Exception ex)
             {
-                LogUtility.LogError(0, "[DirectoryUtility] RequirePath error: {0}.", ex.Message);
+                LogUtility.LogError(0, "Require path error: {0}.", ex.Message);
                 return false;
             }
         }

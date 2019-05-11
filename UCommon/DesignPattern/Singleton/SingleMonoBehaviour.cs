@@ -73,8 +73,8 @@ namespace MGS.Common.DesignPattern
                 if (instance != this)
                 {
                     Destroy(this);
-                    LogUtility.LogWarning(0, "Destroy the redundant instance of {0} component form {1}: " +
-                        "Multi instances of {0} component in a scene is violat singleton design.", typeof(T).Name, name);
+                    LogUtility.LogWarning(0, "Destroy the redundant instance of {0} component " +
+                        "form {1}: Multi instances of {0} component in a scene is violat singleton design.", typeof(T).Name, name);
                     return;
                 }
             }

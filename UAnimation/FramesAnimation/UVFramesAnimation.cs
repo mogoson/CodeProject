@@ -95,7 +95,7 @@ namespace MGS.UAnimation
         {
             if (!(frames is FrameTextureData newFrames))
             {
-                LogUtility.LogError(0, "[UVFramesAnimation] Refresh error: the type of frames is not FrameTextureData.");
+                LogUtility.LogError(0, "Refresh animation error: The type of frames is not FrameTextureData.");
             }
             else
             {
