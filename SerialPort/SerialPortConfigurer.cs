@@ -57,7 +57,7 @@ namespace MGS.IO.Ports
         private SerialPortConfigurer()
         {
             //Init Config file default path.
-            ConfigPath = Application.streamingAssetsPath + "/Config/SerialPortConfig.config";
+            ConfigPath = Application.streamingAssetsPath + "/Config/SerialPortConfig.json";
         }
         #endregion
 
