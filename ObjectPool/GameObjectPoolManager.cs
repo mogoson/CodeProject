@@ -47,7 +47,7 @@ namespace MGS.ObjectPool
 #if UNITY_EDITOR
                 if (poolsInfo.ContainsKey(poolSettings.name))
                 {
-                    LogUtility.LogError("[GameObjectPoolManager] SingleAwake error: the pool name {0} configured in the Pools Settings is not unique in this manager.", poolSettings.name);
+                    LogUtility.LogError(0, "[GameObjectPoolManager] SingleAwake error: the pool name {0} configured in the Pools Settings is not unique in this manager.", poolSettings.name);
                     continue;
                 }
 #endif
@@ -68,19 +68,19 @@ namespace MGS.ObjectPool
         {
             if (string.IsNullOrEmpty(name))
             {
-                LogUtility.LogError("[GameObjectPoolManager] Create pool is failed : The pool name can not be null or empty.");
+                LogUtility.LogError(0, "[GameObjectPoolManager] Create pool is failed : The pool name can not be null or empty.");
                 return null;
             }
 
             if (poolsInfo.ContainsKey(name))
             {
-                LogUtility.LogWarning("[GameObjectPoolManager] Create pool is cancelled : The pool that name is {0} already exist in this manager.", name);
+                LogUtility.LogWarning(0, "[GameObjectPoolManager] Create pool is cancelled : The pool that name is {0} already exist in this manager.", name);
                 return poolsInfo[name];
             }
 
             if (prefab == null)
             {
-                LogUtility.LogError("[GameObjectPoolManager] Create pool is failed : The prefab of pool can not be null.");
+                LogUtility.LogError(0, "[GameObjectPoolManager] Create pool is failed : The prefab of pool can not be null.");
                 return null;
             }
 
@@ -125,7 +125,7 @@ namespace MGS.ObjectPool
             }
             else
             {
-                LogUtility.LogWarning("[GameObjectPoolManager] Find pool is failed : The pool that name is {0} does not exist in this manager.", name);
+                LogUtility.LogWarning(0, "[GameObjectPoolManager] Find pool is failed : The pool that name is {0} does not exist in this manager.", name);
                 return null;
             }
         }
@@ -154,7 +154,7 @@ namespace MGS.ObjectPool
             }
             else
             {
-                LogUtility.LogWarning("[GameObjectPoolManager] Delete pool is failed : The pool that name is {0} does not exist in this manager.", name);
+                LogUtility.LogWarning(0, "[GameObjectPoolManager] Delete pool is failed : The pool that name is {0} does not exist in this manager.", name);
             }
         }
         #endregion

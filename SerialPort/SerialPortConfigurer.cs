@@ -25,6 +25,8 @@ using System;
 using System.IO;
 using UnityEngine;
 using MGS.Common.Logger;
+using MGS.Common.DesignPattern;
+using MGS.Common.IO;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -39,22 +41,35 @@ namespace MGS.IO.Ports
     /// <summary>
     /// Configurer of SerialPort.
     /// </summary>
-    public static class SerialPortConfigurer
+    public sealed class SerialPortConfigurer : Singleton<SerialPortConfigurer>
     {
         #region Field and Property
         /// <summary>
         /// Full path of serialport config file.
         /// </summary>
-        public static readonly string ConfigPath = Application.streamingAssetsPath + "/Config/SerialPortConfig.json";
+        public string ConfigPath { set; get; }
+        #endregion
+
+        #region Private Method
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        private SerialPortConfigurer()
+        {
+            //Init Config file default path.
+            ConfigPath = Application.streamingAssetsPath + "/Config/SerialPortConfig.config";
+        }
         #endregion
 
         #region Public Method
         /// <summary>
         /// Read SerialPortConfig from config file.
         /// </summary>
+        /// <param name="error">Error message.</param>
         /// <returns>Config of serialport.</returns>
-        public static SerialPortConfig ReadConfig()
+        public SerialPortConfig ReadConfig(out string error)
         {
+            error = string.Empty;
             try
             {
                 var json = File.ReadAllText(ConfigPath);
@@ -64,10 +79,11 @@ namespace MGS.IO.Ports
                 return JsonMapper.ToObject<SerialPortConfig>(json);
 #endif
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                LogUtility.LogError(e.Message);
-                return new SerialPortConfig();
+                error = ex.Message;
+                LogUtility.LogError(0, "[SerialPortConfigurer] ReadConfig error: {0}.", error);
+                return null;
             }
         }
 
@@ -75,8 +91,11 @@ namespace MGS.IO.Ports
         /// Write SerialPortConfig to config file.
         /// </summary>
         /// <param name="config">Config of serialport.</param>
-        public static void WriteConfig(SerialPortConfig config)
+        /// <param name="error">Error message.</param>
+        /// <returns>succeed?</returns>
+        public bool WriteConfig(SerialPortConfig config, out string error)
         {
+            error = string.Empty;
             try
             {
 #if UNITY_5_3_OR_NEWER
@@ -84,14 +103,18 @@ namespace MGS.IO.Ports
 #else
                 var configJson = JsonMapper.ToJson(config);
 #endif
+                DirectoryUtility.RequirePath(ConfigPath);
                 File.WriteAllText(ConfigPath, configJson);
 #if UNITY_EDITOR
                 AssetDatabase.Refresh();
 #endif
+                return true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                LogUtility.LogError(e.Message);
+                error = ex.Message;
+                LogUtility.LogError(0, "[SerialPortConfigurer] WriteConfig error: {0}.", error);
+                return false;
             }
         }
         #endregion

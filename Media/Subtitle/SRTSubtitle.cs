@@ -56,19 +56,19 @@ namespace MGS.Media
         {
             if (string.IsNullOrEmpty(index) || string.IsNullOrEmpty(timeRange))
             {
+                LogUtility.LogError(0, "[SRTSubtitle] ParseToClip error: the index or timeRange is null.");
                 return null;
             }
 
-            var clipIndex = 0;
-            if (!int.TryParse(index, out clipIndex))
+            if (!int.TryParse(index, out int clipIndex))
             {
+                LogUtility.LogError(0, "[SRTSubtitle] ParseToClip error: the index {0} can not parse to int.", index);
                 return null;
             }
 
-            var startTime = 0;
-            var endTime = 0;
-            if (!ParseToTimeRange(timeRange, out startTime, out endTime))
+            if (!ParseToTimeRange(timeRange, out int startTime, out int endTime))
             {
+                LogUtility.LogError(0, "[SRTSubtitle] ParseToClip error: the timeRange {0} can not parse to start and end time.", timeRange);
                 return null;
             }
 
@@ -121,20 +121,17 @@ namespace MGS.Media
                 return false;
             }
 
-            var hours = 0;
-            if (!int.TryParse(items[0], out hours))
+            if (!int.TryParse(items[0], out int hours))
             {
                 return false;
             }
 
-            var minute = 0;
-            if (!int.TryParse(items[1], out minute))
+            if (!int.TryParse(items[1], out int minute))
             {
                 return false;
             }
 
-            var seconds = 0;
-            if (!int.TryParse(items[2], out seconds))
+            if (!int.TryParse(items[2], out int seconds))
             {
                 return false;
             }
@@ -168,16 +165,15 @@ namespace MGS.Media
         {
             ClearCache();
 
-            var data = source as SRTSubtitleSource;
-            if (data == null)
+            if (!(source is SRTSubtitleSource data))
             {
-                LogUtility.LogError("[SRTSubtitle] Refresh srt subtitle error: the type of source is not SRTSubtitleSource.");
+                LogUtility.LogError(0, "[SRTSubtitle] Refresh srt subtitle error: the type of source is not SRTSubtitleSource.");
                 return;
             }
 
             if (string.IsNullOrEmpty(data.source))
             {
-                LogUtility.LogError("[SRTSubtitle] Refresh srt subtitle error: the source data can not be null or empty.");
+                LogUtility.LogError(0, "[SRTSubtitle] Refresh srt subtitle error: the source data can not be null or empty.");
                 return;
             }
 
@@ -203,7 +199,7 @@ namespace MGS.Media
 
             if (source == null || source.Length < CLIP_LINES)
             {
-                LogUtility.LogError("[SRTSubtitle]  Refresh srt subtitle error: the content of source can not be null.");
+                LogUtility.LogError(0, "[SRTSubtitle]  Refresh srt subtitle error: the content of source can not be null.");
                 return;
             }
 

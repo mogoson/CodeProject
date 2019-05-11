@@ -32,13 +32,13 @@ namespace MGS.Common.IO
         {
             if (!File.Exists(filePath))
             {
-                LogUtility.LogError("[FileUtility] CalPageCount error: can not find the file {0}.", filePath);
+                LogUtility.LogError(0, "[FileUtility] CalPageCount error: can not find the file {0}.", filePath);
                 return 0;
             }
 
             if (pageSize <= 0)
             {
-                LogUtility.LogError("[FileUtility] CalPageCount error: the value {0} of pageSize param is invalid.", pageSize);
+                LogUtility.LogError(0, "[FileUtility] CalPageCount error: the value {0} of pageSize param is invalid.", pageSize);
                 return 0;
             }
 
@@ -59,13 +59,13 @@ namespace MGS.Common.IO
         {
             if (!File.Exists(filePath))
             {
-                LogUtility.LogError("[FileUtility] ReadPage error: can not find the file {0}.", filePath);
+                LogUtility.LogError(0, "[FileUtility] ReadPage error: can not find the file {0}.", filePath);
                 return null;
             }
 
             if (pageSize <= 0 || pageIndex < 0)
             {
-                LogUtility.LogError("[FileUtility] ReadPage error: the params value is invalid.");
+                LogUtility.LogError(0, "[FileUtility] ReadPage error: the params value is invalid.");
                 return null;
             }
 
@@ -74,13 +74,13 @@ namespace MGS.Common.IO
                 var pageCount = sm.Length / pageSize + sm.Length % pageSize == 0 ? 0 : 1;
                 if (pageIndex > pageCount - 1)
                 {
-                    LogUtility.LogError("[FileUtility] ReadPage error: the pageIndex {0} is out of range.", pageCount);
+                    LogUtility.LogError(0, "[FileUtility] ReadPage error: the pageIndex {0} is out of range.", pageCount);
                     return null;
                 }
 
                 if (!sm.CanSeek || !sm.CanRead)
                 {
-                    LogUtility.LogError("[FileUtility] ReadPage error: file stream can not seek or read.");
+                    LogUtility.LogError(0, "[FileUtility] ReadPage error: file stream can not seek or read.");
                     return null;
                 }
 
@@ -103,7 +103,7 @@ namespace MGS.Common.IO
         {
             if (!File.Exists(filePath))
             {
-                LogUtility.LogError("[FileUtility] ReadAllLines error: can not find the file {0}.", filePath);
+                LogUtility.LogError(0, "[FileUtility] ReadAllLines error: can not find the file {0}.", filePath);
                 return null;
             }
 
@@ -113,7 +113,7 @@ namespace MGS.Common.IO
             }
             catch (Exception ex)
             {
-                LogUtility.LogError("[FileUtility] ReadAllLines error: {0}.", ex.Message);
+                LogUtility.LogError(0, "[FileUtility] ReadAllLines error: {0}.", ex.Message);
                 return null;
             }
         }

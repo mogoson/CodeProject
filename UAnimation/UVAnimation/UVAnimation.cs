@@ -80,7 +80,7 @@ namespace MGS.UAnimation
             var newFrames = frames as Texture;
             if (newFrames == null)
             {
-                LogUtility.LogError("[UVAnimation] Refresh error: the type of frames is not Texture.");
+                LogUtility.LogError(0, "[UVAnimation] Refresh error: the type of frames is not Texture.");
             }
             else
             {

@@ -47,10 +47,9 @@ namespace MGS.UAnimation
         /// <param name="frames">Animation frames, type is IEnumerable of Sprite.</param>
         public override void Refresh(object frames)
         {
-            var newFrames = frames as IEnumerable<Sprite>;
-            if (newFrames == null)
+            if (!(frames is IEnumerable<Sprite> newFrames))
             {
-                LogUtility.LogError("[SFramesAnimation] Refresh error: the type of frames is not IEnumerable<Sprite>.");
+                LogUtility.LogError(0, "[SFramesAnimation] Refresh error: the type of frames is not IEnumerable<Sprite>.");
             }
             else
             {

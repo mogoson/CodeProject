@@ -64,7 +64,7 @@ namespace MGS.UAnimation
             }
             else
             {
-                LogUtility.LogError("[TFramesAnimation] Refresh error: the type of frames is not IEnumerable<Texture> or IEnumerable<Texture2D>.");
+                LogUtility.LogError(0, "[TFramesAnimation] Refresh error: the type of frames is not IEnumerable<Texture> or IEnumerable<Texture2D>.");
                 return;
             }
 

@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.Common.Logger;
 using System.Runtime.InteropServices;
 
 namespace MGS.Common.Converter
@@ -29,12 +30,14 @@ namespace MGS.Common.Converter
         {
             if (byteArray == null || byteArray.Length == 0)
             {
+                LogUtility.LogError(0, "[StructureConverter] FromByteArray error: the param byteArray is null or empty.");
                 return default(T);
             }
 
             var size = Marshal.SizeOf(default(T));
             if (size > byteArray.Length)
             {
+                LogUtility.LogError(0, "[StructureConverter] FromByteArray error: the length of byteArray is not match type {0}.", typeof(T).Name);
                 return default(T);
             }
 
@@ -56,6 +59,7 @@ namespace MGS.Common.Converter
             var size = Marshal.SizeOf(structure);
             if (size == 0)
             {
+                LogUtility.LogError(0, "[StructureConverter] ToByteArray error: the size of type {0} is zero.", typeof(T).Name);
                 return null;
             }
 

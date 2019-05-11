@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.Common.Logger;
 using System;
 
 namespace MGS.Common.Converter
@@ -33,6 +34,7 @@ namespace MGS.Common.Converter
             //1(1 byte to a Boolean)
             if (bytes == null || bytes.Length == 0 || count == 0 || start > bytes.Length - 1)
             {
+                LogUtility.LogError(0, "[ByteConverter] ToBoolean error: the param is invalid.");
                 return null;
             }
 
@@ -58,6 +60,7 @@ namespace MGS.Common.Converter
             //2(2 bytes to a Int16)
             if (bytes == null || bytes.Length == 0 || count == 0 || start > bytes.Length - 2)
             {
+                LogUtility.LogError(0, "[ByteConverter] ToInt16 error: the param is invalid.");
                 return null;
             }
 
@@ -83,6 +86,7 @@ namespace MGS.Common.Converter
             //4(4 bytes to a Int32)
             if (bytes == null || bytes.Length == 0 || count == 0 || start > bytes.Length - 4)
             {
+                LogUtility.LogError(0, "[ByteConverter] ToInt32 error: the param is invalid.");
                 return null;
             }
 
@@ -108,6 +112,7 @@ namespace MGS.Common.Converter
             //8(8 bytes to a Int64)
             if (bytes == null || bytes.Length == 0 || count == 0 || start > bytes.Length - 8)
             {
+                LogUtility.LogError(0, "[ByteConverter] ToInt64 error: the param is invalid.");
                 return null;
             }
 
@@ -133,6 +138,7 @@ namespace MGS.Common.Converter
             //2(2 bytes to a Char)
             if (bytes == null || bytes.Length == 0 || count == 0 || start > bytes.Length - 2)
             {
+                LogUtility.LogError(0, "[ByteConverter] ToChar error: the param is invalid.");
                 return null;
             }
 
@@ -158,6 +164,7 @@ namespace MGS.Common.Converter
             //4(4 bytes to a Single)
             if (bytes == null || bytes.Length == 0 || count == 0 || start > bytes.Length - 4)
             {
+                LogUtility.LogError(0, "[ByteConverter] ToSingle error: the param is invalid.");
                 return null;
             }
 
@@ -183,6 +190,7 @@ namespace MGS.Common.Converter
             //8(8 bytes to a Double)
             if (bytes == null || bytes.Length == 0 || count == 0 || start > bytes.Length - 8)
             {
+                LogUtility.LogError(0, "[ByteConverter] ToDouble error: the param is invalid.");
                 return null;
             }
 

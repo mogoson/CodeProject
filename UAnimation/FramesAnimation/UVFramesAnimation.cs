@@ -93,10 +93,9 @@ namespace MGS.UAnimation
         /// <param name="frames">Animation frames, type is FrameTextureData.</param>
         public override void Refresh(object frames)
         {
-            var newFrames = frames as FrameTextureData;
-            if (newFrames == null)
+            if (!(frames is FrameTextureData newFrames))
             {
-                LogUtility.LogError("[UVFramesAnimation] Refresh error: the type of frames is not FrameTextureData.");
+                LogUtility.LogError(0, "[UVFramesAnimation] Refresh error: the type of frames is not FrameTextureData.");
             }
             else
             {

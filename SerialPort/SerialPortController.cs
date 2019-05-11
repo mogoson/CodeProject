@@ -183,7 +183,7 @@ namespace MGS.IO.Ports
                 }
                 catch (TimeoutException te)
                 {
-                    LogUtility.Log(te.Message);
+                    LogUtility.Log(0, te.Message);
                     ClearReadBytes();
                     IsReadTimeout = true;
                     Thread.Sleep(config.readCycle);
@@ -191,7 +191,7 @@ namespace MGS.IO.Ports
                 }
                 catch (Exception e)
                 {
-                    LogUtility.LogError(e.Message);
+                    LogUtility.LogError(0, e.Message);
                     readThread.Abort();
                     ClearReadBytes();
                     IsReadTimeout = false;
@@ -224,14 +224,14 @@ namespace MGS.IO.Ports
                 }
                 catch (TimeoutException te)
                 {
-                    LogUtility.Log(te.Message);
+                    LogUtility.Log(0, te.Message);
                     IsWriteTimeout = true;
                     Thread.Sleep(config.writeCycle);
                     continue;
                 }
                 catch (Exception e)
                 {
-                    LogUtility.LogError(e.Message);
+                    LogUtility.LogError(0, e.Message);
                     writeThread.Abort();
                     IsWriteTimeout = false;
                     break;
@@ -255,7 +255,13 @@ namespace MGS.IO.Ports
         public void InitializeSerialPort()
         {
             //Read config and initialize serialport.
-            config = SerialPortConfigurer.ReadConfig();
+            config = SerialPortConfigurer.Instance.ReadConfig(out string error);
+            if (config == null)
+            {
+                //Use default config.
+                config = new SerialPortConfig();
+            }
+
             serialPort = new SerialPort(config.portName, config.baudRate, config.parity, config.dataBits, config.stopBits)
             {
                 ReadBufferSize = config.readBufferSize,
@@ -286,7 +292,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception e)
             {
-                LogUtility.LogError(e.Message);
+                LogUtility.LogError(0, e.Message);
                 return false;
             }
         }
@@ -319,7 +325,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception e)
             {
-                LogUtility.LogError(e.Message);
+                LogUtility.LogError(0, e.Message);
                 return false;
             }
         }
@@ -358,7 +364,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception e)
             {
-                LogUtility.LogError(e.Message);
+                LogUtility.LogError(0, e.Message);
                 return false;
             }
         }
@@ -378,7 +384,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception e)
             {
-                LogUtility.LogError(e.Message);
+                LogUtility.LogError(0, e.Message);
                 return false;
             }
         }
@@ -413,7 +419,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception e)
             {
-                LogUtility.LogError(e.Message);
+                LogUtility.LogError(0, e.Message);
                 return false;
             }
         }
@@ -432,7 +438,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception e)
             {
-                LogUtility.LogError(e.Message);
+                LogUtility.LogError(0, e.Message);
                 return false;
             }
         }

@@ -10,6 +10,8 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.Common.Logger;
+
 namespace MGS.Common.Converter
 {
     /// <summary>
@@ -30,6 +32,7 @@ namespace MGS.Common.Converter
         {
             if (array == null || array.Length == 0 || row * column != array.Length)
             {
+                LogUtility.LogError(0, "[ArrayConverter] ToTwoDimention error: the param is invalid.");
                 return null;
             }
 
@@ -59,6 +62,7 @@ namespace MGS.Common.Converter
         {
             if (array == null || array.Length == 0 || row * column * layer != array.Length)
             {
+                LogUtility.LogError(0, "[ArrayConverter] ToThreeDimention error: the param is invalid.");
                 return null;
             }
 
@@ -88,6 +92,7 @@ namespace MGS.Common.Converter
         {
             if (array == null || array.Length == 0)
             {
+                LogUtility.LogError(0, "[ArrayConverter] ToOneDimention error: the param is invalid.");
                 return null;
             }
 
@@ -114,6 +119,7 @@ namespace MGS.Common.Converter
         {
             if (array == null || array.Length == 0)
             {
+                LogUtility.LogError(0, "[ArrayConverter] ToOneDimention error: the param is invalid.");
                 return null;
             }
 

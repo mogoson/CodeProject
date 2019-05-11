@@ -96,7 +96,7 @@ namespace MGS.Common.DesignPattern
             //Null object is not allowed to recycle.
             if (obj == null)
             {
-                LogUtility.LogError("[ObjectPool] Recycle error: Null object is not allowed to recycle.");
+                LogUtility.LogError(0, "[ObjectPool] Recycle error: Null object is not allowed to recycle.");
                 return;
             }
 

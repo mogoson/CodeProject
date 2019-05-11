@@ -54,14 +54,14 @@ namespace MGS.Media
 #if UNITY_EDITOR
                 else
                 {
-                    LogUtility.LogWarning("[Subtitle] The play time is out of the subtitle range.");
+                    LogUtility.LogWarning(0, "[Subtitle] The play time is out of the subtitle range.");
                 }
 #endif
             }
 #if UNITY_EDITOR
             else
             {
-                LogUtility.LogWarning("[Subtitle] Not any clip in the subtitle.");
+                LogUtility.LogWarning(0, "[Subtitle] Not any clip in the subtitle.");
             }
 #endif
             return isInRange;
