@@ -29,11 +29,11 @@ namespace MGS.CommonEditor.Base
     {
         #region Field and Property
 #if UNITY_5_5_OR_NEWER
-        protected readonly Handles.CapFunction CIRCLE_CAP = Handles.CircleHandleCap;
-        protected readonly Handles.CapFunction CIRCLE_CAP = Handles.SphereHandleCap;
+        protected readonly Handles.CapFunction CircleCap = Handles.CircleHandleCap;
+        protected readonly Handles.CapFunction SphereCap = Handles.SphereHandleCap;
 #else
-        protected readonly Handles.DrawCapFunction CIRCLE_CAP = Handles.CircleCap;
-        protected readonly Handles.DrawCapFunction SPHERE_CAP = Handles.SphereCap;
+        protected readonly Handles.DrawCapFunction CircleCap = Handles.CircleCap;
+        protected readonly Handles.DrawCapFunction SphereCap = Handles.SphereCap;
 #endif
         #endregion
 
@@ -46,7 +46,7 @@ namespace MGS.CommonEditor.Base
                 CircleCap(0, position, rotation, size, EventType.Repaint);
             }
 #else
-            CIRCLE_CAP(0, position, rotation, size);
+            CircleCap(0, position, rotation, size);
 #endif
         }
 
@@ -63,7 +63,7 @@ namespace MGS.CommonEditor.Base
                 SphereCap(0, position, rotation, size, EventType.Repaint);
             }
 #else
-            SPHERE_CAP(0, position, rotation, size);
+            SphereCap(0, position, rotation, size);
 #endif
         }
 
