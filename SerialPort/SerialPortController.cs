@@ -183,7 +183,7 @@ namespace MGS.IO.Ports
                 }
                 catch (TimeoutException tEx)
                 {
-                    LogUtility.Log(0, "Read bytes from serialport buffer: {0}.", tEx.Message);
+                    LogUtility.Log(0, "Read bytes from serialport buffer: {0}", tEx.Message);
                     ClearReadBytes();
                     IsReadTimeout = true;
                     Thread.Sleep(config.readCycle);
@@ -191,7 +191,7 @@ namespace MGS.IO.Ports
                 }
                 catch (Exception ex)
                 {
-                    LogUtility.LogError(0, "Read bytes from serialport buffer error: {0}.", ex.Message);
+                    LogUtility.LogError(0, "Read bytes from serialport buffer error: {0}", ex.Message);
                     readThread.Abort();
                     ClearReadBytes();
                     IsReadTimeout = false;
@@ -224,14 +224,14 @@ namespace MGS.IO.Ports
                 }
                 catch (TimeoutException tEx)
                 {
-                    LogUtility.Log(0, "Write bytes to serialport buffer: {0}.", tEx.Message);
+                    LogUtility.Log(0, "Write bytes to serialport buffer: {0}", tEx.Message);
                     IsWriteTimeout = true;
                     Thread.Sleep(config.writeCycle);
                     continue;
                 }
                 catch (Exception ex)
                 {
-                    LogUtility.LogError(0, "Write bytes to serialport buffer error: {0}.", ex.Message);
+                    LogUtility.LogError(0, "Write bytes to serialport buffer error: {0}", ex.Message);
                     writeThread.Abort();
                     IsWriteTimeout = false;
                     break;
@@ -305,7 +305,7 @@ namespace MGS.IO.Ports
             catch (Exception ex)
             {
                 error = ex.Message;
-                LogUtility.LogError(0, "Open serialport error: {0}.", error);
+                LogUtility.LogError(0, "Open serialport error: {0}", error);
                 return false;
             }
         }
@@ -348,7 +348,7 @@ namespace MGS.IO.Ports
             catch (Exception ex)
             {
                 error = ex.Message;
-                LogUtility.LogError(0, "Close serialport error: {0}.", error);
+                LogUtility.LogError(0, "Close serialport error: {0}", error);
                 return false;
             }
         }
@@ -394,7 +394,7 @@ namespace MGS.IO.Ports
             catch (Exception ex)
             {
                 error = ex.Message;
-                LogUtility.LogError(0, "Start read serialport data error: {0}.", error);
+                LogUtility.LogError(0, "Start read serialport data error: {0}", error);
                 return false;
             }
         }
@@ -422,7 +422,7 @@ namespace MGS.IO.Ports
             catch (Exception ex)
             {
                 error = ex.Message;
-                LogUtility.LogError(0, "Stop read serialport data error: {0}.", error);
+                LogUtility.LogError(0, "Stop read serialport data error: {0}", error);
                 return false;
             }
         }
@@ -464,7 +464,7 @@ namespace MGS.IO.Ports
             catch (Exception ex)
             {
                 error = ex.Message;
-                LogUtility.LogError(0, "Start write data to serialport error: {0}.", error);
+                LogUtility.LogError(0, "Start write data to serialport error: {0}", error);
                 return false;
             }
         }
@@ -491,7 +491,7 @@ namespace MGS.IO.Ports
             catch (Exception ex)
             {
                 error = ex.Message;
-                LogUtility.LogError(0, "Stop write data to serialport error: {0}.", error);
+                LogUtility.LogError(0, "Stop write data to serialport error: {0}", error);
                 return false;
             }
         }

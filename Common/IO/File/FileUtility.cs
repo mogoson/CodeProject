@@ -113,7 +113,7 @@ namespace MGS.Common.IO
             }
             catch (Exception ex)
             {
-                LogUtility.LogError(0, "Read all lines error: {0}.", ex.Message);
+                LogUtility.LogError(0, "Read all lines error: {0}", ex.Message);
                 return null;
             }
         }

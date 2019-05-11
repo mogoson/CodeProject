@@ -26,18 +26,29 @@ namespace MGS.Common.Logger
         /// <summary>
         /// Path of log file.
         /// </summary>
-        public string FilePath { set; get; }
+        public string LogPath
+        {
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    logPath = Path.GetDirectoryName(value);
+                }
+            }
+            get { return logPath; }
+        }
+
+        /// <summary>
+        /// Path of log file.
+        /// </summary>
+        private string logPath = Environment.CurrentDirectory + "/Log";
         #endregion
 
         #region Private Method
         /// <summary>
         /// Constructor.
         /// </summary>
-        private FileLogger()
-        {
-            //Init log file path.
-            FilePath = AppDomain.CurrentDomain.BaseDirectory + "/Log/System.log";
-        }
+        private FileLogger() { }
 
         /// <summary>
         /// Logs a formatted message to local file.
@@ -48,11 +59,12 @@ namespace MGS.Common.Logger
         /// <param name="args">Format arguments.</param>
         private void LogToFile(string tag, int level, string format, params object[] args)
         {
-            var formatLog = string.Format("{0} - {1} - {2} - {3}\r\n", DateTime.Now, tag, level, string.Format(format, args));
+            var logFile = LogPath + string.Format("/Log-{0}.log", level);
+            var formatLog = string.Format("{0} - {1} - {2}\r\n", DateTime.Now, tag, string.Format(format, args));
             try
             {
-                DirectoryUtility.RequirePath(FilePath);
-                File.AppendAllText(FilePath, formatLog);
+                DirectoryUtility.RequirePath(logFile);
+                File.AppendAllText(logFile, formatLog);
             }
 #if DEBUG
             catch (Exception ex)

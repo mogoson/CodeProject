@@ -35,19 +35,20 @@ namespace MGS.Common.IO
                 return false;
             }
 
-            if (Directory.Exists(path))
+            var dir = Path.GetDirectoryName(path);
+            if (Directory.Exists(dir))
             {
                 return true;
             }
 
             try
             {
-                Directory.CreateDirectory(path);
+                Directory.CreateDirectory(dir);
                 return true;
             }
             catch (Exception ex)
             {
-                LogUtility.LogError(0, "Require path error: {0}.", ex.Message);
+                LogUtility.LogError(0, "Require path error: {0}", ex.Message);
                 return false;
             }
         }
