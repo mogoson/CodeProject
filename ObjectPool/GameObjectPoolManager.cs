@@ -44,13 +44,11 @@ namespace MGS.ObjectPool
         {
             foreach (var poolSettings in poolsSettings)
             {
-#if UNITY_EDITOR
                 if (poolsInfo.ContainsKey(poolSettings.name))
                 {
-                    LogUtility.LogError(0, "[GameObjectPoolManager] SingleAwake error: The pool name {0} configured in the Pools Settings is not unique in this manager.", poolSettings.name);
+                    LogUtility.LogError(0, "The pool name {0} configured in the Pools Settings is not unique in this manager.", poolSettings.name);
                     continue;
                 }
-#endif
                 CreatePool(poolSettings);
             }
         }

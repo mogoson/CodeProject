@@ -10,10 +10,11 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.UAnimation;
 using UnityEditor;
 using UnityEngine;
 
-namespace MGS.UAnimation
+namespace MGS.UAnimationEditor
 {
     [CustomEditor(typeof(UVFramesAnimation), true)]
     [CanEditMultipleObjects]

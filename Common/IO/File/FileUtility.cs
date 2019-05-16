@@ -42,9 +42,17 @@ namespace MGS.Common.IO
                 return 0;
             }
 
-            using (var sm = new FileStream(filePath, FileMode.Open))
+            try
             {
-                return sm.Length / pageSize + sm.Length % pageSize == 0 ? 0 : 1;
+                using (var sm = new FileStream(filePath, FileMode.Open))
+                {
+                    return sm.Length / pageSize + sm.Length % pageSize == 0 ? 0 : 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogUtility.LogError(0, "Calculate page count error: {0}", ex.Message);
+                return 0;
             }
         }
 
@@ -69,28 +77,36 @@ namespace MGS.Common.IO
                 return null;
             }
 
-            using (var sm = new FileStream(filePath, FileMode.Open))
+            try
             {
-                var pageCount = sm.Length / pageSize + sm.Length % pageSize == 0 ? 0 : 1;
-                if (pageIndex > pageCount - 1)
+                using (var sm = new FileStream(filePath, FileMode.Open))
                 {
-                    LogUtility.LogError(0, "Read page error: The pageIndex {0} is out of range.", pageCount);
-                    return null;
+                    var pageCount = sm.Length / pageSize + sm.Length % pageSize == 0 ? 0 : 1;
+                    if (pageIndex > pageCount - 1)
+                    {
+                        LogUtility.LogError(0, "Read page error: The pageIndex {0} is out of range.", pageCount);
+                        return null;
+                    }
+
+                    if (!sm.CanSeek || !sm.CanRead)
+                    {
+                        LogUtility.LogError(0, "Read page error: File stream can not seek or read.");
+                        return null;
+                    }
+
+                    var start = pageSize * pageIndex;
+                    var count = Math.Min(pageSize, sm.Length - start);
+                    var bytesArray = new byte[count];
+
+                    sm.Seek(start, SeekOrigin.Begin);
+                    sm.Read(bytesArray, 0, (int)count);
+                    return bytesArray;
                 }
-
-                if (!sm.CanSeek || !sm.CanRead)
-                {
-                    LogUtility.LogError(0, "Read page error: File stream can not seek or read.");
-                    return null;
-                }
-
-                var start = pageSize * pageIndex;
-                var count = Math.Min(pageSize, sm.Length - start);
-                var bytesArray = new byte[count];
-
-                sm.Seek(start, SeekOrigin.Begin);
-                sm.Read(bytesArray, 0, (int)count);
-                return bytesArray;
+            }
+            catch (Exception ex)
+            {
+                LogUtility.LogError(0, "Read page error: {0}", ex.Message);
+                return null;
             }
         }
 

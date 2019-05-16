@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.Media
+namespace MGS.Media.Subtitle
 {
     /// <summary>
     /// Clip of subtitle.

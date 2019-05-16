@@ -1,7 +1,7 @@
 ﻿/*************************************************************************
  *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IFramesAnimation.cs
+ *  File         :  ImgFramesAnimation.cs
  *  Description  :  Define sequence frames animation base Image.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
@@ -20,7 +20,7 @@ namespace MGS.UAnimation
     /// </summary>
     [AddComponentMenu("MGS/UAnimation/IFramesAnimation")]
     [RequireComponent(typeof(Image))]
-    public class IFramesAnimation : SFramesAnimation
+    public class ImgFramesAnimation : SFramesAnimation
     {
         #region Field and Property
         /// <summary>

@@ -15,7 +15,7 @@ using MGS.Common.Logger;
 using System;
 using System.Collections.Generic;
 
-namespace MGS.Media
+namespace MGS.Media.Subtitle
 {
     /// <summary>
     /// SRT subtitle of video.

@@ -10,12 +10,12 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.CommonEditor.Base;
+using MGS.CommonEditor;
 using MGS.UIMap;
 using UnityEditor;
 using UnityEngine;
 
-namespace Mogoson.Map
+namespace MGS.UIMapEditor
 {
     [CustomEditor(typeof(GlobalMap), true)]
     [CanEditMultipleObjects]

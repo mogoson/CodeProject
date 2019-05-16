@@ -19,7 +19,7 @@ namespace MGS.Common.Converter
     /// </summary>
     public static class ArrayConverter
     {
-        #region Public Static Method
+        #region Public Method
         /// <summary>
         /// Convert one dimention array to two dimentions array.
         /// </summary>

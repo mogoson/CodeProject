@@ -50,7 +50,8 @@
     <Compile Include="FramesAnimation\Abstract\FramesAnimation.cs" />
     <Compile Include="FramesAnimation\Abstract\SFramesAnimation.cs" />
     <Compile Include="FramesAnimation\Abstract\TFramesAnimation.cs" />
-    <Compile Include="FramesAnimation\IFramesAnimation.cs" />
+    <Compile Include="FramesAnimation\FrameTextureData.cs" />
+    <Compile Include="FramesAnimation\ImgFramesAnimation.cs" />
     <Compile Include="Interface\IAnimation.cs" />
     <Compile Include="Abstract\MonoAnimation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

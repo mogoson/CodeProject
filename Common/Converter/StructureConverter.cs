@@ -20,6 +20,7 @@ namespace MGS.Common.Converter
     /// </summary>
     public static class StructureConverter
     {
+        #region Public Method
         /// <summary>
         /// Byte array to structure.
         /// </summary>
@@ -70,5 +71,6 @@ namespace MGS.Common.Converter
             Marshal.FreeHGlobal(intPtr);
             return byteArray;
         }
+        #endregion
     }
 }

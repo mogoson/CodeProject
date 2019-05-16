@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIMap", "UIMap\UIMap.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIMapEditor", "UIMapEditor\UIMapEditor.csproj", "{2A624EB1-7445-40DA-954E-5464562EA84F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meter", "Meter\Meter.csproj", "{9EB4EF70-1B1E-42A6-9A9B-DBE9B67625F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterEditor", "MeterEditor\MeterEditor.csproj", "{0C36011D-BFF8-403D-A7E6-5A9A5B43D0E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,14 @@ Global
 		{2A624EB1-7445-40DA-954E-5464562EA84F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A624EB1-7445-40DA-954E-5464562EA84F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A624EB1-7445-40DA-954E-5464562EA84F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EB4EF70-1B1E-42A6-9A9B-DBE9B67625F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EB4EF70-1B1E-42A6-9A9B-DBE9B67625F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EB4EF70-1B1E-42A6-9A9B-DBE9B67625F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EB4EF70-1B1E-42A6-9A9B-DBE9B67625F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C36011D-BFF8-403D-A7E6-5A9A5B43D0E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C36011D-BFF8-403D-A7E6-5A9A5B43D0E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C36011D-BFF8-403D-A7E6-5A9A5B43D0E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C36011D-BFF8-403D-A7E6-5A9A5B43D0E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

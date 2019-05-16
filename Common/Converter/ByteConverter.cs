@@ -20,7 +20,7 @@ namespace MGS.Common.Converter
     /// </summary>
     public static class ByteConverter
     {
-        #region Public Static Method
+        #region Public Method
         /// <summary>
         /// Byte array to Boolean array.
         /// </summary>
