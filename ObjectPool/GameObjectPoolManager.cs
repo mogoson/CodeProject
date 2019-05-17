@@ -89,14 +89,6 @@ namespace MGS.ObjectPool
             //Create new pool.
             var newPool = new GameObjectPool(poolRoot.transform, prefab, maxCount);
             poolsInfo.Add(name, newPool);
-
-#if UNITY_EDITOR
-            var settings = new GameObjectPoolSettings(name, prefab, maxCount);
-            if (!poolsSettings.Contains(settings))
-            {
-                poolsSettings.Add(settings);
-            }
-#endif
             return newPool;
         }
 
@@ -138,17 +130,6 @@ namespace MGS.ObjectPool
             {
                 Destroy(poolsInfo[name].root.gameObject);
                 poolsInfo.Remove(name);
-
-#if UNITY_EDITOR
-                foreach (var poolSettings in poolsSettings)
-                {
-                    if (poolSettings.name == name)
-                    {
-                        poolsSettings.Remove(poolSettings);
-                        break;
-                    }
-                }
-#endif
             }
             else
             {
