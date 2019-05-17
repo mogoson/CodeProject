@@ -49,7 +49,7 @@
     <Compile Include="IO\Directory\DirectoryUtility.cs" />
     <Compile Include="IO\File\FileUtility.cs" />
     <Compile Include="Logger\FileLogger.cs" />
-    <Compile Include="Logger\ILogger.cs" />
+    <Compile Include="Logger\Interface\ILogger.cs" />
     <Compile Include="Logger\LogUtility.cs" />
     <Compile Include="Mathematics\Geometry\Planimetry.cs" />
     <Compile Include="Mathematics\Hermite\Hermite.cs" />
