@@ -28,10 +28,6 @@ using MGS.Common.Logger;
 using MGS.Common.DesignPattern;
 using MGS.Common.IO;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 #if !UNITY_5_3_OR_NEWER
 using LitJson;
 #endif
@@ -105,9 +101,6 @@ namespace MGS.IO.Ports
 #endif
                 DirectoryUtility.RequirePath(ConfigPath);
                 File.WriteAllText(ConfigPath, configJson);
-#if UNITY_EDITOR
-                AssetDatabase.Refresh();
-#endif
                 return true;
             }
             catch (Exception ex)
