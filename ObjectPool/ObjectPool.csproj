@@ -61,11 +61,17 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Plugins\MGS\$(ConfigurationName)"
+    <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Plugins\MGS"
 if exist %25targetDir%25\$(TargetFileName) (
-        copy "$(TargetFileName)" %25targetDir%25
-        copy "$(TargetName).xml" %25targetDir%25
-    if $(ConfigurationName)==Debug (copy "$(TargetName).pdb" %25targetDir%25)
+    if $(ConfigurationName)==Debug (
+        copy "$(TargetName).pdb" %25targetDir%25
+    ) else (
+         if exist "%25targetDir%25\$(TargetName).pdb" (
+            del "%25targetDir%25\$(TargetName).pdb"
+         )
+    )
+    copy "$(TargetFileName)" %25TargetDir%25
+    copy "$(TargetName).xml" %25TargetDir%25
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>
