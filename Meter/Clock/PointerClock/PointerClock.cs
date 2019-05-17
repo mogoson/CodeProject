@@ -39,6 +39,9 @@ namespace MGS.Meter
         #endregion
 
         #region Private Method
+        /// <summary>
+        /// Component awake.
+        /// </summary>
         protected virtual void Awake()
         {
             audioSource = GetComponent<AudioSource>();
@@ -50,6 +53,9 @@ namespace MGS.Meter
             lastSecond = DateTime.Now.Second;
         }
 
+        /// <summary>
+        /// Update pointer rotate angles.
+        /// </summary>
         protected virtual void Update()
         {
             if (lastSecond == DateTime.Now.Second)

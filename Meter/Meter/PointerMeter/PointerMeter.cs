@@ -52,6 +52,9 @@ namespace MGS.Meter
         #endregion
 
         #region Protected Method
+        /// <summary>
+        /// Component awake.
+        /// </summary>
         protected virtual void Awake()
         {
             StartAngles = new Vector3[pointers.Length];
