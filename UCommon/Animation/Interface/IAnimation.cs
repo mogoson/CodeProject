@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.UAnimation
+namespace MGS.Common.UAnimation
 {
     /// <summary>
     /// Interface of animation.

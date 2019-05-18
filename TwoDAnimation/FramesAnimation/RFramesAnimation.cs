@@ -12,12 +12,12 @@
 
 using UnityEngine;
 
-namespace MGS.UAnimation
+namespace MGS.TwoDAnimation
 {
     /// <summary>
     /// Sequence frames animation base on Renderer.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/RFramesAnimation")]
+    [AddComponentMenu("MGS/TwoDAnimation/RFramesAnimation")]
     [RequireComponent(typeof(Renderer))]
     public class RFramesAnimation : TFramesAnimation
     {

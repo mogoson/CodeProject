@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{163347D7-7CDE-4C3B-A64D-2A8B0EE7BCC0}</ProjectGuid>
+    <ProjectGuid>{EA9F0126-2708-4DE6-BDCE-489FE1FCEEE4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MGS.UAnimation</RootNamespace>
-    <AssemblyName>MGS.UAnimation</AssemblyName>
+    <RootNamespace>MGS.TwoDAnimationEditor</RootNamespace>
+    <AssemblyName>MGS.TwoDAnimationEditor</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
@@ -21,7 +21,6 @@
     <DefineConstants>TRACE;DEBUG;UNITY_5_0_0;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\MGS.UAnimation.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,7 +29,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\MGS.UAnimation.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -39,37 +37,30 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEditor">
+      <HintPath>C:\Program Files\Unity 5.0.0f4\Editor\Data\Managed\UnityEditor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity 5.0.0f4\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>C:\Program Files\Unity 5.0.0f4\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FramesAnimation\Abstract\FramesAnimation.cs" />
-    <Compile Include="FramesAnimation\Abstract\SFramesAnimation.cs" />
-    <Compile Include="FramesAnimation\Abstract\TFramesAnimation.cs" />
-    <Compile Include="FramesAnimation\FrameTextureData.cs" />
-    <Compile Include="FramesAnimation\ImgFramesAnimation.cs" />
-    <Compile Include="Interface\IAnimation.cs" />
-    <Compile Include="Abstract\MonoAnimation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FramesAnimation\RFramesAnimation.cs" />
-    <Compile Include="FramesAnimation\RIFramesAnimation.cs" />
-    <Compile Include="FramesAnimation\SRFramesAnimation.cs" />
-    <Compile Include="UVAnimation\UVAnimation.cs" />
-    <Compile Include="FramesAnimation\UVFramesAnimation.cs" />
+    <Compile Include="FramesAnimationEditor\UVFramesAnimationEditor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{55e27c1e-ecfb-4e6f-b5e0-508c882dddab}</Project>
-      <Name>Common</Name>
+    <ProjectReference Include="..\TwoDAnimation\TwoDAnimation.csproj">
+      <Project>{163347d7-7cde-4c3b-a64d-2a8b0ee7bcc0}</Project>
+      <Name>TwoDAnimation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UCommon\UCommon.csproj">
+      <Project>{02f92370-d9a3-4a6b-8b7d-717315a01145}</Project>
+      <Name>UCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Plugins\MGS"
+    <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Editor\MGS"
 if exist %25targetDir%25\$(TargetFileName) (
     if $(ConfigurationName)==Debug (
         copy "$(TargetName).pdb" %25targetDir%25
@@ -79,7 +70,6 @@ if exist %25targetDir%25\$(TargetFileName) (
          )
     )
     copy "$(TargetFileName)" %25TargetDir%25
-    copy "$(TargetName).xml" %25TargetDir%25
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>

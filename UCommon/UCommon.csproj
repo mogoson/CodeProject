@@ -45,6 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animation\Abstract\MonoAnimation.cs" />
+    <Compile Include="Animation\Interface\IAnimation.cs" />
     <Compile Include="Extension\GameObjectExtention.cs" />
     <Compile Include="Extension\TerrainExtension.cs" />
     <Compile Include="Extension\TextureExtention.cs" />

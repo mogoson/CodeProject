@@ -1,9 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  SRFramesAnimation.cs
- *  Description  :  Define sequence frames animation base on
- *                  SpriteRenderer.
+ *  File         :  ImgFramesAnimation.cs
+ *  Description  :  Define sequence frames animation base Image.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -12,21 +11,22 @@
  *************************************************************************/
 
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace MGS.UAnimation
+namespace MGS.TwoDAnimation
 {
     /// <summary>
-    /// Sequence frames animation base on SpriteRenderer.
+    /// Sequence frames animation base on Image.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/SRFramesAnimation")]
-    [RequireComponent(typeof(SpriteRenderer))]
-    public class SRFramesAnimation : SFramesAnimation
+    [AddComponentMenu("MGS/TwoDAnimation/IFramesAnimation")]
+    [RequireComponent(typeof(Image))]
+    public class ImgFramesAnimation : SFramesAnimation
     {
         #region Field and Property
         /// <summary>
-        /// SpriteRenderer of animation.
+        /// Renderer of animation.
         /// </summary>
-        protected SpriteRenderer sRenderer;
+        protected Image image;
         #endregion
 
         #region Protected Method
@@ -35,7 +35,7 @@ namespace MGS.UAnimation
         /// </summary>
         protected virtual void Awake()
         {
-            sRenderer = GetComponent<SpriteRenderer>();
+            image = GetComponent<Image>();
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace MGS.UAnimation
         /// <param name="frameIndex">Index of frame.</param>
         protected override void SetFrame(int frameIndex)
         {
-            sRenderer.sprite = frames[frameIndex];
+            image.sprite = frames[frameIndex];
         }
         #endregion
     }

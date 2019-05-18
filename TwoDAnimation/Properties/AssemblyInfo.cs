@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("MGS.UAnimation")]
-[assembly: AssemblyDescription("Animation for unity project develop")]
+[assembly: AssemblyTitle("MGS.TwoDAnimation")]
+[assembly: AssemblyDescription("Two dimensional animation for unity project develop")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MGS.UAnimation")]
+[assembly: AssemblyProduct("MGS.TwoDAnimation")]
 [assembly: AssemblyCopyright("Copyright ©  2018-2019 Mogoson")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

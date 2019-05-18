@@ -1,8 +1,9 @@
 ﻿/*************************************************************************
  *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  RIFramesAnimation.cs
- *  Description  :  Define sequence frames animation base on RawImage.
+ *  File         :  SRFramesAnimation.cs
+ *  Description  :  Define sequence frames animation base on
+ *                  SpriteRenderer.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -11,22 +12,21 @@
  *************************************************************************/
 
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace MGS.UAnimation
+namespace MGS.TwoDAnimation
 {
     /// <summary>
-    /// Sequence frames animation base on RawImage.
+    /// Sequence frames animation base on SpriteRenderer.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/RIFramesAnimation")]
-    [RequireComponent(typeof(RawImage))]
-    public class RIFramesAnimation : TFramesAnimation
+    [AddComponentMenu("MGS/TwoDAnimation/SRFramesAnimation")]
+    [RequireComponent(typeof(SpriteRenderer))]
+    public class SRFramesAnimation : SFramesAnimation
     {
         #region Field and Property
         /// <summary>
-        /// Renderer of animation.
+        /// SpriteRenderer of animation.
         /// </summary>
-        protected RawImage rawImage;
+        protected SpriteRenderer sRenderer;
         #endregion
 
         #region Protected Method
@@ -35,7 +35,7 @@ namespace MGS.UAnimation
         /// </summary>
         protected virtual void Awake()
         {
-            rawImage = GetComponent<RawImage>();
+            sRenderer = GetComponent<SpriteRenderer>();
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace MGS.UAnimation
         /// <param name="frameIndex">Index of frame.</param>
         protected override void SetFrame(int frameIndex)
         {
-            rawImage.texture = frames[frameIndex];
+            sRenderer.sprite = frames[frameIndex];
         }
         #endregion
     }

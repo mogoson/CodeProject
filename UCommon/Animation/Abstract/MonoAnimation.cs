@@ -12,7 +12,7 @@
 
 using UnityEngine;
 
-namespace MGS.UAnimation
+namespace MGS.Common.UAnimation
 {
     /// <summary>
     /// Mono animation.

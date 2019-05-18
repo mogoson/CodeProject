@@ -12,7 +12,7 @@
 
 using UnityEngine;
 
-namespace MGS.UAnimation
+namespace MGS.TwoDAnimation
 {
     /// <summary>
     /// Data of frame texture.

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("MGS.UAnimationEditor")]
-[assembly: AssemblyDescription("Custom editor for animation script")]
+[assembly: AssemblyTitle("MGS.TwoDAnimationEditor")]
+[assembly: AssemblyDescription("Custom editor for two dimensional animation script")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MGS.UAnimationEditor")]
+[assembly: AssemblyProduct("MGS.TwoDAnimationEditor")]
 [assembly: AssemblyCopyright("Copyright ©  2019 Mogoson")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

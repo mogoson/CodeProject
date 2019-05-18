@@ -14,7 +14,7 @@ using MGS.Common.Logger;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MGS.UAnimation
+namespace MGS.TwoDAnimation
 {
     /// <summary>
     /// Animation base on frames sprites.

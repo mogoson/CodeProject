@@ -11,14 +11,15 @@
  *************************************************************************/
 
 using MGS.Common.Logger;
+using MGS.Common.UAnimation;
 using UnityEngine;
 
-namespace MGS.UAnimation
+namespace MGS.TwoDAnimation
 {
     /// <summary>
     /// Animation base on UV offset.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/UVAnimation")]
+    [AddComponentMenu("MGS/TwoDAnimation/UVAnimation")]
     [RequireComponent(typeof(Renderer))]
     public class UVAnimation : MonoAnimation
     {

@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  ImgFramesAnimation.cs
- *  Description  :  Define sequence frames animation base Image.
+ *  File         :  RIFramesAnimation.cs
+ *  Description  :  Define sequence frames animation base on RawImage.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -13,20 +13,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MGS.UAnimation
+namespace MGS.TwoDAnimation
 {
     /// <summary>
-    /// Sequence frames animation base on Image.
+    /// Sequence frames animation base on RawImage.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/IFramesAnimation")]
-    [RequireComponent(typeof(Image))]
-    public class ImgFramesAnimation : SFramesAnimation
+    [AddComponentMenu("MGS/TwoDAnimation/RIFramesAnimation")]
+    [RequireComponent(typeof(RawImage))]
+    public class RIFramesAnimation : TFramesAnimation
     {
         #region Field and Property
         /// <summary>
         /// Renderer of animation.
         /// </summary>
-        protected Image image;
+        protected RawImage rawImage;
         #endregion
 
         #region Protected Method
@@ -35,7 +35,7 @@ namespace MGS.UAnimation
         /// </summary>
         protected virtual void Awake()
         {
-            image = GetComponent<Image>();
+            rawImage = GetComponent<RawImage>();
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace MGS.UAnimation
         /// <param name="frameIndex">Index of frame.</param>
         protected override void SetFrame(int frameIndex)
         {
-            image.sprite = frames[frameIndex];
+            rawImage.texture = frames[frameIndex];
         }
         #endregion
     }

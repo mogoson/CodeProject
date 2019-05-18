@@ -10,11 +10,11 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UAnimation;
+using MGS.TwoDAnimation;
 using UnityEditor;
 using UnityEngine;
 
-namespace MGS.UAnimationEditor
+namespace MGS.TwoDAnimationEditor
 {
     [CustomEditor(typeof(UVFramesAnimation), true)]
     [CanEditMultipleObjects]
@@ -31,8 +31,21 @@ namespace MGS.UAnimationEditor
 
             if (GUILayout.Button("Apply UV Maps"))
             {
-                Target.ApplyUVMaps();
+                ApplyUVMaps();
             }
+        }
+        #endregion
+
+        #region Protected Method
+        protected void ApplyUVMaps()
+        {
+            var frameWidth = 1.0f / Target.Column;
+            var frameHeight = 1.0f / Target.Row;
+
+            var mRenderer = Target.GetComponent<Renderer>();
+            var material = mRenderer.sharedMaterial;
+            material.mainTextureOffset = Vector2.zero;
+            material.mainTextureScale = new Vector2(frameWidth, frameHeight);
         }
         #endregion
     }

@@ -13,12 +13,12 @@
 using MGS.Common.Logger;
 using UnityEngine;
 
-namespace MGS.UAnimation
+namespace MGS.TwoDAnimation
 {
     /// <summary>
     /// Sequence frames animation base on UV offset.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/UVFramesAnimation")]
+    [AddComponentMenu("MGS/TwoDAnimation/UVFramesAnimation")]
     [RequireComponent(typeof(Renderer))]
     public class UVFramesAnimation : FramesAnimation
     {
@@ -34,6 +34,16 @@ namespace MGS.UAnimation
         /// </summary>
         [SerializeField]
         protected int column = 5;
+
+        /// <summary>
+        /// Row of frames.
+        /// </summary>
+        public int Row { get { return row; } }
+
+        /// <summary>
+        /// Column of frames.
+        /// </summary>
+        public int Column { get { return column; } }
 
         /// <summary>
         /// Count of image frames.
@@ -84,6 +94,19 @@ namespace MGS.UAnimation
         {
             mRenderer.material.mainTextureOffset = new Vector2(frameIndex % column * frameWidth, frameIndex / column * frameHeight);
         }
+
+        /// <summary>
+        /// Apply main textute uv maps.
+        /// </summary>
+        protected void ApplyUVMaps()
+        {
+            frameWidth = 1.0f / column;
+            frameHeight = 1.0f / row;
+
+            var material = mRenderer.material;
+            material.mainTextureOffset = Vector2.zero;
+            material.mainTextureScale = new Vector2(frameWidth, frameHeight);
+        }
         #endregion
 
         #region Public Method
@@ -116,28 +139,6 @@ namespace MGS.UAnimation
             framesCount = row * column;
             mRenderer.material.mainTexture = frames;
             ApplyUVMaps();
-        }
-
-        /// <summary>
-        /// Apply main textute uv maps.
-        /// </summary>
-        public void ApplyUVMaps()
-        {
-            frameWidth = 1.0f / column;
-            frameHeight = 1.0f / row;
-
-            Material material;
-#if UNITY_EDITOR
-            if (mRenderer == null)
-            {
-                mRenderer = GetComponent<Renderer>();
-            }
-            material = mRenderer.sharedMaterial;
-#else
-            material = mRenderer.material;
-#endif
-            material.mainTextureOffset = Vector2.zero;
-            material.mainTextureScale = new Vector2(frameWidth, frameHeight);
         }
         #endregion
     }

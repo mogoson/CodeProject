@@ -10,10 +10,11 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.Common.UAnimation;
 using System;
 using UnityEngine;
 
-namespace MGS.UAnimation
+namespace MGS.TwoDAnimation
 {
     /// <summary>
     /// Animation base on key frames.
