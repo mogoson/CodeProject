@@ -1,5 +1,5 @@
 /*************************************************************************
- *  Copyright © 2017-2018 Mogoson. All rights reserved.
+ *  Copyright © 2017-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  SinCurve.cs
  *  Description  :  Define sin curve for unity.

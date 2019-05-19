@@ -23,13 +23,6 @@ namespace MGS.MeterEditor
     {
         #region Field and Property
         protected PointerMeter Target { get { return target as PointerMeter; } }
-
-        protected readonly Color Blue = new Color(0, 1, 1, 1);
-        protected readonly Color TransparentBlue = new Color(0, 1, 1, 0.1f);
-
-        protected const float NodeSize = 0.125f;
-        protected const float AreaRadius = 1.25f;
-        protected const float ArrowLength = 2f;
         #endregion
 
         #region Protected Method

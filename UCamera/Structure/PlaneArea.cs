@@ -1,50 +1,52 @@
 ﻿/*************************************************************************
  *  Copyright © 2017-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  FrameTextureData.cs
- *  Description  :  Define data of frame texture.
+ *  File         :  PlaneArea.cs
+ *  Description  :  Define rectangle area on plane.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  3/8/2018
+ *  Date         :  4/8/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using System;
 using UnityEngine;
 
-namespace MGS.TwoDAnimation
+namespace MGS.UCamera
 {
     /// <summary>
-    /// Data of frame texture.
+    /// Rectangle area on plane.
     /// </summary>
-    public class FrameTextureData
+    [Serializable]
+    public struct PlaneArea
     {
         /// <summary>
-        /// Frames texture.
+        /// Center of area.
         /// </summary>
-        public Texture frames;
+        public Transform center;
 
         /// <summary>
-        /// Row of frames.
+        /// Width of area.
         /// </summary>
-        public int row;
+        public float width;
 
         /// <summary>
-        /// Column of frames.
+        /// Length of area.
         /// </summary>
-        public int column;
+        public float length;
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="frames">Frames texture.</param>
-        /// <param name="row">Row of frames.</param>
-        /// <param name="column">Column of frames.</param>
-        public FrameTextureData(Texture frames, int row, int column)
+        /// <param name="center">Center of area.</param>
+        /// <param name="width">Width of area.</param>
+        /// <param name="length">Length of area.</param>
+        public PlaneArea(Transform center, float width, float length)
         {
-            this.frames = frames;
-            this.row = row;
-            this.column = column;
+            this.center = center;
+            this.width = width;
+            this.length = length;
         }
     }
 }

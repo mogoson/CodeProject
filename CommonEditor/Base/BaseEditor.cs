@@ -35,6 +35,17 @@ namespace MGS.CommonEditor
         protected readonly Handles.DrawCapFunction CircleCap = Handles.CircleCap;
         protected readonly Handles.DrawCapFunction SphereCap = Handles.SphereCap;
 #endif
+        protected readonly Color Blue = new Color(0, 1, 1, 1);
+        protected readonly Color TransparentBlue = new Color(0, 1, 1, 0.1f);
+        protected readonly Vector3 MoveSnap = Vector3.one;
+
+        protected const float NodeSize = 0.125f;
+        protected const float AreaRadius = 1.25f;
+        protected const float ArrowLength = 2f;
+        protected const float LineLength = 10;
+
+        protected const float FixedAreaRadius = 0.5f;
+        protected const float FixedArrowLength = 0.75f;
         #endregion
 
         #region Protected Method

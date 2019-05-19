@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoDAnimation", "TwoDAnimat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoDAnimationEditor", "TwoDAnimationEditor\TwoDAnimationEditor.csproj", "{EA9F0126-2708-4DE6-BDCE-489FE1FCEEE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCamera", "UCamera\UCamera.csproj", "{FF673FC2-75E0-49A0-B0D9-C40CA1F0D2D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCameraEditor", "UCameraEditor\UCameraEditor.csproj", "{60193E51-2A46-4AE3-BEB2-C666243FB26C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +91,14 @@ Global
 		{EA9F0126-2708-4DE6-BDCE-489FE1FCEEE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA9F0126-2708-4DE6-BDCE-489FE1FCEEE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA9F0126-2708-4DE6-BDCE-489FE1FCEEE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF673FC2-75E0-49A0-B0D9-C40CA1F0D2D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF673FC2-75E0-49A0-B0D9-C40CA1F0D2D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF673FC2-75E0-49A0-B0D9-C40CA1F0D2D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF673FC2-75E0-49A0-B0D9-C40CA1F0D2D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60193E51-2A46-4AE3-BEB2-C666243FB26C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60193E51-2A46-4AE3-BEB2-C666243FB26C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60193E51-2A46-4AE3-BEB2-C666243FB26C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60193E51-2A46-4AE3-BEB2-C666243FB26C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

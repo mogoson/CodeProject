@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2017-2018 Mogoson. All rights reserved.
+ *  Copyright © 2017-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  SerialPortConfigurer.cs
  *  Description  :  Read config from local file and write config to
