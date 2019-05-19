@@ -7,8 +7,8 @@
     <ProjectGuid>{522C0820-E5F6-4BD9-A1E3-FE2E1A1E2CE2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MGS.CommonEditor</RootNamespace>
-    <AssemblyName>MGS.CommonEditor</AssemblyName>
+    <RootNamespace>MGS.UCommonEditor</RootNamespace>
+    <AssemblyName>MGS.UCommonEditor</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
