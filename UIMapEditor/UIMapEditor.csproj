@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonEditor\CommonEditor.csproj">
+    <ProjectReference Include="..\UCommonEditor\UCommonEditor.csproj">
       <Project>{522c0820-e5f6-4bd9-a1e3-fe2e1a1e2ce2}</Project>
-      <Name>CommonEditor</Name>
+      <Name>UCommonEditor</Name>
     </ProjectReference>
     <ProjectReference Include="..\UIMap\UIMap.csproj">
       <Project>{9d8a0fed-a02e-4033-a296-ffdb53261643}</Project>

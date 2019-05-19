@@ -50,13 +50,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonEditor\CommonEditor.csproj">
-      <Project>{522c0820-e5f6-4bd9-a1e3-fe2e1a1e2ce2}</Project>
-      <Name>CommonEditor</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Meter\Meter.csproj">
       <Project>{9eb4ef70-1b1e-42a6-9a9b-dbe9b67625f4}</Project>
       <Name>Meter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UCommonEditor\UCommonEditor.csproj">
+      <Project>{522c0820-e5f6-4bd9-a1e3-fe2e1a1e2ce2}</Project>
+      <Name>UCommonEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
