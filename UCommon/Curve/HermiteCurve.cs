@@ -19,7 +19,7 @@ using MGS.Common.Logger;
 using System;
 using UnityEngine;
 
-namespace MGS.Common.Curve
+namespace MGS.UCommon.Curve
 {
     /// <summary>
     /// Vector keyframe.

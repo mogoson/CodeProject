@@ -12,7 +12,7 @@
 
 using UnityEngine;
 
-namespace MGS.Common.Curve
+namespace MGS.UCommon.Curve
 {
     /// <summary>
     /// Interface of curve.

@@ -11,7 +11,7 @@
  *************************************************************************/
 
 using MGS.Common.Logger;
-using MGS.Common.UAnimation;
+using MGS.UCommon.UAnimation;
 using UnityEngine;
 
 namespace MGS.TwoDAnimation

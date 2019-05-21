@@ -12,7 +12,7 @@
 
 using UnityEngine;
 
-namespace MGS.Common.Extension
+namespace MGS.UCommon.Extension
 {
     /// <summary>
     /// Extension for UnityEngine.Terrain.

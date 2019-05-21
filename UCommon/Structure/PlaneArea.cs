@@ -13,7 +13,7 @@
 using System;
 using UnityEngine;
 
-namespace MGS.Common.Structure
+namespace MGS.UCommon.Structure
 {
     /// <summary>
     /// Rectangle area on plane.

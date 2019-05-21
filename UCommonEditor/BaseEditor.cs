@@ -23,7 +23,7 @@ using UnityEngine;
 using UnityEditor.SceneManagement;
 #endif
 
-namespace MGS.CommonEditor
+namespace MGS.UCommonEditor
 {
     public class BaseEditor : Editor
     {

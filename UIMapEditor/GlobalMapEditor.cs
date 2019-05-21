@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.CommonEditor;
+using MGS.UCommonEditor;
 using MGS.UIMap;
 using UnityEditor;
 using UnityEngine;

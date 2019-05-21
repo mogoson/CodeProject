@@ -13,7 +13,7 @@
 using MGS.Common.Logger;
 using UnityEngine;
 
-namespace MGS.Common.DesignPattern
+namespace MGS.UCommon.DesignPattern
 {
     /// <summary>
     /// MonoBehaviour with a single instance.

@@ -13,7 +13,7 @@
 using System;
 using UnityEngine;
 
-namespace MGS.Common.Curve
+namespace MGS.UCommon.Curve
 {
     /// <summary>
     /// Args of ellipse.

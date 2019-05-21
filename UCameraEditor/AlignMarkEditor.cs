@@ -15,7 +15,7 @@
  *  Description  :  Optimize display of node.
  *************************************************************************/
 
-using MGS.CommonEditor;
+using MGS.UCommonEditor;
 using MGS.UCamera;
 using UnityEditor;
 using UnityEngine;
