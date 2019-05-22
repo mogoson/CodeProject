@@ -18,7 +18,7 @@ namespace MGS.CurveHose
     /// <summary>
     /// Render dynamic hose mesh base on ellipse curve.
     /// </summary>
-    [AddComponentMenu("Mogoson/CurveHose/EllipseHose")]
+    [AddComponentMenu("MGS/CurveHose/EllipseHose")]
     public class EllipseHose : MonoCurveHose
     {
         #region Field and Property

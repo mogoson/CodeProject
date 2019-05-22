@@ -18,7 +18,7 @@ namespace MGS.CurveHoseEditor
 {
     [CustomEditor(typeof(BezierHose), true)]
     [CanEditMultipleObjects]
-    public class BezierHoseEditor : CurveHoseEditor
+    public class BezierHoseEditor : MonoCurveHoseEditor
     {
         #region Field and Property
         protected new BezierHose Target { get { return target as BezierHose; } }

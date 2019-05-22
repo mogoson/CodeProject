@@ -18,7 +18,7 @@ namespace MGS.CurveHose
     /// <summary>
     /// Render dynamic hose mesh base on sin curve.
     /// </summary>
-    [AddComponentMenu("Mogoson/CurveHose/SinHose")]
+    [AddComponentMenu("MGS/CurveHose/SinHose")]
     public class SinHose : MonoCurveHose
     {
         #region Field and Property

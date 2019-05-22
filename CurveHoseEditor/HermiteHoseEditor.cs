@@ -18,7 +18,7 @@ namespace MGS.CurveHoseEditor
 {
     [CustomEditor(typeof(HermiteHose), true)]
     [CanEditMultipleObjects]
-    public class HermiteHoseEditor : CurveHoseEditor
+    public class HermiteHoseEditor : MonoCurveHoseEditor
     {
         #region Field and Property
         protected new HermiteHose Target { get { return target as HermiteHose; } }

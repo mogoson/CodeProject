@@ -18,7 +18,7 @@ namespace MGS.CurveHose
     /// <summary>
     /// Render dynamic hose mesh base on cubic bezier curve.
     /// </summary>
-    [AddComponentMenu("Mogoson/CurveHose/BezierHose")]
+    [AddComponentMenu("MGS/CurveHose/BezierHose")]
     public class BezierHose : MonoCurveHose
     {
         #region Field and Property
@@ -27,8 +27,11 @@ namespace MGS.CurveHose
         /// </summary>
         [SerializeField]
         [HideInInspector]
-        protected CubicBezierAnchor anchor = new CubicBezierAnchor(Vector3.one,
-            new Vector3(3, 1, 3), new Vector3(1, 1, 2), new Vector3(3, 1, 2));
+        protected CubicBezierAnchor anchor = new CubicBezierAnchor(
+            new Vector3(1, 1, 1),
+            new Vector3(3, 1, 3),
+            new Vector3(1, 1, 2),
+            new Vector3(3, 1, 2));
 
         /// <summary>
         /// Start point of hose curve.

@@ -1,7 +1,7 @@
 /*************************************************************************
  *  Copyright © 2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  CurveHoseEditor.cs
+ *  File         :  MonoCurveHoseEditor.cs
  *  Description  :  Editor for MonoCurveHose component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
@@ -17,7 +17,7 @@ using UnityEditor;
 namespace MGS.CurveHoseEditor
 {
     [CustomEditor(typeof(MonoCurveHose), true)]
-    public class CurveHoseEditor : MonoSkinEditor
+    public class MonoCurveHoseEditor : MonoSkinEditor
     {
         #region Field and Property
         protected new MonoCurveHose Target { get { return target as MonoCurveHose; } }

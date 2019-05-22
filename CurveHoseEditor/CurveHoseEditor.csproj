@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BezierHoseEditor.cs" />
-    <Compile Include="CurveHoseEditor.cs" />
+    <Compile Include="MonoCurveHoseEditor.cs" />
     <Compile Include="HermiteHoseEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

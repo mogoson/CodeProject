@@ -49,8 +49,8 @@
     <Compile Include="EllipseHose.cs" />
     <Compile Include="HelixHose.cs" />
     <Compile Include="HermiteHose.cs" />
-    <Compile Include="ICurveHose.cs" />
-    <Compile Include="MonoCurveHose.cs" />
+    <Compile Include="Interface\ICurveHose.cs" />
+    <Compile Include="Abstract\MonoCurveHose.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SinHose.cs" />
   </ItemGroup>

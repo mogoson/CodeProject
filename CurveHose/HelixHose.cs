@@ -18,7 +18,7 @@ namespace MGS.CurveHose
     /// <summary>
     /// Render dynamic hose mesh base on helix curve.
     /// </summary>
-    [AddComponentMenu("Mogoson/CurveHose/HelixHose")]
+    [AddComponentMenu("MGS/CurveHose/HelixHose")]
     public class HelixHose : MonoCurveHose
     {
         #region Field and Property

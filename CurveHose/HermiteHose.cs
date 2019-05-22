@@ -19,7 +19,7 @@ namespace MGS.CurveHose
     /// <summary>
     /// Render dynamic hose mesh base on hermite curve.
     /// </summary>
-    [AddComponentMenu("Mogoson/CurveHose/HermiteHose")]
+    [AddComponentMenu("MGS/CurveHose/HermiteHose")]
     public class HermiteHose : MonoCurveHose
     {
         #region Field and Property

@@ -231,6 +231,8 @@ namespace MGS.CurveHose
         {
             length = Curve.Length;
             segmentCount = (int)(length / segment) + 1;
+
+            //Rebuild the mesh.
             base.Rebuild();
         }
 
