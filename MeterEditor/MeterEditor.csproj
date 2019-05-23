@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClockEditor.cs" />
+    <Compile Include="LerpPointerMeterEditor.cs" />
     <Compile Include="PointerMeterEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
