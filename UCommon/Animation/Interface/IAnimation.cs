@@ -36,6 +36,11 @@ namespace MGS.UCommon.UAnimation
 
         #region Method
         /// <summary>
+        /// Initialize animation.
+        /// </summary>
+        void Initialize();
+
+        /// <summary>
         /// Play animation.
         /// </summary>
         void Play();

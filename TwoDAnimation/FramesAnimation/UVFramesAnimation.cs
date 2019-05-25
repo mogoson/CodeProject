@@ -68,16 +68,6 @@ namespace MGS.TwoDAnimation
 
         #region Protected Method
         /// <summary>
-        /// Component awake.
-        /// </summary>
-        protected virtual void Awake()
-        {
-            mRenderer = GetComponent<Renderer>();
-            framesCount = row * column;
-            ApplyUVMaps();
-        }
-
-        /// <summary>
         /// Get image frames count.
         /// </summary>
         /// <returns>Frames count</returns>
@@ -111,18 +101,30 @@ namespace MGS.TwoDAnimation
 
         #region Public Method
         /// <summary>
+        /// Initialize animation.
+        /// </summary>
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            mRenderer = GetComponent<Renderer>();
+            framesCount = row * column;
+            ApplyUVMaps();
+        }
+
+        /// <summary>
         /// Refresh frames texture of animation.
         /// </summary>
         /// <param name="frames">Animation frames, type is FrameTextureData.</param>
         public override void Refresh(object frames)
         {
-            if (!(frames is FrameTextureData newFrames))
+            if (frames is FrameTextureData newFrames)
             {
-                LogUtility.LogError(0, "Refresh animation error: The type of frames is not FrameTextureData.");
+                SetSourceFrames(newFrames.frames, newFrames.row, newFrames.column);
             }
             else
             {
-                SetSourceFrames(newFrames.frames, newFrames.row, newFrames.column);
+                LogUtility.LogError(0, "Refresh animation error: The type of frames is not FrameTextureData.");
             }
         }
 

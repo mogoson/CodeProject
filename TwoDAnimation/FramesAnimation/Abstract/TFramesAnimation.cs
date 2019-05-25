@@ -47,14 +47,9 @@ namespace MGS.TwoDAnimation
         /// <param name="frames">Animation frames, type is IEnumerable of Texture or Texture2D.</param>
         public override void Refresh(object frames)
         {
-            IEnumerable<Texture> newFrames = null;
-            if (frames is IEnumerable<Texture>)
+            if (frames is IEnumerable<Texture> newFrames) { }
+            else if (frames is IEnumerable<Texture2D> frames2D)
             {
-                newFrames = frames as IEnumerable<Texture>;
-            }
-            else if (frames is IEnumerable<Texture2D>)
-            {
-                var frames2D = frames as IEnumerable<Texture2D>;
                 var framesList = new List<Texture>();
                 foreach (var frame in frames2D)
                 {

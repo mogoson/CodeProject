@@ -17,6 +17,7 @@ namespace MGS.Common.Logger
     /// </summary>
     public interface ILogger
     {
+        #region Method
         /// <summary>
         /// Logs a formatted message.
         /// </summary>
@@ -40,5 +41,6 @@ namespace MGS.Common.Logger
         /// <param name="format">A composite format string.</param>
         /// <param name="args">Format arguments.</param>
         void LogWarning(int level, string format, params object[] args);
+        #endregion
     }
 }

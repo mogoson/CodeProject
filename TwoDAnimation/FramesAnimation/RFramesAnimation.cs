@@ -30,20 +30,23 @@ namespace MGS.TwoDAnimation
 
         #region Protected Method
         /// <summary>
-        /// Component awake.
-        /// </summary>
-        protected virtual void Awake()
-        {
-            mRenderer = GetComponent<Renderer>();
-        }
-
-        /// <summary>
         /// Set current frame to renderer.
         /// </summary>
         /// <param name="frameIndex">Index of frame.</param>
         protected override void SetFrame(int frameIndex)
         {
             mRenderer.material.mainTexture = frames[frameIndex];
+        }
+        #endregion
+
+        #region Public Method
+        /// <summary>
+        /// Initialize animation.
+        /// </summary>
+        public override void Initialize()
+        {
+            base.Initialize();
+            mRenderer = GetComponent<Renderer>();
         }
         #endregion
     }

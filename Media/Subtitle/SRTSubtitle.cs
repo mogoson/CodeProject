@@ -165,28 +165,29 @@ namespace MGS.Media.Subtitle
         {
             ClearCache();
 
-            if (!(source is SRTSubtitleSource data))
+            if (source is SRTSubtitleSource data)
             {
-                LogUtility.LogError(0, "Refresh srt subtitle error: The type of source is not SRTSubtitleSource.");
-                return;
-            }
+                if (string.IsNullOrEmpty(data.source))
+                {
+                    LogUtility.LogError(0, "Refresh srt subtitle error: The source data can not be null or empty.");
+                    return;
+                }
 
-            if (string.IsNullOrEmpty(data.source))
-            {
-                LogUtility.LogError(0, "Refresh srt subtitle error: The source data can not be null or empty.");
-                return;
-            }
-
-            string[] lines = null;
-            if (data.type == SRTSubtitleSourceType.File)
-            {
-                lines = FileUtility.ReadAllLines(data.source);
+                string[] lines = null;
+                if (data.type == SRTSubtitleSourceType.File)
+                {
+                    lines = FileUtility.ReadAllLines(data.source);
+                }
+                else
+                {
+                    lines = data.source.Split(NEWLINE_SEPARATOR, StringSplitOptions.RemoveEmptyEntries);
+                }
+                Refresh(lines);
             }
             else
             {
-                lines = data.source.Split(NEWLINE_SEPARATOR, StringSplitOptions.RemoveEmptyEntries);
+                LogUtility.LogError(0, "Refresh srt subtitle error: The type of source is not SRTSubtitleSource.");
             }
-            Refresh(lines);
         }
 
         /// <summary>
@@ -199,7 +200,7 @@ namespace MGS.Media.Subtitle
 
             if (source == null || source.Length < CLIP_LINES)
             {
-                LogUtility.LogError(0, "Refresh srt subtitle error: The content of source can not be null.");
+                LogUtility.LogError(0, "Refresh srt subtitle error: The content of source is null or invalid.");
                 return;
             }
 

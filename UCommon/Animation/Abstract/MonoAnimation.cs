@@ -62,6 +62,21 @@ namespace MGS.UCommon.UAnimation
 
         #region Public Method
         /// <summary>
+        /// Awake animation.
+        /// </summary>
+        protected virtual void Awake()
+        {
+            Initialize();
+        }
+        #endregion
+
+        #region Public Method
+        /// <summary>
+        /// Initialize animation.
+        /// </summary>
+        public virtual void Initialize() { }
+
+        /// <summary>
         /// Play animation.
         /// </summary>
         public virtual void Play()

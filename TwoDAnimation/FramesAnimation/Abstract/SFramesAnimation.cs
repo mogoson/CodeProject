@@ -47,15 +47,15 @@ namespace MGS.TwoDAnimation
         /// <param name="frames">Animation frames, type is IEnumerable of Sprite.</param>
         public override void Refresh(object frames)
         {
-            if (!(frames is IEnumerable<Sprite> newFrames))
-            {
-                LogUtility.LogError(0, "Refresh animation error: The type of frames is not IEnumerable<Sprite>.");
-            }
-            else
+            if (frames is IEnumerable<Sprite> newFrames)
             {
                 this.frames.Clear();
                 this.frames.AddRange(newFrames);
                 Rewind(0);
+            }
+            else
+            {
+                LogUtility.LogError(0, "Refresh animation error: The type of frames is not IEnumerable<Sprite>.");
             }
         }
         #endregion

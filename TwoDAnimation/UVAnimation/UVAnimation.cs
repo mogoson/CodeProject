@@ -37,14 +37,6 @@ namespace MGS.TwoDAnimation
 
         #region Private Method
         /// <summary>
-        /// Component awake.
-        /// </summary>
-        protected virtual void Awake()
-        {
-            mRenderer = GetComponent<Renderer>();
-        }
-
-        /// <summary>
         /// Component update.
         /// </summary>
         protected virtual void Update()
@@ -54,6 +46,15 @@ namespace MGS.TwoDAnimation
         #endregion
 
         #region Public Method
+        /// <summary>
+        /// Initialize animation.
+        /// </summary>
+        public override void Initialize()
+        {
+            base.Initialize();
+            mRenderer = GetComponent<Renderer>();
+        }
+
         /// <summary>
         /// Rewind animation.
         /// </summary>
@@ -78,14 +79,13 @@ namespace MGS.TwoDAnimation
         /// <param name="frames">Animation frames, type is Texture.</param>
         public override void Refresh(object frames)
         {
-            var newFrames = frames as Texture;
-            if (newFrames == null)
+            if (frames is Texture newFrames)
             {
-                LogUtility.LogError(0, "Refresh animation error: The type of frames is not Texture.");
+                mRenderer.material.mainTexture = newFrames;
             }
             else
             {
-                mRenderer.material.mainTexture = newFrames;
+                LogUtility.LogError(0, "Refresh animation error: The type of frames is not Texture.");
             }
         }
         #endregion

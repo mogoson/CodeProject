@@ -20,7 +20,7 @@ namespace MGS.CurveHose
     /// </summary>
     public interface ICurveHose : ICurve, ISkin
     {
-        #region Field and Property
+        #region Property
         /// <summary>
         /// Polygon of hose cross section.
         /// </summary>
