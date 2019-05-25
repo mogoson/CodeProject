@@ -49,6 +49,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CurvePath\CurvePath.csproj">
+      <Project>{f1d69a8e-1d1c-46e1-9afd-989de797b4f4}</Project>
+      <Name>CurvePath</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PathAnimation\PathAnimation.csproj">
       <Project>{2aceaf62-dd70-4a74-95fc-ecdaf2c6f66d}</Project>
       <Name>PathAnimation</Name>

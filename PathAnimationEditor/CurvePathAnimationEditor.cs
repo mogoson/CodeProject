@@ -55,6 +55,7 @@ namespace MGS.PathAnimationEditor
 
             if (GUILayout.Button("Align To Path"))
             {
+                Target.Path.Rebuild();
                 Target.Initialize();
                 Target.Rewind();
 
