@@ -108,18 +108,12 @@ namespace MGS.Common.DesignPattern
 
             if (objectStack.Count < MaxCount)
             {
-                if (resetAction != null)
-                {
-                    resetAction.Invoke(obj);
-                }
+                resetAction?.Invoke(obj);
                 objectStack.Push(obj);
             }
             else
             {
-                if (disposeAction != null)
-                {
-                    disposeAction.Invoke(obj);
-                }
+                disposeAction?.Invoke(obj);
             }
         }
 

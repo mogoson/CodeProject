@@ -71,10 +71,7 @@ namespace MGS.Meter
             CheckLerp(mainAngle);
             if (enabled)
             {
-                if (OnLerpStart != null)
-                {
-                    OnLerpStart.Invoke();
-                }
+                OnLerpStart?.Invoke();
             }
         }
 
@@ -102,17 +99,10 @@ namespace MGS.Meter
             SetPointersAngle(LerpAngle);
             CheckLerp(mainPointerAngle);
 
-            if (OnLerpStay != null)
-            {
-                OnLerpStay.Invoke();
-            }
-
+            OnLerpStay?.Invoke();
             if (!enabled)
             {
-                if (OnLerpExit != null)
-                {
-                    OnLerpExit.Invoke();
-                }
+                OnLerpExit?.Invoke();
             }
         }
 

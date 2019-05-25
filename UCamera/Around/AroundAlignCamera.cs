@@ -111,10 +111,7 @@ namespace MGS.UCamera
                 currentDistanceOffset < Vector3.kEpsilon)
             {
                 IsAligning = false;
-                if (OnAlignEnd != null)
-                {
-                    OnAlignEnd.Invoke();
-                }
+                OnAlignEnd?.Invoke();
             }
             else
             {
@@ -191,10 +188,7 @@ namespace MGS.UCamera
             //Start align.
             linearAdsorbent = false;
             IsAligning = true;
-            if (OnAlignStart != null)
-            {
-                OnAlignStart.Invoke();
-            }
+            OnAlignStart?.Invoke();
         }
 
         /// <summary>

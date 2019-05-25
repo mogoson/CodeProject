@@ -150,7 +150,7 @@ namespace MGS.UCommonEditor
             if (EditorGUI.EndChangeCheck())
             {
                 Undo.RecordObject(target, "Move Handle");
-                callback.Invoke(newPosition);
+                callback?.Invoke(newPosition);
                 MarkSceneDirty();
             }
         }
@@ -165,7 +165,7 @@ namespace MGS.UCommonEditor
             if (Handles.Button(position, direction, size * scale, pickSize * scale, capFunc))
             {
                 Undo.RecordObject(target, "Click Button");
-                callback.Invoke();
+                callback?.Invoke();
                 MarkSceneDirty();
             }
         }

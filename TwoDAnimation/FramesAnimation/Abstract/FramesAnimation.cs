@@ -58,11 +58,7 @@ namespace MGS.TwoDAnimation
                         index = Mathf.Clamp(index, 1, GetFramesCount() - 1);
                         break;
                 }
-
-                if (OnLastFrame != null)
-                {
-                    OnLastFrame.Invoke();
-                }
+                OnLastFrame?.Invoke();
             }
             else
             {
