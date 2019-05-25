@@ -45,6 +45,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathAnimation", "PathAnimat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathAnimationEditor", "PathAnimationEditor\PathAnimationEditor.csproj", "{9C7D4F20-5222-4427-AFA9-DCE9E1DC9AAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicComponent", "ElectronicComponent\ElectronicComponent.csproj", "{1AE82A00-F9F4-4E09-9F19-F55A860258A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicComponentEditor", "ElectronicComponentEditor\ElectronicComponentEditor.csproj", "{32FE7446-4544-43A6-BACE-387026B0D2F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +139,14 @@ Global
 		{9C7D4F20-5222-4427-AFA9-DCE9E1DC9AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C7D4F20-5222-4427-AFA9-DCE9E1DC9AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C7D4F20-5222-4427-AFA9-DCE9E1DC9AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AE82A00-F9F4-4E09-9F19-F55A860258A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AE82A00-F9F4-4E09-9F19-F55A860258A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AE82A00-F9F4-4E09-9F19-F55A860258A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AE82A00-F9F4-4E09-9F19-F55A860258A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32FE7446-4544-43A6-BACE-387026B0D2F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32FE7446-4544-43A6-BACE-387026B0D2F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32FE7446-4544-43A6-BACE-387026B0D2F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32FE7446-4544-43A6-BACE-387026B0D2F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

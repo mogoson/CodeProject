@@ -141,11 +141,7 @@ namespace MGS.PathAnimation
         public override void Initialize()
         {
             base.Initialize();
-
-            if (Path == null)
-            {
-                Path = curvePath;
-            }
+            Path = curvePath;
         }
 
         /// <summary>

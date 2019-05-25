@@ -31,6 +31,14 @@ namespace MGS.UCamera
         public float max;
 
         /// <summary>
+        /// Length of range from min to max.
+        /// </summary>
+        public float Length
+        {
+            get { return max - min; }
+        }
+
+        /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="min">Min value of range.</param>

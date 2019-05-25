@@ -12,7 +12,7 @@
 
 using System;
 
-namespace MGS.Common.Structure
+namespace MGS.ElectronicComponent
 {
     /// <summary>
     /// Range form min to max.
