@@ -27,7 +27,7 @@ namespace MGS.ElectronicComponent
         /// Input axis.
         /// </summary>
         [SerializeField]
-        protected string inputAxis;
+        protected string inputAxis = "Mouse X";
 
         /// <summary>
         /// Knob rotate speed.
