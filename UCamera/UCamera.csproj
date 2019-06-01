@@ -51,9 +51,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\AlignTarget.cs" />
     <Compile Include="Settings\MouseSettings.cs" />
-    <Compile Include="Structure\PlaneArea.cs" />
-    <Compile Include="Structure\Range.cs" />
     <Compile Include="Translate\MouseTranslate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UCommon\UCommon.csproj">
+      <Project>{02F92370-D9A3-4A6B-8B7D-717315A01145}</Project>
+      <Name>UCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

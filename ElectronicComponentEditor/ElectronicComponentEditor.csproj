@@ -51,6 +51,10 @@
     <Compile Include="RockerEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{55e27c1e-ecfb-4e6f-b5e0-508c882dddab}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ElectronicComponent\ElectronicComponent.csproj">
       <Project>{1ae82a00-f9f4-4e09-9f19-f55a860258a3}</Project>
       <Name>ElectronicComponent</Name>

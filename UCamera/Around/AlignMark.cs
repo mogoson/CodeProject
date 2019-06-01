@@ -15,6 +15,7 @@
  *  Description  :  Optimize display of node.
  *************************************************************************/
 
+using MGS.Common.Structure;
 using UnityEngine;
 
 namespace MGS.UCamera

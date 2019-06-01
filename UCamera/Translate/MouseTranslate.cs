@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.UCommon.Structure;
 using UnityEngine;
 
 namespace MGS.UCamera
