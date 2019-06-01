@@ -60,7 +60,7 @@ namespace MGS.UCommon.UAnimation
         }
         #endregion
 
-        #region Public Method
+        #region Protected Method
         /// <summary>
         /// Awake animation.
         /// </summary>

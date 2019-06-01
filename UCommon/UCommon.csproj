@@ -58,8 +58,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DesignPattern\Singleton\SingleBehaviour.cs" />
     <Compile Include="DesignPattern\Singleton\SingleMonoBehaviour.cs" />
-    <Compile Include="Skin\Abstract\ISkin.cs" />
-    <Compile Include="Skin\Interface\MonoSkin.cs" />
+    <Compile Include="Skin\Interface\ISkin.cs" />
+    <Compile Include="Skin\Abstract\MonoSkin.cs" />
     <Compile Include="Structure\PlaneArea.cs" />
     <Compile Include="Utility\MeshUtility.cs" />
     <Compile Include="Utility\RectUtility.cs" />

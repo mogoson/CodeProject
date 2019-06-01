@@ -56,9 +56,9 @@ namespace MGS.UCamera
 
         #region Protected Method
         /// <summary>
-        /// Component start.
+        /// Component awake.
         /// </summary>
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             Initialize();
         }

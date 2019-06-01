@@ -23,12 +23,5 @@ namespace MGS.ElectronicComponent
         /// </summary>
         bool Enabled { set; get; }
         #endregion
-
-        #region Method
-        /// <summary>
-        /// Initialize component.
-        /// </summary>
-        void Initialize();
-        #endregion
     }
 }

@@ -33,11 +33,6 @@ namespace MGS.UCommon.Skin
 
         #region Method
         /// <summary>
-        /// Initialize the skin.
-        /// </summary>
-        void Initialize();
-
-        /// <summary>
         /// Rebuild the mesh of skin.
         /// </summary>
         void Rebuild();
