@@ -61,7 +61,6 @@
     <Compile Include="DesignPattern\Singleton\SingleMonoBehaviour.cs" />
     <Compile Include="Skin\Abstract\ISkin.cs" />
     <Compile Include="Skin\Interface\MonoSkin.cs" />
-    <Compile Include="Structure\PlaneArea.cs" />
     <Compile Include="Utility\MeshUtility.cs" />
     <Compile Include="Utility\VectorUtility.cs" />
   </ItemGroup>
@@ -71,6 +70,7 @@
       <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Plugins\MGS"

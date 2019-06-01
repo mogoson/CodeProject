@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MGS.UCameraEditor")]
-[assembly: AssemblyCopyright("Copyright ©  2017-2019")]
+[assembly: AssemblyCopyright("Copyright ©  2017-2019 Mogoson")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
