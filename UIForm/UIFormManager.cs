@@ -22,13 +22,15 @@ namespace MGS.UIForm
     /// <summary>
     /// Custom UI form manager.
     /// </summary>
+    [AddComponentMenu("MGS/UIForm/UIFormManager")]
+    [RequireComponent(typeof(Canvas))]
     public sealed class UIFormManager : SingleMonoBehaviour<UIFormManager>, IUIFormManager
     {
         #region Field and Property
         /// <summary>
         /// Info of layers and forms.
         /// </summary>
-        private Dictionary<string, List<IUIForm>> layerForms;
+        private Dictionary<string, List<IUIForm>> layerForms = new Dictionary<string, List<IUIForm>>();
         #endregion
 
         #region Protected Method
@@ -39,16 +41,8 @@ namespace MGS.UIForm
         {
             base.SingleAwake();
 
-            layerForms = new Dictionary<string, List<IUIForm>>();
             var settings = ReadSettings();
-            for (int i = 0; i < settings.Layers.Count; i++)
-            {
-                var layer = settings.Layers[i];
-                var layerRoot = new GameObject(layer).transform;
-                layerRoot.parent = transform;
-                layerRoot.SetSiblingIndex(i);
-                layerForms.Add(layer, new List<IUIForm>());
-            }
+            CreateLayerRoots(settings.Layers);
         }
         #endregion
 
@@ -424,6 +418,31 @@ namespace MGS.UIForm
             {
                 LogUtility.LogError(0, "Read settings from local file error: {0}", ex.Message);
                 return ScriptableObject.CreateInstance<UIFormSettings>();
+            }
+        }
+
+        /// <summary>
+        /// Create root for layers.
+        /// </summary>
+        /// <param name="layers">UI form layers.</param>
+        private void CreateLayerRoots(List<string> layers)
+        {
+            for (int i = 0; i < layers.Count; i++)
+            {
+                var layer = layers[i];
+                var layerRoot = new GameObject(layer);
+                var layerRect = layerRoot.AddComponent<RectTransform>();
+
+                layerRect.SetParent(transform);
+                layerRect.SetSiblingIndex(i);
+
+                layerRect.anchorMin = Vector2.zero;
+                layerRect.anchorMax = Vector2.one;
+                layerRect.offsetMin = Vector2.zero;
+                layerRect.offsetMax = Vector2.zero;
+                layerRect.localScale = Vector3.one;
+
+                layerForms.Add(layer, new List<IUIForm>());
             }
         }
 
