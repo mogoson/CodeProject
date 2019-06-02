@@ -53,7 +53,7 @@ namespace MGS.UIFormEditor
 
             if (CheckRepeated(Target.Layers))
             {
-                EditorGUILayout.HelpBox("The elements in the Layers can not be repeated.", MessageType.Error, true);
+                EditorGUILayout.HelpBox("The elements in the Layers is repeated.", MessageType.Warning, true);
             }
         }
         #endregion

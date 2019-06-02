@@ -23,6 +23,7 @@ namespace MGS.UIForm
     /// Custom UI form manager.
     /// </summary>
     [AddComponentMenu("MGS/UIForm/UIFormManager")]
+    [RequireComponent(typeof(RectTransform))]
     public sealed class UIFormManager : SingleMonoBehaviour<UIFormManager>, IUIFormManager
     {
         #region Field and Property
@@ -428,6 +429,11 @@ namespace MGS.UIForm
         {
             foreach (var layer in layers)
             {
+                if (layerForms.ContainsKey(layer))
+                {
+                    continue;
+                }
+
                 var layerRoot = new GameObject(layer);
                 var layerRect = layerRoot.AddComponent<RectTransform>();
 
