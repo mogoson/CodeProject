@@ -78,7 +78,7 @@ namespace MGS.UIForm
                 var form = Instantiate(formPrefab);
 
                 var layerRoot = transform.FindChild(info.Layer);
-                form.transform.parent = layerRoot;
+                form.transform.SetParent(layerRoot, false);
                 layerForms[info.Layer].Add(form);
 
                 form.Open(data);
@@ -438,7 +438,7 @@ namespace MGS.UIForm
                 var layerRect = layerRoot.AddComponent<RectTransform>();
 
                 layerRoot.layer = gameObject.layer;
-                layerRect.SetParent(transform);
+                layerRect.SetParent(transform, false);
 
                 layerRect.anchorMin = Vector2.zero;
                 layerRect.anchorMax = Vector2.one;
