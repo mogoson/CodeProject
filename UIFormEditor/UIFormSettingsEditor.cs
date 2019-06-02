@@ -11,28 +11,50 @@
  *************************************************************************/
 
 using MGS.UIForm;
+using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine;
 
 namespace MGS.UIFormEditor
 {
-    public class UIFormSettingsEditor
+    [CustomEditor(typeof(UIFormSettings), true)]
+    [CanEditMultipleObjects]
+    public class UIFormSettingsEditor : Editor
     {
         #region Field and Property
-        private const string SETTINGS_PATH = "Assets/Resources/UIForm/Settings/UIFormSettings.asset";
+        protected const string SETTINGS_PATH = "Assets/Resources/UIForm/Settings/UIFormSettings.asset";
+
+        protected UIFormSettings Target { get { return target as UIFormSettings; } }
         #endregion
 
-        #region Private Method
+        #region Protected Method
         [MenuItem("Tool/UI Form Settings &F")]
-        private static void FocusSettings()
+        protected static void FocusSettings()
         {
             var settings = AssetDatabase.LoadAssetAtPath(SETTINGS_PATH, typeof(UIFormSettings)) as UIFormSettings;
             if (settings == null)
             {
-                settings = ScriptableObject.CreateInstance<UIFormSettings>();
+                settings = CreateInstance<UIFormSettings>();
                 AssetDatabase.CreateAsset(settings, SETTINGS_PATH);
             }
             Selection.activeObject = settings;
+        }
+
+        protected bool CheckRepeated<T>(List<T> list)
+        {
+            var hashSet = new HashSet<T>(list);
+            return list.Count != hashSet.Count;
+        }
+        #endregion
+
+        #region Public Method
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+
+            if (CheckRepeated(Target.Layers))
+            {
+                EditorGUILayout.HelpBox("The elements in the Layers can not be repeated.", MessageType.Error, true);
+            }
         }
         #endregion
     }

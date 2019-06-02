@@ -23,7 +23,6 @@ namespace MGS.UIForm
     /// Custom UI form manager.
     /// </summary>
     [AddComponentMenu("MGS/UIForm/UIFormManager")]
-    [RequireComponent(typeof(Canvas))]
     public sealed class UIFormManager : SingleMonoBehaviour<UIFormManager>, IUIFormManager
     {
         #region Field and Property
@@ -427,15 +426,13 @@ namespace MGS.UIForm
         /// <param name="layers">UI form layers.</param>
         private void CreateLayerRoots(List<string> layers)
         {
-            for (int i = 0; i < layers.Count; i++)
+            foreach (var layer in layers)
             {
-                var layer = layers[i];
                 var layerRoot = new GameObject(layer);
                 var layerRect = layerRoot.AddComponent<RectTransform>();
 
                 layerRoot.layer = gameObject.layer;
                 layerRect.SetParent(transform);
-                layerRect.SetSiblingIndex(i);
 
                 layerRect.anchorMin = Vector2.zero;
                 layerRect.anchorMax = Vector2.one;
