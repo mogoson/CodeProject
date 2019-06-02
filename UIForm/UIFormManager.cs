@@ -433,6 +433,7 @@ namespace MGS.UIForm
                 var layerRoot = new GameObject(layer);
                 var layerRect = layerRoot.AddComponent<RectTransform>();
 
+                layerRoot.layer = gameObject.layer;
                 layerRect.SetParent(transform);
                 layerRect.SetSiblingIndex(i);
 
