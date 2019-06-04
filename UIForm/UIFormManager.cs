@@ -13,7 +13,6 @@
 using MGS.Common.Enum;
 using MGS.Common.Logger;
 using MGS.UCommon.DesignPattern;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,6 +26,16 @@ namespace MGS.UIForm
     public sealed class UIFormManager : SingleMonoBehaviour<UIFormManager>, IUIFormManager
     {
         #region Field and Property
+        /// <summary>
+        /// Path of settings file under the Resources folder.
+        /// </summary>
+        public const string SETTINGS_PATH = "UIForm/Settings/UIFormSettings";
+
+        /// <summary>
+        /// Format of form prefab path under the Resources folder (param 0 is layer name of form, param 1 is class name of form).
+        /// </summary>
+        public const string PREFAB_PATH_FORMAT = "UIForm/Prefabs/{0}/{1}";
+
         /// <summary>
         /// Info of layers and forms.
         /// </summary>
@@ -63,32 +72,29 @@ namespace MGS.UIForm
 
             if (info.Pattern == UIFromPattern.Single)
             {
-                var form = FindForm<T>();
-                if (form != null)
+                var singleForm = FindForm<T>();
+                if (singleForm != null)
                 {
-                    form.Open(data);
-                    return form;
+                    singleForm.Open(data);
+                    return singleForm;
                 }
             }
 
-            try
+            var prefabPath = string.Format(PREFAB_PATH_FORMAT, info.Layer, typeof(T).Name);
+            var formPrefab = Resources.Load<T>(prefabPath);
+            if (formPrefab == null)
             {
-                var prefabPath = string.Format("UIForm/Prefabs/{0}/{1}", info.Layer, typeof(T).Name);
-                var formPrefab = Resources.Load<T>(prefabPath);
-                var form = Instantiate(formPrefab);
-
-                var layerRoot = transform.FindChild(info.Layer);
-                form.transform.SetParent(layerRoot, false);
-                layerForms[info.Layer].Add(form);
-
-                form.Open(data);
-                return form;
-            }
-            catch (Exception ex)
-            {
-                LogUtility.LogError(0, "Open form is error: {0}", ex.Message);
+                LogUtility.LogError(0, "Open form is error: Can not load prefab of form at path {0}.prefab under the Resources folder.", prefabPath);
                 return null;
             }
+
+            var newForm = Instantiate(formPrefab);
+            var layerRoot = transform.FindChild(info.Layer);
+            newForm.transform.SetParent(layerRoot, false);
+            layerForms[info.Layer].Add(newForm);
+
+            newForm.Open(data);
+            return newForm;
         }
 
         /// <summary>
@@ -239,7 +245,7 @@ namespace MGS.UIForm
         {
             if (!layerForms.ContainsKey(layer))
             {
-                LogUtility.LogWarning(0, "Can not find any form in the layer {0}.", layer);
+                LogUtility.LogWarning(0, "Can not find any form in the {0} layer.", layer);
                 return;
             }
 
@@ -410,15 +416,13 @@ namespace MGS.UIForm
         /// <returns>Settings of UI form.</returns>
         private UIFormSettings ReadSettings()
         {
-            try
+            var settings = Resources.Load<UIFormSettings>(SETTINGS_PATH);
+            if (settings == null)
             {
-                return Resources.Load<UIFormSettings>("UIForm/Settings/UIFormSettings");
+                LogUtility.LogError(0, "Read settings error: Can not load settings from file at path {0}.asset under the Resources folder.", SETTINGS_PATH);
+                settings = ScriptableObject.CreateInstance<UIFormSettings>();
             }
-            catch (Exception ex)
-            {
-                LogUtility.LogError(0, "Read settings from local file error: {0}", ex.Message);
-                return ScriptableObject.CreateInstance<UIFormSettings>();
-            }
+            return settings;
         }
 
         /// <summary>
@@ -429,8 +433,15 @@ namespace MGS.UIForm
         {
             foreach (var layer in layers)
             {
+                if (string.IsNullOrEmpty(layer))
+                {
+                    LogUtility.LogError(0, "Create layer root is error: The name of layer is null or empty.");
+                    continue;
+                }
+
                 if (layerForms.ContainsKey(layer))
                 {
+                    LogUtility.LogWarning(0, "Create layer root is cancel: The layer root named {0} is exist.");
                     continue;
                 }
 

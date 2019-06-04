@@ -157,7 +157,7 @@ namespace MGS.PathAnimation
             }
             else
             {
-                LogUtility.LogError(0, "[CurvePathAnimation] Refresh error: the type of data is not ICurvePath.");
+                LogUtility.LogWarning(0, "Refresh animation failed: The type of data is not ICurvePath.");
             }
         }
 

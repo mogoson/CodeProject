@@ -85,7 +85,7 @@ namespace MGS.TwoDAnimation
             }
             else
             {
-                LogUtility.LogError(0, "Refresh animation error: The type of frames is not Texture.");
+                LogUtility.LogWarning(0, "Refresh animation failed: The type of frames is not Texture.");
             }
         }
         #endregion

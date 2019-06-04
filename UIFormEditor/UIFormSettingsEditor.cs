@@ -12,17 +12,16 @@
 
 using MGS.UIForm;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
+using UnityEngine;
 
 namespace MGS.UIFormEditor
 {
     [CustomEditor(typeof(UIFormSettings), true)]
-    [CanEditMultipleObjects]
     public class UIFormSettingsEditor : Editor
     {
         #region Field and Property
-        protected const string SETTINGS_PATH = "Assets/Resources/UIForm/Settings/UIFormSettings.asset";
-
         protected UIFormSettings Target { get { return target as UIFormSettings; } }
         #endregion
 
@@ -30,19 +29,55 @@ namespace MGS.UIFormEditor
         [MenuItem("Tool/UI Form Settings &F")]
         protected static void FocusSettings()
         {
-            var settings = AssetDatabase.LoadAssetAtPath(SETTINGS_PATH, typeof(UIFormSettings)) as UIFormSettings;
+            var settingsPath = string.Format("Assets/Resources/{0}.asset", UIFormManager.SETTINGS_PATH);
+            var settings = AssetDatabase.LoadAssetAtPath(settingsPath, typeof(UIFormSettings)) as UIFormSettings;
             if (settings == null)
             {
+                var fullPath = string.Format("{0}/Resources/{1}.asset", Application.dataPath, UIFormManager.SETTINGS_PATH);
+                RequireDirectory(fullPath);
+
                 settings = CreateInstance<UIFormSettings>();
-                AssetDatabase.CreateAsset(settings, SETTINGS_PATH);
+                AssetDatabase.CreateAsset(settings, settingsPath);
             }
             Selection.activeObject = settings;
         }
 
-        protected bool CheckRepeated<T>(List<T> list)
+        protected static void RequireDirectory(string path)
         {
-            var hashSet = new HashSet<T>(list);
-            return list.Count != hashSet.Count;
+            var dir = Path.GetDirectoryName(path);
+            if (Directory.Exists(dir))
+            {
+                return;
+            }
+            Directory.CreateDirectory(dir);
+        }
+
+        protected bool CheckRepeated<T>(ICollection<T> collections)
+        {
+            var hashSet = new HashSet<T>(collections);
+            return collections.Count != hashSet.Count;
+        }
+
+        protected bool CheckNullOrEmpty(IEnumerable<string> enums)
+        {
+            foreach (var item in enums)
+            {
+                if (string.IsNullOrEmpty(item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        protected void CreateFolderForPrefab(List<string> layers)
+        {
+            foreach (var layer in layers)
+            {
+                var layerDir = string.Format(UIFormManager.PREFAB_PATH_FORMAT, layer, string.Empty);
+                var prefabDir = string.Format("{0}/Resources/{1}", Application.dataPath, layerDir);
+                RequireDirectory(prefabDir);
+            }
         }
         #endregion
 
@@ -51,9 +86,27 @@ namespace MGS.UIFormEditor
         {
             base.OnInspectorGUI();
 
+            if (Target.Layers.Count == 0)
+            {
+                return;
+            }
+
+            if (CheckNullOrEmpty(Target.Layers))
+            {
+                EditorGUILayout.HelpBox("The elements in the Layers can not be empty.", MessageType.Error, true);
+                return;
+            }
+
             if (CheckRepeated(Target.Layers))
             {
-                EditorGUILayout.HelpBox("The elements in the Layers is repeated.", MessageType.Warning, true);
+                EditorGUILayout.HelpBox("The elements in the Layers can not be repeated.", MessageType.Error, true);
+                return;
+            }
+
+            if (GUILayout.Button("Create Folder For Prefab"))
+            {
+                CreateFolderForPrefab(Target.Layers);
+                AssetDatabase.Refresh();
             }
         }
         #endregion

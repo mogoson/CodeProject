@@ -59,7 +59,7 @@ namespace MGS.TwoDAnimation
             }
             else
             {
-                LogUtility.LogError(0, "Refresh animation error: The type of frames is not IEnumerable<Texture> or IEnumerable<Texture2D>.");
+                LogUtility.LogWarning(0, "Refresh animation failed: The type of frames is not IEnumerable<Texture> or IEnumerable<Texture2D>.");
                 return;
             }
 
