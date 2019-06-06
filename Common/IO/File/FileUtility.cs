@@ -13,6 +13,7 @@
 using MGS.Common.Logger;
 using System;
 using System.IO;
+using System.Text;
 
 namespace MGS.Common.IO
 {
@@ -114,8 +115,9 @@ namespace MGS.Common.IO
         /// Read all lines of file.
         /// </summary>
         /// <param name="filePath">Path of target file.</param>
+        /// <param name="encoding">Encoding of target file.</param>
         /// <returns>All lines from file.</returns>
-        public static string[] ReadAllLines(string filePath)
+        public static string[] ReadAllLines(string filePath, Encoding encoding)
         {
             if (!File.Exists(filePath))
             {
@@ -125,7 +127,7 @@ namespace MGS.Common.IO
 
             try
             {
-                return File.ReadAllLines(filePath);
+                return File.ReadAllLines(filePath, encoding);
             }
             catch (Exception ex)
             {

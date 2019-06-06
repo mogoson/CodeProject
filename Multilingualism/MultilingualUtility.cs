@@ -15,6 +15,7 @@ using MGS.Common.IO;
 using MGS.Common.Logger;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace MGS.Multilingualism
 {
@@ -94,7 +95,7 @@ namespace MGS.Multilingualism
                 return;
             }
 
-            var fileLines = FileUtility.ReadAllLines(languageFile);
+            var fileLines = FileUtility.ReadAllLines(languageFile, Encoding.Default);
             if (fileLines == null || fileLines.Length == 0)
             {
                 LogUtility.LogError(0, "Set language error: Can not read any content in the language file at path {0}", languageFile);

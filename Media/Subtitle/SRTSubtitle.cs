@@ -14,6 +14,7 @@ using MGS.Common.IO;
 using MGS.Common.Logger;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace MGS.Media.Subtitle
 {
@@ -176,7 +177,7 @@ namespace MGS.Media.Subtitle
                 string[] lines = null;
                 if (data.type == SRTSubtitleSourceType.File)
                 {
-                    lines = FileUtility.ReadAllLines(data.source);
+                    lines = FileUtility.ReadAllLines(data.source, Encoding.Default);
                 }
                 else
                 {
