@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</ProjectGuid>
+    <ProjectGuid>{F4E28370-6F6A-498A-9FFD-E5D5F4ED7701}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MGS.Common</RootNamespace>
-    <AssemblyName>MGS.Common</AssemblyName>
+    <RootNamespace>MGS.Multilingualism</RootNamespace>
+    <AssemblyName>MGS.Multilingualism</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\MGS.Common.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\MGS.Multilingualism.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,7 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\MGS.Common.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\MGS.Multilingualism.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -42,26 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converter\ArrayConverter.cs" />
-    <Compile Include="Converter\ByteConverter.cs" />
-    <Compile Include="Converter\StructureConverter.cs" />
-    <Compile Include="DesignPattern\ObjectPool\ObjectPool.cs" />
-    <Compile Include="DesignPattern\Singleton\Singleton.cs" />
-    <Compile Include="Enum\MirrorMode.cs" />
-    <Compile Include="IO\Directory\DirectoryUtility.cs" />
-    <Compile Include="IO\File\FileUtility.cs" />
-    <Compile Include="Logger\FileLogger.cs" />
-    <Compile Include="Logger\Interface\ILogger.cs" />
-    <Compile Include="Logger\LogUtility.cs" />
-    <Compile Include="Mathematics\Geometry\Planimetry.cs" />
-    <Compile Include="Mathematics\Hermite\Hermite.cs" />
-    <Compile Include="Mathematics\Hermite\HermiteCurve.cs" />
-    <Compile Include="Mathematics\Maths\Maths.cs" />
-    <Compile Include="Mathematics\Maths\MathSmooth.cs" />
-    <Compile Include="Multilingualism\Interface\IMultilingual.cs" />
-    <Compile Include="Multilingualism\MultilingualUtility.cs" />
+    <Compile Include="Interface\IMultilingual.cs" />
+    <Compile Include="MultilingualUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Structure\Range.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{55e27c1e-ecfb-4e6f-b5e0-508c882dddab}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
