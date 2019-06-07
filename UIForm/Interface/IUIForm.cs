@@ -53,8 +53,8 @@ namespace MGS.UIForm
         /// <summary>
         /// Set language of form.
         /// </summary>
-        /// <param name="language">Language name.</param>
-        void Language(string language);
+        /// <param name="name">Language name.</param>
+        void Language(string name);
 
         /// <summary>
         /// Close form.
