@@ -86,43 +86,43 @@ namespace MGS.UIForm
         /// Close form by specified form.
         /// </summary>
         /// <param name="form">Specified form instance.</param>
-        /// <param name="destroy">Destroy form on closed?</param>
-        void CloseForm(IUIForm form, bool destroy = false);
+        /// <param name="dispose">Dispose form on close?</param>
+        void CloseForm(IUIForm form, bool dispose = false);
 
         /// <summary>
         /// Close form by specified form type.
         /// </summary>
         /// <typeparam name="T">Specified form type.</typeparam>
-        /// <param name="destroy">Destroy form on closed?</param>
-        void CloseForm<T>(bool destroy = false) where T : IUIForm;
+        /// <param name="dispose">Dispose form on close?</param>
+        void CloseForm<T>(bool dispose = false) where T : IUIForm;
 
         /// <summary>
         /// Close all the forms.
         /// </summary>
-        /// <param name="destroy">Destroy form on closed?</param>
-        void CloseForms(bool destroy = false);
+        /// <param name="dispose">Dispose form on close?</param>
+        void CloseForms(bool dispose = false);
 
         /// <summary>
         /// Close forms by layer.
         /// </summary>
         /// <param name="layer">Target layer.</param>
-        /// <param name="destroy">Destroy form on closed?</param>
-        void CloseForms(string layer, bool destroy = false);
+        /// <param name="dispose">Dispose form on close?</param>
+        void CloseForms(string layer, bool dispose = false);
 
         /// <summary>
         /// Close forms by filter options.
         /// </summary>
         /// <param name="form">Specified form instance.</param>
         /// <param name="options">Options for filter forms.</param>
-        /// <param name="destroy">Destroy form on closed?</param>
-        void CloseForms(IUIForm form, FilterOptions options, bool destroy = false);
+        /// <param name="dispose">Dispose form on close?</param>
+        void CloseForms(IUIForm form, FilterOptions options, bool dispose = false);
 
         /// <summary>
         /// Close forms by specified form type.
         /// </summary>
         /// <typeparam name="T">Specified form type.</typeparam>
-        /// <param name="destroy">Destroy form on closed?</param>
-        void CloseForms<T>(bool destroy = false) where T : IUIForm;
+        /// <param name="dispose">Dispose form on close?</param>
+        void CloseForms<T>(bool dispose = false) where T : IUIForm;
         #endregion
     }
 

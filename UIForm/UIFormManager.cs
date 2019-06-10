@@ -274,15 +274,15 @@ namespace MGS.UIForm
         /// Close form by specified form.
         /// </summary>
         /// <param name="form">Specified form instance.</param>
-        /// <param name="destroy">Destroy form on closed?</param>
-        public void CloseForm(IUIForm form, bool destroy = false)
+        /// <param name="dispose">Dispose form on close?</param>
+        public void CloseForm(IUIForm form, bool dispose = false)
         {
             if (form == null)
             {
                 return;
             }
 
-            if (destroy)
+            if (dispose)
             {
                 var info = GetFormInfo(form);
                 if (layerForms.ContainsKey(info.Layer))
@@ -290,15 +290,15 @@ namespace MGS.UIForm
                     layerForms[info.Layer].Remove(form);
                 }
             }
-            form.Close(destroy);
+            form.Close(dispose);
         }
 
         /// <summary>
         /// Close form by specified form type.
         /// </summary>
         /// <typeparam name="T">Specified form type.</typeparam>
-        /// <param name="destroy">Destroy form on closed?</param>
-        public void CloseForm<T>(bool destroy = false) where T : IUIForm
+        /// <param name="dispose">Dispose form on close?</param>
+        public void CloseForm<T>(bool dispose = false) where T : IUIForm
         {
             var form = FindForm<T>();
             if (form == null)
@@ -306,29 +306,29 @@ namespace MGS.UIForm
                 return;
             }
 
-            if (destroy)
+            if (dispose)
             {
                 var info = GetFormInfo<T>();
                 layerForms[info.Layer].Remove(form);
             }
-            form.Close(destroy);
+            form.Close(dispose);
         }
 
         /// <summary>
         /// Close all the forms.
         /// </summary>
-        /// <param name="destroy">Destroy form on closed?</param>
-        public void CloseForms(bool destroy = false)
+        /// <param name="dispose">Dispose form on close?</param>
+        public void CloseForms(bool dispose = false)
         {
             foreach (var forms in layerForms.Values)
             {
                 foreach (var form in forms)
                 {
-                    form.Close(destroy);
+                    form.Close(dispose);
                 }
             }
 
-            if (destroy)
+            if (dispose)
             {
                 foreach (var forms in layerForms.Values)
                 {
@@ -341,8 +341,8 @@ namespace MGS.UIForm
         /// Close forms by layer.
         /// </summary>
         /// <param name="layer">Target layer.</param>
-        /// <param name="destroy">Destroy form on closed?</param>
-        public void CloseForms(string layer, bool destroy = false)
+        /// <param name="dispose">Dispose form on close?</param>
+        public void CloseForms(string layer, bool dispose = false)
         {
             if (!layerForms.ContainsKey(layer))
             {
@@ -351,10 +351,10 @@ namespace MGS.UIForm
 
             foreach (var form in layerForms[layer])
             {
-                form.Close(destroy);
+                form.Close(dispose);
             }
 
-            if (destroy)
+            if (dispose)
             {
                 layerForms[layer].Clear();
             }
@@ -365,8 +365,8 @@ namespace MGS.UIForm
         /// </summary>
         /// <param name="form">Specified form instance.</param>
         /// <param name="options">Options for filter forms.</param>
-        /// <param name="destroy">Destroy form on closed?</param>
-        public void CloseForms(IUIForm form, FilterOptions options, bool destroy = false)
+        /// <param name="dispose">Dispose form on close?</param>
+        public void CloseForms(IUIForm form, FilterOptions options, bool dispose = false)
         {
             var forms = FindForms(form, options);
             if (forms == null || forms.Length == 0)
@@ -376,7 +376,7 @@ namespace MGS.UIForm
 
             foreach (var frontForm in forms)
             {
-                CloseForm(frontForm, destroy);
+                CloseForm(frontForm, dispose);
             }
         }
 
@@ -384,8 +384,8 @@ namespace MGS.UIForm
         /// Close forms by specified form type.
         /// </summary>
         /// <typeparam name="T">Specified form type.</typeparam>
-        /// <param name="destroy">Destroy form on closed?</param>
-        public void CloseForms<T>(bool destroy = false) where T : IUIForm
+        /// <param name="dispose">Dispose form on close?</param>
+        public void CloseForms<T>(bool dispose = false) where T : IUIForm
         {
             var forms = FindForms<T>();
             if (forms == null || forms.Length == 0)
@@ -393,7 +393,7 @@ namespace MGS.UIForm
                 return;
             }
 
-            if (destroy)
+            if (dispose)
             {
                 var info = GetFormInfo<T>();
                 foreach (var form in forms)
@@ -404,7 +404,7 @@ namespace MGS.UIForm
 
             foreach (var form in forms)
             {
-                form.Close(destroy);
+                form.Close(dispose);
             }
         }
         #endregion
