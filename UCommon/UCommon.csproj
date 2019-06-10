@@ -60,7 +60,7 @@
     <Compile Include="DesignPattern\Singleton\SingleMonoBehaviour.cs" />
     <Compile Include="Skin\Interface\ISkin.cs" />
     <Compile Include="Skin\Abstract\MonoSkin.cs" />
-    <Compile Include="Structure\PlaneArea.cs" />
+    <Compile Include="Generic\Structure\PlaneArea.cs" />
     <Compile Include="Utility\MeshUtility.cs" />
     <Compile Include="Utility\RectUtility.cs" />
     <Compile Include="Utility\VectorUtility.cs" />

@@ -1,35 +1,28 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  MirrorMode.cs
- *  Description  :  Mode of mirror.
+ *  File         :  IMirrorable.cs
+ *  Description  :  Interface for mirrorable object.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  4/12/2019
+ *  Date         :  6/10/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.Common.Enum
+namespace MGS.Common.Generic
 {
     /// <summary>
-    /// Mode of mirror.
+    /// Interface for mirrorable object.
     /// </summary>
-    public enum MirrorMode
+    public interface IMirrorable
     {
+        #region Method
         /// <summary>
-        /// Horizontal mirror.
+        /// Mirror object.
         /// </summary>
-        Horizontal = 0,
-
-        /// <summary>
-        /// Vertical mirror.
-        /// </summary>
-        Vertical = 1,
-
-        /// <summary>
-        /// Both horizontal and vertical mirror.
-        /// </summary>
-        Both = 2
+        /// <param name="mode">Mode of mirror.</param>
+        void Mirror(MirrorMode mode);
+        #endregion
     }
 }

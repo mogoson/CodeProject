@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Enum;
+using MGS.Common.Generic;
 using MGS.Common.Logger;
 using MGS.UCommon.DesignPattern;
 using System.Collections.Generic;

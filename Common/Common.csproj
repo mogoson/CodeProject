@@ -47,7 +47,9 @@
     <Compile Include="Converter\StructureConverter.cs" />
     <Compile Include="DesignPattern\ObjectPool\ObjectPool.cs" />
     <Compile Include="DesignPattern\Singleton\Singleton.cs" />
-    <Compile Include="Enum\MirrorMode.cs" />
+    <Compile Include="Generic\Enum\MirrorMode.cs" />
+    <Compile Include="Generic\Interface\IMirrorable.cs" />
+    <Compile Include="Generic\Interface\IMultilingual.cs" />
     <Compile Include="IO\Directory\DirectoryUtility.cs" />
     <Compile Include="IO\File\FileUtility.cs" />
     <Compile Include="Logger\FileLogger.cs" />
@@ -59,7 +61,7 @@
     <Compile Include="Mathematics\Maths\Maths.cs" />
     <Compile Include="Mathematics\Maths\MathSmooth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Structure\Range.cs" />
+    <Compile Include="Generic\Structure\Range.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
