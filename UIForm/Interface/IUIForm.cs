@@ -17,7 +17,7 @@ namespace MGS.UIForm
     /// <summary>
     /// Interface of custom UI form.
     /// </summary>
-    public interface IUIForm
+    public interface IUIForm : IMirrorable, IMultilingual
     {
         #region Property
         /// <summary>
@@ -26,9 +26,14 @@ namespace MGS.UIForm
         string GUID { get; }
 
         /// <summary>
-        /// Form is opened?
+        /// Form is open?
         /// </summary>
-        bool IsOpened { get; }
+        bool IsOpen { get; }
+
+        /// <summary>
+        /// Form is disposed?
+        /// </summary>
+        bool IsDisposed { get; }
         #endregion
 
         #region Method
@@ -45,22 +50,10 @@ namespace MGS.UIForm
         void Refresh(object data);
 
         /// <summary>
-        /// Mirror form.
-        /// </summary>
-        /// <param name="mode">Mode of mirror.</param>
-        void Mirror(MirrorMode mode);
-
-        /// <summary>
-        /// Set language of form.
-        /// </summary>
-        /// <param name="name">Language name.</param>
-        void Language(string name);
-
-        /// <summary>
         /// Close form.
         /// </summary>
-        /// <param name="destroy">Destroy form on closed?</param>
-        void Close(bool destroy = false);
+        /// <param name="dispose">Dispose form on close?</param>
+        void Close(bool dispose = false);
         #endregion
     }
 }

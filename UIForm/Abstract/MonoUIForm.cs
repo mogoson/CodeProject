@@ -20,6 +20,7 @@ namespace MGS.UIForm
     /// Custom UI form base.
     /// </summary>
     [UIFormInfo(UIFromPattern.Single, "Default")]
+    [RequireComponent(typeof(RectTransform))]
     public abstract class MonoUIForm : MonoBehaviour, IUIForm
     {
         #region Field and Property
@@ -29,17 +30,19 @@ namespace MGS.UIForm
         public virtual string GUID { protected set; get; }
 
         /// <summary>
-        /// The form is opened?
+        /// Form is open?
         /// </summary>
-        public virtual bool IsOpened
-        {
-            get { return gameObject.activeSelf; }
-        }
+        public virtual bool IsOpen { protected set; get; }
+
+        /// <summary>
+        /// Form is disposed?
+        /// </summary>
+        public virtual bool IsDisposed { protected set; get; }
         #endregion
 
         #region Protected Method
         /// <summary>
-        /// Awake UIForm.
+        /// Awake form.
         /// </summary>
         protected virtual void Awake()
         {
@@ -62,8 +65,12 @@ namespace MGS.UIForm
         /// <param name="data">Data of form to show.</param>
         public virtual void Open(object data = null)
         {
-            Refresh(data);
+            if (data != null)
+            {
+                Refresh(data);
+            }
             gameObject.SetActive(true);
+            IsOpen = true;
         }
 
         /// <summary>
@@ -87,17 +94,19 @@ namespace MGS.UIForm
         /// <summary>
         /// Close form.
         /// </summary>
-        /// <param name="destroy">Destroy form on closed?</param>
-        public virtual void Close(bool destroy = false)
+        /// <param name="dispose">Dispose form on close?</param>
+        public virtual void Close(bool dispose = false)
         {
-            if (destroy)
+            if (dispose)
             {
                 Destroy(gameObject);
+                IsDisposed = true;
             }
             else
             {
                 gameObject.SetActive(false);
             }
+            IsOpen = false;
         }
         #endregion
     }

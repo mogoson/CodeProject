@@ -1,28 +1,41 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IMultilingual.cs
- *  Description  :  Interface for multilingual object.
+ *  File         :  IUIPanel.cs
+ *  Description  :  Interface of custom UI panel.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  6/10/2019
+ *  Date         :  4/12/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.Common.Generic
+using MGS.Common.Generic;
+
+namespace MGS.UIForm
 {
     /// <summary>
-    /// Interface for multilingual object.
+    /// Interface of custom UI panel.
     /// </summary>
-    public interface IMultilingual
+    public interface IUIPanel : IMirrorable, IMultilingual
     {
+        #region Property
+        /// <summary>
+        /// Panel is open?
+        /// </summary>
+        bool IsOpen { get; }
+        #endregion
+
         #region Method
         /// <summary>
-        /// Set language of object.
+        /// Open panel.
         /// </summary>
-        /// <param name="name">Language name.</param>
-        void Language(string name);
+        void Open();
+
+        /// <summary>
+        /// Close panel.
+        /// </summary>
+        void Close();
         #endregion
     }
 }
