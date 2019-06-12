@@ -30,12 +30,12 @@ namespace MGS.Meter
         /// <summary>
         /// Record last second.
         /// </summary>
-        protected int lastSecond;
+        protected int lastSecond = 0;
 
         /// <summary>
         /// Audio source of clock.
         /// </summary>
-        protected AudioSource audioSource;
+        protected AudioSource audioSource = null;
         #endregion
 
         #region Private Method

@@ -37,6 +37,11 @@ namespace MGS.UIForm
         public const string PREFAB_PATH_FORMAT = "UIForm/Prefabs/{0}/{1}";
 
         /// <summary>
+        /// Layers for custom form.
+        /// </summary>
+        public string[] Layers { private set; get; }
+
+        /// <summary>
         /// Info of layers and forms.
         /// </summary>
         private Dictionary<string, List<IUIForm>> layerForms = new Dictionary<string, List<IUIForm>>();
@@ -51,7 +56,8 @@ namespace MGS.UIForm
             base.SingleAwake();
 
             var settings = ReadSettings();
-            CreateLayerRoots(settings.Layers);
+            Layers = settings.layers.ToArray();
+            CreateLayerRoots(Layers);
         }
         #endregion
 
@@ -429,7 +435,7 @@ namespace MGS.UIForm
         /// Create root for layers.
         /// </summary>
         /// <param name="layers">UI form layers.</param>
-        private void CreateLayerRoots(List<string> layers)
+        private void CreateLayerRoots(string[] layers)
         {
             foreach (var layer in layers)
             {

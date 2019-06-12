@@ -22,9 +22,9 @@ namespace MGS.MeterEditor
         #region Field and Property
         protected new LerpPointerMeter Target { get { return target as LerpPointerMeter; } }
 
-        protected SerializedProperty lerpMode;
-        protected SerializedProperty mainSpeed;
-        protected SerializedProperty minSpeed;
+        protected SerializedProperty lerpMode = null;
+        protected SerializedProperty mainSpeed = null;
+        protected SerializedProperty minSpeed = null;
         #endregion
 
         #region Protected Method

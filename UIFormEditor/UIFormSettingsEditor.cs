@@ -86,18 +86,18 @@ namespace MGS.UIFormEditor
         {
             base.OnInspectorGUI();
 
-            if (Target.Layers.Count == 0)
+            if (Target.layers.Count == 0)
             {
                 return;
             }
 
-            if (CheckNullOrEmpty(Target.Layers))
+            if (CheckNullOrEmpty(Target.layers))
             {
                 EditorGUILayout.HelpBox("The elements in the Layers can not be empty.", MessageType.Error, true);
                 return;
             }
 
-            if (CheckRepeated(Target.Layers))
+            if (CheckRepeated(Target.layers))
             {
                 EditorGUILayout.HelpBox("The elements in the Layers can not be repeated.", MessageType.Error, true);
                 return;
@@ -105,7 +105,7 @@ namespace MGS.UIFormEditor
 
             if (GUILayout.Button("Create Folder For Prefab"))
             {
-                CreateFolderForPrefab(Target.Layers);
+                CreateFolderForPrefab(Target.layers);
                 AssetDatabase.Refresh();
             }
         }

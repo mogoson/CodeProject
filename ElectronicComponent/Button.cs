@@ -57,17 +57,17 @@ namespace MGS.ElectronicComponent
         /// LED of button.
         /// </summary>
         [SerializeField]
-        protected MonoLED monoLED;
+        protected MonoLED monoLED = null;
 
         /// <summary>
         /// Current offset base start position.
         /// </summary>
-        protected float currentOffset;
+        protected float currentOffset = 0;
 
         /// <summary>
         /// Current self lock state.
         /// </summary>
-        protected bool isLock;
+        protected bool isLock = false;
 
         /// <summary>
         /// Local move axis.
@@ -139,17 +139,44 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Button up event.
         /// </summary>
-        public event Action OnUp;
+        public event Action OnUp
+        {
+            add { onUp += value; }
+            remove { onUp -= value; }
+        }
 
         /// <summary>
         /// Button down event.
         /// </summary>
-        public event Action OnDown;
+        public event Action OnDown
+        {
+            add { onDown += value; }
+            remove { onDown -= value; }
+        }
 
         /// <summary>
         /// Button lock event.
         /// </summary>
-        public event Action OnLock;
+        public event Action OnLock
+        {
+            add { onLock += value; }
+            remove { onLock -= value; }
+        }
+
+        /// <summary>
+        /// Button up event.
+        /// </summary>
+        protected Action onUp;
+
+        /// <summary>
+        /// Button down event.
+        /// </summary>
+        protected Action onDown;
+
+        /// <summary>
+        /// Button lock event.
+        /// </summary>
+        protected Action onLock;
         #endregion
 
         #region Protected Method
@@ -172,7 +199,7 @@ namespace MGS.ElectronicComponent
                 monoLED.Open();
             }
 
-            OnDown?.Invoke();
+            onDown?.Invoke();
         }
 
         /// <summary>
@@ -193,13 +220,13 @@ namespace MGS.ElectronicComponent
             if (isLock)
             {
                 currentOffset = downOffset * lockPercent;
-                OnLock?.Invoke();
+                onLock?.Invoke();
             }
             else
             {
                 IsDown = false;
                 currentOffset = 0;
-                OnUp?.Invoke();
+                onUp?.Invoke();
             }
             Translate(currentOffset);
 

@@ -27,22 +27,22 @@ namespace MGS.Media.Subtitle
         /// <summary>
         /// Lines count of a clip.
         /// </summary>
-        protected const int CLIP_LINES = 3;
+        public const int CLIP_LINES = 3;
 
         /// <summary>
         /// Separator of new line.
         /// </summary>
-        protected static readonly string[] NEWLINE_SEPARATOR = new string[] { "\r", "\n", "\r\n" };
+        public static readonly string[] NEWLINE_SEPARATOR = new string[] { "\r", "\n", "\r\n" };
 
         /// <summary>
         /// Separator of clip time range.
         /// </summary>
-        protected static readonly string[] TIMERANGE_SEPARATOR = new string[] { "-->" };
+        public static readonly string[] TIMERANGE_SEPARATOR = new string[] { "-->" };
 
         /// <summary>
         /// Separator of clip time.
         /// </summary>
-        protected static readonly string[] TIME_SEPARATOR = new string[] { ":", "," };
+        public static readonly string[] TIME_SEPARATOR = new string[] { ":", "," };
         #endregion
 
         #region Protected Method
@@ -254,12 +254,12 @@ namespace MGS.Media.Subtitle
         /// <summary>
         /// Source of srt subtitle.
         /// </summary>
-        public string source;
+        public string source = string.Empty;
 
         /// <summary>
         /// Type of srt subtitle source.
         /// </summary>
-        public SRTSubtitleSourceType type;
+        public SRTSubtitleSourceType type = SRTSubtitleSourceType.File;
 
         /// <summary>
         /// Constructor.

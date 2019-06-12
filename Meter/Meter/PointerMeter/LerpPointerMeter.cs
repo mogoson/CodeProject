@@ -26,7 +26,7 @@ namespace MGS.Meter
         /// Meter lerp mode.
         /// </summary>
         [HideInInspector]
-        public LerpMode lerpMode;
+        public LerpMode lerpMode = LerpMode.Lerp;
 
         /// <summary>
         /// Speed of main pointer.

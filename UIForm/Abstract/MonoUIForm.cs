@@ -25,19 +25,47 @@ namespace MGS.UIForm
     {
         #region Field and Property
         /// <summary>
-        /// GUID of form.
+        /// ID of form.
         /// </summary>
-        public virtual string GUID { protected set; get; }
+        public string ID { protected set; get; }
 
         /// <summary>
         /// Form is open?
         /// </summary>
-        public virtual bool IsOpen { protected set; get; }
+        public bool IsOpen { protected set; get; }
 
         /// <summary>
         /// Form is disposed?
         /// </summary>
-        public virtual bool IsDisposed { protected set; get; }
+        public bool IsDisposed { protected set; get; }
+
+        /// <summary>
+        /// Event on open form.
+        /// </summary>
+        public event Action OnOpen
+        {
+            add { onOpen += value; }
+            remove { onOpen -= value; }
+        }
+
+        /// <summary>
+        /// Event on close form.
+        /// </summary>
+        public event Action OnClose
+        {
+            add { onClose += value; }
+            remove { onClose -= value; }
+        }
+
+        /// <summary>
+        /// Event on open form.
+        /// </summary>
+        protected Action onOpen = null;
+
+        /// <summary>
+        /// Event on close form.
+        /// </summary>
+        protected Action onClose = null;
         #endregion
 
         #region Protected Method
@@ -56,7 +84,7 @@ namespace MGS.UIForm
         /// </summary>
         public virtual void Initialize()
         {
-            GUID = Guid.NewGuid().ToString();
+            ID = Guid.NewGuid().ToString();
         }
 
         /// <summary>
@@ -71,6 +99,7 @@ namespace MGS.UIForm
             }
             gameObject.SetActive(true);
             IsOpen = true;
+            onOpen?.Invoke();
         }
 
         /// <summary>
@@ -107,6 +136,7 @@ namespace MGS.UIForm
                 gameObject.SetActive(false);
             }
             IsOpen = false;
+            onClose?.Invoke();
         }
         #endregion
     }
