@@ -25,7 +25,16 @@ namespace MGS.TwoDAnimation
         /// <summary>
         /// Event of animation play on last frame.
         /// </summary>
-        public event Action OnLastFrame;
+        public event Action OnLastFrame
+        {
+            add { onLastFrame += value; }
+            remove { onLastFrame -= value; }
+        }
+
+        /// <summary>
+        /// Event of animation play on last frame.
+        /// </summary>
+        protected Action onLastFrame;
 
         /// <summary>
         /// Index of current frame.
@@ -58,7 +67,7 @@ namespace MGS.TwoDAnimation
                         index = Mathf.Clamp(index, 1, GetFramesCount() - 1);
                         break;
                 }
-                OnLastFrame?.Invoke();
+                onLastFrame?.Invoke();
             }
             else
             {

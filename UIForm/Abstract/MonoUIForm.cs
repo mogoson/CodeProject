@@ -60,12 +60,12 @@ namespace MGS.UIForm
         /// <summary>
         /// Event on open form.
         /// </summary>
-        protected Action onOpen = null;
+        protected Action onOpen;
 
         /// <summary>
         /// Event on close form.
         /// </summary>
-        protected Action onClose = null;
+        protected Action onClose;
         #endregion
 
         #region Protected Method

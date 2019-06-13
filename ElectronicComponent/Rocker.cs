@@ -89,17 +89,44 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Rocker drag event.
         /// </summary>
-        public event Action OnDrag;
+        public event Action OnDrag
+        {
+            add { onDrag += value; }
+            remove { onDrag -= value; }
+        }
 
         /// <summary>
         /// Rocker Release event.
         /// </summary>
-        public event Action OnRelease;
+        public event Action OnRelease
+        {
+            add { onRelease += value; }
+            remove { onRelease -= value; }
+        }
 
         /// <summary>
         /// Rocker revert event.
         /// </summary>
-        public event Action OnRevert;
+        public event Action OnRevert
+        {
+            add { onRevert += value; }
+            remove { onRevert -= value; }
+        }
+
+        /// <summary>
+        /// Rocker drag event.
+        /// </summary>
+        protected Action onDrag;
+
+        /// <summary>
+        /// Rocker Release event.
+        /// </summary>
+        protected Action onRelease;
+
+        /// <summary>
+        /// Rocker revert event.
+        /// </summary>
+        protected Action onRevert;
         #endregion
 
         #region Protected Method
@@ -121,7 +148,7 @@ namespace MGS.ElectronicComponent
                 angles = angles.normalized * radiusAngle;
             }
             Rotate(angles);
-            OnDrag?.Invoke();
+            onDrag?.Invoke();
         }
 
         /// <summary>
@@ -138,7 +165,7 @@ namespace MGS.ElectronicComponent
             {
                 InvokeRepeating("Revert", 0, Time.fixedDeltaTime);
             }
-            OnRelease?.Invoke();
+            onRelease?.Invoke();
         }
 
         /// <summary>
@@ -149,7 +176,7 @@ namespace MGS.ElectronicComponent
             if (angles.magnitude == 0)
             {
                 CancelInvoke("Revert");
-                OnRevert?.Invoke();
+                onRevert?.Invoke();
             }
             angles = Vector3.MoveTowards(angles, Vector3.zero, revertSpeed * Time.deltaTime);
             Rotate(angles);

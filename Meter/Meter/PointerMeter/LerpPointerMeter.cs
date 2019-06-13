@@ -48,17 +48,44 @@ namespace MGS.Meter
         /// <summary>
         /// Event on start lerp.
         /// </summary>
-        public event Action OnLerpStart;
+        public event Action OnLerpStart
+        {
+            add { onLerpStart += value; }
+            remove { onLerpStart -= value; }
+        }
 
         /// <summary>
         /// Event on stay lerp.
         /// </summary>
-        public event Action OnLerpStay;
+        public event Action OnLerpStay
+        {
+            add { onLerpStay += value; }
+            remove { onLerpStay -= value; }
+        }
 
         /// <summary>
         /// Event on exit lerp.
         /// </summary>
-        public event Action OnLerpExit;
+        public event Action OnLerpExit
+        {
+            add { onLerpExit += value; }
+            remove { onLerpExit -= value; }
+        }
+
+        /// <summary>
+        /// Event on start lerp.
+        /// </summary>
+        protected Action onLerpStart;
+
+        /// <summary>
+        /// Event on stay lerp.
+        /// </summary>
+        protected Action onLerpStay;
+
+        /// <summary>
+        /// Event on exit lerp.
+        /// </summary>
+        protected Action onLerpExit;
         #endregion
 
         #region Protected Method
@@ -71,7 +98,7 @@ namespace MGS.Meter
             CheckLerp(mainAngle);
             if (enabled)
             {
-                OnLerpStart?.Invoke();
+                onLerpStart?.Invoke();
             }
         }
 
@@ -99,10 +126,10 @@ namespace MGS.Meter
             SetPointersAngle(LerpAngle);
             CheckLerp(mainPointerAngle);
 
-            OnLerpStay?.Invoke();
+            onLerpStay?.Invoke();
             if (!enabled)
             {
-                OnLerpExit?.Invoke();
+                onLerpExit?.Invoke();
             }
         }
 

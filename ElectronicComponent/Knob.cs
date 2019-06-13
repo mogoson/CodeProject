@@ -143,17 +143,44 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Knob drag event.
         /// </summary>
-        public event Action OnDrag;
+        public event Action OnDrag
+        {
+            add { onDrag += value; }
+            remove { onDrag -= value; }
+        }
 
         /// <summary>
         /// Knob release event.
         /// </summary>
-        public event Action OnRelease;
+        public event Action OnRelease
+        {
+            add { onRelease += value; }
+            remove { onRelease -= value; }
+        }
 
         /// <summary>
         /// Knob adsorbent event.
         /// </summary>
-        public event Action OnAdsorbent;
+        public event Action OnAdsorbent
+        {
+            add { onAdsorbent += value; }
+            remove { onAdsorbent -= value; }
+        }
+
+        /// <summary>
+        /// Knob drag event.
+        /// </summary>
+        protected Action onDrag;
+
+        /// <summary>
+        /// Knob release event.
+        /// </summary>
+        protected Action onRelease;
+
+        /// <summary>
+        /// Knob adsorbent event.
+        /// </summary>
+        protected Action onAdsorbent;
         #endregion
 
         #region Protected Method
@@ -173,7 +200,7 @@ namespace MGS.ElectronicComponent
                 Angle = Mathf.Clamp(Angle, angleRange.min, angleRange.max);
             }
             Rotate(Angle);
-            OnDrag?.Invoke();
+            onDrag?.Invoke();
         }
 
         /// <summary>
@@ -186,7 +213,7 @@ namespace MGS.ElectronicComponent
                 return;
             }
 
-            OnRelease?.Invoke();
+            onRelease?.Invoke();
 
             if (!adsorbent || adsorbableAngles.Length == 0)
             {
@@ -195,7 +222,7 @@ namespace MGS.ElectronicComponent
 
             Angle = GetAdsorbentAngle(Angle, adsorbableAngles);
             Rotate(Angle);
-            OnAdsorbent?.Invoke();
+            onAdsorbent?.Invoke();
         }
 
         /// <summary>

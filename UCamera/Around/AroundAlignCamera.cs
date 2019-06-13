@@ -42,12 +42,30 @@ namespace MGS.UCamera
         /// <summary>
         /// Start align event.
         /// </summary>
-        public event Action OnAlignStart;
+        public event Action OnAlignStart
+        {
+            add { onAlignStart += value; }
+            remove { onAlignStart -= value; }
+        }
 
         /// <summary>
         /// End align event.
         /// </summary>
-        public event Action OnAlignEnd;
+        public event Action OnAlignEnd
+        {
+            add { onAlignEnd += value; }
+            remove { onAlignEnd -= value; }
+        }
+
+        /// <summary>
+        /// Start align event.
+        /// </summary>
+        protected Action onAlignStart;
+
+        /// <summary>
+        /// End align event.
+        /// </summary>
+        protected Action onAlignEnd;
 
         /// <summary>
         /// Last rotate angle of camera.
@@ -111,7 +129,7 @@ namespace MGS.UCamera
                 currentDistanceOffset < Vector3.kEpsilon)
             {
                 IsAligning = false;
-                OnAlignEnd?.Invoke();
+                onAlignEnd?.Invoke();
             }
             else
             {
@@ -188,7 +206,7 @@ namespace MGS.UCamera
             //Start align.
             linearAdsorbent = false;
             IsAligning = true;
-            OnAlignStart?.Invoke();
+            onAlignStart?.Invoke();
         }
 
         /// <summary>
