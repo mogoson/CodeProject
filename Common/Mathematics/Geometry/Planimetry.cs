@@ -174,8 +174,7 @@ namespace MGS.Common.Mathematics
         {
             return new Vector(lhs.x * rhs, lhs.y * rhs);
         }
-
-
+        
         /// <summary>
         /// Operator *
         /// </summary>

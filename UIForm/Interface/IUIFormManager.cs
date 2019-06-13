@@ -20,6 +20,13 @@ namespace MGS.UIForm
     /// </summary>
     public interface IUIFormManager
     {
+        #region Property
+        /// <summary>
+        /// Layers for custom form.
+        /// </summary>
+        string[] Layers { get; }
+        #endregion
+
         #region Method
         /// <summary>
         /// Open form by specified form type.
