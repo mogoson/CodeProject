@@ -41,17 +41,17 @@ namespace MGS.Common.DesignPattern
         /// <summary>
         /// Function of create new object.
         /// </summary>
-        protected Func<T> createFunc = null;
+        protected Func<T> createFunc;
 
         /// <summary>
         /// Action of reset object to default.
         /// </summary>
-        protected Action<T> resetAction = null;
+        protected Action<T> resetAction;
 
         /// <summary>
         /// Action of dispose object.
         /// </summary>
-        protected Action<T> disposeAction = null;
+        protected Action<T> disposeAction;
         #endregion
 
         #region Public Method

@@ -21,22 +21,22 @@ namespace MGS.Media.Subtitle
         /// <summary>
         /// Index of clip.
         /// </summary>
-        public int Index { protected set; get; }
+        public virtual int Index { protected set; get; }
 
         /// <summary>
         /// Start time(Milliseconds) of clip.
         /// </summary>
-        public int StartTime { protected set; get; }
+        public virtual int StartTime { protected set; get; }
 
         /// <summary>
         /// End time(Milliseconds) of clip.
         /// </summary>
-        public int EndTime { protected set; get; }
+        public virtual int EndTime { protected set; get; }
 
         /// <summary>
         /// Content of Clip.
         /// </summary>
-        public string Content { protected set; get; }
+        public virtual string Content { protected set; get; }
         #endregion
 
         #region Public Method

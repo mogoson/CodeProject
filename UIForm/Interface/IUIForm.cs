@@ -11,7 +11,6 @@
  *************************************************************************/
 
 using MGS.Common.Generic;
-using System;
 
 namespace MGS.UIForm
 {
@@ -22,9 +21,9 @@ namespace MGS.UIForm
     {
         #region Property
         /// <summary>
-        /// ID of form.
+        /// GUID of form.
         /// </summary>
-        string ID { get; }
+        string GUID { get; }
 
         /// <summary>
         /// Form is open?
@@ -35,18 +34,6 @@ namespace MGS.UIForm
         /// Form is disposed?
         /// </summary>
         bool IsDisposed { get; }
-        #endregion
-
-        #region Event
-        /// <summary>
-        /// Event on open form.
-        /// </summary>
-        event Action OnOpen;
-
-        /// <summary>
-        /// Event on close form.
-        /// </summary>
-        event Action OnClose;
         #endregion
 
         #region Method

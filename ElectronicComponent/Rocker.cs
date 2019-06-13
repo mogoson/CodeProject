@@ -44,7 +44,7 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Current angles.
         /// </summary>
-        protected Vector3 angles = Vector3.zero;
+        protected Vector3 angles;
 
         /// <summary>
         /// Start angles.

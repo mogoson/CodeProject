@@ -33,7 +33,7 @@ namespace MGS.Media.Subtitle
         /// <summary>
         /// The last clip record.
         /// </summary>
-        protected ISubtitleClip clip = null;
+        protected ISubtitleClip clip;
         #endregion
 
         #region Protected Method

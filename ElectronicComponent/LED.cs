@@ -25,17 +25,17 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Highlight material of LED.
         /// </summary>
-        public Material highlightMat = null;
+        public Material highlightMat;
 
         /// <summary>
         /// Default material of LED.
         /// </summary>
-        protected Material defaultMat = null;
+        protected Material defaultMat;
 
         /// <summary>
         /// Renderer of LED.
         /// </summary>
-        protected Renderer LEDRenderer = null;
+        protected Renderer LEDRenderer;
         #endregion
 
         #region Public Method

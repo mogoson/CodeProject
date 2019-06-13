@@ -88,12 +88,12 @@ namespace MGS.CurveHose
         /// <summary>
         /// Max key of hose center curve.
         /// </summary>
-        public float MaxKey { get { return Curve.MaxKey; } }
+        public virtual float MaxKey { get { return Curve.MaxKey; } }
 
         /// <summary>
         /// Length of hose center curve.
         /// </summary>
-        public float Length { get { return length; } }
+        public virtual float Length { get { return length; } }
 
         /// <summary>
         /// Curve for hose.

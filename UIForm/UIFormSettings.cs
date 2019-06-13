@@ -2,7 +2,7 @@
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  UIFormSettings.cs
- *  Description  :  Settings for UI form.
+ *  Description  :  Settings of UI form.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -16,15 +16,21 @@ using UnityEngine;
 namespace MGS.UIForm
 {
     /// <summary>
-    /// Settings for UI form.
+    /// Settings of UI form.
     /// </summary>
     public class UIFormSettings : ScriptableObject
     {
         #region Field and Property
         /// <summary>
-        /// Layers for custom UI form.
+        /// Layers of custom UI form.
         /// </summary>
-        public List<string> layers = new List<string>() { "Default" };
+        [SerializeField]
+        protected List<string> layers = new List<string>() { "Default" };
+
+        /// <summary>
+        /// Layers of custom UI form.
+        /// </summary>
+        public List<string> Layers { get { return layers; } }
         #endregion
     }
 }

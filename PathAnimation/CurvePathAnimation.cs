@@ -28,7 +28,7 @@ namespace MGS.PathAnimation
         /// Path of animation.
         /// </summary>
         [SerializeField]
-        protected MonoCurvePath curvePath = null;
+        protected MonoCurvePath curvePath;
 
         /// <summary>
         /// Keep up mode on play animation.
@@ -40,7 +40,7 @@ namespace MGS.PathAnimation
         /// Keep up reference transform.
         /// </summary>
         [HideInInspector]
-        public Transform reference = null;
+        public Transform reference;
 
         /// <summary>
         /// Path for animation base on.

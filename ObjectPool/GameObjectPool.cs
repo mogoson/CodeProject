@@ -24,12 +24,12 @@ namespace MGS.ObjectPool
         /// <summary>
         /// Parent of gameobjects.
         /// </summary>
-        public Transform root = null;
+        public Transform root;
 
         /// <summary>
         /// Prefab to create clone.
         /// </summary>
-        public GameObject prefab = null;
+        public GameObject prefab;
 
         /// <summary>
         /// Max count limit of gameobjects in pool.
@@ -48,7 +48,7 @@ namespace MGS.ObjectPool
         /// <summary>
         /// Pool of gameobjects.
         /// </summary>
-        protected ObjectPool<GameObject> pool = null;
+        protected ObjectPool<GameObject> pool;
         #endregion
 
         #region Protected Method
