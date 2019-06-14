@@ -11,6 +11,7 @@
  *************************************************************************/
 
 using MGS.Common.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MGS.UIForm
@@ -123,6 +124,13 @@ namespace MGS.UIForm
         /// <param name="options">Options for filter forms.</param>
         /// <param name="dispose">Dispose form on close?</param>
         void CloseForms(IUIForm form, FilterOptions options, bool dispose = false);
+
+        /// <summary>
+        /// Close form by specified forms.
+        /// </summary>
+        /// <param name="forms">Specified form instances.</param>
+        /// <param name="dispose">Dispose form on close?</param>
+        void CloseForms(IEnumerable<IUIForm> forms, bool dispose = false);
 
         /// <summary>
         /// Close forms by specified form type.

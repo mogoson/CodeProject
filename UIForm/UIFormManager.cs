@@ -97,8 +97,9 @@ namespace MGS.UIForm
             var newForm = Instantiate(formPrefab);
             var layerRoot = transform.FindChild(info.Layer);
             newForm.transform.SetParent(layerRoot, false);
-            layerForms[info.Layer].Add(newForm);
+            newForm.transform.SetAsLastSibling();
 
+            layerForms[info.Layer].Add(newForm);
             newForm.Open(data);
             return newForm;
         }
@@ -326,19 +327,25 @@ namespace MGS.UIForm
         /// <param name="dispose">Dispose form on close?</param>
         public void CloseForms(bool dispose = false)
         {
-            foreach (var forms in layerForms.Values)
-            {
-                foreach (var form in forms)
-                {
-                    form.Close(dispose);
-                }
-            }
-
             if (dispose)
             {
                 foreach (var forms in layerForms.Values)
                 {
+                    foreach (var form in forms)
+                    {
+                        form.Close(dispose);
+                    }
                     forms.Clear();
+                }
+            }
+            else
+            {
+                foreach (var forms in layerForms.Values)
+                {
+                    foreach (var form in forms)
+                    {
+                        form.Close(dispose);
+                    }
                 }
             }
         }
@@ -387,6 +394,39 @@ namespace MGS.UIForm
         }
 
         /// <summary>
+        /// Close form by specified forms.
+        /// </summary>
+        /// <param name="forms">Specified form instances.</param>
+        /// <param name="dispose">Dispose form on close?</param>
+        public void CloseForms(IEnumerable<IUIForm> forms, bool dispose = false)
+        {
+            if (forms == null)
+            {
+                return;
+            }
+
+            if (dispose)
+            {
+                foreach (var form in forms)
+                {
+                    var info = GetFormInfo(form);
+                    if (layerForms.ContainsKey(info.Layer))
+                    {
+                        layerForms[info.Layer].Remove(form);
+                    }
+                    form.Close(dispose);
+                }
+            }
+            else
+            {
+                foreach (var form in forms)
+                {
+                    form.Close(dispose);
+                }
+            }
+        }
+
+        /// <summary>
         /// Close forms by specified form type.
         /// </summary>
         /// <typeparam name="T">Specified form type.</typeparam>
@@ -405,12 +445,15 @@ namespace MGS.UIForm
                 foreach (var form in forms)
                 {
                     layerForms[info.Layer].Remove(form);
+                    form.Close(dispose);
                 }
             }
-
-            foreach (var form in forms)
+            else
             {
-                form.Close(dispose);
+                foreach (var form in forms)
+                {
+                    form.Close(dispose);
+                }
             }
         }
         #endregion
