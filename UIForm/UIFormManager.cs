@@ -119,7 +119,7 @@ namespace MGS.UIForm
 
             foreach (var form in layerForms[info.Layer])
             {
-                if (form is T)
+                if (form.GetType() == typeof(T))
                 {
                     return (T)form;
                 }
@@ -220,7 +220,7 @@ namespace MGS.UIForm
             var forms = new List<T>();
             foreach (var form in layerForms[info.Layer])
             {
-                if (form is T)
+                if (form.GetType() == typeof(T))
                 {
                     forms.Add((T)form);
                 }

@@ -31,19 +31,19 @@ namespace MGS.Multilingualism
         public static readonly string[] SEPARATOR = new string[] { "=" };
 
         /// <summary>
+        /// Current language.
+        /// </summary>
+        public string Current { private set; get; }
+
+        /// <summary>
         /// Languages content list.
         /// </summary>
         private Dictionary<string, Dictionary<string, string>> languages = new Dictionary<string, Dictionary<string, string>>();
 
         /// <summary>
-        /// Current language.
-        /// </summary>
-        private string current = string.Empty;
-
-        /// <summary>
         /// The directory of multilingualism files.
         /// </summary>
-        private string directory = string.Empty;
+        private string directory;
         #endregion
 
         #region Private Method
@@ -72,7 +72,7 @@ namespace MGS.Multilingualism
         {
             if (languages.ContainsKey(name))
             {
-                current = name;
+                Current = name;
                 return;
             }
 
@@ -117,7 +117,7 @@ namespace MGS.Multilingualism
                 }
                 languages[name].Add(contents[0], contents[1]);
             }
-            current = name;
+            Current = name;
         }
 
         /// <summary>
@@ -127,14 +127,14 @@ namespace MGS.Multilingualism
         /// <returns>A paragraph text of key in language.</returns>
         public string GetParagraph(string key)
         {
-            if (string.IsNullOrEmpty(current))
+            if (string.IsNullOrEmpty(Current))
             {
                 return string.Empty;
             }
 
-            if (languages[current].ContainsKey(key))
+            if (languages[Current].ContainsKey(key))
             {
-                return languages[current][key];
+                return languages[Current][key];
             }
             return string.Empty;
         }

@@ -17,6 +17,13 @@ namespace MGS.Multilingualism
     /// </summary>
     public interface IMultilingual
     {
+        #region Property
+        /// <summary>
+        /// Current language.
+        /// </summary>
+        string Current { get; }
+        #endregion
+
         #region Method
         /// <summary>
         /// Initialize the directory of multilingualism files.
