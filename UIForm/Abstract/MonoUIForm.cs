@@ -93,6 +93,10 @@ namespace MGS.UIForm
         /// <param name="data">Data of form to show.</param>
         public virtual void Open(object data = null)
         {
+            if (data != null)
+            {
+                Refresh(data);
+            }
             gameObject.SetActive(true);
             IsOpen = true;
             onOpen?.Invoke();
