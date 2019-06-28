@@ -53,8 +53,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIForm", "UIForm\UIForm.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIFormEditor", "UIFormEditor\UIFormEditor.csproj", "{1D6D482C-F7CE-48E3-89DF-D4CC4FD1139E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multilingualism", "Multilingualism\Multilingualism.csproj", "{F4E28370-6F6A-498A-9FFD-E5D5F4ED7701}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,10 +159,6 @@ Global
 		{1D6D482C-F7CE-48E3-89DF-D4CC4FD1139E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D6D482C-F7CE-48E3-89DF-D4CC4FD1139E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D6D482C-F7CE-48E3-89DF-D4CC4FD1139E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F4E28370-6F6A-498A-9FFD-E5D5F4ED7701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4E28370-6F6A-498A-9FFD-E5D5F4ED7701}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4E28370-6F6A-498A-9FFD-E5D5F4ED7701}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4E28370-6F6A-498A-9FFD-E5D5F4ED7701}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,7 +15,7 @@
  *  Description  :  Use MonoLED to control the LED of button.
  *************************************************************************/
 
-using System;
+using MGS.UCommon.Generic;
 using UnityEngine;
 
 namespace MGS.ElectronicComponent
@@ -139,44 +139,17 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Button up event.
         /// </summary>
-        public event Action OnUp
-        {
-            add { onUp += value; }
-            remove { onUp -= value; }
-        }
+        public GenericEvent OnUp { get; } = new GenericEvent();
 
         /// <summary>
         /// Button down event.
         /// </summary>
-        public event Action OnDown
-        {
-            add { onDown += value; }
-            remove { onDown -= value; }
-        }
+        public GenericEvent OnDown { get; } = new GenericEvent();
 
         /// <summary>
         /// Button lock event.
         /// </summary>
-        public event Action OnLock
-        {
-            add { onLock += value; }
-            remove { onLock -= value; }
-        }
-
-        /// <summary>
-        /// Button up event.
-        /// </summary>
-        protected Action onUp;
-
-        /// <summary>
-        /// Button down event.
-        /// </summary>
-        protected Action onDown;
-
-        /// <summary>
-        /// Button lock event.
-        /// </summary>
-        protected Action onLock;
+        public GenericEvent OnLock { get; } = new GenericEvent();
         #endregion
 
         #region Protected Method
@@ -199,7 +172,7 @@ namespace MGS.ElectronicComponent
                 monoLED.Open();
             }
 
-            onDown?.Invoke();
+            OnDown.Invoke();
         }
 
         /// <summary>
@@ -220,13 +193,13 @@ namespace MGS.ElectronicComponent
             if (isLock)
             {
                 currentOffset = downOffset * lockPercent;
-                onLock?.Invoke();
+                OnLock.Invoke();
             }
             else
             {
                 IsDown = false;
                 currentOffset = 0;
-                onUp?.Invoke();
+                OnUp.Invoke();
             }
             Translate(currentOffset);
 

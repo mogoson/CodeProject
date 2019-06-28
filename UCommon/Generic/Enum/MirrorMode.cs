@@ -1,28 +1,35 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IMultilingual.cs
- *  Description  :  Interface for multilingual object.
+ *  File         :  MirrorMode.cs
+ *  Description  :  Mode of mirror.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  6/10/2019
+ *  Date         :  4/12/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.Common.Generic
+namespace MGS.UCommon.Generic
 {
     /// <summary>
-    /// Interface for multilingual object.
+    /// Mode of mirror.
     /// </summary>
-    public interface IMultilingual
+    public enum MirrorMode
     {
-        #region Method
         /// <summary>
-        /// Set language of object.
+        /// Horizontal mirror.
         /// </summary>
-        /// <param name="name">Language name.</param>
-        void Language(string name);
-        #endregion
+        Horizontal = 0,
+
+        /// <summary>
+        /// Vertical mirror.
+        /// </summary>
+        Vertical = 1,
+
+        /// <summary>
+        /// Both horizontal and vertical mirror.
+        /// </summary>
+        Both = 2
     }
 }

@@ -10,9 +10,9 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Generic;
 using MGS.Common.Logger;
 using MGS.UCommon.DesignPattern;
+using MGS.UCommon.Generic;
 using System.Collections.Generic;
 using UnityEngine;
 

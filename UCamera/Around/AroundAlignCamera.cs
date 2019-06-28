@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using System;
+using MGS.UCommon.Generic;
 using UnityEngine;
 
 namespace MGS.UCamera
@@ -42,30 +42,12 @@ namespace MGS.UCamera
         /// <summary>
         /// Start align event.
         /// </summary>
-        public event Action OnAlignStart
-        {
-            add { onAlignStart += value; }
-            remove { onAlignStart -= value; }
-        }
+        public GenericEvent OnAlignStart { get; } = new GenericEvent();
 
         /// <summary>
         /// End align event.
         /// </summary>
-        public event Action OnAlignEnd
-        {
-            add { onAlignEnd += value; }
-            remove { onAlignEnd -= value; }
-        }
-
-        /// <summary>
-        /// Start align event.
-        /// </summary>
-        protected Action onAlignStart;
-
-        /// <summary>
-        /// End align event.
-        /// </summary>
-        protected Action onAlignEnd;
+        public GenericEvent OnAlignEnd { get; } = new GenericEvent();
 
         /// <summary>
         /// Last rotate angle of camera.
@@ -129,7 +111,7 @@ namespace MGS.UCamera
                 currentDistanceOffset < Vector3.kEpsilon)
             {
                 IsAligning = false;
-                onAlignEnd?.Invoke();
+                OnAlignEnd.Invoke();
             }
             else
             {
@@ -206,7 +188,7 @@ namespace MGS.UCamera
             //Start align.
             linearAdsorbent = false;
             IsAligning = true;
-            onAlignStart?.Invoke();
+            OnAlignStart.Invoke();
         }
 
         /// <summary>

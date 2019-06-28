@@ -17,12 +17,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace MGS.Multilingualism
+namespace MGS.Common.Utility
 {
     /// <summary>
     /// Utility for multilingualism.
     /// </summary>
-    public sealed class MultilingualUtility : Singleton<MultilingualUtility>, IMultilingual
+    public sealed class MultilingualUtility : Singleton<MultilingualUtility>
     {
         #region Field and Property
         /// <summary>

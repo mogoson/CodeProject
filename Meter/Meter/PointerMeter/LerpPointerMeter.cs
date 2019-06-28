@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using System;
+using MGS.UCommon.Generic;
 using UnityEngine;
 
 namespace MGS.Meter
@@ -48,44 +48,17 @@ namespace MGS.Meter
         /// <summary>
         /// Event on start lerp.
         /// </summary>
-        public event Action OnLerpStart
-        {
-            add { onLerpStart += value; }
-            remove { onLerpStart -= value; }
-        }
+        public GenericEvent OnLerpStart { get; } = new GenericEvent();
 
         /// <summary>
         /// Event on stay lerp.
         /// </summary>
-        public event Action OnLerpStay
-        {
-            add { onLerpStay += value; }
-            remove { onLerpStay -= value; }
-        }
+        public GenericEvent OnLerpStay { get; } = new GenericEvent();
 
         /// <summary>
         /// Event on exit lerp.
         /// </summary>
-        public event Action OnLerpExit
-        {
-            add { onLerpExit += value; }
-            remove { onLerpExit -= value; }
-        }
-
-        /// <summary>
-        /// Event on start lerp.
-        /// </summary>
-        protected Action onLerpStart;
-
-        /// <summary>
-        /// Event on stay lerp.
-        /// </summary>
-        protected Action onLerpStay;
-
-        /// <summary>
-        /// Event on exit lerp.
-        /// </summary>
-        protected Action onLerpExit;
+        public GenericEvent OnLerpExit { get; } = new GenericEvent();
         #endregion
 
         #region Protected Method
@@ -98,7 +71,7 @@ namespace MGS.Meter
             CheckLerp(mainAngle);
             if (enabled)
             {
-                onLerpStart?.Invoke();
+                OnLerpStart.Invoke();
             }
         }
 
@@ -126,10 +99,10 @@ namespace MGS.Meter
             SetPointersAngle(LerpAngle);
             CheckLerp(mainPointerAngle);
 
-            onLerpStay?.Invoke();
+            OnLerpStay.Invoke();
             if (!enabled)
             {
-                onLerpExit?.Invoke();
+                OnLerpExit.Invoke();
             }
         }
 

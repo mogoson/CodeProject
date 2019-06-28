@@ -12,7 +12,7 @@
 
 using System;
 
-namespace MGS.Common.Generic
+namespace MGS.UCommon.Generic
 {
     /// <summary>
     /// Range form min to max.

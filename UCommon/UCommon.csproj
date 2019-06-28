@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="Animation\Abstract\MonoAnimation.cs" />
     <Compile Include="Animation\Interface\IAnimation.cs" />
+    <Compile Include="Generic\Event\GenericEvent.cs" />
+    <Compile Include="UI\Abstract\MonoUI.cs" />
     <Compile Include="Extension\GameObjectExtention.cs" />
     <Compile Include="Extension\TerrainExtension.cs" />
     <Compile Include="Extension\TextureExtention.cs" />
@@ -55,13 +57,21 @@
     <Compile Include="Curve\HermiteCurve.cs" />
     <Compile Include="Curve\SinCurve.cs" />
     <Compile Include="Curve\Interface\ICurve.cs" />
+    <Compile Include="Generic\Enum\MirrorMode.cs" />
+    <Compile Include="UI\Abstract\UIElement.cs" />
+    <Compile Include="UI\Interface\IMonoUI.cs" />
+    <Compile Include="UI\Interface\IMirrorableUI.cs" />
+    <Compile Include="UI\Interface\IMultilingualUI.cs" />
+    <Compile Include="Generic\Structure\Range.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DesignPattern\Singleton\SingleBehaviour.cs" />
     <Compile Include="DesignPattern\Singleton\SingleMonoBehaviour.cs" />
     <Compile Include="Skin\Interface\ISkin.cs" />
     <Compile Include="Skin\Abstract\MonoSkin.cs" />
     <Compile Include="Generic\Structure\PlaneArea.cs" />
+    <Compile Include="UI\Interface\IUIElement.cs" />
     <Compile Include="Utility\MeshUtility.cs" />
+    <Compile Include="Utility\MultilingualUtility.cs" />
     <Compile Include="Utility\RectUtility.cs" />
     <Compile Include="Utility\VectorUtility.cs" />
   </ItemGroup>

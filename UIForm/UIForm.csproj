@@ -45,11 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\MonoUIForm.cs" />
-    <Compile Include="Abstract\MonoUIPanel.cs" />
     <Compile Include="Attribute\UIFormInfoAttribute.cs" />
     <Compile Include="Interface\IUIForm.cs" />
     <Compile Include="Interface\IUIFormManager.cs" />
-    <Compile Include="Interface\IUIPanel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIFormManager.cs" />
     <Compile Include="UIFormSettings.cs" />

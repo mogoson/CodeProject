@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using System;
+using MGS.UCommon.Generic;
 using UnityEngine;
 
 namespace MGS.ElectronicComponent
@@ -46,17 +46,17 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Rocker drag event.
         /// </summary>
-        event Action OnDrag;
+        GenericEvent OnDrag { get; }
 
         /// <summary>
         /// Rocker Release event.
         /// </summary>
-        event Action OnRelease;
+        GenericEvent OnRelease { get; }
 
         /// <summary>
         /// Rocker revert event.
         /// </summary>
-        event Action OnRevert;
+        GenericEvent OnRevert { get; }
         #endregion
     }
 }

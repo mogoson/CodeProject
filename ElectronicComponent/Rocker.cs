@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using System;
+using MGS.UCommon.Generic;
 using UnityEngine;
 
 namespace MGS.ElectronicComponent
@@ -89,44 +89,17 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Rocker drag event.
         /// </summary>
-        public event Action OnDrag
-        {
-            add { onDrag += value; }
-            remove { onDrag -= value; }
-        }
+        public GenericEvent OnDrag { get; } = new GenericEvent();
 
         /// <summary>
         /// Rocker Release event.
         /// </summary>
-        public event Action OnRelease
-        {
-            add { onRelease += value; }
-            remove { onRelease -= value; }
-        }
+        public GenericEvent OnRelease { get; } = new GenericEvent();
 
         /// <summary>
         /// Rocker revert event.
         /// </summary>
-        public event Action OnRevert
-        {
-            add { onRevert += value; }
-            remove { onRevert -= value; }
-        }
-
-        /// <summary>
-        /// Rocker drag event.
-        /// </summary>
-        protected Action onDrag;
-
-        /// <summary>
-        /// Rocker Release event.
-        /// </summary>
-        protected Action onRelease;
-
-        /// <summary>
-        /// Rocker revert event.
-        /// </summary>
-        protected Action onRevert;
+        public GenericEvent OnRevert { get; } = new GenericEvent();
         #endregion
 
         #region Protected Method
@@ -148,7 +121,7 @@ namespace MGS.ElectronicComponent
                 angles = angles.normalized * radiusAngle;
             }
             Rotate(angles);
-            onDrag?.Invoke();
+            OnDrag.Invoke();
         }
 
         /// <summary>
@@ -165,7 +138,7 @@ namespace MGS.ElectronicComponent
             {
                 InvokeRepeating("Revert", 0, Time.fixedDeltaTime);
             }
-            onRelease?.Invoke();
+            OnRelease.Invoke();
         }
 
         /// <summary>
@@ -176,7 +149,7 @@ namespace MGS.ElectronicComponent
             if (angles.magnitude == 0)
             {
                 CancelInvoke("Revert");
-                onRevert?.Invoke();
+                OnRevert.Invoke();
             }
             angles = Vector3.MoveTowards(angles, Vector3.zero, revertSpeed * Time.deltaTime);
             Rotate(angles);

@@ -1,41 +1,36 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IUIPanel.cs
- *  Description  :  Interface of custom UI panel.
+ *  File         :  UIElement.cs
+ *  Description  :  Base class for UI element.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  4/12/2019
+ *  Date         :  6/28/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Generic;
+using MGS.UCommon.Generic;
 
-namespace MGS.UIForm
+namespace MGS.UCommon.UI
 {
     /// <summary>
-    /// Interface of custom UI panel.
+    /// Base class for UI element.
     /// </summary>
-    public interface IUIPanel : IMirrorable, IMultilingual
+    public abstract class UIElement : MonoUI, IUIElement
     {
-        #region Property
+        #region Public Method
         /// <summary>
-        /// Panel is open?
+        /// Mirror UI.
         /// </summary>
-        bool IsOpen { get; }
-        #endregion
-
-        #region Method
-        /// <summary>
-        /// Open panel.
-        /// </summary>
-        void Open();
+        /// <param name="mode">Mode of mirror.</param>
+        public virtual void Mirror(MirrorMode mode) { }
 
         /// <summary>
-        /// Close panel.
+        /// Set language of UI.
         /// </summary>
-        void Close();
+        /// <param name="name">Language name.</param>
+        public virtual void Language(string name) { }
         #endregion
     }
 }

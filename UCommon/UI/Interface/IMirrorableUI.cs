@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IMirrorable.cs
- *  Description  :  Interface for mirrorable object.
+ *  File         :  IMirrorableUI.cs
+ *  Description  :  Interface for mirrorable UI.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -10,16 +10,18 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.Common.Generic
+using MGS.UCommon.Generic;
+
+namespace MGS.UCommon.UI
 {
     /// <summary>
-    /// Interface for mirrorable object.
+    /// Interface for mirrorable UI.
     /// </summary>
-    public interface IMirrorable
+    public interface IMirrorableUI
     {
         #region Method
         /// <summary>
-        /// Mirror object.
+        /// Mirror UI.
         /// </summary>
         /// <param name="mode">Mode of mirror.</param>
         void Mirror(MirrorMode mode);

@@ -10,15 +10,14 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Generic;
-using System;
+using MGS.UCommon.UI;
 
 namespace MGS.UIForm
 {
     /// <summary>
     /// Interface of custom UI form.
     /// </summary>
-    public interface IUIForm : IMirrorable, IMultilingual
+    public interface IUIForm : IUIElement
     {
         #region Property
         /// <summary>
@@ -27,46 +26,14 @@ namespace MGS.UIForm
         string ID { get; }
 
         /// <summary>
-        /// Form is open?
+        /// Name of form.
         /// </summary>
-        bool IsOpen { get; }
+        string Name { set; get; }
 
         /// <summary>
-        /// Form is disposed?
+        /// Tittle of form.
         /// </summary>
-        bool IsDisposed { get; }
-        #endregion
-
-        #region Event
-        /// <summary>
-        /// Event on open form.
-        /// </summary>
-        event Action OnOpen;
-
-        /// <summary>
-        /// Event on close form.
-        /// </summary>
-        event Action OnClose;
-        #endregion
-
-        #region Method
-        /// <summary>
-        /// Open form.
-        /// </summary>
-        /// <param name="data">Data of form to show.</param>
-        void Open(object data = null);
-
-        /// <summary>
-        /// Refresh form.
-        /// </summary>
-        /// <param name="data">Data of form to show.</param>
-        void Refresh(object data);
-
-        /// <summary>
-        /// Close form.
-        /// </summary>
-        /// <param name="dispose">Dispose form on close?</param>
-        void Close(bool dispose = false);
+        string Tittle { set; get; }
         #endregion
     }
 }

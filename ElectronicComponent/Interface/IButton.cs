@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using System;
+using MGS.UCommon.Generic;
 
 namespace MGS.ElectronicComponent
 {
@@ -55,17 +55,17 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Button up event.
         /// </summary>
-        event Action OnUp;
+        GenericEvent OnUp { get; }
 
         /// <summary>
         /// Button down event.
         /// </summary>
-        event Action OnDown;
+        GenericEvent OnDown { get; }
 
         /// <summary>
         /// Button lock event.
         /// </summary>
-        event Action OnLock;
+        GenericEvent OnLock { get; }
         #endregion
     }
 }

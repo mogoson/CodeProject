@@ -54,6 +54,12 @@
     <Compile Include="Meter\PointerMeter\MeterPointer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UCommon\UCommon.csproj">
+      <Project>{02F92370-D9A3-4A6B-8B7D-717315A01145}</Project>
+      <Name>UCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Plugins\MGS"

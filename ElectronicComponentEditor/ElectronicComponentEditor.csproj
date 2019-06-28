@@ -51,10 +51,6 @@
     <Compile Include="RockerEditor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{55e27c1e-ecfb-4e6f-b5e0-508c882dddab}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ElectronicComponent\ElectronicComponent.csproj">
       <Project>{1ae82a00-f9f4-4e09-9f19-f55a860258a3}</Project>
       <Name>ElectronicComponent</Name>
@@ -62,6 +58,10 @@
     <ProjectReference Include="..\UCommonEditor\UCommonEditor.csproj">
       <Project>{522c0820-e5f6-4bd9-a1e3-fe2e1a1e2ce2}</Project>
       <Name>UCommonEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UCommon\UCommon.csproj">
+      <Project>{02F92370-D9A3-4A6B-8B7D-717315A01145}</Project>
+      <Name>UCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

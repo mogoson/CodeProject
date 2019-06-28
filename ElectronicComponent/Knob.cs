@@ -10,8 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Generic;
-using System;
+using MGS.UCommon.Generic;
 using UnityEngine;
 
 namespace MGS.ElectronicComponent
@@ -143,44 +142,17 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Knob drag event.
         /// </summary>
-        public event Action OnDrag
-        {
-            add { onDrag += value; }
-            remove { onDrag -= value; }
-        }
+        public GenericEvent OnDrag { get; } = new GenericEvent();
 
         /// <summary>
         /// Knob release event.
         /// </summary>
-        public event Action OnRelease
-        {
-            add { onRelease += value; }
-            remove { onRelease -= value; }
-        }
+        public GenericEvent OnRelease { get; } = new GenericEvent();
 
         /// <summary>
         /// Knob adsorbent event.
         /// </summary>
-        public event Action OnAdsorbent
-        {
-            add { onAdsorbent += value; }
-            remove { onAdsorbent -= value; }
-        }
-
-        /// <summary>
-        /// Knob drag event.
-        /// </summary>
-        protected Action onDrag;
-
-        /// <summary>
-        /// Knob release event.
-        /// </summary>
-        protected Action onRelease;
-
-        /// <summary>
-        /// Knob adsorbent event.
-        /// </summary>
-        protected Action onAdsorbent;
+        public GenericEvent OnAdsorbent { get; } = new GenericEvent();
         #endregion
 
         #region Protected Method
@@ -200,7 +172,7 @@ namespace MGS.ElectronicComponent
                 Angle = Mathf.Clamp(Angle, angleRange.min, angleRange.max);
             }
             Rotate(Angle);
-            onDrag?.Invoke();
+            OnDrag.Invoke();
         }
 
         /// <summary>
@@ -213,7 +185,7 @@ namespace MGS.ElectronicComponent
                 return;
             }
 
-            onRelease?.Invoke();
+            OnRelease.Invoke();
 
             if (!adsorbent || adsorbableAngles.Length == 0)
             {
@@ -222,7 +194,7 @@ namespace MGS.ElectronicComponent
 
             Angle = GetAdsorbentAngle(Angle, adsorbableAngles);
             Rotate(Angle);
-            onAdsorbent?.Invoke();
+            OnAdsorbent.Invoke();
         }
 
         /// <summary>

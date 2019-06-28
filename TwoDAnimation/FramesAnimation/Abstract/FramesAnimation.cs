@@ -10,8 +10,8 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.UCommon.Generic;
 using MGS.UCommon.UAnimation;
-using System;
 using UnityEngine;
 
 namespace MGS.TwoDAnimation
@@ -25,16 +25,7 @@ namespace MGS.TwoDAnimation
         /// <summary>
         /// Event of animation play on last frame.
         /// </summary>
-        public event Action OnLastFrame
-        {
-            add { onLastFrame += value; }
-            remove { onLastFrame -= value; }
-        }
-
-        /// <summary>
-        /// Event of animation play on last frame.
-        /// </summary>
-        protected Action onLastFrame;
+        public GenericEvent OnLastFrame { get; } = new GenericEvent();
 
         /// <summary>
         /// Index of current frame.
@@ -67,7 +58,7 @@ namespace MGS.TwoDAnimation
                         index = Mathf.Clamp(index, 1, GetFramesCount() - 1);
                         break;
                 }
-                onLastFrame?.Invoke();
+                OnLastFrame.Invoke();
             }
             else
             {

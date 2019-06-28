@@ -10,8 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Generic;
-using System;
+using MGS.UCommon.Generic;
 
 namespace MGS.ElectronicComponent
 {
@@ -66,17 +65,17 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Knob drag event.
         /// </summary>
-        event Action OnDrag;
+        GenericEvent OnDrag { get; }
 
         /// <summary>
         /// Knob release event.
         /// </summary>
-        event Action OnRelease;
+        GenericEvent OnRelease { get; }
 
         /// <summary>
         /// Knob adsorbent event.
         /// </summary>
-        event Action OnAdsorbent;
+        GenericEvent OnAdsorbent { get; }
         #endregion
     }
 }
