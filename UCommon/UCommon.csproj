@@ -47,6 +47,7 @@
     <Compile Include="Animation\Abstract\MonoAnimation.cs" />
     <Compile Include="Animation\Interface\IAnimation.cs" />
     <Compile Include="Generic\Event\GenericEvent.cs" />
+    <Compile Include="UI\Abstract\InteractableUI.cs" />
     <Compile Include="UI\Abstract\MonoUI.cs" />
     <Compile Include="Extension\GameObjectExtention.cs" />
     <Compile Include="Extension\TerrainExtension.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Curve\Interface\ICurve.cs" />
     <Compile Include="Generic\Enum\MirrorMode.cs" />
     <Compile Include="UI\Abstract\UIElement.cs" />
+    <Compile Include="UI\Interface\IInteractableUI.cs" />
     <Compile Include="UI\Interface\IMonoUI.cs" />
     <Compile Include="UI\Interface\IMirrorableUI.cs" />
     <Compile Include="UI\Interface\IMultilingualUI.cs" />
