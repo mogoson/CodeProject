@@ -29,68 +29,40 @@ namespace MGS.Graph
     {
         #region Public Method
         /// <summary>
-        /// Convert gif image to frames textures.
+        /// Asynchronous load gif as frames textures.
         /// </summary>
         /// <param name="filePath">Path of gif file.</param>
         /// <param name="progressCallback">On loading callback.</param>
         /// <param name="doneCallback">On loaded callback.</param>
-        public static void GifToFrames(string filePath, Action<float, Texture2D> progressCallback, Action<List<Texture2D>> doneCallback)
+        public static void AsyncLoadGifAsFrames(string filePath, Action<float, Texture2D> progressCallback, Action<List<Texture2D>> doneCallback)
+        {
+            SingleBehaviour.Instance.StartCoroutine(AsyncLoadGifFromFile(filePath, progressCallback, doneCallback));
+        }
+
+        /// <summary>
+        /// Asynchronous load gif from local file.
+        /// </summary>
+        /// <param name="filePath">Path of gif file.</param>
+        /// <param name="progressCallback">On loading callback.</param>
+        /// <param name="doneCallback">On loaded callback.</param>
+        /// <returns>IEnumerator.</returns>
+        public static IEnumerator AsyncLoadGifFromFile(string filePath, Action<float, Texture2D> progressCallback, Action<List<Texture2D>> doneCallback)
         {
             if (progressCallback == null && doneCallback == null)
             {
-                LogUtility.LogError(0, "Convert gif image to frames textures error: The callbacks can not all be null.");
-                return;
+                LogUtility.LogWarning(0, "Asynchronous load gif canceled: All the callbacks is null.");
+                yield break;
             }
 
-            if (string.IsNullOrEmpty(filePath))
-            {
-                LogUtility.LogError(0, "Convert gif image to frames textures error: File path can not be null.");
-                progressCallback?.Invoke(1.0f, null);
-                doneCallback?.Invoke(null);
-                return;
-            }
-
-            if (!File.Exists(filePath))
-            {
-                LogUtility.LogError(0, "Convert gif image to frames textures error: Can not find the file {0}.", filePath);
-                progressCallback?.Invoke(1.0f, null);
-                doneCallback?.Invoke(null);
-                return;
-            }
-
+            yield return null;
             Image gif = null;
             try
             {
                 gif = Image.FromFile(filePath);
-                SingleBehaviour.Instance.StartCoroutine(GifToFrames(gif, progressCallback, doneCallback));
             }
             catch (Exception ex)
             {
-                LogUtility.LogError(0, "Convert gif image to frames textures error: {0}", ex.Message);
-                progressCallback?.Invoke(1.0f, null);
-                doneCallback?.Invoke(null);
-                return;
-            }
-        }
-
-        /// <summary>
-        /// Convert gif image to frames textures.
-        /// </summary>
-        /// <param name="gif">Gif image.</param>
-        /// <param name="progressCallback">On loading callback.</param>
-        /// <param name="doneCallback">On loaded callback.</param>
-        /// <returns>IEnumerator.</returns>
-        public static IEnumerator GifToFrames(Image gif, Action<float, Texture2D> progressCallback, Action<List<Texture2D>> doneCallback)
-        {
-            if (progressCallback == null && doneCallback == null)
-            {
-                LogUtility.LogError(0, "Convert gif image to frames textures error: The callbacks can not all be null.");
-                yield break;
-            }
-
-            if (gif == null)
-            {
-                LogUtility.LogError(0, "Convert gif image to frames textures error: The image can not be null.");
+                LogUtility.LogError(0, "Asynchronous load gif error: {0}", ex.Message);
                 progressCallback?.Invoke(1.0f, null);
                 doneCallback?.Invoke(null);
                 yield break;
@@ -109,7 +81,7 @@ namespace MGS.Graph
                 graphics.DrawImage(gif, Point.Empty);
 
                 var frame = new Texture2D(bitmap.Width, bitmap.Height);
-                frame.LoadImage(BitmapToBytes(bitmap));
+                frame.LoadImage(GetBitmapData(bitmap));
                 frame.Apply();
                 frames.Add(frame);
 
@@ -121,15 +93,15 @@ namespace MGS.Graph
         }
 
         /// <summary>
-        /// Convert bitmap to bytes data.
+        /// Get bytes data of bitmap.
         /// </summary>
-        /// <param name="bitmap">Bitmap to convert.</param>
+        /// <param name="bitmap">Bitmap source.</param>
         /// <returns>Bytes data of bitmap.</returns>
-        public static byte[] BitmapToBytes(Bitmap bitmap)
+        public static byte[] GetBitmapData(Bitmap bitmap)
         {
             if (bitmap == null)
             {
-                LogUtility.LogError(0, "Convert bitmap to bytes data error: The bitmap can not be null.");
+                LogUtility.LogError(0, "Get bytes data of bitmap error: The bitmap can not be null.");
                 return null;
             }
 
