@@ -31,18 +31,21 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Button down offset.
         /// </summary>
+        [Tooltip("Button down offset.")]
         [SerializeField]
         protected float downOffset = 1;
 
         /// <summary>
         /// Self lock on button down?
         /// </summary>
+        [Tooltip("Self lock on button down?")]
         [SerializeField]
         protected bool selfLock = false;
 
         /// <summary>
         /// Self lock offset percent.
         /// </summary>
+        [Tooltip("Self lock offset percent.")]
         [Range(0, 1)]
         [SerializeField]
         protected float lockPercent = 0.5f;
@@ -50,12 +53,14 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Toggle LED on toggle button?
         /// </summary>
+        [Tooltip("Toggle LED on toggle button?")]
         [SerializeField]
         protected bool useLED = false;
 
         /// <summary>
         /// LED of button.
         /// </summary>
+        [Tooltip("LED of button.")]
         [SerializeField]
         protected MonoLED monoLED;
 

@@ -25,16 +25,19 @@ namespace MGS.ObjectPool
         /// <summary>
         /// Name of pool.
         /// </summary>
+        [Tooltip("Name of pool.")]
         public string name;
 
         /// <summary>
         /// Prefab to create clone.
         /// </summary>
+        [Tooltip("Prefab to create clone.")]
         public GameObject prefab;
 
         /// <summary>
         /// Max count limit of gameobjects in pool.
         /// </summary>
+        [Tooltip("Max count limit of gameobjects in pool.")]
         public int maxCount;
         #endregion
 

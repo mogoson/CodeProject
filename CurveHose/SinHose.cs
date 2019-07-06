@@ -25,11 +25,13 @@ namespace MGS.CurveHose
         /// <summary>
         /// Args of sin curve.
         /// </summary>
+        [Tooltip("Args of sin curve.")]
         public SinArgs args = new SinArgs(1, 1, 0, 0);
 
         /// <summary>
         /// Max key of sin curve.
         /// </summary>
+        [Tooltip("Max key of sin curve.")]
         public float maxKey = 2;
 
         /// <summary>

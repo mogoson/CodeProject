@@ -25,11 +25,13 @@ namespace MGS.UCamera
         /// <summary>
         /// Layer of ray.
         /// </summary>
+        [Tooltip("Layer of ray.")]
         public LayerMask layerMask = 1;
 
         /// <summary>
         /// Max distance of ray.
         /// </summary>
+        [Tooltip("Max distance of ray.")]
         public float maxDistance = 100;
 
         /// <summary>

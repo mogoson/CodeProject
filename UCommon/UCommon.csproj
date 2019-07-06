@@ -72,6 +72,7 @@
     <Compile Include="Skin\Abstract\MonoSkin.cs" />
     <Compile Include="Generic\Structure\PlaneArea.cs" />
     <Compile Include="UI\Interface\IUIElement.cs" />
+    <Compile Include="Utility\AnchorUtility.cs" />
     <Compile Include="Utility\MeshUtility.cs" />
     <Compile Include="Utility\MultilingualUtility.cs" />
     <Compile Include="Utility\RectUtility.cs" />

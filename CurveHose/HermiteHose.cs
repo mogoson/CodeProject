@@ -26,6 +26,7 @@ namespace MGS.CurveHose
         /// <summary>
         /// Hose curve is close?
         /// </summary>
+        [Tooltip("Hose curve is close?")]
         public bool close = false;
 
         /// <summary>

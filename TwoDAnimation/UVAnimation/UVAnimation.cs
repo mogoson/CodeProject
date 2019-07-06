@@ -27,6 +27,7 @@ namespace MGS.TwoDAnimation
         /// <summary>
         /// Speed coefficient of move uv map.
         /// </summary>
+        [Tooltip("Speed coefficient of move uv map.")]
         public Vector2 coefficient = Vector2.one;
 
         /// <summary>

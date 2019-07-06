@@ -25,6 +25,7 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Highlight material of LED.
         /// </summary>
+        [Tooltip("Highlight material of LED.")]
         public Material highlightMat;
 
         /// <summary>

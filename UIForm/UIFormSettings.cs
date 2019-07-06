@@ -24,6 +24,7 @@ namespace MGS.UIForm
         /// <summary>
         /// Layers for custom UI form.
         /// </summary>
+        [Tooltip("Layers for custom UI form.")]
         public List<string> layers = new List<string>() { "Default" };
         #endregion
     }

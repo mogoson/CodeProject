@@ -26,18 +26,21 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Radius angle.
         /// </summary>
+        [Tooltip("Radius angle.")]
         [SerializeField]
         protected float radiusAngle = 25;
 
         /// <summary>
         /// Rocker rotate speed.
         /// </summary>
+        [Tooltip("Rocker rotate speed.")]
         [SerializeField]
         protected float rotateSpeed = 250;
 
         /// <summary>
         /// Revert speed.
         /// </summary>
+        [Tooltip("Revert speed.")]
         [SerializeField]
         protected float revertSpeed = 0;
 

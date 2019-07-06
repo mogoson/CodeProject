@@ -25,21 +25,25 @@ namespace MGS.UCamera
         /// <summary>
         /// Target camera for translate direction.
         /// </summary>
+        [Tooltip("Target camera for translate direction.")]
         public Transform targetCamera;
 
         /// <summary>
         /// Settings of mouse button and pointer.
         /// </summary>
+        [Tooltip("Settings of mouse button and pointer.")]
         public MouseSettings mouseSettings = new MouseSettings(0, 1, 0);
 
         /// <summary>
         /// Settings of move area.
         /// </summary>
+        [Tooltip("Settings of move area.")]
         public PlaneArea areaSettings = new PlaneArea(null, 10, 10);
 
         /// <summary>
         /// Damper for move.
         /// </summary>
+        [Tooltip("Damper for move.")]
         [Range(0, 10)]
         public float damper = 5;
 

@@ -30,6 +30,7 @@ namespace MGS.UCamera
         /// <summary>
         /// Target of camera align.
         /// </summary>
+        [Tooltip("Target of camera align.")]
         public AlignTarget alignTarget;
         #endregion
 

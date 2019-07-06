@@ -25,16 +25,19 @@ namespace MGS.CurvePath
         /// <summary>
         /// Top ellipse args of curve.
         /// </summary>
+        [Tooltip("Top ellipse args of curve.")]
         public EllipseArgs topEllipse = new EllipseArgs(Vector3.up, 1.0f, 1.0f);
 
         /// <summary>
         /// Bottom ellipse args of curve.
         /// </summary>
+        [Tooltip("Bottom ellipse args of curve.")]
         public EllipseArgs bottomEllipse = new EllipseArgs(Vector3.zero, 1.0f, 1.0f);
 
         /// <summary>
         /// Max around radian of helix.
         /// </summary>
+        [Tooltip("Max around radian of helix.")]
         public float maxRadian = 6;
 
         /// <summary>

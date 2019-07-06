@@ -27,6 +27,7 @@ namespace MGS.ObjectPool
         /// <summary>
         /// Settings of pools.
         /// </summary>
+        [Tooltip("Settings of pools.")]
         [SerializeField]
         private List<GameObjectPoolSettings> poolsSettings = new List<GameObjectPoolSettings>();
 

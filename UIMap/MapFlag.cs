@@ -25,6 +25,7 @@ namespace MGS.UIMap
         /// <summary>
         /// Flag's target.
         /// </summary>
+        [Tooltip("Flag's target.")]
         public Transform target;
 
         /// <summary>

@@ -25,6 +25,7 @@ namespace MGS.Meter
         /// Pointers of meter.
         /// First is main pointer.
         /// </summary>
+        [Tooltip("Pointers of meter, first is main pointer.")]
         public MeterPointer[] pointers = { };
 
         /// <summary>

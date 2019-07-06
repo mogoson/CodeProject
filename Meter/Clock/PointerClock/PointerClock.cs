@@ -25,6 +25,7 @@ namespace MGS.Meter
         /// <summary>
         /// Pointer of clock.
         /// </summary>
+        [Tooltip("Pointer of clock.")]
         public ClockPointer pointer;
 
         /// <summary>

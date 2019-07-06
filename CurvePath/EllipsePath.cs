@@ -25,11 +25,13 @@ namespace MGS.CurvePath
         /// <summary>
         /// Semi minor axis of ellipse.
         /// </summary>
+        [Tooltip("Semi minor axis of ellipse.")]
         public float semiMinorAxis = 1.0f;
 
         /// <summary>
         /// Semi major axis of ellipse.
         /// </summary>
+        [Tooltip("Semi major axis of ellipse.")]
         public float semiMajorAxis = 1.5f;
 
         /// <summary>

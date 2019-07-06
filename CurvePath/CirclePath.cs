@@ -25,6 +25,7 @@ namespace MGS.CurvePath
         /// <summary>
         /// Radius of circle curve.
         /// </summary>
+        [Tooltip("Radius of circle curve.")]
         public float radius = 1.0f;
 
         /// <summary>

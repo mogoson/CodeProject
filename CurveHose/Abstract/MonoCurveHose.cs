@@ -28,24 +28,28 @@ namespace MGS.CurveHose
         /// <summary>
         /// Polygon of hose cross section.
         /// </summary>
+        [Tooltip("Polygon of hose cross section.")]
         [SerializeField]
         protected int polygon = 8;
 
         /// <summary>
         /// Segment length of subdivide hose.
         /// </summary>
+        [Tooltip("Segment length of subdivide hose.")]
         [SerializeField]
         protected float segment = 0.25f;
 
         /// <summary>
         /// Radius of hose mesh.
         /// </summary>
+        [Tooltip("Radius of hose mesh.")]
         [SerializeField]
         protected float radius = 0.1f;
 
         /// <summary>
         /// Is seal at both ends of hose?
         /// </summary>
+        [Tooltip("Is seal at both ends of hose?")]
         [SerializeField]
         protected bool seal = false;
 

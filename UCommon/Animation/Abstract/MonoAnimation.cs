@@ -23,12 +23,14 @@ namespace MGS.UCommon.UAnimation
         /// <summary>
         /// Speed of animation.
         /// </summary>
+        [Tooltip("Speed of animation.")]
         [SerializeField]
         protected float speed = 5;
 
         /// <summary>
         /// Loop mode of animation.
         /// </summary>
+        [Tooltip("Loop mode of animation.")]
         [SerializeField]
         protected LoopMode loop = LoopMode.Once;
 

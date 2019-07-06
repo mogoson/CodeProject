@@ -25,6 +25,7 @@ namespace MGS.UCamera
         /// <summary>
         /// Damper for align.
         /// </summary>
+        [Tooltip("Damper for align.")]
         [Range(0, 5)]
         public float alignDamper = 2;
 
@@ -32,6 +33,7 @@ namespace MGS.UCamera
         /// Threshold of linear adsorbent.
         /// </summary>
         [Range(0, 1)]
+        [Tooltip("Threshold of linear adsorbent.")]
         public float threshold = 0.1f;
 
         /// <summary>

@@ -26,16 +26,19 @@ namespace MGS.UIMap
         /// <summary>
         /// Terrain info.
         /// </summary>
+        [Tooltip("Terrain info.")]
         public TerrainInfo terrainInfo = new TerrainInfo(null, 500, 500);
 
         /// <summary>
         /// Dynamic flags.
         /// </summary>
+        [Tooltip("Dynamic flags.")]
         public List<MapFlag> dynamicFlags;
 
         /// <summary>
         /// Static flags.
         /// </summary>
+        [Tooltip("Static flags.")]
         public List<MapFlag> staticFlags;
 
         /// <summary>

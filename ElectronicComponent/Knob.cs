@@ -26,36 +26,42 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// Input axis.
         /// </summary>
+        [Tooltip("Input axis.")]
         [SerializeField]
         protected string inputAxis = "Mouse X";
 
         /// <summary>
         /// Knob rotate speed.
         /// </summary>
+        [Tooltip("Knob rotate speed.")]
         [SerializeField]
         protected float rotateSpeed = 250;
 
         /// <summary>
         /// Limit rotate angle?
         /// </summary>
+        [Tooltip("Limit rotate angle?")]
         [SerializeField]
         protected bool rotateLimit = false;
 
         /// <summary>
         /// Range of rotate angle.
         /// </summary>
+        [Tooltip("Range of rotate angle.")]
         [SerializeField]
         protected Range angleRange = new Range(-60, 60);
 
         /// <summary>
         /// Adsorbent to target angle on mouse up?
         /// </summary>
+        [Tooltip("Adsorbent to target angle on mouse up?")]
         [SerializeField]
         protected bool adsorbent = false;
 
         /// <summary>
         /// Adsorbable angles.
         /// </summary>
+        [Tooltip("Adsorbable angles.")]
         [SerializeField]
         protected float[] adsorbableAngles;
 

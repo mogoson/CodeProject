@@ -27,6 +27,7 @@ namespace MGS.PathAnimation
         /// <summary>
         /// Path of animation.
         /// </summary>
+        [Tooltip("Path of animation.")]
         [SerializeField]
         protected MonoCurvePath curvePath;
 

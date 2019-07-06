@@ -25,6 +25,7 @@ namespace MGS.TwoDAnimation
         /// <summary>
         /// Frames texture of animation.
         /// </summary>
+        [Tooltip("Frames texture of animation.")]
         [SerializeField]
         protected List<Texture> frames = new List<Texture>();
         #endregion

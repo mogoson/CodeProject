@@ -27,6 +27,7 @@ namespace MGS.UIMap
         /// <summary>
         /// Trail info.
         /// </summary>
+        [Tooltip("Trail info.")]
         public List<TrailInfo> trailInfo;
 
         /// <summary>

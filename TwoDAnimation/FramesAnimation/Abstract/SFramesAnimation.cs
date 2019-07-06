@@ -25,6 +25,7 @@ namespace MGS.TwoDAnimation
         /// <summary>
         /// Frames sprite of animation.
         /// </summary>
+        [Tooltip("Frames sprite of animation.")]
         [SerializeField]
         protected List<Sprite> frames = new List<Sprite>();
         #endregion

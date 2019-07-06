@@ -10,10 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-#if UNITY_EDITOR
 using MGS.Common.Logger;
-#endif
-
 using System;
 using System.Collections.Generic;
 
@@ -51,19 +48,15 @@ namespace MGS.Media.Subtitle
                 {
                     isInRange = true;
                 }
-#if UNITY_EDITOR
                 else
                 {
                     LogUtility.LogWarning(0, "The play time is out of the subtitle range.");
                 }
-#endif
             }
-#if UNITY_EDITOR
             else
             {
                 LogUtility.LogWarning(0, "Not any clip in the subtitle.");
             }
-#endif
             return isInRange;
         }
 

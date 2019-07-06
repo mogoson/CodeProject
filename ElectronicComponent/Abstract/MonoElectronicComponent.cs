@@ -23,6 +23,7 @@ namespace MGS.ElectronicComponent
         /// <summary>
         /// The component is enabled to control?
         /// </summary>
+        [Tooltip("The component is enabled to control?")]
         [SerializeField]
         protected bool isEnabled = true;
 

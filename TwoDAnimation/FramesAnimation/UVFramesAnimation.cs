@@ -26,12 +26,14 @@ namespace MGS.TwoDAnimation
         /// <summary>
         /// Row of frames.
         /// </summary>
+        [Tooltip("Row of frames.")]
         [SerializeField]
         protected int row = 2;
 
         /// <summary>
         /// Column of frames.
         /// </summary>
+        [Tooltip("Column of frames.")]
         [SerializeField]
         protected int column = 5;
 

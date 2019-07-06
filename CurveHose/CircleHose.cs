@@ -25,6 +25,7 @@ namespace MGS.CurveHose
         /// <summary>
         /// Extend radius of hose curve.
         /// </summary>
+        [Tooltip("Extend radius of hose curve.")]
         public float extendRadius = 1.0f;
 
         /// <summary>

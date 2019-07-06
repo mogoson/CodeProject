@@ -26,6 +26,7 @@ namespace MGS.CurvePath
         /// <summary>
         /// Path curve is close?
         /// </summary>
+        [Tooltip("Path curve is close?")]
         public bool close = false;
 
         /// <summary>
