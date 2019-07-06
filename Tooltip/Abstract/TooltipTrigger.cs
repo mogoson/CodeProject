@@ -1,0 +1,41 @@
+﻿/*************************************************************************
+ *  Copyright © 2019 Mogoson. All rights reserved.
+ *------------------------------------------------------------------------
+ *  File         :  TooltipTrigger.cs
+ *  Description  :  Trigger for Tooltip.
+ *------------------------------------------------------------------------
+ *  Author       :  Mogoson
+ *  Version      :  0.1.0
+ *  Date         :  7/2/2019
+ *  Description  :  Initial development version.
+ *************************************************************************/
+
+using UnityEngine;
+
+namespace MGS.Tooltip
+{
+    /// <summary>
+    /// Trigger for Tooltip.
+    /// </summary>
+    public abstract class TooltipTrigger : MonoBehaviour
+    {
+        #region Field and Property
+        /// <summary>
+        /// Tooltip content.
+        /// </summary>
+        [Tooltip("Tooltip content.")]
+        [Multiline]
+        [SerializeField]
+        protected string tipContent = "Tooltip Content";
+
+        /// <summary>
+        /// Tooltip content.
+        /// </summary>
+        public string TipContent
+        {
+            set { tipContent = value; }
+            get { return tipContent; }
+        }
+        #endregion
+    }
+}
