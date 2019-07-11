@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Animation\Abstract\MonoAnimation.cs" />
     <Compile Include="Animation\Interface\IAnimation.cs" />
+    <Compile Include="Generic\Enum\ColorBlendMode.cs" />
     <Compile Include="Generic\Event\GenericEvent.cs" />
     <Compile Include="UI\Abstract\InteractableUI.cs" />
     <Compile Include="UI\Abstract\MonoUI.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Generic\Structure\PlaneArea.cs" />
     <Compile Include="UI\Interface\IUIElement.cs" />
     <Compile Include="Utility\AnchorUtility.cs" />
+    <Compile Include="Utility\ColorBlendUtility.cs" />
     <Compile Include="Utility\MeshUtility.cs" />
     <Compile Include="Utility\MultilingualUtility.cs" />
     <Compile Include="Utility\RectUtility.cs" />
