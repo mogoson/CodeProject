@@ -10,9 +10,9 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UCommon.Utility;
 using MGS.UIForm;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MGS.Tooltip
 {
@@ -115,7 +115,7 @@ namespace MGS.Tooltip
         /// <returns>Preferred position of tip form.</returns>
         protected virtual Vector2 GetPreferredPosition(Vector2 screenPos)
         {
-            var pivot = AnchorUtility.ToVector(alignment);
+            var pivot = Text.GetTextAnchorPivot(alignment);
             rectTransform.pivot = pivot;
 
             var xMin = margin.left + rectTransform.rect.width * pivot.x;

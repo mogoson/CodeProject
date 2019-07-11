@@ -24,11 +24,16 @@ namespace MGS.Tooltip
     {
         #region Field and Property
         /// <summary>
+        /// Max width of tip form.
+        /// </summary>
+        [Tooltip("Max width of tip form.")]
+        public int tipMaxWidth = 200;
+
+        /// <summary>
         /// Text component of tip content.
         /// </summary>
         [Tooltip("Text component of tip content.")]
-        [SerializeField]
-        protected Text tipContent;
+        public Text tipContent;
         #endregion
 
         #region Protected Method
@@ -36,9 +41,19 @@ namespace MGS.Tooltip
         /// Set content of tip form.
         /// </summary>
         /// <param name="content">Tip content.</param>
-        protected void SetTipContent(string content)
+        protected virtual void SetTipContent(string content)
         {
             tipContent.text = content;
+
+            var preferredWidth = LayoutUtility.GetPreferredWidth(rectTransform);
+            if (preferredWidth > tipMaxWidth)
+            {
+                preferredWidth = tipMaxWidth;
+            }
+            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, preferredWidth);
+
+            var preferredHeight = LayoutUtility.GetPreferredHeight(rectTransform);
+            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, preferredHeight);
         }
         #endregion
 
