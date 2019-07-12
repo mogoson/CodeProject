@@ -43,9 +43,12 @@ namespace MGS.UCommon.UI
         public GenericEvent OnClose { get; } = new GenericEvent();
 
         /// <summary>
-        /// RectTransform of UI.
+        /// RectTransform component of UI.
         /// </summary>
-        protected RectTransform rectTransform;
+        public RectTransform rectTransform
+        {
+            get { return transform as RectTransform; }
+        }
         #endregion
 
         #region Protected Method
@@ -62,10 +65,7 @@ namespace MGS.UCommon.UI
         /// <summary>
         /// Initialize UI.
         /// </summary>
-        public virtual void Initialize()
-        {
-            rectTransform = transform as RectTransform;
-        }
+        public virtual void Initialize() { }
 
         /// <summary>
         /// Open UI.

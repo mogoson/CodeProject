@@ -31,9 +31,9 @@ namespace MGS.Tooltip
         protected RectOffset margin = new RectOffset(5, 5, 5, 5);
 
         /// <summary>
-        /// Offset for tip form to align to target position.
+        /// Offset for tip form to align to mouse pointer.
         /// </summary>
-        [Tooltip("Offset for tip form to align to target position.")]
+        [Tooltip("Offset for tip form to align to mouse pointer.")]
         [SerializeField]
         protected Vector2 offset = new Vector2(10, -10);
 
@@ -63,7 +63,7 @@ namespace MGS.Tooltip
         }
 
         /// <summary>
-        /// Offset for tip form to align to target position.
+        /// Offset for tip form to align to mouse pointer.
         /// </summary>
         public Vector2 Offset
         {
@@ -87,7 +87,6 @@ namespace MGS.Tooltip
         /// </summary>
         protected virtual void Reset()
         {
-            rectTransform = transform as RectTransform;
             rectTransform.anchorMin = rectTransform.anchorMax = Vector2.zero;
         }
 

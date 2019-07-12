@@ -32,7 +32,7 @@ namespace MGS.Tooltip
         RectOffset Margin { set; get; }
 
         /// <summary>
-        /// Offset for tip form to align to target position.
+        /// Offset for tip form to align to mouse pointer.
         /// </summary>
         Vector2 Offset { set; get; }
 

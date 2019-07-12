@@ -20,23 +20,41 @@ namespace MGS.Tooltip
     /// Text tooltip form.
     /// </summary>
     [AddComponentMenu("MGS/Tooltip/TextTooltipForm")]
+    [RequireComponent(typeof(ContentSizeFitter), typeof(LayoutGroup))]
     public class TextTooltipForm : TooltipForm
     {
         #region Field and Property
         /// <summary>
-        /// Max width of tip form.
+        /// Text component for tip content.
         /// </summary>
-        [Tooltip("Max width of tip form.")]
-        public int tipMaxWidth = 200;
+        [Tooltip("Text component for tip content.")]
+        public Text tipContent;
 
         /// <summary>
-        /// Text component of tip content.
+        /// Max width of tip content.
         /// </summary>
-        [Tooltip("Text component of tip content.")]
-        public Text tipContent;
+        [Tooltip("Max width of tip content.")]
+        public uint tipMaxWidth = 200;
+
+        /// <summary>
+        /// LayoutElement component for tip content.
+        /// </summary>
+        protected LayoutElement tipLayout;
         #endregion
 
         #region Protected Method
+        /// <summary>
+        /// Reset tip form.
+        /// </summary>
+        protected override void Reset()
+        {
+            base.Reset();
+
+            var fitter = GetComponent<ContentSizeFitter>();
+            fitter.horizontalFit = fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            tipContent = GetComponentInChildren<Text>();
+        }
+
         /// <summary>
         /// Set content of tip form.
         /// </summary>
@@ -44,20 +62,25 @@ namespace MGS.Tooltip
         protected virtual void SetTipContent(string content)
         {
             tipContent.text = content;
-
-            var preferredWidth = LayoutUtility.GetPreferredWidth(rectTransform);
-            if (preferredWidth > tipMaxWidth)
-            {
-                preferredWidth = tipMaxWidth;
-            }
-            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, preferredWidth);
-
-            var preferredHeight = LayoutUtility.GetPreferredHeight(rectTransform);
-            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, preferredHeight);
+            tipLayout.preferredWidth = Mathf.Min(tipContent.preferredWidth, tipMaxWidth);
         }
         #endregion
 
         #region Public Method
+        /// <summary>
+        /// Initialize tip form.
+        /// </summary>
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            tipLayout = tipContent.GetComponent<LayoutElement>();
+            if (tipLayout == null)
+            {
+                tipLayout = tipContent.gameObject.AddComponent<LayoutElement>();
+            }
+        }
+
         /// <summary>
         /// Refresh tip form.
         /// </summary>
