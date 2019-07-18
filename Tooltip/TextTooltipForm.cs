@@ -92,6 +92,7 @@ namespace MGS.Tooltip
             {
                 AutoFollowPointer = true;
                 SetTipContent(content);
+                AlignFormToPointer();
             }
             else if (data is TextTooltipFormData tipData)
             {
