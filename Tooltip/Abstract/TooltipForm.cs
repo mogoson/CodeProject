@@ -158,5 +158,17 @@ namespace MGS.Tooltip
             return new Vector2(xPos, yPos);
         }
         #endregion
+
+        #region Protected Method
+        /// <summary>
+        /// Open tip form.
+        /// </summary>
+        /// <param name="data">Data of tip form.</param>
+        public override void Open(object data = null)
+        {
+            gameObject.SetActive(true);
+            base.Open(data);
+        }
+        #endregion
     }
 }
