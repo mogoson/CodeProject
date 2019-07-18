@@ -21,7 +21,6 @@
  *  Description  :  Optimize.
  *************************************************************************/
 
-using LitJson;
 using MGS.Common.DesignPattern;
 using MGS.Common.IO;
 using MGS.Common.Logger;
@@ -66,7 +65,7 @@ namespace MGS.IO.Ports
             try
             {
                 var json = File.ReadAllText(ConfigPath);
-                return JsonMapper.ToObject<SerialPortConfig>(json);
+                return JsonUtility.FromJson<SerialPortConfig>(json);
             }
             catch (Exception ex)
             {
@@ -87,7 +86,7 @@ namespace MGS.IO.Ports
             error = string.Empty;
             try
             {
-                var configJson = JsonMapper.ToJson(config);
+                var configJson = JsonUtility.ToJson(config);
                 DirectoryUtility.RequirePath(ConfigPath);
                 File.WriteAllText(ConfigPath, configJson);
                 return true;

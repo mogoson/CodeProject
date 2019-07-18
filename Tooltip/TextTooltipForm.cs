@@ -63,6 +63,7 @@ namespace MGS.Tooltip
         {
             tipContent.text = content;
             tipLayout.preferredWidth = Mathf.Min(tipContent.preferredWidth, tipMaxWidth);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
         }
         #endregion
 
@@ -91,6 +92,7 @@ namespace MGS.Tooltip
             {
                 AutoFollowPointer = true;
                 SetTipContent(content);
+                AlignFormToPointer();
             }
             else if (data is TextTooltipFormData tipData)
             {

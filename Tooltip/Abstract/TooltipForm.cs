@@ -95,7 +95,15 @@ namespace MGS.Tooltip
         /// </summary>
         protected virtual void Update()
         {
-            SetFormPosition(new Vector2(Input.mousePosition.x, Input.mousePosition.y) + offset);
+            AlignFormToPointer();
+        }
+
+        /// <summary>
+        /// Align tip form to mouse pointer.
+        /// </summary>
+        protected void AlignFormToPointer()
+        {
+            SetFormPosition((Vector2)Input.mousePosition + offset);
         }
 
         /// <summary>
@@ -108,7 +116,7 @@ namespace MGS.Tooltip
         }
 
         /// <summary>
-        /// Get preferred position of tip form base on screen position.
+        /// Get preferred position of tip form base on screen.
         /// </summary>
         /// <param name="screenPos">Target screen position of tip form.</param>
         /// <returns>Preferred position of tip form.</returns>
