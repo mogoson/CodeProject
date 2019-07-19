@@ -86,6 +86,7 @@ namespace MGS.IO.Ports
             error = string.Empty;
             try
             {
+                //Unity 5.3 or above.
                 var configJson = JsonUtility.ToJson(config);
                 DirectoryUtility.RequirePath(ConfigPath);
                 File.WriteAllText(ConfigPath, configJson);
