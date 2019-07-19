@@ -65,7 +65,10 @@ namespace MGS.UCommon.UI
         /// <summary>
         /// Initialize UI.
         /// </summary>
-        public virtual void Initialize() { }
+        public virtual void Initialize()
+        {
+            IsOpen = gameObject.activeSelf;
+        }
 
         /// <summary>
         /// Open UI.

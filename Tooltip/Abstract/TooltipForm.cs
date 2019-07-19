@@ -76,7 +76,11 @@ namespace MGS.Tooltip
         /// </summary>
         public TextAnchor Alignment
         {
-            set { alignment = value; }
+            set
+            {
+                alignment = value;
+                rectTransform.pivot = Text.GetTextAnchorPivot(alignment);
+            }
             get { return alignment; }
         }
         #endregion
@@ -122,10 +126,7 @@ namespace MGS.Tooltip
         /// <returns>Preferred position of tip form.</returns>
         protected virtual Vector2 GetPreferredPosition(Vector2 screenPos)
         {
-            var pivot = Text.GetTextAnchorPivot(alignment);
-            rectTransform.pivot = pivot;
-
-            var xMin = margin.left + rectTransform.rect.width * pivot.x;
+            var xMin = margin.left + rectTransform.rect.width * rectTransform.pivot.x;
             var xPos = screenPos.x;
             if (xPos <= xMin)
             {
@@ -133,14 +134,14 @@ namespace MGS.Tooltip
             }
             else
             {
-                var xMax = Screen.width - margin.right - rectTransform.rect.width * (1 - pivot.x);
+                var xMax = Screen.width - margin.right - rectTransform.rect.width * (1 - rectTransform.pivot.x);
                 if (xPos > xMax)
                 {
                     xPos = xMax;
                 }
             }
 
-            var yMin = margin.bottom + rectTransform.rect.height * pivot.y;
+            var yMin = margin.bottom + rectTransform.rect.height * rectTransform.pivot.y;
             var yPos = screenPos.y;
             if (yPos <= yMin)
             {
@@ -148,7 +149,7 @@ namespace MGS.Tooltip
             }
             else
             {
-                var yMax = Screen.height - margin.right - rectTransform.rect.height * (1 - pivot.y);
+                var yMax = Screen.height - margin.right - rectTransform.rect.height * (1 - rectTransform.pivot.y);
                 if (yPos > yMax)
                 {
                     yPos = yMax;
@@ -160,6 +161,15 @@ namespace MGS.Tooltip
         #endregion
 
         #region Protected Method
+        /// <summary>
+        /// Initialize tip form.
+        /// </summary>
+        public override void Initialize()
+        {
+            base.Initialize();
+            rectTransform.pivot = Text.GetTextAnchorPivot(alignment);
+        }
+
         /// <summary>
         /// Open tip form.
         /// </summary>
