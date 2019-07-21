@@ -126,8 +126,8 @@ namespace MGS.Tooltip
         /// <returns>Preferred position of tip form.</returns>
         protected virtual Vector2 GetPreferredPosition(Vector2 screenPos)
         {
-            var xMin = margin.left + rectTransform.rect.width * rectTransform.pivot.x;
             var xPos = screenPos.x;
+            var xMin = margin.left + rectTransform.rect.width * rectTransform.pivot.x;
             if (xPos <= xMin)
             {
                 xPos = xMin;
@@ -141,15 +141,15 @@ namespace MGS.Tooltip
                 }
             }
 
-            var yMin = margin.bottom + rectTransform.rect.height * rectTransform.pivot.y;
             var yPos = screenPos.y;
+            var yMin = margin.bottom + rectTransform.rect.height * rectTransform.pivot.y;
             if (yPos <= yMin)
             {
                 yPos = yMin;
             }
             else
             {
-                var yMax = Screen.height - margin.right - rectTransform.rect.height * (1 - rectTransform.pivot.y);
+                var yMax = Screen.height - margin.top - rectTransform.rect.height * (1 - rectTransform.pivot.y);
                 if (yPos > yMax)
                 {
                     yPos = yMax;
