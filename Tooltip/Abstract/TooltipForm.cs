@@ -114,17 +114,7 @@ namespace MGS.Tooltip
         /// Set tip form position.
         /// </summary>
         /// <param name="screenPos">Target screen position of tip form.</param>
-        protected void SetFormPosition(Vector2 screenPos)
-        {
-            rectTransform.anchoredPosition = GetPreferredPosition(screenPos);
-        }
-
-        /// <summary>
-        /// Get preferred position of tip form base on screen.
-        /// </summary>
-        /// <param name="screenPos">Target screen position of tip form.</param>
-        /// <returns>Preferred position of tip form.</returns>
-        protected virtual Vector2 GetPreferredPosition(Vector2 screenPos)
+        protected virtual void SetFormPosition(Vector2 screenPos)
         {
             var xPos = screenPos.x;
             var xMin = margin.left + rectTransform.rect.width * rectTransform.pivot.x;
@@ -156,7 +146,7 @@ namespace MGS.Tooltip
                 }
             }
 
-            return new Vector2(xPos, yPos);
+            rectTransform.anchoredPosition = new Vector2(xPos, yPos);
         }
         #endregion
 
