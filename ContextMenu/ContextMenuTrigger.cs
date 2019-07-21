@@ -44,7 +44,7 @@ namespace MGS.ContextMenu
         /// </summary>
         [Tooltip("Handler of contex menu.")]
         [SerializeField]
-        private ContextMenuHandler menuHandler;
+        private ContextMenuHandler menuHandler = null;
 
         /// <summary>
         /// Camera to raycast.

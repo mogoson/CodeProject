@@ -14,7 +14,6 @@ using MGS.Common.Logger;
 using MGS.UIForm;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace MGS.ContextMenu
 {
@@ -66,7 +65,7 @@ namespace MGS.ContextMenu
         /// </summary>
         protected virtual void Reset()
         {
-            rectTransform.pivot = Text.GetTextAnchorPivot(TextAnchor.UpperLeft);
+            rectTransform.pivot = new Vector2(0, 1);
         }
 
         /// <summary>
@@ -161,25 +160,54 @@ namespace MGS.ContextMenu
         /// Set menu form position.
         /// </summary>
         /// <param name="screenPos">Target screen position of menu form.</param>
-        protected void SetFormPosition(Vector2 screenPos)
+        protected virtual void SetFormPosition(Vector2 screenPos)
         {
-            rectTransform.anchoredPosition = GetPreferredPosition(screenPos);
-        }
+            //Default left align.
+            var xPivot = 0.0f;
+            var xPos = screenPos.x;
+            if (xPos <= margin.left)
+            {
+                xPos = margin.left;
+            }
+            else
+            {
+                var xMax = Screen.width - margin.right;
+                var leftAlignMax = xMax - rectTransform.rect.width;
+                if (xPos > leftAlignMax)
+                {
+                    //Right align.
+                    xPivot = 1.0f;
+                    if (xPos > xMax)
+                    {
+                        xPos = xMax;
+                    }
+                }
+            }
 
-        /// <summary>
-        /// Get preferred position of menu form base on screen.
-        /// </summary>
-        /// <param name="screenPos">Target screen position of menu form.</param>
-        /// <returns>Preferred position of menu form.</returns>
-        protected virtual Vector2 GetPreferredPosition(Vector2 screenPos)
-        {
-            var rootTrans = transform as RectTransform;
-            var halfWidth = rootTrans.rect.width * 0.5f;
-            var halfHeight = rootTrans.rect.height * 0.5f;
+            //Default upper align.
+            var yPivot = 1.0f;
+            var yMax = Screen.height - margin.top;
+            var yPos = screenPos.y;
+            if (yPos >= yMax)
+            {
+                yPos = yMax;
+            }
+            else
+            {
+                var upperAlignMin = margin.bottom + rectTransform.rect.height;
+                if (yPos < upperAlignMin)
+                {
+                    //Lower align.
+                    yPivot = 0.0f;
+                    if (yPos < margin.bottom)
+                    {
+                        yPos = margin.bottom;
+                    }
+                }
+            }
 
-            var newX = screenPos.x < Screen.width - rootTrans.rect.width ? screenPos.x + halfWidth : Screen.width - halfWidth;
-            var newY = screenPos.y < rootTrans.rect.height ? screenPos.y + halfHeight : screenPos.y - halfHeight;
-            return new Vector2(newX, newY);
+            rectTransform.pivot = new Vector2(xPivot, yPivot);
+            rectTransform.anchoredPosition = new Vector2(xPos, yPos);
         }
         #endregion
 
