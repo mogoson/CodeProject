@@ -150,7 +150,7 @@ namespace MGS.Tooltip
         }
         #endregion
 
-        #region Protected Method
+        #region Public Method
         /// <summary>
         /// Initialize tip form.
         /// </summary>
