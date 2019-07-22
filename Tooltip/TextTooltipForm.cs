@@ -64,8 +64,9 @@ namespace MGS.Tooltip
             tipContent.text = content;
             tipLayout.preferredWidth = Mathf.Min(tipContent.preferredWidth, tipMaxWidth);
 
-            //Unity 5.3 or above.
+#if UNITY_5_3_OR_NEWER
             LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+#endif
         }
         #endregion
 
