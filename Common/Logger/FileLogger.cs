@@ -61,18 +61,26 @@ namespace MGS.Common.Logger
         {
             var logFile = LogPath + string.Format("/Log-{0}.log", level);
             var formatLog = string.Format("{0} - {1} - {2}\r\n", DateTime.Now, tag, string.Format(format, args));
-            try
+            if (DirectoryUtility.RequirePath(logFile, out string error))
             {
-                DirectoryUtility.RequirePath(logFile);
-                File.AppendAllText(logFile, formatLog);
+                try
+                {
+                    File.AppendAllText(logFile, formatLog);
+                }
+#if DEBUG
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+#else
+                catch { }
+#endif
             }
 #if DEBUG
-            catch (Exception ex)
+            else
             {
-                throw ex;
+                throw new Exception(error);
             }
-#else
-            catch { }
 #endif
         }
         #endregion

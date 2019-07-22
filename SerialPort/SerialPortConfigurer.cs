@@ -21,13 +21,16 @@
  *  Description  :  Optimize.
  *************************************************************************/
 
-using LitJson;
 using MGS.Common.DesignPattern;
 using MGS.Common.IO;
 using MGS.Common.Logger;
 using System;
 using System.IO;
 using UnityEngine;
+
+#if !UNITY_5_3_OR_NEWER
+using LitJson;
+#endif
 
 namespace MGS.IO.Ports
 {
@@ -66,7 +69,12 @@ namespace MGS.IO.Ports
             try
             {
                 var json = File.ReadAllText(ConfigPath);
+
+#if UNITY_5_3_OR_NEWER
+                return JsonUtility.FromJson<SerialPortConfig>(json);
+#else
                 return JsonMapper.ToObject<SerialPortConfig>(json);
+#endif
             }
             catch (Exception ex)
             {
@@ -87,17 +95,24 @@ namespace MGS.IO.Ports
             error = string.Empty;
             try
             {
+#if UNITY_5_3_OR_NEWER
+                var configJson = JsonUtility.ToJson(config);
+#else
                 var configJson = JsonMapper.ToJson(config);
-                DirectoryUtility.RequirePath(ConfigPath);
-                File.WriteAllText(ConfigPath, configJson);
-                return true;
+#endif
+                if (DirectoryUtility.RequirePath(ConfigPath, out error))
+                {
+                    File.WriteAllText(ConfigPath, configJson);
+                    return true;
+                }
             }
             catch (Exception ex)
             {
                 error = ex.Message;
-                LogUtility.LogError(0, "Write serialport config to file error: {0}", error);
-                return false;
             }
+
+            LogUtility.LogError(0, "Write serialport config to file error: {0}", error);
+            return false;
         }
         #endregion
     }
