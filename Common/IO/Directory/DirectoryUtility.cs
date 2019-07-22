@@ -26,15 +26,18 @@ namespace MGS.Common.IO
         /// Require the directory path exist.
         /// </summary>
         /// <param name="path">Directory path.</param>
+        /// <param name="error">Error message.</param>
         /// <returns>Create directory path succeed?</returns>
-        public static bool RequirePath(string path)
+        public static bool RequirePath(string path, out string error)
         {
             if (string.IsNullOrEmpty(path))
             {
-                LogUtility.LogError(0, "Require path error: The path can not be null.");
+                error = "The path is null or empty.";
+                LogUtility.LogError(0, "Require path error: {0}", error);
                 return false;
             }
 
+            error = string.Empty;
             var dir = Path.GetDirectoryName(path);
             if (Directory.Exists(dir))
             {
@@ -48,7 +51,8 @@ namespace MGS.Common.IO
             }
             catch (Exception ex)
             {
-                LogUtility.LogError(0, "Require path error: {0}", ex.Message);
+                error = ex.Message;
+                LogUtility.LogError(0, "Require path error: {0}", error);
                 return false;
             }
         }

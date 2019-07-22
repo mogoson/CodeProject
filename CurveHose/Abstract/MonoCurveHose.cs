@@ -144,6 +144,11 @@ namespace MGS.CurveHose
                 }
                 mesh.SetTriangles(CreateSideTriangles(), 1);
             }
+
+#if !UNITY_5_5_OR_NEWER
+            //Mesh.Optimize was removed in Unity 5.5.2p4.
+            mesh.Optimize();
+#endif
             mesh.RecalculateNormals();
             mesh.RecalculateBounds();
         }
