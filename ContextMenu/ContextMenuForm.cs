@@ -30,7 +30,7 @@ namespace MGS.ContextMenu
         /// </summary>
         [Tooltip("Margin of menu form base on screen.")]
         [SerializeField]
-        protected RectOffset margin = new RectOffset(5, 5, 5, 5);
+        protected RectOffset margin;
 
         /// <summary>
         /// Prefab of menu item to create clone.

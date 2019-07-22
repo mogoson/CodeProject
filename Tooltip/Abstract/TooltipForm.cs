@@ -28,21 +28,21 @@ namespace MGS.Tooltip
         /// </summary>
         [Tooltip("Margin of tip form base on screen.")]
         [SerializeField]
-        protected RectOffset margin = new RectOffset();
+        protected RectOffset margin;
 
         /// <summary>
         /// Offset for tip form to align to mouse pointer.
         /// </summary>
         [Tooltip("Offset for tip form to align to mouse pointer.")]
         [SerializeField]
-        protected Vector2 offset = new Vector2(10, -10);
+        protected Vector2 offset;
 
         /// <summary>
         /// Alignment for tip form to align to target position.
         /// </summary>
         [Tooltip("Alignment for tip form to align to target position.")]
         [SerializeField]
-        protected TextAnchor alignment = TextAnchor.UpperLeft;
+        protected TextAnchor alignment;
 
         /// <summary>
         /// Tip form auto follow mouse pointer?
