@@ -28,7 +28,7 @@ namespace MGS.Tooltip
         /// </summary>
         [Tooltip("Margin of tip form base on screen.")]
         [SerializeField]
-        protected RectOffset margin = new RectOffset(5, 5, 5, 5);
+        protected RectOffset margin = new RectOffset();
 
         /// <summary>
         /// Offset for tip form to align to mouse pointer.

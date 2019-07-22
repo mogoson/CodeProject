@@ -24,8 +24,8 @@ namespace MGS.Tooltip
         /// Tooltip content.
         /// </summary>
         [Tooltip("Tooltip content.")]
-        [Multiline]
         [SerializeField]
+        [Multiline]
         protected string tipContent = "Tooltip Content";
 
         /// <summary>
