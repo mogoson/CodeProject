@@ -163,6 +163,14 @@ namespace MGS.ElectronicComponent
 
         #region Protected Method
         /// <summary>
+        /// Initialize knob component.
+        /// </summary>
+        protected override void Initialize()
+        {
+            StartAngles = transform.localEulerAngles;
+        }
+
+        /// <summary>
         /// Response mouse left button drag.
         /// </summary>
         protected virtual void OnMouseDrag()
@@ -233,16 +241,6 @@ namespace MGS.ElectronicComponent
                 }
             }
             return nearAngle;
-        }
-        #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Initialize knob component.
-        /// </summary>
-        public override void Initialize()
-        {
-            StartAngles = transform.localEulerAngles;
         }
         #endregion
     }

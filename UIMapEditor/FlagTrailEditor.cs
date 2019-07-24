@@ -30,8 +30,9 @@ namespace MGS.UIMapEditor
         {
             if (GUILayout.Button("Clear Trail"))
             {
-                Target.Initialize();
+                InvokeMethod(Target, "Initialize");
                 Target.ClearTrail();
+
                 MarkSceneDirty();
                 EditorUtility.UnloadUnusedAssetsImmediate(false);
             }

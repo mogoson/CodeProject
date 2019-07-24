@@ -42,17 +42,17 @@ namespace MGS.UIMap
         {
             Initialize();
         }
-        #endregion
 
-        #region Public Method
         /// <summary>
         /// Initialize MapFlag.
         /// </summary>
-        public virtual void Initialize()
+        protected virtual void Initialize()
         {
             rectTrans = GetComponent<RectTransform>();
         }
+        #endregion
 
+        #region Public Method
         /// <summary>
         /// Update flag's position.
         /// </summary>

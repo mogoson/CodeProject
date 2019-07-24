@@ -34,7 +34,7 @@ namespace MGS.UIMapEditor
                 {
                     return false;
                 }
-                flag.Initialize();
+                InvokeMethod(flag, "Initialize");
             }
             return true;
         }

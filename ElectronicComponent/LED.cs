@@ -39,16 +39,18 @@ namespace MGS.ElectronicComponent
         protected Renderer LEDRenderer;
         #endregion
 
-        #region Public Method
+        #region Protected Method
         /// <summary>
         /// Initialize LED.
         /// </summary>
-        public override void Initialize()
+        protected override void Initialize()
         {
             LEDRenderer = GetComponent<Renderer>();
             defaultMat = LEDRenderer.material;
         }
+        #endregion
 
+        #region Public Method
         /// <summary>
         /// Open LED.
         /// </summary>

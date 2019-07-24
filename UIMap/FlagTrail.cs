@@ -67,6 +67,20 @@ namespace MGS.UIMap
         }
 
         /// <summary>
+        /// Initialize trail texture.
+        /// </summary>
+        protected virtual void Initialize()
+        {
+            rectTrans = GetComponent<RectTransform>();
+            width = (int)rectTrans.rect.width;
+            height = (int)rectTrans.rect.height;
+
+            pixelColors = new Color[width * height];
+            texture = new Texture2D(width, height) { name = "Trail" };
+            GetComponent<RawImage>().texture = texture;
+        }
+
+        /// <summary>
         /// Component late update.
         /// </summary>
         protected virtual void LateUpdate()
@@ -136,20 +150,6 @@ namespace MGS.UIMap
         #endregion
 
         #region Public Method
-        /// <summary>
-        /// Initialize trail texture.
-        /// </summary>
-        public void Initialize()
-        {
-            rectTrans = GetComponent<RectTransform>();
-            width = (int)rectTrans.rect.width;
-            height = (int)rectTrans.rect.height;
-
-            pixelColors = new Color[width * height];
-            texture = new Texture2D(width, height) { name = "Trail" };
-            GetComponent<RawImage>().texture = texture;
-        }
-
         /// <summary>
         /// Clear trail pixels.
         /// </summary>

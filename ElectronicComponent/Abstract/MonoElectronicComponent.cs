@@ -45,13 +45,11 @@ namespace MGS.ElectronicComponent
         {
             Initialize();
         }
-        #endregion
 
-        #region Public Method
         /// <summary>
         /// Initialize component.
         /// </summary>
-        public abstract void Initialize();
+        protected virtual void Initialize() { }
         #endregion
     }
 }
