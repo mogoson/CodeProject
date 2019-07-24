@@ -46,13 +46,25 @@ namespace MGS.Tooltip
         /// <summary>
         /// Reset tip form.
         /// </summary>
-        protected override void Reset()
+        protected virtual void Reset()
         {
-            base.Reset();
-
             var fitter = GetComponent<ContentSizeFitter>();
             fitter.horizontalFit = fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
             tipContent = GetComponentInChildren<Text>();
+        }
+
+        /// <summary>
+        /// Initialize tip form.
+        /// </summary>
+        protected override void Initialize()
+        {
+            base.Initialize();
+
+            tipLayout = tipContent.GetComponent<LayoutElement>();
+            if (tipLayout == null)
+            {
+                tipLayout = tipContent.gameObject.AddComponent<LayoutElement>();
+            }
         }
 
         /// <summary>
@@ -71,20 +83,6 @@ namespace MGS.Tooltip
         #endregion
 
         #region Public Method
-        /// <summary>
-        /// Initialize tip form.
-        /// </summary>
-        public override void Initialize()
-        {
-            base.Initialize();
-
-            tipLayout = tipContent.GetComponent<LayoutElement>();
-            if (tipLayout == null)
-            {
-                tipLayout = tipContent.gameObject.AddComponent<LayoutElement>();
-            }
-        }
-
         /// <summary>
         /// Refresh tip form.
         /// </summary>

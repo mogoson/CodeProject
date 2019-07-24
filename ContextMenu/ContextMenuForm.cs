@@ -61,11 +61,19 @@ namespace MGS.ContextMenu
 
         #region Protected Method
         /// <summary>
-        /// Reset menu form.
+        /// Initialize menu form.
         /// </summary>
-        protected virtual void Reset()
+        protected override void Initialize()
         {
-            rectTransform.pivot = new Vector2(0, 1);
+            base.Initialize();
+
+            rectTransform.anchorMin = rectTransform.anchorMax = Vector2.zero;
+            var preCreateItems = GetComponentsInChildren<IContextMenuItem>();
+            foreach (var item in preCreateItems)
+            {
+                item.OnClick.AddListener(OnItemClick);
+                items.Add(item);
+            }
         }
 
         /// <summary>
@@ -212,21 +220,6 @@ namespace MGS.ContextMenu
         #endregion
 
         #region Public Method
-        /// <summary>
-        /// Initialize menu form.
-        /// </summary>
-        public override void Initialize()
-        {
-            base.Initialize();
-
-            var preCreateItems = GetComponentsInChildren<IContextMenuItem>();
-            foreach (var item in preCreateItems)
-            {
-                item.OnClick.AddListener(OnItemClick);
-                items.Add(item);
-            }
-        }
-
         /// <summary>
         /// Refresh context menu form.
         /// </summary>

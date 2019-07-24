@@ -87,11 +87,13 @@ namespace MGS.Tooltip
 
         #region Protected Method
         /// <summary>
-        /// Reset tip form.
+        /// Initialize tip form.
         /// </summary>
-        protected virtual void Reset()
+        protected override void Initialize()
         {
+            base.Initialize();
             rectTransform.anchorMin = rectTransform.anchorMax = Vector2.zero;
+            rectTransform.pivot = Text.GetTextAnchorPivot(alignment);
         }
 
         /// <summary>
@@ -151,15 +153,6 @@ namespace MGS.Tooltip
         #endregion
 
         #region Public Method
-        /// <summary>
-        /// Initialize tip form.
-        /// </summary>
-        public override void Initialize()
-        {
-            base.Initialize();
-            rectTransform.pivot = Text.GetTextAnchorPivot(alignment);
-        }
-
         /// <summary>
         /// Open tip form.
         /// </summary>

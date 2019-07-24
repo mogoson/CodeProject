@@ -71,6 +71,17 @@ namespace MGS.ContextMenu
 
         #region Protected Method
         /// <summary>
+        /// Initialize menu item.
+        /// </summary>
+        protected override void Initialize()
+        {
+            base.Initialize();
+
+            button = GetComponent<Button>();
+            button.onClick.AddListener(OnButtonClick);
+        }
+
+        /// <summary>
         /// On menu item button click.
         /// </summary>
         protected virtual void OnButtonClick()
@@ -80,17 +91,6 @@ namespace MGS.ContextMenu
         #endregion
 
         #region Public Method
-        /// <summary>
-        /// Initialize menu item.
-        /// </summary>
-        public override void Initialize()
-        {
-            base.Initialize();
-
-            button = GetComponent<Button>();
-            button.onClick.AddListener(OnButtonClick);
-        }
-
         /// <summary>
         /// Refresh menu item.
         /// </summary>
