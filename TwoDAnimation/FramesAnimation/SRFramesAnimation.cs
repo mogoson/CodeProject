@@ -31,23 +31,21 @@ namespace MGS.TwoDAnimation
 
         #region Protected Method
         /// <summary>
+        /// Initialize animation.
+        /// </summary>
+        protected override void Initialize()
+        {
+            base.Initialize();
+            sRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        /// <summary>
         /// Set current frame to renderer.
         /// </summary>
         /// <param name="frameIndex">Index of frame.</param>
         protected override void SetFrame(int frameIndex)
         {
             sRenderer.sprite = frames[frameIndex];
-        }
-        #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Initialize animation.
-        /// </summary>
-        public override void Initialize()
-        {
-            base.Initialize();
-            sRenderer = GetComponent<SpriteRenderer>();
         }
         #endregion
     }

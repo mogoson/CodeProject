@@ -71,6 +71,15 @@ namespace MGS.PathAnimation
 
         #region Protected Method
         /// <summary>
+        /// Initialize animation.
+        /// </summary>
+        protected override void Initialize()
+        {
+            base.Initialize();
+            Path = curvePath;
+        }
+
+        /// <summary>
         /// Update animation.
         /// </summary>
         protected virtual void Update()
@@ -136,15 +145,6 @@ namespace MGS.PathAnimation
         #endregion
 
         #region Public Method
-        /// <summary>
-        /// Initialize animation.
-        /// </summary>
-        public override void Initialize()
-        {
-            base.Initialize();
-            Path = curvePath;
-        }
-
         /// <summary>
         /// Refresh animation.
         /// </summary>
