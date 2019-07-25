@@ -70,6 +70,18 @@ namespace MGS.TwoDAnimation
 
         #region Protected Method
         /// <summary>
+        /// Initialize animation.
+        /// </summary>
+        protected override void Initialize()
+        {
+            base.Initialize();
+
+            mRenderer = GetComponent<Renderer>();
+            framesCount = row * column;
+            ApplyUVMaps();
+        }
+
+        /// <summary>
         /// Get image frames count.
         /// </summary>
         /// <returns>Frames count</returns>
@@ -102,18 +114,6 @@ namespace MGS.TwoDAnimation
         #endregion
 
         #region Public Method
-        /// <summary>
-        /// Initialize animation.
-        /// </summary>
-        public override void Initialize()
-        {
-            base.Initialize();
-
-            mRenderer = GetComponent<Renderer>();
-            framesCount = row * column;
-            ApplyUVMaps();
-        }
-
         /// <summary>
         /// Refresh frames texture of animation.
         /// </summary>

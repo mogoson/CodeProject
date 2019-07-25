@@ -85,20 +85,20 @@ namespace MGS.UCamera
         }
 
         /// <summary>
-        /// Late update component.
-        /// </summary>
-        protected virtual void LateUpdate()
-        {
-            AroundByMouse();
-        }
-
-        /// <summary>
         /// Initialize component.
         /// </summary>
         protected virtual void Initialize()
         {
             CurrentAngles = targetAngles = transform.eulerAngles;
             CurrentDistance = targetDistance = Vector3.Distance(transform.position, target.position);
+        }
+
+        /// <summary>
+        /// Late update component.
+        /// </summary>
+        protected virtual void LateUpdate()
+        {
+            AroundByMouse();
         }
 
         /// <summary>

@@ -38,6 +38,15 @@ namespace MGS.TwoDAnimation
 
         #region Private Method
         /// <summary>
+        /// Initialize animation.
+        /// </summary>
+        protected override void Initialize()
+        {
+            base.Initialize();
+            mRenderer = GetComponent<Renderer>();
+        }
+
+        /// <summary>
         /// Component update.
         /// </summary>
         protected virtual void Update()
@@ -47,15 +56,6 @@ namespace MGS.TwoDAnimation
         #endregion
 
         #region Public Method
-        /// <summary>
-        /// Initialize animation.
-        /// </summary>
-        public override void Initialize()
-        {
-            base.Initialize();
-            mRenderer = GetComponent<Renderer>();
-        }
-
         /// <summary>
         /// Rewind animation.
         /// </summary>

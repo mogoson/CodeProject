@@ -107,6 +107,14 @@ namespace MGS.ElectronicComponent
 
         #region Protected Method
         /// <summary>
+        /// Initialize rocker component.
+        /// </summary>
+        protected override void Initialize()
+        {
+            StartAngles = transform.localEulerAngles;
+        }
+
+        /// <summary>
         /// Drag rocker.
         /// </summary>
         protected virtual void OnMouseDrag()
@@ -165,16 +173,6 @@ namespace MGS.ElectronicComponent
         protected virtual void Rotate(Vector3 eulerAngles)
         {
             transform.localRotation = Quaternion.Euler(StartAngles + eulerAngles);
-        }
-        #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Initialize rocker component.
-        /// </summary>
-        public override void Initialize()
-        {
-            StartAngles = transform.localEulerAngles;
         }
         #endregion
     }

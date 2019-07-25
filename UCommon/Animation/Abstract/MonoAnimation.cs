@@ -70,14 +70,14 @@ namespace MGS.UCommon.UAnimation
         {
             Initialize();
         }
-        #endregion
 
-        #region Public Method
         /// <summary>
         /// Initialize animation.
         /// </summary>
-        public virtual void Initialize() { }
+        protected virtual void Initialize() { }
+        #endregion
 
+        #region Public Method
         /// <summary>
         /// Play animation.
         /// </summary>

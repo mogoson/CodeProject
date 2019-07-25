@@ -159,6 +159,15 @@ namespace MGS.ElectronicComponent
 
         #region Protected Method
         /// <summary>
+        /// Initialize button component.
+        /// </summary>
+        protected override void Initialize()
+        {
+            StartPosition = transform.localPosition;
+            LED = monoLED;
+        }
+
+        /// <summary>
         /// Response mouse left button down.
         /// </summary>
         protected virtual void OnMouseDown()
@@ -221,17 +230,6 @@ namespace MGS.ElectronicComponent
         protected virtual void Translate(float offset)
         {
             transform.localPosition = StartPosition + MoveAxis * offset;
-        }
-        #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Initialize button component.
-        /// </summary>
-        public override void Initialize()
-        {
-            StartPosition = transform.localPosition;
-            LED = monoLED;
         }
         #endregion
     }

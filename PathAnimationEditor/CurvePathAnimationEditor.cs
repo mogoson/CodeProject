@@ -55,8 +55,8 @@ namespace MGS.PathAnimationEditor
 
             if (GUILayout.Button("Align To Path"))
             {
+                InvokeMethod(Target, "Initialize");
                 Target.Path.Rebuild();
-                Target.Initialize();
                 Target.Rewind();
 
                 MarkSceneDirty();

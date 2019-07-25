@@ -38,11 +38,11 @@ namespace MGS.UIForm
         public virtual string Tittle { set; get; }
         #endregion
 
-        #region Public Method
+        #region Protected Method
         /// <summary>
         /// Initialize form.
         /// </summary>
-        public override void Initialize()
+        protected override void Initialize()
         {
             base.Initialize();
 

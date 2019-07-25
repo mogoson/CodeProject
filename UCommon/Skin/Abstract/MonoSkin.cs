@@ -67,17 +67,9 @@ namespace MGS.UCommon.Skin
         }
 
         /// <summary>
-        /// Rebuild the mesh of skin.
-        /// </summary>
-        /// <param name="mesh">Mesh of skin.</param>
-        protected abstract void RebuildMesh(Mesh mesh);
-        #endregion
-
-        #region Public Method
-        /// <summary>
         /// Initialize mono skin.
         /// </summary>
-        public virtual void Initialize()
+        protected virtual void Initialize()
         {
             //Find components.
             meshRenderer = GetComponent<SkinnedMeshRenderer>();
@@ -90,6 +82,14 @@ namespace MGS.UCommon.Skin
             }
         }
 
+        /// <summary>
+        /// Rebuild the mesh of skin.
+        /// </summary>
+        /// <param name="mesh">Mesh of skin.</param>
+        protected abstract void RebuildMesh(Mesh mesh);
+        #endregion
+
+        #region Public Method
         /// <summary>
         /// Rebuild the mesh of skin.
         /// </summary>

@@ -59,14 +59,17 @@ namespace MGS.UCommon.UI
         {
             Initialize();
         }
-        #endregion
 
-        #region Public Method
         /// <summary>
         /// Initialize UI.
         /// </summary>
-        public virtual void Initialize() { }
+        protected virtual void Initialize()
+        {
+            IsOpen = gameObject.activeSelf;
+        }
+        #endregion
 
+        #region Public Method
         /// <summary>
         /// Open UI.
         /// </summary>

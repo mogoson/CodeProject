@@ -28,7 +28,7 @@ namespace MGS.UCommonEditor.SkinEditor
         {
             if (!Application.isPlaying)
             {
-                Target.Initialize();
+                InvokeMethod(Target, "Initialize");
                 Target.Rebuild();
 
                 Undo.undoRedoPerformed += Target.Rebuild;
