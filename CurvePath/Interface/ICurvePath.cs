@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2018 Mogoson. All rights reserved.
+ *  Copyright © 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ICurvePath.cs
  *  Description  :  Define interface of path that base on curve.
