@@ -40,11 +40,11 @@ namespace MGS.ContextMenu
         private float maxDistance = 100;
 
         /// <summary>
-        /// Handler of contex menu.
+        /// Handler of contex menu trigger.
         /// </summary>
-        [Tooltip("Handler of contex menu.")]
+        [Tooltip("Handler of contex menu trigger.")]
         [SerializeField]
-        private ContextMenuHandler menuHandler = null;
+        private ContextMenuTriggerHandler handler = null;
 
         /// <summary>
         /// Camera to raycast.
@@ -70,9 +70,9 @@ namespace MGS.ContextMenu
         }
 
         /// <summary>
-        /// Handler of contex menu.
+        /// Handler of contex menu trigger.
         /// </summary>
-        public IContextMenuHandler MenuHandler { set; get; }
+        public IContextMenuTriggerHandler Handler { set; get; }
         #endregion
 
         #region Protected Method
@@ -84,7 +84,7 @@ namespace MGS.ContextMenu
             base.SingleAwake();
 
             RayCamera = GetComponent<Camera>();
-            MenuHandler = menuHandler;
+            Handler = handler;
         }
         #endregion
 
@@ -116,13 +116,12 @@ namespace MGS.ContextMenu
         /// <param name="hitInfo">Raycast hit info of target.</param>
         private void OnMenuTriggerEnter(RaycastHit hitInfo)
         {
-            if (MenuHandler == null)
+            if (Handler == null)
             {
-                LogUtility.LogWarning(0, "Do nothing on context menu trigger enter: The handler of trigger is null.");
+                LogUtility.LogWarning(0, "Do nothing on menu trigger enter: The handler of menu trigger is null.");
                 return;
             }
-
-            MenuHandler.OnMenuTriggerEnter(hitInfo);
+            Handler.OnMenuTriggerEnter(hitInfo);
         }
 
         /// <summary>
@@ -130,13 +129,12 @@ namespace MGS.ContextMenu
         /// </summary>
         private void OnMenuTriggerExit()
         {
-            if (MenuHandler == null)
+            if (Handler == null)
             {
-                LogUtility.LogWarning(0, "Do nothing on context menu trigger exit: The handler of trigger is null.");
+                LogUtility.LogWarning(0, "Do nothing on menu trigger exit: The handler of menu trigger is null.");
                 return;
             }
-
-            MenuHandler.OnMenuTriggerExit();
+            Handler.OnMenuTriggerExit();
         }
         #endregion
     }

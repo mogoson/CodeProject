@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IContextMenuForm.cs
- *  Description  :  Interface of custom context menu form.
+ *  File         :  ContextMenuObject.cs
+ *  Description  :  Context menu support object.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -10,26 +10,22 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UIForm;
 using UnityEngine;
 
 namespace MGS.ContextMenu
 {
     /// <summary>
-    /// Interface of custom context menu form.
+    /// Context menu support object.
     /// </summary>
-    public interface IContextMenuForm : IUIForm
+    [RequireComponent(typeof(Collider))]
+    public abstract class ContextMenuObject : MonoBehaviour, IContextMenuFormHandler
     {
-        #region Property
+        #region Method
         /// <summary>
-        /// Margin of menu form base on screen.
+        /// On context menu item click.
         /// </summary>
-        RectOffset Margin { set; get; }
-
-        /// <summary>
-        /// Handler of contex menu form.
-        /// </summary>
-        IContextMenuFormHandler Handler { set; get; }
+        /// <param name="tag">Tag of menu item.</param>
+        public abstract void OnMenuItemClick(string tag);
         #endregion
     }
 }

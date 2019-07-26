@@ -1,35 +1,35 @@
 ﻿/*************************************************************************
- *  Copyright © 2019 Mogoson. All rights reserved.
+ *  Copyright © 2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IContextMenuForm.cs
- *  Description  :  Interface of custom context menu form.
+ *  File         :  IContextMenuTriggerHandler.cs
+ *  Description  :  Define interface for context menu trigger handler.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  4/12/2019
+ *  Date         :  9/16/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UIForm;
 using UnityEngine;
 
 namespace MGS.ContextMenu
 {
     /// <summary>
-    /// Interface of custom context menu form.
+    /// Interface for context menu trigger handler.
     /// </summary>
-    public interface IContextMenuForm : IUIForm
+    public interface IContextMenuTriggerHandler
     {
-        #region Property
+        #region Method
         /// <summary>
-        /// Margin of menu form base on screen.
+        /// On context menu trigger enter.
         /// </summary>
-        RectOffset Margin { set; get; }
+        /// <param name="hitInfo">Raycast hit info of target.</param>
+        void OnMenuTriggerEnter(RaycastHit hitInfo);
 
         /// <summary>
-        /// Handler of contex menu form.
+        /// On context menu trigger exit.
         /// </summary>
-        IContextMenuFormHandler Handler { set; get; }
+        void OnMenuTriggerExit();
         #endregion
     }
 }

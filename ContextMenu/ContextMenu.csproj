@@ -47,14 +47,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\ContextMenuHandler.cs" />
+    <Compile Include="Abstract\ContextMenuObject.cs" />
+    <Compile Include="Abstract\ContextMenuTriggerHandler.cs" />
     <Compile Include="ContextMenuItem.cs" />
     <Compile Include="ContextMenuForm.cs" />
     <Compile Include="ContextMenuTrigger.cs" />
-    <Compile Include="Interface\IContextMenuHandler.cs" />
+    <Compile Include="Interface\IContextMenuFormHandler.cs" />
     <Compile Include="Interface\IContextMenuForm.cs" />
     <Compile Include="Interface\IContextMenuItem.cs" />
     <Compile Include="Interface\IContextMenuTrigger.cs" />
+    <Compile Include="Interface\IContextMenuTriggerHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  ContextMenuHandler.cs
- *  Description  :  Handler of contex menu.
+ *  File         :  ContextMenuTriggerHandler.cs
+ *  Description  :  Handler of contex menu trigger.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -15,15 +15,15 @@ using UnityEngine;
 namespace MGS.ContextMenu
 {
     /// <summary>
-    /// Handler of contex menu.
+    /// Handler of contex menu trigger.
     /// </summary>
-    public abstract class ContextMenuHandler : MonoBehaviour, IContextMenuHandler
+    public abstract class ContextMenuTriggerHandler : MonoBehaviour, IContextMenuTriggerHandler
     {
         #region Field and Property
         /// <summary>
         /// Current menu form.
         /// </summary>
-        protected IContextMenuForm current;
+        protected IContextMenuForm currentMenuForm;
         #endregion
 
         #region Public Method
@@ -34,21 +34,20 @@ namespace MGS.ContextMenu
         public abstract void OnMenuTriggerEnter(RaycastHit hitInfo);
 
         /// <summary>
-        /// On context menu item click.
-        /// </summary>
-        /// <param name="tag">Tag of menu item.</param>
-        public abstract void OnMenuItemClick(string tag);
-
-        /// <summary>
         /// On context menu trigger exit.
         /// </summary>
         public virtual void OnMenuTriggerExit()
         {
-            if (current == null || !current.IsOpen)
+            if (currentMenuForm == null)
             {
                 return;
             }
-            current.Close();
+
+            if (currentMenuForm.IsOpen)
+            {
+                currentMenuForm.Close();
+            }
+            currentMenuForm = null;
         }
         #endregion
     }

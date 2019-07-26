@@ -49,14 +49,14 @@ namespace MGS.ContextMenu
         }
 
         /// <summary>
+        /// Handler of contex menu form.
+        /// </summary>
+        public IContextMenuFormHandler Handler { set; get; }
+
+        /// <summary>
         /// List of context menu items.
         /// </summary>
         protected List<IContextMenuItem> items = new List<IContextMenuItem>();
-
-        /// <summary>
-        /// Handler of context menu.
-        /// </summary>
-        protected IContextMenuHandler handler;
         #endregion
 
         #region Protected Method
@@ -83,7 +83,13 @@ namespace MGS.ContextMenu
         protected virtual void OnItemClick(string tag)
         {
             Close();
-            handler.OnMenuItemClick(tag);
+
+            if (Handler == null)
+            {
+                LogUtility.LogWarning(0, "Do nothing on menu item click: The handler of menu form is null.");
+                return;
+            }
+            Handler.OnMenuItemClick(tag);
         }
 
         /// <summary>

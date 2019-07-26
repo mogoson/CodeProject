@@ -36,9 +36,9 @@ namespace MGS.ContextMenu
         float MaxDistance { set; get; }
 
         /// <summary>
-        /// Handler of contex menu.
+        /// Handler of contex menu trigger.
         /// </summary>
-        IContextMenuHandler MenuHandler { set; get; }
+        IContextMenuTriggerHandler Handler { set; get; }
         #endregion
     }
 }
