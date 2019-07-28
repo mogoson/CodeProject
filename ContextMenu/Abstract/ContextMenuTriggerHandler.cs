@@ -47,7 +47,6 @@ namespace MGS.ContextMenu
             {
                 currentMenuForm.Close();
             }
-            currentMenuForm = null;
         }
         #endregion
     }

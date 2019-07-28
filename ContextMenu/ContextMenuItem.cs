@@ -110,42 +110,4 @@ namespace MGS.ContextMenu
         }
         #endregion
     }
-
-    /// <summary>
-    /// Data of context menu item.
-    /// </summary>
-    public struct ContextMenuItemData
-    {
-        #region Field and Property
-        /// <summary>
-        /// Name of menu item.
-        /// </summary>
-        public string name;
-
-        /// <summary>
-        /// Tag of menu item.
-        /// </summary>
-        public string tag;
-
-        /// <summary>
-        /// Menu item is interactable?
-        /// </summary>
-        public bool interactable;
-        #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        /// <param name="name">Name of menu item.</param>
-        /// <param name="tag">Tag of menu item.</param>
-        /// <param name="interactable">Menu item is interactable?</param>
-        public ContextMenuItemData(string name, string tag, bool interactable = true)
-        {
-            this.name = name;
-            this.tag = tag;
-            this.interactable = interactable;
-        }
-        #endregion
-    }
 }

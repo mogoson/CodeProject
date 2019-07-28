@@ -36,8 +36,13 @@ namespace MGS.ContextMenu
         /// Prefab of menu item to create clone.
         /// </summary>
         [Tooltip("Prefab of menu item to create clone.")]
-        [SerializeField]
-        protected GameObject itemPrefab;
+        public GameObject itemPrefab;
+
+        /// <summary>
+        /// Prefab of menu separator to create clone.
+        /// </summary>
+        [Tooltip("Prefab of menu separator to create clone.")]
+        public GameObject separatorPrefab;
 
         /// <summary>
         /// Margin of menu form base on screen.
@@ -98,40 +103,29 @@ namespace MGS.ContextMenu
         /// <param name="itemDatas">Data of menu items.</param>
         protected void RefreshItems(ICollection<ContextMenuItemData> itemDatas)
         {
-            RequireItems(itemDatas.Count);
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+            items.Clear();
 
-            var index = 0;
             foreach (var itemData in itemDatas)
             {
-                items[index].Refresh(itemData);
-                index++;
-            }
-        }
-
-        /// <summary>
-        /// Require a sufficient number of items.
-        /// </summary>
-        /// <param name="expectedCount">Count of expected items.</param>
-        protected void RequireItems(int expectedCount)
-        {
-            while (items.Count < expectedCount)
-            {
-                var newItem = Instantiate(itemPrefab);
-                var menuItem = newItem.GetComponent<IContextMenuItem>();
-
-                menuItem.OnClick.AddListener(OnItemClick);
-                items.Add(menuItem);
-            }
-
-            var currentCount = items.Count;
-            while (currentCount > expectedCount)
-            {
-                var item = items[currentCount - 1];
-                if (item.IsOpen)
+                if (itemData == null)
                 {
-                    item.Close();
+                    var newSeparator = Instantiate(separatorPrefab);
+                    newSeparator.transform.SetParent(transform);
                 }
-                currentCount--;
+                else
+                {
+                    var newItem = Instantiate(itemPrefab);
+                    newItem.transform.SetParent(transform);
+
+                    var menuItem = newItem.GetComponent<IContextMenuItem>();
+                    menuItem.OnClick.AddListener(OnItemClick);
+                    menuItem.Refresh(itemData);
+                    items.Add(menuItem);
+                }
             }
         }
 
@@ -229,12 +223,16 @@ namespace MGS.ContextMenu
         /// <summary>
         /// Refresh context menu form.
         /// </summary>
-        /// <param name="data">Data for context menu form, type is Vector2 or ContextMenuFormInfo or ContextMenuFormData.</param>
+        /// <param name="data">Data for context menu form, type is Vector2 or Vector3 or ContextMenuFormInfo or ContextMenuFormData.</param>
         public override void Refresh(object data)
         {
-            if (data is Vector2 position)
+            if (data is Vector2 vector2)
             {
-                SetFormPosition(position);
+                SetFormPosition(vector2);
+            }
+            else if (data is Vector3 vector3)
+            {
+                SetFormPosition(vector3);
             }
             else if (data is ContextMenuFormInfo formInfo)
             {
@@ -248,7 +246,7 @@ namespace MGS.ContextMenu
             }
             else
             {
-                LogUtility.LogError(0, "Refresh context menu form failed: The type of data is not Vector2 or ContextMenuFormInfo or ContextMenuFormData.");
+                LogUtility.LogError(0, "Refresh context menu form failed: The type of data is not Vector2 or Vector3 or ContextMenuFormInfo or ContextMenuFormData.");
             }
         }
 
@@ -271,7 +269,7 @@ namespace MGS.ContextMenu
     /// <summary>
     /// Info of contex menu form.
     /// </summary>
-    public struct ContextMenuFormInfo
+    public class ContextMenuFormInfo
     {
         /// <summary>
         /// Screen position to display menu form.
@@ -298,7 +296,7 @@ namespace MGS.ContextMenu
     /// <summary>
     /// Data of contex menu form.
     /// </summary>
-    public struct ContextMenuFormData
+    public class ContextMenuFormData
     {
         /// <summary>
         /// Screen position to display menu form.
@@ -320,5 +318,43 @@ namespace MGS.ContextMenu
             this.position = position;
             this.items = items;
         }
+    }
+
+    /// <summary>
+    /// Data of context menu item.
+    /// </summary>
+    public class ContextMenuItemData
+    {
+        #region Field and Property
+        /// <summary>
+        /// Name of menu item.
+        /// </summary>
+        public string name;
+
+        /// <summary>
+        /// Tag of menu item.
+        /// </summary>
+        public string tag;
+
+        /// <summary>
+        /// Menu item is interactable?
+        /// </summary>
+        public bool interactable;
+        #endregion
+
+        #region Public Method
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="name">Name of menu item.</param>
+        /// <param name="tag">Tag of menu item.</param>
+        /// <param name="interactable">Menu item is interactable?</param>
+        public ContextMenuItemData(string name, string tag, bool interactable = true)
+        {
+            this.name = name;
+            this.tag = tag;
+            this.interactable = interactable;
+        }
+        #endregion
     }
 }
