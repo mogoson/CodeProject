@@ -36,13 +36,15 @@ namespace MGS.ContextMenu
         /// Prefab of menu item to create clone.
         /// </summary>
         [Tooltip("Prefab of menu item to create clone.")]
-        public GameObject itemPrefab;
+        [SerializeField]
+        protected GameObject itemPrefab;
 
         /// <summary>
         /// Prefab of menu separator to create clone.
         /// </summary>
         [Tooltip("Prefab of menu separator to create clone.")]
-        public GameObject separatorPrefab;
+        [SerializeField]
+        protected GameObject separatorPrefab;
 
         /// <summary>
         /// Margin of menu form base on screen.
@@ -57,6 +59,47 @@ namespace MGS.ContextMenu
         /// Handler of contex menu form.
         /// </summary>
         public IContextMenuFormHandler Handler { set; get; }
+
+        /// <summary>
+        /// Prefab of menu item to create clone.
+        /// </summary>
+        public GameObject ItemPrefab
+        {
+            set
+            {
+                if (value == null)
+                {
+                    LogUtility.LogError(0, "The prefab of menu item can not be set as null.");
+                    return;
+                }
+
+                if (value.GetComponent<IContextMenuItem>() == null)
+                {
+                    LogUtility.LogError(0, "The prefab of menu item has no component that implement IContextMenuItem interface.");
+                    return;
+                }
+
+                itemPrefab = value;
+            }
+            get { return itemPrefab; }
+        }
+
+        /// <summary>
+        /// Prefab of menu separator to create clone.
+        /// </summary>
+        public GameObject SeparatorPrefab
+        {
+            set
+            {
+                if (value == null)
+                {
+                    LogUtility.LogError(0, "The prefab of menu separator can not be set as null.");
+                    return;
+                }
+                separatorPrefab = value;
+            }
+            get { return separatorPrefab; }
+        }
 
         /// <summary>
         /// List of context menu items.
@@ -101,14 +144,16 @@ namespace MGS.ContextMenu
         /// Refresh items of menu base on item datas.
         /// </summary>
         /// <param name="itemDatas">Data of menu items.</param>
-        protected void RefreshItems(ICollection<ContextMenuItemData> itemDatas)
+        protected void RefreshItems(IEnumerable<object> itemDatas)
         {
-            foreach (Transform child in transform)
-            {
-                Destroy(child.gameObject);
-            }
-            items.Clear();
+            ClearItems();
 
+            if (itemDatas == null)
+            {
+                return;
+            }
+
+            //Create new items.
             foreach (var itemData in itemDatas)
             {
                 if (itemData == null)
@@ -149,12 +194,19 @@ namespace MGS.ContextMenu
         /// <param name="tags">Tags of menu items.</param>
         protected void DisableItems(IEnumerable<string> tags)
         {
+            if (tags == null)
+            {
+                return;
+            }
+
+            //Find target items.
             var targetTags = new List<string>(tags);
             var targetItems = items.FindAll(item =>
             {
                 return targetTags.Contains(item.Tag);
             });
 
+            //Set items interactable as false.
             foreach (var item in targetItems)
             {
                 if (item.Interactable)
@@ -162,6 +214,18 @@ namespace MGS.ContextMenu
                     item.Interactable = false;
                 }
             }
+        }
+
+        /// <summary>
+        /// Clear all menu items.
+        /// </summary>
+        protected void ClearItems()
+        {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+            items.Clear();
         }
 
         /// <summary>
@@ -242,7 +306,7 @@ namespace MGS.ContextMenu
             else if (data is ContextMenuFormData formData)
             {
                 SetFormPosition(formData.position);
-                RefreshItems(formData.items);
+                RefreshItems(formData.itemDatas);
             }
             else
             {
@@ -306,55 +370,17 @@ namespace MGS.ContextMenu
         /// <summary>
         /// Data of menu items.
         /// </summary>
-        public ICollection<ContextMenuItemData> items;
+        public IEnumerable<object> itemDatas;
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="position">Screen position to display menu form.</param>
-        /// <param name="items">Data of menu items.</param>
-        public ContextMenuFormData(Vector2 position, ICollection<ContextMenuItemData> items)
+        /// <param name="itemDatas">Data of menu items.</param>
+        public ContextMenuFormData(Vector2 position, IEnumerable<object> itemDatas)
         {
             this.position = position;
-            this.items = items;
+            this.itemDatas = itemDatas;
         }
-    }
-
-    /// <summary>
-    /// Data of context menu item.
-    /// </summary>
-    public class ContextMenuItemData
-    {
-        #region Field and Property
-        /// <summary>
-        /// Name of menu item.
-        /// </summary>
-        public string name;
-
-        /// <summary>
-        /// Tag of menu item.
-        /// </summary>
-        public string tag;
-
-        /// <summary>
-        /// Menu item is interactable?
-        /// </summary>
-        public bool interactable;
-        #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        /// <param name="name">Name of menu item.</param>
-        /// <param name="tag">Tag of menu item.</param>
-        /// <param name="interactable">Menu item is interactable?</param>
-        public ContextMenuItemData(string name, string tag, bool interactable = true)
-        {
-            this.name = name;
-            this.tag = tag;
-            this.interactable = interactable;
-        }
-        #endregion
     }
 }
