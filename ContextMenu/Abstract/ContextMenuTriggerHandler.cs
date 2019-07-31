@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.UIForm;
 using UnityEngine;
 
 namespace MGS.ContextMenu
@@ -21,9 +22,9 @@ namespace MGS.ContextMenu
     {
         #region Field and Property
         /// <summary>
-        /// Current menu form.
+        /// Target menu form.
         /// </summary>
-        protected IContextMenuForm currentMenuForm;
+        protected IContextMenuForm targetMenuForm;
         #endregion
 
         #region Public Method
@@ -38,14 +39,14 @@ namespace MGS.ContextMenu
         /// </summary>
         public virtual void OnMenuTriggerExit()
         {
-            if (currentMenuForm == null)
+            if (targetMenuForm == null)
             {
                 return;
             }
 
-            if (currentMenuForm.IsOpen)
+            if (targetMenuForm.IsOpen)
             {
-                currentMenuForm.Close();
+                UIFormManager.Instance.CloseForm(targetMenuForm);
             }
         }
         #endregion

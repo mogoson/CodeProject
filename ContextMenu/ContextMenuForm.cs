@@ -114,14 +114,7 @@ namespace MGS.ContextMenu
         protected override void Initialize()
         {
             base.Initialize();
-
             rectTransform.anchorMin = rectTransform.anchorMax = Vector2.zero;
-            var preCreateItems = GetComponentsInChildren<IContextMenuItem>();
-            foreach (var item in preCreateItems)
-            {
-                item.OnClick.AddListener(OnItemClick);
-                items.Add(item);
-            }
         }
 
         /// <summary>
