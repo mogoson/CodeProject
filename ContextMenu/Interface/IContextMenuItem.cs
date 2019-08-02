@@ -18,7 +18,7 @@ namespace MGS.ContextMenu
     /// <summary>
     /// Interface for context menu item.
     /// </summary>
-    public interface IContextMenuItem : IInteractableUI
+    public interface IContextMenuItem : IContextMenuElement, IInteractableUI
     {
         #region Property
         /// <summary>

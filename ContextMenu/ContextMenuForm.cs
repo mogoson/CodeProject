@@ -96,6 +96,13 @@ namespace MGS.ContextMenu
                     LogUtility.LogError(0, "The prefab of menu separator can not be set as null.");
                     return;
                 }
+
+                if (value.GetComponent<IContextMenuSeparator>() == null)
+                {
+                    LogUtility.LogError(0, "The prefab of menu separator has no component that implement IContextMenuSeparator interface.");
+                    return;
+                }
+
                 separatorPrefab = value;
             }
             get { return separatorPrefab; }
@@ -105,6 +112,11 @@ namespace MGS.ContextMenu
         /// List of context menu items.
         /// </summary>
         protected List<IContextMenuItem> items = new List<IContextMenuItem>();
+
+        /// <summary>
+        /// List of context menu separators.
+        /// </summary>
+        protected List<IContextMenuSeparator> separators = new List<IContextMenuSeparator>();
         #endregion
 
         #region Protected Method
@@ -115,6 +127,19 @@ namespace MGS.ContextMenu
         {
             base.Initialize();
             rectTransform.anchorMin = rectTransform.anchorMax = Vector2.zero;
+
+            var preCreateItems = GetComponentsInChildren<IContextMenuItem>();
+            foreach (var item in preCreateItems)
+            {
+                item.OnClick.AddListener(OnItemClick);
+                items.Add(item);
+            }
+
+            var preCreateSeparators = GetComponentsInChildren<IContextMenuSeparator>();
+            foreach (var separator in preCreateSeparators)
+            {
+                separators.Add(separator);
+            }
         }
 
         /// <summary>
@@ -134,37 +159,102 @@ namespace MGS.ContextMenu
         }
 
         /// <summary>
-        /// Refresh items of menu base on item datas.
+        /// Refresh the elements of menu base on element datas.
         /// </summary>
-        /// <param name="itemDatas">Data of menu items.</param>
-        protected void RefreshItems(IEnumerable<object> itemDatas)
+        /// <param name="elementDatas">Data of menu elements.</param>
+        protected void RefreshElements(IEnumerable<IContextMenuElementData> elementDatas)
         {
-            ClearItems();
-
-            if (itemDatas == null)
+            if (elementDatas == null)
             {
                 return;
             }
 
-            //Create new items.
-            foreach (var itemData in itemDatas)
+            int itemIndex = 0, separatorIndex = 0, elementIndex = 0;
+            foreach (var elementData in elementDatas)
             {
-                if (itemData == null)
+                IContextMenuElement menuElement;
+                if (elementData.ElementType == ContextMenuElementType.ContextMenuItem)
                 {
-                    var newSeparator = Instantiate(separatorPrefab);
-                    newSeparator.transform.SetParent(transform);
+                    if (itemIndex >= items.Count)
+                    {
+                        menuElement = CreateItem();
+                    }
+                    else
+                    {
+                        menuElement = items[itemIndex];
+                    }
+                    itemIndex++;
                 }
                 else
                 {
-                    var newItem = Instantiate(itemPrefab);
-                    newItem.transform.SetParent(transform);
+                    if (separatorIndex >= separators.Count)
+                    {
+                        menuElement = CreateSeparator();
+                    }
+                    else
+                    {
+                        menuElement = separators[separatorIndex];
+                    }
+                    separatorIndex++;
+                }
 
-                    var menuItem = newItem.GetComponent<IContextMenuItem>();
-                    menuItem.OnClick.AddListener(OnItemClick);
-                    menuItem.Refresh(itemData);
-                    items.Add(menuItem);
+                menuElement.SetSiblingIndex(elementIndex);
+                menuElement.Open(elementData);
+                elementIndex++;
+            }
+
+            if (itemIndex < items.Count - 1)
+            {
+                var surplusItems = items.GetRange(itemIndex + 1, items.Count - itemIndex - 1);
+                foreach (var surplusItem in surplusItems)
+                {
+                    if (surplusItem.IsOpen)
+                    {
+                        surplusItem.Close();
+                    }
                 }
             }
+
+            if (separatorIndex < separators.Count - 1)
+            {
+                var surplusSeparators = separators.GetRange(separatorIndex + 1, separators.Count - separatorIndex - 1);
+                foreach (var surplusSeparator in surplusSeparators)
+                {
+                    if (surplusSeparator.IsOpen)
+                    {
+                        surplusSeparator.Close();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Create menu item.
+        /// </summary>
+        /// <returns>New menu item.</returns>
+        protected IContextMenuItem CreateItem()
+        {
+            var newItem = Instantiate(itemPrefab);
+            newItem.transform.SetParent(transform);
+
+            var menuItem = newItem.GetComponent<IContextMenuItem>();
+            menuItem.OnClick.AddListener(OnItemClick);
+            items.Add(menuItem);
+            return menuItem;
+        }
+
+        /// <summary>
+        /// Create menu separator.
+        /// </summary>
+        /// <returns>New menu separator.</returns>
+        protected IContextMenuSeparator CreateSeparator()
+        {
+            var newSeparator = Instantiate(separatorPrefab);
+            newSeparator.transform.SetParent(transform);
+
+            var menuSeparator = newSeparator.GetComponent<IContextMenuSeparator>();
+            separators.Add(menuSeparator);
+            return menuSeparator;
         }
 
         /// <summary>
@@ -207,18 +297,6 @@ namespace MGS.ContextMenu
                     item.Interactable = false;
                 }
             }
-        }
-
-        /// <summary>
-        /// Clear all menu items.
-        /// </summary>
-        protected void ClearItems()
-        {
-            foreach (Transform child in transform)
-            {
-                Destroy(child.gameObject);
-            }
-            items.Clear();
         }
 
         /// <summary>
@@ -294,12 +372,12 @@ namespace MGS.ContextMenu
             else if (data is ContextMenuFormInfo formInfo)
             {
                 SetFormPosition(formInfo.position);
-                DisableItems(formInfo.disables);
+                DisableItems(formInfo.disableItems);
             }
             else if (data is ContextMenuFormData formData)
             {
                 SetFormPosition(formData.position);
-                RefreshItems(formData.itemDatas);
+                RefreshElements(formData.elementDatas);
             }
             else
             {
@@ -336,17 +414,17 @@ namespace MGS.ContextMenu
         /// <summary>
         /// Tags of disable menu items.
         /// </summary>
-        public IEnumerable<string> disables;
+        public IEnumerable<string> disableItems;
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="position">Screen position to display menu form.</param>
-        /// <param name="disables">Tags of disable menu items.</param>
-        public ContextMenuFormInfo(Vector2 position, IEnumerable<string> disables)
+        /// <param name="disableItems">Tags of disable menu items.</param>
+        public ContextMenuFormInfo(Vector2 position, IEnumerable<string> disableItems)
         {
             this.position = position;
-            this.disables = disables;
+            this.disableItems = disableItems;
         }
     }
 
@@ -361,19 +439,19 @@ namespace MGS.ContextMenu
         public Vector2 position;
 
         /// <summary>
-        /// Data of menu items.
+        /// Data of menu elements.
         /// </summary>
-        public IEnumerable<object> itemDatas;
+        public IEnumerable<IContextMenuElementData> elementDatas;
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="position">Screen position to display menu form.</param>
-        /// <param name="itemDatas">Data of menu items.</param>
-        public ContextMenuFormData(Vector2 position, IEnumerable<object> itemDatas)
+        /// <param name="elementDatas">Data of menu elements.</param>
+        public ContextMenuFormData(Vector2 position, IEnumerable<IContextMenuElementData> elementDatas)
         {
             this.position = position;
-            this.itemDatas = itemDatas;
+            this.elementDatas = elementDatas;
         }
     }
 }
