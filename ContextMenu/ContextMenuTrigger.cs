@@ -73,6 +73,11 @@ namespace MGS.ContextMenu
         /// Handler of contex menu trigger.
         /// </summary>
         public IContextMenuTriggerHandler Handler { set; get; }
+
+        /// <summary>
+        /// Trigger current is enter?
+        /// </summary>
+        private bool isEnter = false;
         #endregion
 
         #region Protected Method
@@ -121,7 +126,9 @@ namespace MGS.ContextMenu
                 LogUtility.LogWarning(0, "Do nothing on menu trigger enter: The handler of menu trigger is null.");
                 return;
             }
+
             Handler.OnMenuTriggerEnter(hitInfo);
+            isEnter = true;
         }
 
         /// <summary>
@@ -129,12 +136,19 @@ namespace MGS.ContextMenu
         /// </summary>
         private void OnMenuTriggerExit()
         {
+            if (!isEnter)
+            {
+                return;
+            }
+
             if (Handler == null)
             {
                 LogUtility.LogWarning(0, "Do nothing on menu trigger exit: The handler of menu trigger is null.");
                 return;
             }
+
             Handler.OnMenuTriggerExit();
+            isEnter = false;
         }
         #endregion
     }
