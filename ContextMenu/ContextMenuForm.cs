@@ -203,28 +203,16 @@ namespace MGS.ContextMenu
                 elementIndex++;
             }
 
-            if (itemIndex < items.Count - 1)
+            //Hide surplus menu items.
+            if (itemIndex < items.Count)
             {
-                var surplusItems = items.GetRange(itemIndex + 1, items.Count - itemIndex - 1);
-                foreach (var surplusItem in surplusItems)
-                {
-                    if (surplusItem.IsOpen)
-                    {
-                        surplusItem.Close();
-                    }
-                }
+                HideItems(itemIndex, items.Count - itemIndex);
             }
 
-            if (separatorIndex < separators.Count - 1)
+            //Hide surplus menu separators.
+            if (separatorIndex < separators.Count)
             {
-                var surplusSeparators = separators.GetRange(separatorIndex + 1, separators.Count - separatorIndex - 1);
-                foreach (var surplusSeparator in surplusSeparators)
-                {
-                    if (surplusSeparator.IsOpen)
-                    {
-                        surplusSeparator.Close();
-                    }
-                }
+                HideSeparators(separatorIndex, separators.Count - separatorIndex);
             }
         }
 
@@ -255,6 +243,40 @@ namespace MGS.ContextMenu
             var menuSeparator = newSeparator.GetComponent<IContextMenuSeparator>();
             separators.Add(menuSeparator);
             return menuSeparator;
+        }
+
+        /// <summary>
+        /// Hide menu items.
+        /// </summary>
+        /// <param name="index">Start index.</param>
+        /// <param name="count">Hide count.</param>
+        protected void HideItems(int index, int count)
+        {
+            var rangeItems = items.GetRange(index, count);
+            foreach (var item in rangeItems)
+            {
+                if (item.IsOpen)
+                {
+                    item.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Hide menu separators.
+        /// </summary>
+        /// <param name="index">Start index.</param>
+        /// <param name="count">Hide count.</param>
+        protected void HideSeparators(int index, int count)
+        {
+            var rangeSeparators = separators.GetRange(index, count);
+            foreach (var separator in rangeSeparators)
+            {
+                if (separator.IsOpen)
+                {
+                    separator.Close();
+                }
+            }
         }
 
         /// <summary>
