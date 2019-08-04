@@ -20,33 +20,28 @@ namespace MGS.ContextMenu
     /// </summary>
     public abstract class ContextMenuTriggerHandler : MonoBehaviour, IContextMenuTriggerHandler
     {
-        #region Field and Property
-        /// <summary>
-        /// Target menu form.
-        /// </summary>
-        protected IContextMenuForm targetMenuForm;
-        #endregion
-
         #region Public Method
         /// <summary>
         /// On context menu trigger enter.
         /// </summary>
         /// <param name="hitInfo">Raycast hit info of target.</param>
-        public abstract void OnMenuTriggerEnter(RaycastHit hitInfo);
+        /// <returns>Instance of context menu form.</returns>
+        public abstract IContextMenuForm OnMenuTriggerEnter(RaycastHit hitInfo);
 
         /// <summary>
         /// On context menu trigger exit.
         /// </summary>
-        public virtual void OnMenuTriggerExit()
+        /// <param name="menuForm">Instance of context menu form.</param>
+        public virtual void OnMenuTriggerExit(IContextMenuForm menuForm)
         {
-            if (targetMenuForm == null)
+            if (menuForm == null || menuForm.IsDisposed)
             {
                 return;
             }
 
-            if (targetMenuForm.IsOpen)
+            if (menuForm.IsOpen)
             {
-                UIFormManager.Instance.CloseForm(targetMenuForm);
+                UIFormManager.Instance.CloseForm(menuForm);
             }
         }
         #endregion

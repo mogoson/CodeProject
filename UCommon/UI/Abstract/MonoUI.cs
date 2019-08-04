@@ -23,6 +23,11 @@ namespace MGS.UCommon.UI
     {
         #region Field and Property
         /// <summary>
+        /// RectTransform component of UI.
+        /// </summary>
+        public RectTransform rectTransform { get { return transform as RectTransform; } }
+
+        /// <summary>
         /// UI is open?
         /// </summary>
         public virtual bool IsOpen { get { return gameObject.activeSelf; } }
@@ -41,14 +46,6 @@ namespace MGS.UCommon.UI
         /// Event on close UI.
         /// </summary>
         public GenericEvent OnClose { get; } = new GenericEvent();
-
-        /// <summary>
-        /// RectTransform component of UI.
-        /// </summary>
-        public RectTransform rectTransform
-        {
-            get { return transform as RectTransform; }
-        }
         #endregion
 
         #region Protected Method

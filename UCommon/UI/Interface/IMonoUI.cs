@@ -11,6 +11,7 @@
  *************************************************************************/
 
 using MGS.UCommon.Generic;
+using UnityEngine;
 
 namespace MGS.UCommon.UI
 {
@@ -20,6 +21,11 @@ namespace MGS.UCommon.UI
     public interface IMonoUI
     {
         #region Property
+        /// <summary>
+        /// RectTransform component of UI.
+        /// </summary>
+        RectTransform rectTransform { get; }
+
         /// <summary>
         /// UI is open?
         /// </summary>

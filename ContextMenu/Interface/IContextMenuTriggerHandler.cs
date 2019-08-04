@@ -24,12 +24,14 @@ namespace MGS.ContextMenu
         /// On context menu trigger enter.
         /// </summary>
         /// <param name="hitInfo">Raycast hit info of target.</param>
-        void OnMenuTriggerEnter(RaycastHit hitInfo);
+        /// <returns>Instance of context menu form.</returns>
+        IContextMenuForm OnMenuTriggerEnter(RaycastHit hitInfo);
 
         /// <summary>
         /// On context menu trigger exit.
         /// </summary>
-        void OnMenuTriggerExit();
+        /// <param name="menuForm">Instance of context menu form.</param>
+        void OnMenuTriggerExit(IContextMenuForm menuForm);
         #endregion
     }
 }

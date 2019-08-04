@@ -12,8 +12,8 @@
 
 using MGS.Common.Logger;
 using MGS.UCommon.DesignPattern;
+using MGS.UCommon.Utility;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace MGS.ContextMenu
 {
@@ -75,9 +75,9 @@ namespace MGS.ContextMenu
         public IContextMenuTriggerHandler Handler { set; get; }
 
         /// <summary>
-        /// Trigger current is enter?
+        /// Context menu form of trigger.
         /// </summary>
-        private bool isEnter = false;
+        private IContextMenuForm menuForm;
         #endregion
 
         #region Protected Method
@@ -99,13 +99,29 @@ namespace MGS.ContextMenu
         /// </summary>
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            if (Input.GetMouseButtonDown(0))
             {
+                if (menuForm == null || menuForm.IsDisposed)
+                {
+                    return;
+                }
+
+                if (EventSystemUtility.CheckPointerOverGameObject(menuForm.rectTransform.gameObject))
+                {
+                    return;
+                }
                 OnMenuTriggerExit();
             }
             else if (Input.GetMouseButtonDown(1))
             {
-                OnMenuTriggerExit();
+                if (menuForm != null && !menuForm.IsDisposed)
+                {
+                    if (EventSystemUtility.CheckPointerOverGameObject(menuForm.rectTransform.gameObject))
+                    {
+                        return;
+                    }
+                    OnMenuTriggerExit();
+                }
 
                 var ray = RayCamera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance, layerMask))
@@ -126,29 +142,22 @@ namespace MGS.ContextMenu
                 LogUtility.LogWarning(0, "Do nothing on menu trigger enter: The handler of menu trigger is null.");
                 return;
             }
-
-            Handler.OnMenuTriggerEnter(hitInfo);
-            isEnter = true;
+            menuForm = Handler.OnMenuTriggerEnter(hitInfo);
         }
 
         /// <summary>
         /// On context menu trigger exit.
         /// </summary>
+        /// <returns></returns>
         private void OnMenuTriggerExit()
         {
-            if (!isEnter)
-            {
-                return;
-            }
-
             if (Handler == null)
             {
                 LogUtility.LogWarning(0, "Do nothing on menu trigger exit: The handler of menu trigger is null.");
                 return;
             }
-
-            Handler.OnMenuTriggerExit();
-            isEnter = false;
+            Handler.OnMenuTriggerExit(menuForm);
+            menuForm = null;
         }
         #endregion
     }
