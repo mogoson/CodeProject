@@ -26,7 +26,7 @@ namespace MGS.UIMapEditor
         #endregion
 
         #region Protected Method
-        protected bool CheckInitialiseFlags(MapFlag[] flags)
+        protected bool InitializeFlags(MapFlag[] flags)
         {
             foreach (var flag in flags)
             {
@@ -39,26 +39,26 @@ namespace MGS.UIMapEditor
             return true;
         }
 
-        protected bool CheckMapSettings()
+        protected bool CheckMapSettingsValid()
         {
             if (Target.terrainInfo.center == null || Target.terrainInfo.width <= 0 || Target.terrainInfo.length <= 0)
             {
                 return false;
             }
 
-            if (CheckInitialiseFlags(Target.staticFlags.ToArray()) == false)
+            if (InitializeFlags(Target.staticFlags.ToArray()) == false)
             {
                 return false;
             }
 
-            return CheckInitialiseFlags(Target.dynamicFlags.ToArray());
+            return InitializeFlags(Target.dynamicFlags.ToArray());
         }
 
         protected void DrawAlignFlagsButton()
         {
             if (GUILayout.Button("Align Flags"))
             {
-                if (CheckMapSettings())
+                if (CheckMapSettingsValid())
                 {
                     Target.UpdateFlags();
                     MarkSceneDirty();

@@ -39,7 +39,7 @@ namespace MGS.Media.Subtitle
         /// </summary>
         /// <param name="time">Play time(Milliseconds).</param>
         /// <returns>Play time is in this subtitle time range?</returns>
-        protected bool CheckRange(int time)
+        protected bool CheckInRange(int time)
         {
             var isInRange = false;
             if (clips.Count > 0)
@@ -101,7 +101,7 @@ namespace MGS.Media.Subtitle
         public string GetClip(int time)
         {
             var content = string.Empty;
-            if (CheckRange(time))
+            if (CheckInRange(time))
             {
                 if (clip == null)
                 {
