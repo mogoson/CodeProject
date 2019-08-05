@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MGS.Meter")]
-[assembly: AssemblyCopyright("Copyright ©  2018-2019 Mogoson")]
+[assembly: AssemblyCopyright("Copyright ©  2019 Mogoson")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
