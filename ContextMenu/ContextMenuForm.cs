@@ -14,6 +14,7 @@ using MGS.Common.Logger;
 using MGS.UIForm;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MGS.ContextMenu
 {
@@ -214,6 +215,10 @@ namespace MGS.ContextMenu
             {
                 HideSeparators(separatorIndex, separators.Count - separatorIndex);
             }
+
+#if UNITY_5_3_OR_NEWER
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+#endif
         }
 
         /// <summary>
@@ -319,6 +324,10 @@ namespace MGS.ContextMenu
                     item.Interactable = false;
                 }
             }
+
+#if UNITY_5_3_OR_NEWER
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+#endif
         }
 
         /// <summary>
@@ -393,13 +402,13 @@ namespace MGS.ContextMenu
             }
             else if (data is ContextMenuFormInfo formInfo)
             {
-                SetFormPosition(formInfo.position);
                 DisableItems(formInfo.disableItems);
+                SetFormPosition(formInfo.position);
             }
             else if (data is ContextMenuFormData formData)
             {
-                SetFormPosition(formData.position);
                 RefreshElements(formData.elementDatas);
+                SetFormPosition(formData.position);
             }
             else
             {
