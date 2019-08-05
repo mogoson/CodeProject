@@ -25,6 +25,11 @@ namespace MGS.ContextMenu
         /// Margin of menu form base on screen.
         /// </summary>
         RectOffset Margin { set; get; }
+
+        /// <summary>
+        /// Handler of contex menu form.
+        /// </summary>
+        IContextMenuFormHandler Handler { set; get; }
         #endregion
     }
 }

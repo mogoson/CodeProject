@@ -23,14 +23,19 @@ namespace MGS.UCommon.UI
     {
         #region Field and Property
         /// <summary>
+        /// RectTransform component of UI.
+        /// </summary>
+        public RectTransform rectTransform { get { return transform as RectTransform; } }
+
+        /// <summary>
         /// UI is open?
         /// </summary>
-        public bool IsOpen { protected set; get; }
+        public virtual bool IsOpen { get { return gameObject.activeSelf; } }
 
         /// <summary>
         /// UI is disposed?
         /// </summary>
-        public bool IsDisposed { protected set; get; }
+        public virtual bool IsDisposed { private set; get; }
 
         /// <summary>
         /// Event on open UI.
@@ -41,14 +46,6 @@ namespace MGS.UCommon.UI
         /// Event on close UI.
         /// </summary>
         public GenericEvent OnClose { get; } = new GenericEvent();
-
-        /// <summary>
-        /// RectTransform component of UI.
-        /// </summary>
-        public RectTransform rectTransform
-        {
-            get { return transform as RectTransform; }
-        }
         #endregion
 
         #region Protected Method
@@ -63,9 +60,14 @@ namespace MGS.UCommon.UI
         /// <summary>
         /// Initialize UI.
         /// </summary>
-        protected virtual void Initialize()
+        protected virtual void Initialize() { }
+
+        /// <summary>
+        /// On destroy UI.
+        /// </summary>
+        protected virtual void OnDestroy()
         {
-            IsOpen = gameObject.activeSelf;
+            IsDisposed = true;
         }
         #endregion
 
@@ -81,7 +83,6 @@ namespace MGS.UCommon.UI
                 Refresh(data);
             }
             gameObject.SetActive(true);
-            IsOpen = true;
             OnOpen.Invoke();
         }
 
@@ -100,13 +101,11 @@ namespace MGS.UCommon.UI
             if (dispose)
             {
                 Destroy(gameObject);
-                IsDisposed = true;
             }
             else
             {
                 gameObject.SetActive(false);
             }
-            IsOpen = false;
             OnClose.Invoke();
         }
         #endregion

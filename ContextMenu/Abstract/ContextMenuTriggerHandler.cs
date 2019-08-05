@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  ContextMenuHandler.cs
- *  Description  :  Handler of contex menu.
+ *  File         :  ContextMenuTriggerHandler.cs
+ *  Description  :  Handler of contex menu trigger.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -10,45 +10,39 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.UIForm;
 using UnityEngine;
 
 namespace MGS.ContextMenu
 {
     /// <summary>
-    /// Handler of contex menu.
+    /// Handler of contex menu trigger.
     /// </summary>
-    public abstract class ContextMenuHandler : MonoBehaviour, IContextMenuHandler
+    public abstract class ContextMenuTriggerHandler : MonoBehaviour, IContextMenuTriggerHandler
     {
-        #region Field and Property
-        /// <summary>
-        /// Current menu form.
-        /// </summary>
-        protected IContextMenuForm current;
-        #endregion
-
         #region Public Method
         /// <summary>
         /// On context menu trigger enter.
         /// </summary>
         /// <param name="hitInfo">Raycast hit info of target.</param>
-        public abstract void OnMenuTriggerEnter(RaycastHit hitInfo);
-
-        /// <summary>
-        /// On context menu item click.
-        /// </summary>
-        /// <param name="tag">Tag of menu item.</param>
-        public abstract void OnMenuItemClick(string tag);
+        /// <returns>Instance of context menu form.</returns>
+        public abstract IContextMenuForm OnMenuTriggerEnter(RaycastHit hitInfo);
 
         /// <summary>
         /// On context menu trigger exit.
         /// </summary>
-        public virtual void OnMenuTriggerExit()
+        /// <param name="menuForm">Instance of context menu form.</param>
+        public virtual void OnMenuTriggerExit(IContextMenuForm menuForm)
         {
-            if (current == null || !current.IsOpen)
+            if (menuForm == null || menuForm.IsDisposed)
             {
                 return;
             }
-            current.Close();
+
+            if (menuForm.IsOpen)
+            {
+                UIFormManager.Instance.CloseForm(menuForm);
+            }
         }
         #endregion
     }

@@ -1,5 +1,5 @@
 /*************************************************************************
- *  Copyright © 2018 Mogoson. All rights reserved.
+ *  Copyright © 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  IContextMenuTrigger.cs
  *  Description  :  Define interface for context menu trigger.
@@ -36,9 +36,9 @@ namespace MGS.ContextMenu
         float MaxDistance { set; get; }
 
         /// <summary>
-        /// Handler of contex menu.
+        /// Handler of contex menu trigger.
         /// </summary>
-        IContextMenuHandler MenuHandler { set; get; }
+        IContextMenuTriggerHandler Handler { set; get; }
         #endregion
     }
 }

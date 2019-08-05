@@ -1,5 +1,5 @@
 /*************************************************************************
- *  Copyright © 2018 Mogoson. All rights reserved.
+ *  Copyright © 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ContextMenuItem.cs
  *  Description  :  Define context menu item.
@@ -12,7 +12,6 @@
 
 using MGS.Common.Logger;
 using MGS.UCommon.Generic;
-using MGS.UCommon.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +22,7 @@ namespace MGS.ContextMenu
     /// </summary>
     [AddComponentMenu("MGS/ContextMenu/ContextMenuItem")]
     [RequireComponent(typeof(Button))]
-    public class ContextMenuItem : InteractableUI, IContextMenuItem
+    public class ContextMenuItem : ContextMenuElement, IContextMenuItem
     {
         #region Field and Property
         /// <summary>
@@ -57,7 +56,7 @@ namespace MGS.ContextMenu
         /// <summary>
         /// Menu item is interactable?
         /// </summary>
-        public override bool Interactable
+        public virtual bool Interactable
         {
             set { button.interactable = value; }
             get { return button.interactable; }
@@ -114,9 +113,14 @@ namespace MGS.ContextMenu
     /// <summary>
     /// Data of context menu item.
     /// </summary>
-    public struct ContextMenuItemData
+    public class ContextMenuItemData : IContextMenuElementData
     {
         #region Field and Property
+        /// <summary>
+        /// Type of context menu element.
+        /// </summary>
+        public ContextMenuElementType ElementType { get { return ContextMenuElementType.ContextMenuItem; } }
+
         /// <summary>
         /// Name of menu item.
         /// </summary>

@@ -1,29 +1,33 @@
 ﻿/*************************************************************************
  *  Copyright © 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  ICurvePath.cs
- *  Description  :  Define interface of path that base on curve.
+ *  File         :  ContextMenuElement.cs
+ *  Description  :  Define context menu element.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  2/28/2018
+ *  Date         :  8/3/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UCommon.Curve;
+using MGS.UCommon.UI;
 
-namespace MGS.CurvePath
+namespace MGS.ContextMenu
 {
     /// <summary>
-    /// Interface of curve path.
+    /// Element of context menu.
     /// </summary>
-    public interface ICurvePath : ICurve
+    public abstract class ContextMenuElement : UIElement, IContextMenuElement
     {
-        #region Method
+        #region Public Method
         /// <summary>
-        /// Rebuild path.
+        /// Sets the sibling index of menu element.
         /// </summary>
-        void Rebuild();
+        /// <param name="index">Index to set.</param>
+        public virtual void SetSiblingIndex(int index)
+        {
+            transform.SetSiblingIndex(index);
+        }
         #endregion
     }
 }

@@ -1,5 +1,5 @@
 /*************************************************************************
- *  Copyright © 2018 Mogoson. All rights reserved.
+ *  Copyright © 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  IContextMenuItem.cs
  *  Description  :  Define interface for context menu item.
@@ -18,7 +18,7 @@ namespace MGS.ContextMenu
     /// <summary>
     /// Interface for context menu item.
     /// </summary>
-    public interface IContextMenuItem : IInteractableUI
+    public interface IContextMenuItem : IContextMenuElement, IInteractableUI
     {
         #region Property
         /// <summary>

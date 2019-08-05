@@ -1,29 +1,28 @@
 ﻿/*************************************************************************
  *  Copyright © 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  ICurvePath.cs
- *  Description  :  Define interface of path that base on curve.
+ *  File         :  IContextMenuFormHandler.cs
+ *  Description  :  Define interface for context menu form handler.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  2/28/2018
+ *  Date         :  9/16/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UCommon.Curve;
-
-namespace MGS.CurvePath
+namespace MGS.ContextMenu
 {
     /// <summary>
-    /// Interface of curve path.
+    /// Interface for context menu form handler.
     /// </summary>
-    public interface ICurvePath : ICurve
+    public interface IContextMenuFormHandler
     {
         #region Method
         /// <summary>
-        /// Rebuild path.
+        /// On context menu item click.
         /// </summary>
-        void Rebuild();
+        /// <param name="tag">Tag of menu item.</param>
+        void OnMenuItemClick(string tag);
         #endregion
     }
 }

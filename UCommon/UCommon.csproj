@@ -43,6 +43,9 @@
     <Reference Include="UnityEngine">
       <HintPath>..\Library\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\Library\UnityEngine.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animation\Abstract\MonoAnimation.cs" />
@@ -75,6 +78,7 @@
     <Compile Include="Generic\Structure\PlaneArea.cs" />
     <Compile Include="UI\Interface\IUIElement.cs" />
     <Compile Include="Utility\ColorBlendUtility.cs" />
+    <Compile Include="Utility\EventSystemUtility.cs" />
     <Compile Include="Utility\MeshUtility.cs" />
     <Compile Include="Utility\MultilingualUtility.cs" />
     <Compile Include="Utility\RectUtility.cs" />

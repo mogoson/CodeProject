@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2017-2018 Mogoson. All rights reserved.
+ *  Copyright © 2017-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ContextMenuTrigger.cs
  *  Description  :  Trigger of context menu.
@@ -12,8 +12,8 @@
 
 using MGS.Common.Logger;
 using MGS.UCommon.DesignPattern;
+using MGS.UCommon.Utility;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace MGS.ContextMenu
 {
@@ -40,11 +40,11 @@ namespace MGS.ContextMenu
         private float maxDistance = 100;
 
         /// <summary>
-        /// Handler of contex menu.
+        /// Handler of contex menu trigger.
         /// </summary>
-        [Tooltip("Handler of contex menu.")]
+        [Tooltip("Handler of contex menu trigger.")]
         [SerializeField]
-        private ContextMenuHandler menuHandler = null;
+        private ContextMenuTriggerHandler handler = null;
 
         /// <summary>
         /// Camera to raycast.
@@ -70,9 +70,14 @@ namespace MGS.ContextMenu
         }
 
         /// <summary>
-        /// Handler of contex menu.
+        /// Handler of contex menu trigger.
         /// </summary>
-        public IContextMenuHandler MenuHandler { set; get; }
+        public IContextMenuTriggerHandler Handler { set; get; }
+
+        /// <summary>
+        /// Context menu form of trigger.
+        /// </summary>
+        private IContextMenuForm menuForm;
         #endregion
 
         #region Protected Method
@@ -84,7 +89,7 @@ namespace MGS.ContextMenu
             base.SingleAwake();
 
             RayCamera = GetComponent<Camera>();
-            MenuHandler = menuHandler;
+            Handler = handler;
         }
         #endregion
 
@@ -94,13 +99,29 @@ namespace MGS.ContextMenu
         /// </summary>
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            if (Input.GetMouseButtonDown(0))
             {
+                if (menuForm == null || menuForm.IsDisposed)
+                {
+                    return;
+                }
+
+                if (EventSystemUtility.CheckPointerOverGameObject(menuForm.rectTransform.gameObject))
+                {
+                    return;
+                }
                 OnMenuTriggerExit();
             }
             else if (Input.GetMouseButtonDown(1))
             {
-                OnMenuTriggerExit();
+                if (menuForm != null && !menuForm.IsDisposed)
+                {
+                    if (EventSystemUtility.CheckPointerOverGameObject(menuForm.rectTransform.gameObject))
+                    {
+                        return;
+                    }
+                    OnMenuTriggerExit();
+                }
 
                 var ray = RayCamera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance, layerMask))
@@ -116,27 +137,27 @@ namespace MGS.ContextMenu
         /// <param name="hitInfo">Raycast hit info of target.</param>
         private void OnMenuTriggerEnter(RaycastHit hitInfo)
         {
-            if (MenuHandler == null)
+            if (Handler == null)
             {
-                LogUtility.LogWarning(0, "Do nothing on context menu trigger enter: The handler of trigger is null.");
+                LogUtility.LogWarning(0, "Do nothing on menu trigger enter: The handler of menu trigger is null.");
                 return;
             }
-
-            MenuHandler.OnMenuTriggerEnter(hitInfo);
+            menuForm = Handler.OnMenuTriggerEnter(hitInfo);
         }
 
         /// <summary>
         /// On context menu trigger exit.
         /// </summary>
+        /// <returns></returns>
         private void OnMenuTriggerExit()
         {
-            if (MenuHandler == null)
+            if (Handler == null)
             {
-                LogUtility.LogWarning(0, "Do nothing on context menu trigger exit: The handler of trigger is null.");
+                LogUtility.LogWarning(0, "Do nothing on menu trigger exit: The handler of menu trigger is null.");
                 return;
             }
-
-            MenuHandler.OnMenuTriggerExit();
+            Handler.OnMenuTriggerExit(menuForm);
+            menuForm = null;
         }
         #endregion
     }

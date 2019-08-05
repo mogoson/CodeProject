@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2018 Mogoson. All rights reserved.
+ *  Copyright © 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  KeepUpMode.cs
  *  Description  :  Define Keep up mode of animation base on curve path.

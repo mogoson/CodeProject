@@ -1,45 +1,43 @@
 ﻿/*************************************************************************
  *  Copyright © 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  ICurveHose.cs
- *  Description  :  Define interface of curve hose.
+ *  File         :  IContextMenuElementData.cs
+ *  Description  :  Define interface for context menu element data.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  6/23/2018
+ *  Date         :  8/3/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UCommon.Curve;
-using MGS.UCommon.Skin;
-
-namespace MGS.CurveHose
+namespace MGS.ContextMenu
 {
     /// <summary>
-    /// Interface of curve hose.
+    /// Interface for context menu element data.
     /// </summary>
-    public interface ICurveHose : ICurve, ISkin
+    public interface IContextMenuElementData
     {
         #region Property
         /// <summary>
-        /// Polygon of hose cross section.
+        /// Type of context menu element.
         /// </summary>
-        int Polygon { set; get; }
-
-        /// <summary>
-        /// Segment length of subdivide hose.
-        /// </summary>
-        float Segment { set; get; }
-
-        /// <summary>
-        /// Radius of hose mesh.
-        /// </summary>
-        float Radius { set; get; }
-
-        /// <summary>
-        /// Is seal at both ends of hose?
-        /// </summary>
-        bool Seal { set; get; }
+        ContextMenuElementType ElementType { get; }
         #endregion
+    }
+
+    /// <summary>
+    /// Type of context menu element.
+    /// </summary>
+    public enum ContextMenuElementType
+    {
+        /// <summary>
+        /// Context menu item element.
+        /// </summary>
+        ContextMenuItem = 0,
+
+        /// <summary>
+        /// Context menu separator element.
+        /// </summary>
+        ContextMenuSeparator = 1
     }
 }

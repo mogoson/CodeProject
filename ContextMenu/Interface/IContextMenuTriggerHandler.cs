@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
- *  Copyright © 2018 Mogoson. All rights reserved.
+ *  Copyright © 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IContextMenuHandler.cs
- *  Description  :  Define interface for context menu handler.
+ *  File         :  IContextMenuTriggerHandler.cs
+ *  Description  :  Define interface for context menu trigger handler.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -15,27 +15,23 @@ using UnityEngine;
 namespace MGS.ContextMenu
 {
     /// <summary>
-    /// Interface for context menu handler.
+    /// Interface for context menu trigger handler.
     /// </summary>
-    public interface IContextMenuHandler
+    public interface IContextMenuTriggerHandler
     {
         #region Method
         /// <summary>
         /// On context menu trigger enter.
         /// </summary>
         /// <param name="hitInfo">Raycast hit info of target.</param>
-        void OnMenuTriggerEnter(RaycastHit hitInfo);
-
-        /// <summary>
-        /// On context menu item click.
-        /// </summary>
-        /// <param name="tag">Tag of menu item.</param>
-        void OnMenuItemClick(string tag);
+        /// <returns>Instance of context menu form.</returns>
+        IContextMenuForm OnMenuTriggerEnter(RaycastHit hitInfo);
 
         /// <summary>
         /// On context menu trigger exit.
         /// </summary>
-        void OnMenuTriggerExit();
+        /// <param name="menuForm">Instance of context menu form.</param>
+        void OnMenuTriggerExit(IContextMenuForm menuForm);
         #endregion
     }
 }

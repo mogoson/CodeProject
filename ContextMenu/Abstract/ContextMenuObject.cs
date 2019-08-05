@@ -1,29 +1,31 @@
 ﻿/*************************************************************************
- *  Copyright © 2018-2019 Mogoson. All rights reserved.
+ *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  ICurvePath.cs
- *  Description  :  Define interface of path that base on curve.
+ *  File         :  ContextMenuObject.cs
+ *  Description  :  Context menu support object.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  2/28/2018
+ *  Date         :  4/12/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UCommon.Curve;
+using UnityEngine;
 
-namespace MGS.CurvePath
+namespace MGS.ContextMenu
 {
     /// <summary>
-    /// Interface of curve path.
+    /// Context menu support object.
     /// </summary>
-    public interface ICurvePath : ICurve
+    [RequireComponent(typeof(Collider))]
+    public abstract class ContextMenuObject : MonoBehaviour, IContextMenuFormHandler
     {
         #region Method
         /// <summary>
-        /// Rebuild path.
+        /// On context menu item click.
         /// </summary>
-        void Rebuild();
+        /// <param name="tag">Tag of menu item.</param>
+        public abstract void OnMenuItemClick(string tag);
         #endregion
     }
 }
