@@ -138,7 +138,8 @@ namespace MGS.Media.Subtitle
         /// Refresh subtitle base on the data source.
         /// </summary>
         /// <param name="source">Data source to refresh subtitle.</param>
-        public abstract void Refresh(object source);
+        /// <returns>Succeed?</returns>
+        public abstract bool Refresh(object source);
         #endregion
     }
 }

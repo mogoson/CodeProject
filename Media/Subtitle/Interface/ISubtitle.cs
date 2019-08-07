@@ -22,7 +22,8 @@ namespace MGS.Media.Subtitle
         /// Refresh subtitle base on the data source.
         /// </summary>
         /// <param name="source">Data source to refresh subtitle.</param>
-        void Refresh(object source);
+        /// <returns>Succeed?</returns>
+        bool Refresh(object source);
 
         /// <summary>
         /// Get subtitle clip content at play time.

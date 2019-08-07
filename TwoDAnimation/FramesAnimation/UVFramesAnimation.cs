@@ -118,7 +118,8 @@ namespace MGS.TwoDAnimation
         /// Refresh frames texture of animation.
         /// </summary>
         /// <param name="frames">Animation frames, type is FrameTextureData.</param>
-        public override void Refresh(object frames)
+        /// <returns>Succeed?</returns>
+        public override bool Refresh(object frames)
         {
             if (frames is FrameTextureData newFrames)
             {
@@ -127,7 +128,9 @@ namespace MGS.TwoDAnimation
             else
             {
                 LogUtility.LogWarning(0, "Refresh animation failed: The type of frames is not FrameTextureData.");
+                return false;
             }
+            return true;
         }
 
         /// <summary>
