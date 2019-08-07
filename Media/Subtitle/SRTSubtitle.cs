@@ -162,7 +162,8 @@ namespace MGS.Media.Subtitle
         /// Refresh srt subtitle base on the data source.
         /// </summary>
         /// <param name="source">Data source(type is SRTSubtitleSource) to refresh srt subtitle.</param>
-        public override void Refresh(object source)
+        /// <returns>Succeed?</returns>
+        public override bool Refresh(object source)
         {
             ClearCache();
 
@@ -171,7 +172,7 @@ namespace MGS.Media.Subtitle
                 if (string.IsNullOrEmpty(data.source))
                 {
                     LogUtility.LogError(0, "Refresh srt subtitle error: The source data can not be null or empty.");
-                    return;
+                    return false;
                 }
 
                 string[] lines = null;
@@ -188,21 +189,24 @@ namespace MGS.Media.Subtitle
             else
             {
                 LogUtility.LogError(0, "Refresh srt subtitle error: The type of source is not SRTSubtitleSource.");
+                return false;
             }
+            return true;
         }
 
         /// <summary>
         /// Refresh srt subtitle base on the data source.
         /// </summary>
         /// <param name="source">Data source to refresh srt subtitle.</param>
-        public void Refresh(string[] source)
+        /// <returns>Succeed?</returns>
+        public bool Refresh(string[] source)
         {
             ClearCache();
 
             if (source == null || source.Length < CLIP_LINES)
             {
                 LogUtility.LogError(0, "Refresh srt subtitle error: The content of source is null or invalid.");
-                return;
+                return false;
             }
 
             var lines = new List<string>(source);
@@ -226,6 +230,7 @@ namespace MGS.Media.Subtitle
                     lines.RemoveRange(0, CLIP_LINES);
                 }
             }
+            return true;
         }
         #endregion
     }

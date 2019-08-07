@@ -149,7 +149,8 @@ namespace MGS.PathAnimation
         /// Refresh animation.
         /// </summary>
         /// <param name="path">Path of animation, type is ICurvePath.</param>
-        public override void Refresh(object path)
+        /// <returns>Succeed?</returns>
+        public override bool Refresh(object path)
         {
             if (path is ICurvePath newPath)
             {
@@ -159,7 +160,9 @@ namespace MGS.PathAnimation
             else
             {
                 LogUtility.LogWarning(0, "Refresh animation failed: The type of data is not ICurvePath.");
+                return false;
             }
+            return true;
         }
 
         /// <summary>

@@ -46,7 +46,8 @@ namespace MGS.TwoDAnimation
         /// Refresh frames texture of animation.
         /// </summary>
         /// <param name="frames">Animation frames, type is IEnumerable of Texture or Texture2D.</param>
-        public override void Refresh(object frames)
+        /// <returns>Succeed?</returns>
+        public override bool Refresh(object frames)
         {
             if (frames is IEnumerable<Texture> newFrames) { }
             else if (frames is IEnumerable<Texture2D> frames2D)
@@ -61,12 +62,13 @@ namespace MGS.TwoDAnimation
             else
             {
                 LogUtility.LogWarning(0, "Refresh animation failed: The type of frames is not IEnumerable<Texture> or IEnumerable<Texture2D>.");
-                return;
+                return false;
             }
 
             this.frames.Clear();
             this.frames.AddRange(newFrames);
             Rewind(0);
+            return true;
         }
         #endregion
     }

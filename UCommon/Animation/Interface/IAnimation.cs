@@ -45,7 +45,8 @@ namespace MGS.UCommon.UAnimation
         /// Refresh animation.
         /// </summary>
         /// <param name="data">Animation data.</param>
-        void Refresh(object data);
+        /// <returns>Succeed?</returns>
+        bool Refresh(object data);
 
         /// <summary>
         /// Pause animation.
