@@ -25,7 +25,11 @@ namespace MGS.ContextMenu
         /// Refresh menu separator.
         /// </summary>
         /// <param name="data">Data of context menu separator.</param>
-        public override void Refresh(object data) { }
+        /// <returns>Succeed?</returns>
+        public override bool Refresh(object data)
+        {
+            return true;
+        }
         #endregion
     }
 

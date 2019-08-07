@@ -60,7 +60,8 @@ namespace MGS.UCommon.UI
         /// Refresh UI.
         /// </summary>
         /// <param name="data">Data for UI.</param>
-        void Refresh(object data);
+        /// <returns>Succeed?</returns>
+        bool Refresh(object data);
 
         /// <summary>
         /// Close UI.

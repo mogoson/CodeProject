@@ -390,7 +390,8 @@ namespace MGS.ContextMenu
         /// Refresh context menu form.
         /// </summary>
         /// <param name="data">Data for context menu form, type is Vector2 or Vector3 or ContextMenuFormInfo or ContextMenuFormData.</param>
-        public override void Refresh(object data)
+        /// <returns>Succeed?</returns>
+        public override bool Refresh(object data)
         {
             if (data is Vector2 vector2)
             {
@@ -413,7 +414,9 @@ namespace MGS.ContextMenu
             else
             {
                 LogUtility.LogError(0, "Refresh context menu form failed: The type of data is not Vector2 or Vector3 or ContextMenuFormInfo or ContextMenuFormData.");
+                return false;
             }
+            return true;
         }
 
         /// <summary>

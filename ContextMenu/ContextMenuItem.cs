@@ -94,7 +94,8 @@ namespace MGS.ContextMenu
         /// Refresh menu item.
         /// </summary>
         /// <param name="data">Data of context menu item, type is ContextMenuItemData.</param>
-        public override void Refresh(object data)
+        /// <returns>Succeed?</returns>
+        public override bool Refresh(object data)
         {
             if (data is ContextMenuItemData itemData)
             {
@@ -105,7 +106,9 @@ namespace MGS.ContextMenu
             else
             {
                 LogUtility.LogWarning(0, "Refresh menu item failed: The type of info is not ContextMenuItemData.");
+                return false;
             }
+            return true;
         }
         #endregion
     }

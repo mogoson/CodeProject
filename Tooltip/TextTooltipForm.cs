@@ -87,7 +87,8 @@ namespace MGS.Tooltip
         /// Refresh tip form.
         /// </summary>
         /// <param name="data">Data of tip form, type is string or TextTooltipFormData.</param>
-        public override void Refresh(object data)
+        /// <returns>Succeed?</returns>
+        public override bool Refresh(object data)
         {
             if (data is string content)
             {
@@ -104,7 +105,9 @@ namespace MGS.Tooltip
             else
             {
                 LogUtility.LogWarning(0, "Refresh tip form failed: The type of data is not string or TextTooltipFormData.");
+                return false;
             }
+            return true;
         }
         #endregion
     }

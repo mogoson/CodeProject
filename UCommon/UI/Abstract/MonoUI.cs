@@ -90,7 +90,8 @@ namespace MGS.UCommon.UI
         /// Refresh UI.
         /// </summary>
         /// <param name="data">Data for UI.</param>
-        public abstract void Refresh(object data);
+        /// <returns>Succeed?</returns>
+        public abstract bool Refresh(object data);
 
         /// <summary>
         /// Close UI.
