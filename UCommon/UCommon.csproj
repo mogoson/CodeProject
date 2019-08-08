@@ -80,7 +80,6 @@
     <Compile Include="Utility\ColorBlendUtility.cs" />
     <Compile Include="Utility\EventSystemUtility.cs" />
     <Compile Include="Utility\MeshUtility.cs" />
-    <Compile Include="Utility\MultilingualUtility.cs" />
     <Compile Include="Utility\RectUtility.cs" />
     <Compile Include="Utility\VectorUtility.cs" />
   </ItemGroup>
