@@ -24,11 +24,6 @@ namespace MGS.UCommon.DesignPattern
     {
         #region Field and Property
         /// <summary>
-        /// Sync root of single behaviour.
-        /// </summary>
-        private static readonly object SyncRoot = new object();
-
-        /// <summary>
         /// Instance of this MonoBehaviour.
         /// </summary>
         public static T Instance
@@ -37,15 +32,12 @@ namespace MGS.UCommon.DesignPattern
             {
                 if (instance == null)
                 {
-                    lock (SyncRoot)
+                    //Active MonoBehaviour in scene.
+                    instance = FindObjectOfType<T>();
+                    if (instance == null)
                     {
-                        //Active MonoBehaviour in scene.
-                        instance = FindObjectOfType<T>();
-                        if (instance == null)
-                        {
-                            //Create agent to attach MonoBehaviour.
-                            instance = new GameObject(typeof(T).Name).AddComponent<T>();
-                        }
+                        //Create agent to attach MonoBehaviour.
+                        instance = new GameObject(typeof(T).Name).AddComponent<T>();
                     }
                 }
                 return instance;

@@ -15,6 +15,7 @@
  *  Description  :  Use MonoLED to control the LED of button.
  *************************************************************************/
 
+using MGS.Common.Generic;
 using MGS.UCommon.Generic;
 using UnityEngine;
 

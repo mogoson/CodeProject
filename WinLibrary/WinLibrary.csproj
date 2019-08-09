@@ -4,34 +4,33 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9EB4EF70-1B1E-42A6-9A9B-DBE9B67625F4}</ProjectGuid>
+    <ProjectGuid>{C2C66F9C-7DEF-46AA-88D0-C3DCB71CFB5E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MGS.Meter</RootNamespace>
-    <AssemblyName>MGS.Meter</AssemblyName>
+    <RootNamespace>MGS.WinLibrary</RootNamespace>
+    <AssemblyName>MGS.WinLibrary</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;UNITY_5_OR_NEWER;UNITY_5_3_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\MGS.Meter.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\MGS.WinLibrary.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;UNITY_5_OR_NEWER;UNITY_5_3_OR_NEWER</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\MGS.Meter.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\MGS.WinLibrary.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -40,30 +39,10 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\Library\UnityEngine.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clock\PointerClock\ClockPointer.cs" />
-    <Compile Include="Clock\PointerClock\PointerClock.cs" />
-    <Compile Include="Clock\Interface\IClock.cs" />
-    <Compile Include="Meter\LerpMode.cs" />
-    <Compile Include="Meter\PointerMeter\Interface\IPointerMeter.cs" />
-    <Compile Include="Meter\PointerMeter\LerpPointerMeter.cs" />
-    <Compile Include="Meter\PointerMeter\PointerMeter.cs" />
-    <Compile Include="Meter\PointerMeter\MeterPointer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UCommon\UCommon.csproj">
-      <Project>{02F92370-D9A3-4A6B-8B7D-717315A01145}</Project>
-      <Name>UCommon</Name>
-    </ProjectReference>
+    <Compile Include="WinInet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
