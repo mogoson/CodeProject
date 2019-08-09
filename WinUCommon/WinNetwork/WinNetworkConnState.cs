@@ -25,11 +25,11 @@ namespace MGS.WinUCommon.WinNetwork
         /// <summary>
         /// Local system uses a modem to connect to the Internet.
         /// </summary>
-        MODEM = 1,
+        ONLINE_MODEM = 1,
 
         /// <summary>
         /// Local system uses a local area network to connect to the Internet.
         /// </summary>
-        LAN = 2
+        ONLINE_LAN = 2
     }
 }

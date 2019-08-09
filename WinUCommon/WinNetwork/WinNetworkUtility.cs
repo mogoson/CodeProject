@@ -30,11 +30,11 @@ namespace MGS.WinUCommon.WinNetwork
             {
                 if ((lpdwFlags & WinInet.INTERNET_CONNECTION_MODEM) != 0)
                 {
-                    return WinNetworkConnState.MODEM;
+                    return WinNetworkConnState.ONLINE_MODEM;
                 }
                 else if ((lpdwFlags & WinInet.INTERNET_CONNECTION_LAN) != 0)
                 {
-                    return WinNetworkConnState.LAN;
+                    return WinNetworkConnState.ONLINE_LAN;
                 }
             }
             return WinNetworkConnState.OFFLINE;
