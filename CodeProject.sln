@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIFormEditor", "UIFormEdito
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinLibrary", "WinLibrary\WinLibrary.csproj", "{C2C66F9C-7DEF-46AA-88D0-C3DCB71CFB5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUCommon", "WinUCommon\WinUCommon.csproj", "{93887DA2-F638-4CA4-8A7D-7FF06407C8CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +167,10 @@ Global
 		{C2C66F9C-7DEF-46AA-88D0-C3DCB71CFB5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2C66F9C-7DEF-46AA-88D0-C3DCB71CFB5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2C66F9C-7DEF-46AA-88D0-C3DCB71CFB5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93887DA2-F638-4CA4-8A7D-7FF06407C8CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93887DA2-F638-4CA4-8A7D-7FF06407C8CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93887DA2-F638-4CA4-8A7D-7FF06407C8CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93887DA2-F638-4CA4-8A7D-7FF06407C8CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

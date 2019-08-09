@@ -12,7 +12,7 @@
 
 using System;
 
-namespace MGS.UCommon.Generic
+namespace MGS.Common.Generic
 {
     /// <summary>
     /// Generic event.

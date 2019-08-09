@@ -47,6 +47,7 @@
     <Compile Include="Converter\StructureConverter.cs" />
     <Compile Include="DesignPattern\ObjectPool\ObjectPool.cs" />
     <Compile Include="DesignPattern\Singleton\Singleton.cs" />
+    <Compile Include="Generic\Event\GenericEvent.cs" />
     <Compile Include="IO\Directory\DirectoryUtility.cs" />
     <Compile Include="IO\File\FileUtility.cs" />
     <Compile Include="Logger\FileLogger.cs" />

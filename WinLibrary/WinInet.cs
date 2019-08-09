@@ -1,7 +1,7 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  Wininet.cs
+ *  File         :  WinInet.cs
  *  Description  :  API of wininet dll.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
@@ -17,7 +17,7 @@ namespace MGS.WinLibrary
     /// <summary>
     /// API of wininet dll.
     /// </summary>
-    public static class Wininet
+    public static class WinInet
     {
         #region Field
         /// <summary>
@@ -58,7 +58,7 @@ namespace MGS.WinLibrary
 
         #region Method
         /// <summary>
-        /// Retrieves the connected state of the local system. 
+        /// Retrieves the connected state of the local system.
         /// </summary>
         /// <param name="lpdwFlags">Pointer to a variable that receives the connection description.</param>
         /// <param name="dwReserved">This parameter is reserved and must be 0.</param>
