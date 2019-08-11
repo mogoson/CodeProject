@@ -28,7 +28,7 @@ namespace MGS.Common.Utility
         /// <summary>
         /// Separator of paragraph key and value.
         /// </summary>
-        public static readonly string[] SEPARATOR = new string[] { "=" };
+        public static readonly char[] SEPARATOR = new char[] { '=' };
 
         /// <summary>
         /// Current language.
