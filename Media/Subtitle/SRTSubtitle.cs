@@ -63,13 +63,13 @@ namespace MGS.Media.Subtitle
 
             if (!int.TryParse(index, out int clipIndex))
             {
-                LogUtility.LogError(0, "Parse text to subtitle clip error: The index {0} can not parse to int.", index);
+                LogUtility.LogError(0, "Parse text to subtitle clip error: The index \"{0}\" can not parse to int.", index);
                 return null;
             }
 
             if (!ParseToTimeRange(timeRange, out int startTime, out int endTime))
             {
-                LogUtility.LogError(0, "Parse text to subtitle clip error: The timeRange {0} can not parse to start and end time.", timeRange);
+                LogUtility.LogError(0, "Parse text to subtitle clip error: The timeRange \"{0}\" can not parse to start and end time.", timeRange);
                 return null;
             }
 

@@ -72,7 +72,7 @@ namespace MGS.UIForm
             var info = GetFormInfo<T>();
             if (!layerForms.ContainsKey(info.Layer))
             {
-                LogUtility.LogError(0, "Open form is error: The form layer {0} is not defined.", info.Layer);
+                LogUtility.LogError(0, "Open form error: The form layer \"{0}\" is not defined.", info.Layer);
                 return null;
             }
 
@@ -90,7 +90,7 @@ namespace MGS.UIForm
             var formPrefab = Resources.Load<T>(prefabPath);
             if (formPrefab == null)
             {
-                LogUtility.LogError(0, "Open form is error: Can not load prefab of form at path {0}.prefab under the Resources folder.", prefabPath);
+                LogUtility.LogError(0, "Open form error: Can not load prefab of form at path Assets/Resources/{0}.prefab.", prefabPath);
                 return null;
             }
 
@@ -252,7 +252,7 @@ namespace MGS.UIForm
         {
             if (!layerForms.ContainsKey(layer))
             {
-                LogUtility.LogWarning(0, "Can not find any form in the {0} layer.", layer);
+                LogUtility.LogWarning(0, "Mirror forms error: Can not find any form in the \"{0}\" layer.", layer);
                 return;
             }
 
@@ -468,7 +468,7 @@ namespace MGS.UIForm
             var settings = Resources.Load<UIFormSettings>(SETTINGS_PATH);
             if (settings == null)
             {
-                LogUtility.LogError(0, "Read settings error: Can not load settings from file at path {0}.asset under the Resources folder.", SETTINGS_PATH);
+                LogUtility.LogError(0, "Read settings error: Can not load settings from file at path Assets/Resources/{0}.asset.", SETTINGS_PATH);
                 settings = ScriptableObject.CreateInstance<UIFormSettings>();
             }
             return settings;
@@ -484,13 +484,13 @@ namespace MGS.UIForm
             {
                 if (string.IsNullOrEmpty(layer))
                 {
-                    LogUtility.LogError(0, "Create layer root is error: The name of layer is null or empty.");
+                    LogUtility.LogError(0, "Create layer root error: The name of layer is null or empty.");
                     continue;
                 }
 
                 if (layerForms.ContainsKey(layer))
                 {
-                    LogUtility.LogWarning(0, "Create layer root is cancel: The layer root named {0} is exist.");
+                    LogUtility.LogWarning(0, "Create layer root cancelled: The layer root named \"{0}\" is exist.");
                     continue;
                 }
 
@@ -521,7 +521,7 @@ namespace MGS.UIForm
             var infos = typeof(T).GetCustomAttributes(typeof(UIFormInfoAttribute), true);
             if (infos.Length == 0)
             {
-                LogUtility.LogWarning(0, "Can not find the UIFormInfoAttribute on the type {0}.", typeof(T).Name);
+                LogUtility.LogWarning(0, "Get form attribute info failed: Can not find the UIFormInfoAttribute on the type {0}.", typeof(T).Name);
                 return new UIFormInfoAttribute(UIFromPattern.Single, "Default");
             }
             return infos[0] as UIFormInfoAttribute;
