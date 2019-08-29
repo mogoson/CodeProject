@@ -52,7 +52,7 @@ namespace MGS.Common.IO
             }
             catch (Exception ex)
             {
-                LogUtility.LogError(0, "Calculate page count error: {0}", ex.Message);
+                LogUtility.LogError(0, "Calculate page count exception: {0}", ex.Message);
                 return 0;
             }
         }
@@ -68,13 +68,13 @@ namespace MGS.Common.IO
         {
             if (!File.Exists(filePath))
             {
-                LogUtility.LogError(0, "Read page error: Can not find the file {0}.", filePath);
+                LogUtility.LogError(0, "Read the index page of file error: Can not find the file {0}.", filePath);
                 return null;
             }
 
             if (pageSize <= 0 || pageIndex < 0)
             {
-                LogUtility.LogError(0, "Read page error: The params value is invalid.");
+                LogUtility.LogError(0, "Read the index page of file error: The params value is invalid.");
                 return null;
             }
 
@@ -85,13 +85,13 @@ namespace MGS.Common.IO
                     var pageCount = sm.Length / pageSize + sm.Length % pageSize == 0 ? 0 : 1;
                     if (pageIndex > pageCount - 1)
                     {
-                        LogUtility.LogError(0, "Read page error: The pageIndex {0} is out of range.", pageCount);
+                        LogUtility.LogError(0, "Read the index page of file error: The pageIndex {0} is out of range.", pageCount);
                         return null;
                     }
 
                     if (!sm.CanSeek || !sm.CanRead)
                     {
-                        LogUtility.LogError(0, "Read page error: File stream can not seek or read.");
+                        LogUtility.LogError(0, "Read the index page of file error: File stream can not seek or read.");
                         return null;
                     }
 
@@ -106,7 +106,7 @@ namespace MGS.Common.IO
             }
             catch (Exception ex)
             {
-                LogUtility.LogError(0, "Read page error: {0}", ex.Message);
+                LogUtility.LogError(0, "Read the index page of file exception: {0}", ex.Message);
                 return null;
             }
         }
@@ -121,7 +121,7 @@ namespace MGS.Common.IO
         {
             if (!File.Exists(filePath))
             {
-                LogUtility.LogError(0, "Read all lines error: Can not find the file {0}.", filePath);
+                LogUtility.LogError(0, "Read all lines of file error: Can not find the file {0}.", filePath);
                 return null;
             }
 
@@ -131,7 +131,7 @@ namespace MGS.Common.IO
             }
             catch (Exception ex)
             {
-                LogUtility.LogError(0, "Read all lines error: {0}", ex.Message);
+                LogUtility.LogError(0, "Read all lines of file exception: {0}", ex.Message);
                 return null;
             }
         }

@@ -50,7 +50,7 @@ namespace MGS.Graph
         {
             if (progressCallback == null && doneCallback == null)
             {
-                LogUtility.LogWarning(0, "Asynchronous load gif canceled: All the callbacks is null.");
+                LogUtility.LogWarning(0, "Asynchronous load gif cancelled: All the callbacks is null.");
                 yield break;
             }
 

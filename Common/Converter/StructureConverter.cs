@@ -22,7 +22,7 @@ namespace MGS.Common.Converter
     {
         #region Public Method
         /// <summary>
-        /// Byte array to structure.
+        /// Convert byte array to structure.
         /// </summary>
         /// <typeparam name="T">Structure type.</typeparam>
         /// <param name="byteArray">Byte array.</param>
@@ -31,14 +31,14 @@ namespace MGS.Common.Converter
         {
             if (byteArray == null || byteArray.Length == 0)
             {
-                LogUtility.LogError(0, "Byte array to structure error: The byte array is null or empty.");
+                LogUtility.LogError(0, "Convert byte array to structure error: The byte array is null or empty.");
                 return default(T);
             }
 
             var size = Marshal.SizeOf(default(T));
             if (size > byteArray.Length)
             {
-                LogUtility.LogError(0, "Byte array to structure error: The length of byte array is not match type {0}.", typeof(T).Name);
+                LogUtility.LogError(0, "Convert byte array to structure error: The length of byte array is not match type {0}.", typeof(T).Name);
                 return default(T);
             }
 
@@ -50,7 +50,7 @@ namespace MGS.Common.Converter
         }
 
         /// <summary>
-        /// Structure to byte array.
+        /// Convert structure to byte array.
         /// </summary>
         /// <typeparam name="T">Structure type.</typeparam>
         /// <param name="structure">Structure.</param>
@@ -60,7 +60,7 @@ namespace MGS.Common.Converter
             var size = Marshal.SizeOf(structure);
             if (size == 0)
             {
-                LogUtility.LogError(0, "Structure to byte array error: The size of type {0} is zero.", typeof(T).Name);
+                LogUtility.LogError(0, "Convert structure to byte array error: The size of type {0} is zero.", typeof(T).Name);
                 return null;
             }
 

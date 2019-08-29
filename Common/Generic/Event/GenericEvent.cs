@@ -46,9 +46,9 @@ namespace MGS.Common.Generic
         }
 
         /// <summary>
-        /// Clear event listener.
+        /// Remove all event listeners.
         /// </summary>
-        public void ClearListener()
+        public void RemoveListeners()
         {
             callback = null;
         }
@@ -96,9 +96,9 @@ namespace MGS.Common.Generic
         }
 
         /// <summary>
-        /// Clear event listener.
+        /// Remove all event listeners.
         /// </summary>
-        public void ClearListener()
+        public void RemoveListeners()
         {
             callback = null;
         }
