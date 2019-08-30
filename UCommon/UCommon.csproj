@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Animation\Abstract\MonoAnimation.cs" />
     <Compile Include="Animation\Interface\IAnimation.cs" />
+    <Compile Include="Event\MonoEventTrigger.cs" />
     <Compile Include="Generic\Enum\ColorBlendMode.cs" />
     <Compile Include="UI\Abstract\InteractableUI.cs" />
     <Compile Include="UI\Abstract\MonoUI.cs" />
