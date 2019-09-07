@@ -1,7 +1,7 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  WinInet.cs
+ *  File         :  Wininet.cs
  *  Description  :  API of wininet dll.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using System;
 using System.Runtime.InteropServices;
 
 namespace MGS.WinLibrary
@@ -17,45 +18,8 @@ namespace MGS.WinLibrary
     /// <summary>
     /// API of wininet dll.
     /// </summary>
-    public static class WinInet
+    public static class Wininet
     {
-        #region Field
-        /// <summary>
-        /// Local system has a valid connection to the Internet, but it might or might not be currently connected. 
-        /// </summary>
-        public const int INTERNET_CONNECTION_CONFIGURED = 0x40;
-
-        /// <summary>
-        /// Local system uses a local area network to connect to the Internet.
-        /// </summary>
-        public const int INTERNET_CONNECTION_LAN = 0x02;
-
-        /// <summary>
-        /// Local system uses a modem to connect to the Internet.
-        /// </summary>
-        public const int INTERNET_CONNECTION_MODEM = 0x01;
-
-        /// <summary>
-        /// No longer used.
-        /// </summary>
-        public const int INTERNET_CONNECTION_MODEM_BUSY = 0x08;
-
-        /// <summary>
-        /// Local system is in offline mode.
-        /// </summary>
-        public const int INTERNET_CONNECTION_OFFLINE = 0x20;
-
-        /// <summary>
-        /// Local system uses a proxy server to connect to the Internet.
-        /// </summary>
-        public const int INTERNET_CONNECTION_PROXY = 0x04;
-
-        /// <summary>
-        /// Local system has RAS installed.
-        /// </summary>
-        public const int INTERNET_RAS_INSTALLED = 0x10;
-        #endregion
-
         #region Method
         /// <summary>
         /// Retrieves the connected state of the local system.
@@ -66,7 +30,50 @@ namespace MGS.WinLibrary
         /// or FALSE if there is no Internet connection,
         /// or if all possible Internet connections are not currently active. </returns>
         [DllImport("wininet.dll")]
-        public static extern bool InternetGetConnectedState(out int lpdwFlags, int dwReserved);
+        public static extern Boolean InternetGetConnectedState(out UInt32 lpdwFlags, Int32 dwReserved);
+        #endregion
+    }
+
+    /// <summary>
+    /// Flags of internet connected state of the local system.
+    /// </summary>
+    public static class InetFlags
+    {
+        #region Field
+        /// <summary>
+        /// Local system has a valid connection to the Internet, but it might or might not be currently connected. 
+        /// </summary>
+        public const UInt32 INTERNET_CONNECTION_CONFIGURED = 0x40;
+
+        /// <summary>
+        /// Local system uses a local area network to connect to the Internet.
+        /// </summary>
+        public const UInt32 INTERNET_CONNECTION_LAN = 0x02;
+
+        /// <summary>
+        /// Local system uses a modem to connect to the Internet.
+        /// </summary>
+        public const UInt32 INTERNET_CONNECTION_MODEM = 0x01;
+
+        /// <summary>
+        /// No longer used.
+        /// </summary>
+        public const UInt32 INTERNET_CONNECTION_MODEM_BUSY = 0x08;
+
+        /// <summary>
+        /// Local system is in offline mode.
+        /// </summary>
+        public const UInt32 INTERNET_CONNECTION_OFFLINE = 0x20;
+
+        /// <summary>
+        /// Local system uses a proxy server to connect to the Internet.
+        /// </summary>
+        public const UInt32 INTERNET_CONNECTION_PROXY = 0x04;
+
+        /// <summary>
+        /// Local system has RAS installed.
+        /// </summary>
+        public const UInt32 INTERNET_RAS_INSTALLED = 0x10;
         #endregion
     }
 }
