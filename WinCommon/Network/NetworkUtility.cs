@@ -12,32 +12,32 @@
 
 using MGS.WinLibrary;
 
-namespace MGS.WinUCommon.WinNetwork
+namespace MGS.WinCommon.Network
 {
     /// <summary>
     /// Utility for windows network.
     /// </summary>
-    public static class WinNetworkUtility
+    public static class NetworkUtility
     {
         #region Public Method
         /// <summary>
         /// Retrieves the connected state of the local system.
         /// </summary>
         /// <returns>The connected state of the local system.</returns>
-        public static WinNetworkConnState GetNetworkConnectState()
+        public static NetworkConnState GetNetworkConnectState()
         {
-            if (WinInet.InternetGetConnectedState(out int lpdwFlags, 0))
+            if (Wininet.InternetGetConnectedState(out uint lpdwFlags, 0))
             {
-                if ((lpdwFlags & WinInet.INTERNET_CONNECTION_MODEM) != 0)
+                if ((lpdwFlags & InetFlags.INTERNET_CONNECTION_MODEM) != 0)
                 {
-                    return WinNetworkConnState.ONLINE_MODEM;
+                    return NetworkConnState.ONLINE_MODEM;
                 }
-                else if ((lpdwFlags & WinInet.INTERNET_CONNECTION_LAN) != 0)
+                else if ((lpdwFlags & InetFlags.INTERNET_CONNECTION_LAN) != 0)
                 {
-                    return WinNetworkConnState.ONLINE_LAN;
+                    return NetworkConnState.ONLINE_LAN;
                 }
             }
-            return WinNetworkConnState.OFFLINE;
+            return NetworkConnState.OFFLINE;
         }
         #endregion
     }

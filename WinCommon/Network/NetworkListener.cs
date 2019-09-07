@@ -1,7 +1,7 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  WinNetworkListener.cs
+ *  File         :  NetworkListener.cs
  *  Description  :  Windows network listener.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
@@ -14,29 +14,29 @@ using MGS.Common.Generic;
 using MGS.UCommon.DesignPattern;
 using UnityEngine;
 
-namespace MGS.WinUCommon.WinNetwork
+namespace MGS.WinCommon.Network
 {
     /// <summary>
     /// Windows network listener.
     /// </summary>
-    [AddComponentMenu("MGS/WinUCommon/WinNetwork/WinNetworkListener")]
-    public sealed class WinNetworkListener : SingleMonoBehaviour<WinNetworkListener>
+    [AddComponentMenu("MGS/WinCommon/Network/NetworkListener")]
+    public sealed class NetworkListener : SingleMonoBehaviour<NetworkListener>
     {
         #region Field and Property
         /// <summary>
         /// Current state of windows network.
         /// </summary>
-        public WinNetworkConnState CurrentState { private set; get; }
+        public NetworkConnState CurrentState { private set; get; }
 
         /// <summary>
         /// Event on network state changed.
         /// </summary>
-        public GenericEvent<WinNetworkConnState> OnStateChanged { get; } = new GenericEvent<WinNetworkConnState>();
+        public GenericEvent<NetworkConnState> OnStateChanged { get; } = new GenericEvent<NetworkConnState>();
 
         /// <summary>
         /// Last state of windows network.
         /// </summary>
-        private WinNetworkConnState lastState;
+        private NetworkConnState lastState;
         #endregion
 
         #region Private Method
@@ -47,7 +47,7 @@ namespace MGS.WinUCommon.WinNetwork
         {
             base.SingleAwake();
 
-            CurrentState = WinNetworkUtility.GetNetworkConnectState();
+            CurrentState = NetworkUtility.GetNetworkConnectState();
             lastState = CurrentState;
         }
 
@@ -56,7 +56,7 @@ namespace MGS.WinUCommon.WinNetwork
         /// </summary>
         private void Update()
         {
-            CurrentState = WinNetworkUtility.GetNetworkConnectState();
+            CurrentState = NetworkUtility.GetNetworkConnectState();
             if (lastState != CurrentState)
             {
                 lastState = CurrentState;

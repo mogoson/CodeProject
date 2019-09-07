@@ -1,7 +1,7 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  WinNetworkConnState.cs
+ *  File         :  NetworkConnState.cs
  *  Description  :  Define state of network connected state.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
@@ -10,12 +10,12 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.WinUCommon.WinNetwork
+namespace MGS.WinCommon.Network
 {
     /// <summary>
     /// State of network connected state.
     /// </summary>
-    public enum WinNetworkConnState
+    public enum NetworkConnState
     {
         /// <summary>
         /// Local system is in offline mode.
