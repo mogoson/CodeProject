@@ -11,6 +11,9 @@
  *************************************************************************/
 
 using MGS.WinLibrary;
+using System;
+using System.Collections.Generic;
+using System.Net.NetworkInformation;
 
 namespace MGS.WinCommon.Network
 {
@@ -38,6 +41,34 @@ namespace MGS.WinCommon.Network
                 }
             }
             return NetworkConnState.OFFLINE;
+        }
+
+        /// <summary>
+        /// Get the mac address of pc.
+        /// </summary>
+        /// <returns>Mac address of pc.</returns>
+        public static ICollection<string> GetMacAddress()
+        {
+            var macAdress = new List<string>();
+            var interfaces = NetworkInterface.GetAllNetworkInterfaces();
+            foreach (var item in interfaces)
+            {
+                var physicalAddress = item.GetPhysicalAddress();
+                if (physicalAddress == null)
+                {
+                    continue;
+                }
+
+                var addressBytes = physicalAddress.GetAddressBytes();
+                if (addressBytes == null)
+                {
+                    continue;
+                }
+
+                var adress = BitConverter.ToString(addressBytes);
+                macAdress.Add(adress);
+            }
+            return macAdress;
         }
         #endregion
     }
