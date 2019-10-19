@@ -15,6 +15,7 @@ using MGS.UCommon.DesignPattern;
 using MGS.UCommon.Generic;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MGS.UIForm
 {
@@ -22,7 +23,7 @@ namespace MGS.UIForm
     /// Custom UI form manager.
     /// </summary>
     [AddComponentMenu("MGS/UIForm/UIFormManager")]
-    [RequireComponent(typeof(RectTransform))]
+    [RequireComponent(typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster))]
     public sealed class UIFormManager : SingleMonoBehaviour<UIFormManager>, IUIFormManager
     {
         #region Field and Property
@@ -37,6 +38,21 @@ namespace MGS.UIForm
         public const string PREFAB_PATH_FORMAT = "UIForm/Prefabs/{0}/{1}";
 
         /// <summary>
+        /// Canvas component.
+        /// </summary>
+        public Canvas Canvas { private set; get; }
+
+        /// <summary>
+        /// CanvasScaler component.
+        /// </summary>
+        public CanvasScaler CanvasScaler { private set; get; }
+
+        /// <summary>
+        /// GraphicRaycaster component.
+        /// </summary>
+        public GraphicRaycaster GraphicRaycaster { private set; get; }
+
+        /// <summary>
         /// Layers for custom form.
         /// </summary>
         public string[] Layers { private set; get; }
@@ -45,20 +61,6 @@ namespace MGS.UIForm
         /// Info of layers and forms.
         /// </summary>
         private Dictionary<string, List<IUIForm>> layerForms = new Dictionary<string, List<IUIForm>>();
-        #endregion
-
-        #region Protected Method
-        /// <summary>
-        /// Awake manager.
-        /// </summary>
-        protected override void SingleAwake()
-        {
-            base.SingleAwake();
-
-            var settings = ReadSettings();
-            Layers = settings.layers.ToArray();
-            CreateLayerRoots(Layers);
-        }
         #endregion
 
         #region Public Method
@@ -459,6 +461,20 @@ namespace MGS.UIForm
         #endregion
 
         #region Private Method
+        /// <summary>
+        /// Awake manager.
+        /// </summary>
+        private void Awake()
+        {
+            Canvas = GetComponent<Canvas>();
+            CanvasScaler = GetComponent<CanvasScaler>();
+            GraphicRaycaster = GetComponent<GraphicRaycaster>();
+
+            var settings = ReadSettings();
+            Layers = settings.layers.ToArray();
+            CreateLayerRoots(Layers);
+        }
+
         /// <summary>
         /// Read settings from local file.
         /// </summary>

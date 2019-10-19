@@ -13,6 +13,7 @@
 using MGS.UCommon.Generic;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MGS.UIForm
 {
@@ -22,6 +23,21 @@ namespace MGS.UIForm
     public interface IUIFormManager
     {
         #region Property
+        /// <summary>
+        /// Canvas component.
+        /// </summary>
+        Canvas Canvas { get; }
+
+        /// <summary>
+        /// CanvasScaler component.
+        /// </summary>
+        CanvasScaler CanvasScaler { get; }
+
+        /// <summary>
+        /// GraphicRaycaster component.
+        /// </summary>
+        GraphicRaycaster GraphicRaycaster { get; }
+
         /// <summary>
         /// Layers for custom form.
         /// </summary>

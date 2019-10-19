@@ -10,7 +10,6 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Logger;
 using UnityEngine;
 
 namespace MGS.UCommon.DesignPattern
@@ -22,61 +21,36 @@ namespace MGS.UCommon.DesignPattern
     [DisallowMultipleComponent]
     public abstract class SingleMonoBehaviour<T> : MonoBehaviour where T : SingleMonoBehaviour<T>
     {
-        #region Field and Property
+        #region Nested Class
         /// <summary>
-        /// Instance of this MonoBehaviour.
+        /// Inner singleton provide instance.
         /// </summary>
-        public static T Instance
+        private class InnerSingleton
         {
-            get
-            {
-                if (instance == null)
-                {
-                    //Active MonoBehaviour in scene.
-                    instance = FindObjectOfType<T>();
-                    if (instance == null)
-                    {
-                        //Create agent to attach MonoBehaviour.
-                        instance = new GameObject(typeof(T).Name).AddComponent<T>();
-                    }
-                }
-                return instance;
-            }
-        }
+            #region Property
+            /// <summary>
+            /// Single instance of the specified type T.
+            /// </summary>
+            internal static readonly T Instance = new GameObject(typeof(T).Name).AddComponent<T>();
+            #endregion
 
-        /// <summary>
-        /// Instance of this MonoBehaviour.
-        /// </summary>
-        private static T instance = null;
+            #region Static Method
+            /// <summary>
+            /// Explicit static constructor to tell C# compiler not to mark type as beforefieldinit.
+            /// </summary>
+            static InnerSingleton()
+            {
+                DontDestroyOnLoad(Instance);
+            }
+            #endregion
+        }
         #endregion
 
-        #region Protected Method
+        #region Property
         /// <summary>
-        /// Component awake.
+        /// Single instance of the specified type T.
         /// </summary>
-        protected void Awake()
-        {
-            if (instance == null)
-            {
-                instance = this as T;
-            }
-            else
-            {
-                if (instance != this)
-                {
-                    Destroy(this);
-                    LogUtility.LogWarning(0, "Destroy the redundant instance of {0} component " +
-                        "form {1}: Multi instances of {0} component in a scene is violat singleton design.", typeof(T).Name, name);
-                    return;
-                }
-            }
-            SingleAwake();
-        }
-
-        /// <summary>
-        /// SingleMonoBehaviour awake.
-        /// </summary>
-        protected virtual void SingleAwake() { }
+        public static T Instance { get { return InnerSingleton.Instance; } }
         #endregion
     }
 }

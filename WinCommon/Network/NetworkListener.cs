@@ -12,6 +12,7 @@
 
 using MGS.Common.Generic;
 using MGS.UCommon.DesignPattern;
+using System.Threading;
 using UnityEngine;
 
 namespace MGS.WinCommon.Network
@@ -23,6 +24,11 @@ namespace MGS.WinCommon.Network
     public sealed class NetworkListener : SingleMonoBehaviour<NetworkListener>
     {
         #region Field and Property
+        /// <summary>
+        /// Listener refresh rate(milliseconds).
+        /// </summary>
+        public int RefreshRate { set; get; } = 250;
+
         /// <summary>
         /// Current state of windows network.
         /// </summary>
@@ -37,31 +43,73 @@ namespace MGS.WinCommon.Network
         /// Last state of windows network.
         /// </summary>
         private NetworkConnState lastState;
+
+        /// <summary>
+        /// Thread for refresh network state.
+        /// </summary>
+        private Thread refreshThread;
         #endregion
 
         #region Private Method
-        /// <summary>
-        /// Awake component.
-        /// </summary>
-        protected override void SingleAwake()
-        {
-            base.SingleAwake();
-
-            CurrentState = NetworkUtility.GetNetworkConnectState();
-            lastState = CurrentState;
-        }
-
         /// <summary>
         /// Update listener.
         /// </summary>
         private void Update()
         {
-            CurrentState = NetworkUtility.GetNetworkConnectState();
+            //Check state change and notify event.
             if (lastState != CurrentState)
             {
                 lastState = CurrentState;
                 OnStateChanged.Invoke(CurrentState);
             }
+        }
+        #endregion
+
+        #region Public Method
+        /// <summary>
+        /// Turn on listener.
+        /// </summary>
+        public void TurnOn()
+        {
+            //Thread can not restart after abort.
+            if (refreshThread == null || !refreshThread.IsAlive)
+            {
+                refreshThread = new Thread(() =>
+                {
+                    lastState = CurrentState = NetworkUtility.GetNetworkConnectState();
+                    Thread.Sleep(RefreshRate);
+
+                    while (true)
+                    {
+                        CurrentState = NetworkUtility.GetNetworkConnectState();
+                        Thread.Sleep(RefreshRate);
+                    }
+                })
+                { IsBackground = true };
+
+                refreshThread.Start();
+            }
+            enabled = true;
+        }
+
+        /// <summary>
+        /// Turn off listener.
+        /// </summary>
+        public void TurnOff()
+        {
+            enabled = false;
+            lastState = CurrentState;
+
+            if (refreshThread == null)
+            {
+                return;
+            }
+
+            if (refreshThread.IsAlive)
+            {
+                refreshThread.Abort();
+            }
+            refreshThread = null;
         }
         #endregion
     }
