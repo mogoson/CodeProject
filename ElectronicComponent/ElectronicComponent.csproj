@@ -74,8 +74,8 @@ if exist %25targetDir%25\$(TargetFileName) (
             del "%25targetDir%25\$(TargetName).pdb"
          )
     )
-    copy "$(TargetFileName)" %25TargetDir%25
-    copy "$(TargetName).xml" %25TargetDir%25
+    copy "$(TargetFileName)" %25targetDir%25
+    copy "$(TargetName).xml" %25targetDir%25
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>
