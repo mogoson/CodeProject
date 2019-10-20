@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="GameObjectPool.cs" />
     <Compile Include="GameObjectPoolManager.cs" />
-    <Compile Include="GameObjectPoolSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

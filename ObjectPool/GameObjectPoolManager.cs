@@ -25,34 +25,9 @@ namespace MGS.ObjectPool
     {
         #region Field and Property
         /// <summary>
-        /// Settings of pools.
-        /// </summary>
-        [Tooltip("Settings of pools.")]
-        [SerializeField]
-        private List<GameObjectPoolSettings> poolsSettings = new List<GameObjectPoolSettings>();
-
-        /// <summary>
         /// Dictionary store pools info(name and pool).
         /// </summary>
         private Dictionary<string, GameObjectPool> poolsInfo = new Dictionary<string, GameObjectPool>();
-        #endregion
-
-        #region Protected Method
-        /// <summary>
-        /// GameObjectPoolManager awake.
-        /// </summary>
-        protected override void SingleAwake()
-        {
-            foreach (var poolSettings in poolsSettings)
-            {
-                if (poolsInfo.ContainsKey(poolSettings.name))
-                {
-                    LogUtility.LogError(0, "The pool name \"{0}\" configured in the Pools Settings is not unique in this manager.", poolSettings.name);
-                    continue;
-                }
-                CreatePool(poolSettings);
-            }
-        }
         #endregion
 
         #region Public Method
@@ -91,16 +66,6 @@ namespace MGS.ObjectPool
             var newPool = new GameObjectPool(poolRoot.transform, prefab, maxCount);
             poolsInfo.Add(name, newPool);
             return newPool;
-        }
-
-        /// <summary>
-        /// Create a pool in this manager.
-        /// </summary>
-        /// <param name="poolSettings">Settings of pool.</param>
-        /// <returns>Pool created base on settings.</returns>
-        public GameObjectPool CreatePool(GameObjectPoolSettings poolSettings)
-        {
-            return CreatePool(poolSettings.name, poolSettings.prefab, poolSettings.maxCount);
         }
 
         /// <summary>
