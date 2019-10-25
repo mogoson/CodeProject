@@ -80,20 +80,16 @@ namespace MGS.ContextMenu
         private IContextMenuForm menuForm;
         #endregion
 
-        #region Protected Method
+        #region Private Method
         /// <summary>
         /// Awake component.
         /// </summary>
-        protected override void SingleAwake()
+        private void Awake()
         {
-            base.SingleAwake();
-
             RayCamera = GetComponent<Camera>();
             Handler = handler;
         }
-        #endregion
 
-        #region Private Method
         /// <summary>
         /// Update component.
         /// </summary>
