@@ -467,6 +467,8 @@ namespace MGS.UIForm
         private void Awake()
         {
             gameObject.name = typeof(Canvas).Name;
+            gameObject.layer = 5;
+
             Canvas = GetComponent<Canvas>();
             Canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 
