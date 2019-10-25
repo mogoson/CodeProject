@@ -19,6 +19,7 @@ namespace MGS.UCommon.Event
     /// <summary>
     /// Event trigger for UI behaviour.
     /// </summary>
+    [AddComponentMenu("MGS/UCommon/Event/MonoEventTrigger")]
     public class MonoEventTrigger : MonoBehaviour, IEventSystemHandler, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler,
         IPointerClickHandler, IBeginDragHandler, IInitializePotentialDragHandler, IDragHandler, IEndDragHandler,
         IDropHandler, IScrollHandler, IUpdateSelectedHandler, ISelectHandler, IDeselectHandler, IMoveHandler, ISubmitHandler, ICancelHandler
