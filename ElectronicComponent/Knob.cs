@@ -164,9 +164,9 @@ namespace MGS.ElectronicComponent
 
         #region Protected Method
         /// <summary>
-        /// Initialize knob component.
+        /// Awake component.
         /// </summary>
-        protected override void Initialize()
+        protected virtual void Awake()
         {
             StartAngles = transform.localEulerAngles;
         }

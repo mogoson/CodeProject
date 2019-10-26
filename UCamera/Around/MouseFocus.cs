@@ -61,7 +61,8 @@ namespace MGS.UCamera
         /// </summary>
         protected virtual void Awake()
         {
-            Initialize();
+            targetCamera = GetComponent<Camera>();
+            alignCamera = GetComponent<AroundAlignCamera>();
         }
 
         /// <summary>
@@ -92,15 +93,6 @@ namespace MGS.UCamera
                 alignCamera.AlignVeiwToTarget(defaultAlign);
                 IsFocus = false;
             }
-        }
-
-        /// <summary>
-        /// Initialize component.
-        /// </summary>
-        protected virtual void Initialize()
-        {
-            targetCamera = GetComponent<Camera>();
-            alignCamera = GetComponent<AroundAlignCamera>();
         }
 
         /// <summary>

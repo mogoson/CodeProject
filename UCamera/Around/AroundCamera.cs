@@ -81,14 +81,6 @@ namespace MGS.UCamera
         /// </summary>
         protected virtual void Awake()
         {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initialize component.
-        /// </summary>
-        protected virtual void Initialize()
-        {
             CurrentAngles = targetAngles = transform.eulerAngles;
             CurrentDistance = targetDistance = Vector3.Distance(transform.position, target.position);
         }

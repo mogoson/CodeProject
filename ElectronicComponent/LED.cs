@@ -41,9 +41,9 @@ namespace MGS.ElectronicComponent
 
         #region Protected Method
         /// <summary>
-        /// Initialize LED.
+        /// Awake component.
         /// </summary>
-        protected override void Initialize()
+        protected virtual void Awake()
         {
             LEDRenderer = GetComponent<Renderer>();
             defaultMat = LEDRenderer.material;

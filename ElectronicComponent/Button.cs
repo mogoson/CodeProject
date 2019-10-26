@@ -160,9 +160,9 @@ namespace MGS.ElectronicComponent
 
         #region Protected Method
         /// <summary>
-        /// Initialize button component.
+        /// Awake component.
         /// </summary>
-        protected override void Initialize()
+        protected virtual void Awake()
         {
             StartPosition = transform.localPosition;
             LED = monoLED;
