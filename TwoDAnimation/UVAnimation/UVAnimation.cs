@@ -38,11 +38,10 @@ namespace MGS.TwoDAnimation
 
         #region Private Method
         /// <summary>
-        /// Initialize animation.
+        /// Awake animation.
         /// </summary>
-        protected override void Initialize()
+        protected virtual void Awake()
         {
-            base.Initialize();
             mRenderer = GetComponent<Renderer>();
         }
 

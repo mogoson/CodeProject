@@ -70,12 +70,10 @@ namespace MGS.TwoDAnimation
 
         #region Protected Method
         /// <summary>
-        /// Initialize animation.
+        /// Awake animation.
         /// </summary>
-        protected override void Initialize()
+        protected virtual void Awake()
         {
-            base.Initialize();
-
             mRenderer = GetComponent<Renderer>();
             framesCount = row * column;
             ApplyUVMaps();

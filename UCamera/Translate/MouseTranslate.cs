@@ -64,7 +64,7 @@ namespace MGS.UCamera
         /// </summary>
         protected virtual void Awake()
         {
-            Initialize();
+            CurrentOffset = targetOffset = transform.position - areaSettings.center.position;
         }
 
         /// <summary>
@@ -73,14 +73,6 @@ namespace MGS.UCamera
         protected virtual void Update()
         {
             TranslateByMouse();
-        }
-
-        /// <summary>
-        /// Initialize component.
-        /// </summary>
-        protected virtual void Initialize()
-        {
-            CurrentOffset = targetOffset = transform.position - areaSettings.center.position;
         }
 
         /// <summary>

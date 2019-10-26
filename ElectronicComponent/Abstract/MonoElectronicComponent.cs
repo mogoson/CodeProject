@@ -36,20 +36,5 @@ namespace MGS.ElectronicComponent
             get { return isEnabled; }
         }
         #endregion
-
-        #region Protected Method
-        /// <summary>
-        /// Awake component.
-        /// </summary>
-        protected virtual void Awake()
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initialize component.
-        /// </summary>
-        protected virtual void Initialize() { }
-        #endregion
     }
 }

@@ -50,19 +50,6 @@ namespace MGS.UCommon.UI
 
         #region Protected Method
         /// <summary>
-        /// Awake UI.
-        /// </summary>
-        protected virtual void Awake()
-        {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initialize UI.
-        /// </summary>
-        protected virtual void Initialize() { }
-
-        /// <summary>
         /// On destroy UI.
         /// </summary>
         protected virtual void OnDestroy()

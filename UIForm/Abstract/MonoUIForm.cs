@@ -40,12 +40,10 @@ namespace MGS.UIForm
 
         #region Protected Method
         /// <summary>
-        /// Initialize form.
+        /// Awake UI.
         /// </summary>
-        protected override void Initialize()
+        protected virtual void Awake()
         {
-            base.Initialize();
-
             ID = Guid.NewGuid().ToString();
             Name = GetType().Name;
         }
