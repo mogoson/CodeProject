@@ -19,11 +19,11 @@ namespace MGS.Media.Subtitle
     {
         #region Method
         /// <summary>
-        /// Refresh subtitle base on the data source.
+        /// Set subtitle source.
         /// </summary>
-        /// <param name="source">Data source to refresh subtitle.</param>
-        /// <returns>Succeed?</returns>
-        bool Refresh(object source);
+        /// <param name="source">The source data of subtitle.</param>
+        /// <param name="isFile">The source is a local file path?</param>
+        void SetSource(string source, bool isFile = true);
 
         /// <summary>
         /// Get subtitle clip content at play time.

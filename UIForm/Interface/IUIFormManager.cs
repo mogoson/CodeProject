@@ -49,8 +49,7 @@ namespace MGS.UIForm
         /// Open form by specified form type.
         /// </summary>
         /// <typeparam name="T">Specified form type.</typeparam>
-        /// <param name="data">Data of form to show.</param>
-        T OpenForm<T>(object data = null) where T : Component, IUIForm;
+        T OpenForm<T>() where T : Component, IUIForm;
 
         /// <summary>
         /// Find form by specified type.

@@ -10,7 +10,6 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Logger;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,32 +42,18 @@ namespace MGS.TwoDAnimation
 
         #region Public Method
         /// <summary>
-        /// Refresh frames texture of animation.
+        /// Set frames texture of animation.
         /// </summary>
-        /// <param name="frames">Animation frames, type is IEnumerable of Texture or Texture2D.</param>
-        /// <returns>Succeed?</returns>
-        public override bool Refresh(object frames)
+        /// <param name="frames">Animation frames.</param>
+        public virtual void SetFrames(IEnumerable<Texture> frames)
         {
-            if (frames is IEnumerable<Texture> newFrames) { }
-            else if (frames is IEnumerable<Texture2D> frames2D)
+            if (frames == null)
             {
-                var framesList = new List<Texture>();
-                foreach (var frame in frames2D)
-                {
-                    framesList.Add(frame);
-                }
-                newFrames = framesList;
-            }
-            else
-            {
-                LogUtility.LogWarning(0, "Refresh animation failed: The type of frames is not IEnumerable<Texture> or IEnumerable<Texture2D>.");
-                return false;
+                return;
             }
 
             this.frames.Clear();
-            this.frames.AddRange(newFrames);
-            Rewind(0);
-            return true;
+            this.frames.AddRange(frames);
         }
         #endregion
     }

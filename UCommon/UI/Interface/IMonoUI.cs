@@ -53,15 +53,7 @@ namespace MGS.UCommon.UI
         /// <summary>
         /// Open UI.
         /// </summary>
-        /// <param name="data">Data for UI.</param>
-        void Open(object data = null);
-
-        /// <summary>
-        /// Refresh UI.
-        /// </summary>
-        /// <param name="data">Data for UI.</param>
-        /// <returns>Succeed?</returns>
-        bool Refresh(object data);
+        void Open();
 
         /// <summary>
         /// Close UI.

@@ -68,8 +68,7 @@ namespace MGS.UIForm
         /// Open form by specified form type.
         /// </summary>
         /// <typeparam name="T">Specified form type.</typeparam>
-        /// <param name="data">Data of form to show.</param>
-        public T OpenForm<T>(object data = null) where T : Component, IUIForm
+        public T OpenForm<T>() where T : Component, IUIForm
         {
             var info = GetFormInfo<T>();
             if (!layerForms.ContainsKey(info.Layer))
@@ -83,7 +82,7 @@ namespace MGS.UIForm
                 var singleForm = FindForm<T>();
                 if (singleForm != null)
                 {
-                    singleForm.Open(data);
+                    singleForm.Open();
                     return singleForm;
                 }
             }
@@ -102,7 +101,7 @@ namespace MGS.UIForm
             newForm.transform.SetAsLastSibling();
 
             layerForms[info.Layer].Add(newForm);
-            newForm.Open(data);
+            newForm.Open();
             return newForm;
         }
 
