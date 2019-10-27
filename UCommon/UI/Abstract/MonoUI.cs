@@ -62,23 +62,11 @@ namespace MGS.UCommon.UI
         /// <summary>
         /// Open UI.
         /// </summary>
-        /// <param name="data">Data for UI.</param>
-        public virtual void Open(object data = null)
+        public virtual void Open()
         {
-            if (data != null)
-            {
-                Refresh(data);
-            }
             gameObject.SetActive(true);
             OnOpen.Invoke();
         }
-
-        /// <summary>
-        /// Refresh UI.
-        /// </summary>
-        /// <param name="data">Data for UI.</param>
-        /// <returns>Succeed?</returns>
-        public abstract bool Refresh(object data);
 
         /// <summary>
         /// Close UI.

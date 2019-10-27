@@ -10,7 +10,6 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Logger;
 using MGS.UCommon.UAnimation;
 using UnityEngine;
 
@@ -74,22 +73,12 @@ namespace MGS.TwoDAnimation
         }
 
         /// <summary>
-        /// Refresh frames sprite of animation.
+        /// Set main texture of animation.
         /// </summary>
-        /// <param name="frames">Animation frames, type is Texture.</param>
-        /// <returns>Succeed?</returns>
-        public override bool Refresh(object frames)
+        /// <param name="mainTexture">Animation main texture.</param>
+        public virtual void SetTexture(Texture mainTexture)
         {
-            if (frames is Texture newFrames)
-            {
-                mRenderer.material.mainTexture = newFrames;
-            }
-            else
-            {
-                LogUtility.LogWarning(0, "Refresh animation failed: The type of frames is not Texture.");
-                return false;
-            }
-            return true;
+            mRenderer.material.mainTexture = mainTexture;
         }
         #endregion
     }

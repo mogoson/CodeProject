@@ -10,7 +10,6 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Logger;
 using UnityEngine;
 
 namespace MGS.TwoDAnimation
@@ -113,31 +112,12 @@ namespace MGS.TwoDAnimation
 
         #region Public Method
         /// <summary>
-        /// Refresh frames texture of animation.
-        /// </summary>
-        /// <param name="frames">Animation frames, type is FrameTextureData.</param>
-        /// <returns>Succeed?</returns>
-        public override bool Refresh(object frames)
-        {
-            if (frames is FrameTextureData newFrames)
-            {
-                SetSourceFrames(newFrames.frames, newFrames.row, newFrames.column);
-            }
-            else
-            {
-                LogUtility.LogWarning(0, "Refresh animation failed: The type of frames is not FrameTextureData.");
-                return false;
-            }
-            return true;
-        }
-
-        /// <summary>
         /// Set source frames of animation.
         /// </summary>
         /// <param name="frames">Frames texture.</param>
         /// <param name="row">Row of frames.</param>
         /// <param name="column">Column of frames.</param>
-        public void SetSourceFrames(Texture frames, int row, int column)
+        public virtual void SetSourceFrames(Texture frames, int row, int column)
         {
             this.row = row;
             this.column = column;

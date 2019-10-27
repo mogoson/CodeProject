@@ -10,7 +10,6 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Logger;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,24 +42,18 @@ namespace MGS.TwoDAnimation
 
         #region Public Method
         /// <summary>
-        /// Refresh frames texture of animation.
+        /// Set frames texture of animation.
         /// </summary>
-        /// <param name="frames">Animation frames, type is IEnumerable of Sprite.</param>
-        /// <returns>Succeed?</returns>
-        public override bool Refresh(object frames)
+        /// <param name="frames">Animation frames.</param>
+        public virtual void SetFrames(IEnumerable<Sprite> frames)
         {
-            if (frames is IEnumerable<Sprite> newFrames)
+            if (frames == null)
             {
-                this.frames.Clear();
-                this.frames.AddRange(newFrames);
-                Rewind(0);
+                return;
             }
-            else
-            {
-                LogUtility.LogWarning(0, "Refresh animation failed: The type of frames is not IEnumerable<Sprite>.");
-                return false;
-            }
-            return true;
+
+            this.frames.Clear();
+            this.frames.AddRange(frames);
         }
         #endregion
     }

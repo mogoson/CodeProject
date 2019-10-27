@@ -159,54 +159,39 @@ namespace MGS.Media.Subtitle
 
         #region Public Method
         /// <summary>
-        /// Refresh srt subtitle base on the data source.
+        /// Set subtitle source.
         /// </summary>
-        /// <param name="source">Data source(type is SRTSubtitleSource) to refresh srt subtitle.</param>
-        /// <returns>Succeed?</returns>
-        public override bool Refresh(object source)
+        /// <param name="source">The source data of subtitle.</param>
+        /// <param name="isFile">The source is a local file path?</param>
+        public override void SetSource(string source, bool isFile = true)
         {
             ClearCache();
 
-            if (source is SRTSubtitleSource data)
+            string[] lines = null;
+            if (isFile)
             {
-                if (string.IsNullOrEmpty(data.source))
-                {
-                    LogUtility.LogError(0, "Refresh srt subtitle error: The source data can not be null or empty.");
-                    return false;
-                }
-
-                string[] lines = null;
-                if (data.type == SRTSubtitleSourceType.File)
-                {
-                    lines = FileUtility.ReadAllLines(data.source, Encoding.Default);
-                }
-                else
-                {
-                    lines = data.source.Split(NEWLINE_SEPARATOR, StringSplitOptions.RemoveEmptyEntries);
-                }
-                Refresh(lines);
+                lines = FileUtility.ReadAllLines(source, Encoding.Default);
             }
             else
             {
-                LogUtility.LogError(0, "Refresh srt subtitle error: The type of source is not SRTSubtitleSource.");
-                return false;
+                lines = source.Split(NEWLINE_SEPARATOR, StringSplitOptions.RemoveEmptyEntries);
             }
-            return true;
+            SetSource(lines);
         }
 
         /// <summary>
-        /// Refresh srt subtitle base on the data source.
+        /// Set source of srt subtitle.
         /// </summary>
-        /// <param name="source">Data source to refresh srt subtitle.</param>
+        /// <param name="source">Data lines of srt subtitle.</param>
         /// <returns>Succeed?</returns>
-        public bool Refresh(string[] source)
+        public void SetSource(string[] source)
         {
             ClearCache();
 
             if (source == null || source.Length < CLIP_LINES)
             {
-                LogUtility.LogError(0, "Refresh srt subtitle error: The content of source is null or invalid.");
-                return false;
+                LogUtility.LogError(0, "Set source of srt subtitle error: The content of source is null or invalid.");
+                return;
             }
 
             var lines = new List<string>(source);
@@ -230,51 +215,7 @@ namespace MGS.Media.Subtitle
                     lines.RemoveRange(0, CLIP_LINES);
                 }
             }
-            return true;
         }
         #endregion
-    }
-
-    /// <summary>
-    /// Type of srt subtitle source.
-    /// </summary>
-    public enum SRTSubtitleSourceType
-    {
-        /// <summary>
-        /// SRTSubtitle from file.
-        /// </summary>
-        File = 0,
-
-        /// <summary>
-        /// SRTSubtitle from text content.
-        /// </summary>
-        Text = 1
-    }
-
-    /// <summary>
-    /// Source of srt subtitle.
-    /// </summary>
-    public class SRTSubtitleSource
-    {
-        /// <summary>
-        /// Source of srt subtitle.
-        /// </summary>
-        public string source;
-
-        /// <summary>
-        /// Type of srt subtitle source.
-        /// </summary>
-        public SRTSubtitleSourceType type;
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        /// <param name="source">Source of srt subtitle.</param>
-        /// <param name="type">Type of srt subtitle source.</param>
-        public SRTSubtitleSource(string source, SRTSubtitleSourceType type = SRTSubtitleSourceType.File)
-        {
-            this.source = source;
-            this.type = type;
-        }
     }
 }

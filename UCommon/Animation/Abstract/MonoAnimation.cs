@@ -66,22 +66,10 @@ namespace MGS.UCommon.UAnimation
         /// <summary>
         /// Play animation.
         /// </summary>
-        /// <param name="data">Animation data.</param>
-        public virtual void Play(object data = null)
+        public virtual void Play()
         {
-            if (data != null)
-            {
-                Refresh(data);
-            }
             enabled = IsPlaying = true;
         }
-
-        /// <summary>
-        /// Refresh animation.
-        /// </summary>
-        /// <param name="data">Animation data.</param>
-        /// <returns>Succeed?</returns>
-        public abstract bool Refresh(object data);
 
         /// <summary>
         /// Pause animation.

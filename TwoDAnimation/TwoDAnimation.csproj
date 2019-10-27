@@ -46,7 +46,6 @@
     <Compile Include="FramesAnimation\Abstract\FramesAnimation.cs" />
     <Compile Include="FramesAnimation\Abstract\SFramesAnimation.cs" />
     <Compile Include="FramesAnimation\Abstract\TFramesAnimation.cs" />
-    <Compile Include="FramesAnimation\FrameTextureData.cs" />
     <Compile Include="FramesAnimation\ImgFramesAnimation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FramesAnimation\RFramesAnimation.cs" />

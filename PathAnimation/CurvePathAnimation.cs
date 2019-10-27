@@ -10,7 +10,6 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Logger;
 using MGS.CurvePath;
 using MGS.UCommon.UAnimation;
 using UnityEngine;
@@ -144,26 +143,6 @@ namespace MGS.PathAnimation
         #endregion
 
         #region Public Method
-        /// <summary>
-        /// Refresh animation.
-        /// </summary>
-        /// <param name="path">Path of animation, type is ICurvePath.</param>
-        /// <returns>Succeed?</returns>
-        public override bool Refresh(object path)
-        {
-            if (path is ICurvePath newPath)
-            {
-                Path = newPath;
-                Rewind(0);
-            }
-            else
-            {
-                LogUtility.LogWarning(0, "Refresh animation failed: The type of data is not ICurvePath.");
-                return false;
-            }
-            return true;
-        }
-
         /// <summary>
         /// Rewind animation.
         /// </summary>

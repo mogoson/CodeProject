@@ -94,6 +94,13 @@ namespace MGS.Media.Subtitle
 
         #region Public Method
         /// <summary>
+        /// Set subtitle source.
+        /// </summary>
+        /// <param name="source">The source data of subtitle.</param>
+        /// <param name="isFile">The source is a local file path?</param>
+        public abstract void SetSource(string source, bool isFile = true);
+
+        /// <summary>
         /// Get subtitle clip content at play time.
         /// </summary>
         /// <param name="time">Play time(Milliseconds) of clip.</param>
@@ -133,13 +140,6 @@ namespace MGS.Media.Subtitle
             }
             return content;
         }
-
-        /// <summary>
-        /// Refresh subtitle base on the data source.
-        /// </summary>
-        /// <param name="source">Data source to refresh subtitle.</param>
-        /// <returns>Succeed?</returns>
-        public abstract bool Refresh(object source);
         #endregion
     }
 }
