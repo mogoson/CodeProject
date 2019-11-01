@@ -27,13 +27,6 @@ namespace MGS.ContextMenu
     {
         #region Field and Property
         /// <summary>
-        /// Margin of menu form base on screen.
-        /// </summary>
-        [Tooltip("Margin of menu form base on screen.")]
-        [SerializeField]
-        protected RectOffset margin;
-
-        /// <summary>
         /// Prefab of menu item to create clone.
         /// </summary>
         [Tooltip("Prefab of menu item to create clone.")]
@@ -46,15 +39,6 @@ namespace MGS.ContextMenu
         [Tooltip("Prefab of menu separator to create clone.")]
         [SerializeField]
         protected GameObject separatorPrefab;
-
-        /// <summary>
-        /// Margin of menu form base on screen.
-        /// </summary>
-        public RectOffset Margin
-        {
-            set { margin = value; }
-            get { return margin; }
-        }
 
         /// <summary>
         /// Handler of contex menu form.
@@ -124,11 +108,11 @@ namespace MGS.ContextMenu
         /// <summary>
         /// Initialize menu form.
         /// </summary>
-        protected override void Initialize()
+        protected override void Awake()
         {
-            base.Initialize();
-            rectTransform.anchorMin = rectTransform.anchorMax = Vector2.zero;
+            base.Awake();
 
+            RectTrans.anchorMin = RectTrans.anchorMax = Vector2.zero;
             var preCreateItems = GetComponentsInChildren<IContextMenuItem>();
             foreach (var item in preCreateItems)
             {
@@ -157,68 +141,6 @@ namespace MGS.ContextMenu
                 return;
             }
             Handler.OnMenuItemClick(tag);
-        }
-
-        /// <summary>
-        /// Refresh the elements of menu base on element datas.
-        /// </summary>
-        /// <param name="elementDatas">Data of menu elements.</param>
-        protected void RefreshElements(IEnumerable<IContextMenuElementData> elementDatas)
-        {
-            if (elementDatas == null)
-            {
-                return;
-            }
-
-            int itemIndex = 0, separatorIndex = 0, elementIndex = 0;
-            foreach (var elementData in elementDatas)
-            {
-                IContextMenuElement menuElement;
-                if (elementData.ElementType == ContextMenuElementType.ContextMenuItem)
-                {
-                    if (itemIndex >= items.Count)
-                    {
-                        menuElement = CreateItem();
-                    }
-                    else
-                    {
-                        menuElement = items[itemIndex];
-                    }
-                    itemIndex++;
-                }
-                else
-                {
-                    if (separatorIndex >= separators.Count)
-                    {
-                        menuElement = CreateSeparator();
-                    }
-                    else
-                    {
-                        menuElement = separators[separatorIndex];
-                    }
-                    separatorIndex++;
-                }
-
-                menuElement.SetSiblingIndex(elementIndex);
-                menuElement.Open(elementData);
-                elementIndex++;
-            }
-
-            //Hide surplus menu items.
-            if (itemIndex < items.Count)
-            {
-                HideItems(itemIndex, items.Count - itemIndex);
-            }
-
-            //Hide surplus menu separators.
-            if (separatorIndex < separators.Count)
-            {
-                HideSeparators(separatorIndex, separators.Count - separatorIndex);
-            }
-
-#if UNITY_5_3_OR_NEWER
-            LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
-#endif
         }
 
         /// <summary>
@@ -297,12 +219,77 @@ namespace MGS.ContextMenu
                 }
             }
         }
+        #endregion
+
+        #region Public Method
+        /// <summary>
+        /// Refresh the elements of menu base on element datas.
+        /// </summary>
+        /// <param name="elementDatas">Data of menu elements.</param>
+        public void RefreshElements(IEnumerable<ContextMenuElementData> elementDatas)
+        {
+            if (elementDatas == null)
+            {
+                return;
+            }
+
+            int itemIndex = 0, separatorIndex = 0, elementIndex = 0;
+            foreach (var elementData in elementDatas)
+            {
+                IContextMenuElement menuElement;
+                if (elementData.ElementType == ContextMenuElementType.ContextMenuItem)
+                {
+                    if (itemIndex >= items.Count)
+                    {
+                        menuElement = CreateItem();
+                    }
+                    else
+                    {
+                        menuElement = items[itemIndex];
+                    }
+                    itemIndex++;
+                }
+                else
+                {
+                    if (separatorIndex >= separators.Count)
+                    {
+                        menuElement = CreateSeparator();
+                    }
+                    else
+                    {
+                        menuElement = separators[separatorIndex];
+                    }
+                    separatorIndex++;
+                }
+
+                menuElement.RectTrans.SetSiblingIndex(elementIndex);
+                menuElement.Refresh(elementData);
+                menuElement.Open();
+                elementIndex++;
+            }
+
+            //Hide surplus menu items.
+            if (itemIndex < items.Count)
+            {
+                HideItems(itemIndex, items.Count - itemIndex);
+            }
+
+            //Hide surplus menu separators.
+            if (separatorIndex < separators.Count)
+            {
+                HideSeparators(separatorIndex, separators.Count - separatorIndex);
+            }
+
+#if UNITY_5_3_OR_NEWER
+            LayoutRebuilder.ForceRebuildLayoutImmediate(RectTrans);
+#endif
+        }
 
         /// <summary>
         /// Disable menu items by tags.
         /// </summary>
         /// <param name="tags">Tags of menu items.</param>
-        protected void DisableItems(IEnumerable<string> tags)
+        public void DisableItems(IEnumerable<string> tags)
         {
             if (tags == null)
             {
@@ -326,27 +313,27 @@ namespace MGS.ContextMenu
             }
 
 #if UNITY_5_3_OR_NEWER
-            LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(RectTrans);
 #endif
         }
 
         /// <summary>
-        /// Set menu form position.
+        /// Set form anchored position.
         /// </summary>
-        /// <param name="screenPos">Target screen position of menu form.</param>
-        protected virtual void SetFormPosition(Vector2 screenPos)
+        /// <param name="anchoredPosition">Target anchored position of form.</param>
+        public override void SetPosition(Vector2 anchoredPosition)
         {
             //Default left align.
             var xPivot = 0.0f;
-            var xPos = screenPos.x;
+            var xPos = anchoredPosition.x;
             if (xPos <= margin.left)
             {
                 xPos = margin.left;
             }
             else
             {
-                var xMax = Screen.width - margin.right;
-                var leftAlignMax = xMax - rectTransform.rect.width;
+                var xMax = ParentTrans.rect.width - margin.right;
+                var leftAlignMax = xMax - RectTrans.rect.width;
                 if (xPos > leftAlignMax)
                 {
                     //Right align.
@@ -360,15 +347,15 @@ namespace MGS.ContextMenu
 
             //Default upper align.
             var yPivot = 1.0f;
-            var yMax = Screen.height - margin.top;
-            var yPos = screenPos.y;
+            var yMax = ParentTrans.rect.height - margin.top;
+            var yPos = anchoredPosition.y;
             if (yPos >= yMax)
             {
                 yPos = yMax;
             }
             else
             {
-                var upperAlignMin = margin.bottom + rectTransform.rect.height;
+                var upperAlignMin = margin.bottom + RectTrans.rect.height;
                 if (yPos < upperAlignMin)
                 {
                     //Lower align.
@@ -380,43 +367,8 @@ namespace MGS.ContextMenu
                 }
             }
 
-            rectTransform.pivot = new Vector2(xPivot, yPivot);
-            rectTransform.anchoredPosition = new Vector2(xPos, yPos);
-        }
-        #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Refresh context menu form.
-        /// </summary>
-        /// <param name="data">Data for context menu form, type is Vector2 or Vector3 or ContextMenuFormInfo or ContextMenuFormData.</param>
-        /// <returns>Succeed?</returns>
-        public override bool Refresh(object data)
-        {
-            if (data is Vector2 vector2)
-            {
-                SetFormPosition(vector2);
-            }
-            else if (data is Vector3 vector3)
-            {
-                SetFormPosition(vector3);
-            }
-            else if (data is ContextMenuFormInfo formInfo)
-            {
-                DisableItems(formInfo.disableItems);
-                SetFormPosition(formInfo.position);
-            }
-            else if (data is ContextMenuFormData formData)
-            {
-                RefreshElements(formData.elementDatas);
-                SetFormPosition(formData.position);
-            }
-            else
-            {
-                LogUtility.LogError(0, "Refresh context menu form failed: The type of data is not Vector2 or Vector3 or ContextMenuFormInfo or ContextMenuFormData.");
-                return false;
-            }
-            return true;
+            RectTrans.pivot = new Vector2(xPivot, yPivot);
+            RectTrans.anchoredPosition = new Vector2(xPos, yPos);
         }
 
         /// <summary>
@@ -433,59 +385,5 @@ namespace MGS.ContextMenu
             }
         }
         #endregion
-    }
-
-    /// <summary>
-    /// Info of contex menu form.
-    /// </summary>
-    public class ContextMenuFormInfo
-    {
-        /// <summary>
-        /// Screen position to display menu form.
-        /// </summary>
-        public Vector2 position;
-
-        /// <summary>
-        /// Tags of disable menu items.
-        /// </summary>
-        public IEnumerable<string> disableItems;
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        /// <param name="position">Screen position to display menu form.</param>
-        /// <param name="disableItems">Tags of disable menu items.</param>
-        public ContextMenuFormInfo(Vector2 position, IEnumerable<string> disableItems)
-        {
-            this.position = position;
-            this.disableItems = disableItems;
-        }
-    }
-
-    /// <summary>
-    /// Data of contex menu form.
-    /// </summary>
-    public class ContextMenuFormData
-    {
-        /// <summary>
-        /// Screen position to display menu form.
-        /// </summary>
-        public Vector2 position;
-
-        /// <summary>
-        /// Data of menu elements.
-        /// </summary>
-        public IEnumerable<IContextMenuElementData> elementDatas;
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        /// <param name="position">Screen position to display menu form.</param>
-        /// <param name="elementDatas">Data of menu elements.</param>
-        public ContextMenuFormData(Vector2 position, IEnumerable<IContextMenuElementData> elementDatas)
-        {
-            this.position = position;
-            this.elementDatas = elementDatas;
-        }
     }
 }

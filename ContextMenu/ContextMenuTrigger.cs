@@ -102,7 +102,7 @@ namespace MGS.ContextMenu
                     return;
                 }
 
-                if (EventSystemUtility.CheckPointerOverGameObject(menuForm.rectTransform.gameObject))
+                if (EventSystemUtility.CheckPointerOverGameObject(menuForm.RectTrans.gameObject))
                 {
                     return;
                 }
@@ -112,7 +112,7 @@ namespace MGS.ContextMenu
             {
                 if (menuForm != null && !menuForm.IsDisposed)
                 {
-                    if (EventSystemUtility.CheckPointerOverGameObject(menuForm.rectTransform.gameObject))
+                    if (EventSystemUtility.CheckPointerOverGameObject(menuForm.RectTrans.gameObject))
                     {
                         return;
                     }

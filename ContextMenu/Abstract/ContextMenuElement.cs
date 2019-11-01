@@ -21,13 +21,11 @@ namespace MGS.ContextMenu
     {
         #region Public Method
         /// <summary>
-        /// Sets the sibling index of menu element.
+        /// Refresh menu element.
         /// </summary>
-        /// <param name="index">Index to set.</param>
-        public virtual void SetSiblingIndex(int index)
-        {
-            transform.SetSiblingIndex(index);
-        }
+        /// <param name="data">Data to refresh.</param>
+        /// <returns>Succeed?</returns>
+        public abstract bool Refresh(ContextMenuElementData data);
         #endregion
     }
 }

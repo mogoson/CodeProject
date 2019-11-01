@@ -1,35 +1,35 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  ITooltipForm.cs
- *  Description  :  Interface for tool tip form.
+ *  File         :  SubtitleClipState.cs
+ *  Description  :  State of subtitle clip.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  7/2/2019
+ *  Date         :  4/25/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UIForm;
-using UnityEngine;
-
-namespace MGS.Tooltip
+namespace MGS.Media.Subtitle
 {
     /// <summary>
-    /// Interface for tool tip form.
+    /// State of subtitle clip base on current play time.
     /// </summary>
-    public interface ITooltipForm : IUIForm
+    public enum SubtitleClipState
     {
-        #region Property
         /// <summary>
-        /// Tip form auto follow mouse pointer?
+        /// Clip is delayed.
         /// </summary>
-        bool AutoFollowPointer { set; get; }
+        Delayed = 0,
 
         /// <summary>
-        /// Offset for tip form to align to mouse pointer.
+        /// Clip is timely.
         /// </summary>
-        Vector2 Offset { set; get; }
-        #endregion
+        Timely = 1,
+
+        /// <summary>
+        /// Clip is premature.
+        /// </summary>
+        Premature = 2
     }
 }

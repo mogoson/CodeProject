@@ -28,7 +28,8 @@ namespace MGS.Tooltip
         /// </summary>
         protected virtual void OnMouseEnter()
         {
-            UIFormManager.Instance.OpenForm<TextTooltipForm>(tipContent);
+            var tipForm = UIFormManager.Instance.OpenForm<TextTooltipForm>();
+            tipForm.SetTipContent(tipContent);
         }
 
         /// <summary>

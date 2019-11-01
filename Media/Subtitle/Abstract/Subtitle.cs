@@ -25,12 +25,12 @@ namespace MGS.Media.Subtitle
         /// <summary>
         /// Clips of this subtitle.
         /// </summary>
-        protected List<ISubtitleClip> clips = new List<ISubtitleClip>();
+        protected List<SubtitleClip> clips = new List<SubtitleClip>();
 
         /// <summary>
         /// The last clip record.
         /// </summary>
-        protected ISubtitleClip clip;
+        protected SubtitleClip clip;
         #endregion
 
         #region Protected Method
@@ -67,7 +67,7 @@ namespace MGS.Media.Subtitle
         /// <param name="start">Search start index.</param>
         /// <param name="end">Search end index.</param>
         /// <returns>Timely clip if find.</returns>
-        protected ISubtitleClip FindClip(int time, int start, int end)
+        protected SubtitleClip FindClip(int time, int start, int end)
         {
             start = Math.Min(Math.Max(start, 0), clips.Count - 1);
             end = Math.Min(Math.Max(end, start), clips.Count - 1);

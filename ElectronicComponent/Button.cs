@@ -184,7 +184,7 @@ namespace MGS.ElectronicComponent
 
             if (useLED)
             {
-                monoLED.Open();
+                LED.Open();
             }
 
             OnDown.Invoke();
@@ -220,7 +220,7 @@ namespace MGS.ElectronicComponent
 
             if (useLED && !isLock)
             {
-                monoLED.Close();
+                LED.Close();
             }
         }
 

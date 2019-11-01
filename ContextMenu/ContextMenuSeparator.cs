@@ -24,9 +24,9 @@ namespace MGS.ContextMenu
         /// <summary>
         /// Refresh menu separator.
         /// </summary>
-        /// <param name="data">Data of context menu separator.</param>
+        /// <param name="data">Data of context menu separator, type is ContextMenuSeparatorData.</param>
         /// <returns>Succeed?</returns>
-        public override bool Refresh(object data)
+        public override bool Refresh(ContextMenuElementData data)
         {
             return true;
         }
@@ -36,13 +36,13 @@ namespace MGS.ContextMenu
     /// <summary>
     /// Data of context menu separator.
     /// </summary>
-    public class ContextMenuSeparatorData : IContextMenuElementData
+    public class ContextMenuSeparatorData : ContextMenuElementData
     {
         #region Field and Property
         /// <summary>
         /// Type of context menu element.
         /// </summary>
-        public ContextMenuElementType ElementType { get { return ContextMenuElementType.ContextMenuSeparator; } }
+        public override ContextMenuElementType ElementType { get { return ContextMenuElementType.ContextMenuSeparator; } }
         #endregion
     }
 }

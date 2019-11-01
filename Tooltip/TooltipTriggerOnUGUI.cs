@@ -30,7 +30,8 @@ namespace MGS.Tooltip
         /// <param name="eventData">Event data.</param>
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
-            UIFormManager.Instance.OpenForm<TextTooltipForm>(tipContent);
+            var tipForm = UIFormManager.Instance.OpenForm<TextTooltipForm>();
+            tipForm.SetTipContent(tipContent);
         }
 
         /// <summary>

@@ -50,7 +50,6 @@
     <Compile Include="ContextMenuSeparator.cs" />
     <Compile Include="ContextMenuTrigger.cs" />
     <Compile Include="Interface\IContextMenuElement.cs" />
-    <Compile Include="Interface\IContextMenuElementData.cs" />
     <Compile Include="Interface\IContextMenuFormHandler.cs" />
     <Compile Include="Interface\IContextMenuForm.cs" />
     <Compile Include="Interface\IContextMenuItem.cs" />

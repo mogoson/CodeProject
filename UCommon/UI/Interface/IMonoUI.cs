@@ -24,7 +24,12 @@ namespace MGS.UCommon.UI
         /// <summary>
         /// RectTransform component of UI.
         /// </summary>
-        RectTransform rectTransform { get; }
+        RectTransform RectTrans { get; }
+
+        /// <summary>
+        /// RectTransform component of parent UI.
+        /// </summary>
+        RectTransform ParentTrans { get; }
 
         /// <summary>
         /// UI is open?

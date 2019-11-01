@@ -53,7 +53,7 @@ namespace MGS.Media.Subtitle
         /// <param name="timeRange">The text of clip time range.</param>
         /// <param name="centent">Content text of clip.</param>
         /// <returns>Subtitle clip.</returns>
-        protected ISubtitleClip ParseToClip(string index, string timeRange, string centent)
+        protected SubtitleClip ParseToClip(string index, string timeRange, string centent)
         {
             if (string.IsNullOrEmpty(index) || string.IsNullOrEmpty(timeRange))
             {

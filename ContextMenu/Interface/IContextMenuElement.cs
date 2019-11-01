@@ -21,10 +21,40 @@ namespace MGS.ContextMenu
     {
         #region Method
         /// <summary>
-        /// Sets the sibling index of menu element.
+        /// Refresh menu element.
         /// </summary>
-        /// <param name="index">Index to set.</param>
-        void SetSiblingIndex(int index);
+        /// <param name="data">Data to refresh.</param>
+        /// <returns>Succeed?</returns>
+        bool Refresh(ContextMenuElementData data);
         #endregion
+    }
+
+    /// <summary>
+    /// Base class for context menu element data.
+    /// </summary>
+    public abstract class ContextMenuElementData
+    {
+        #region Property
+        /// <summary>
+        /// Type of context menu element.
+        /// </summary>
+        public abstract ContextMenuElementType ElementType { get; }
+        #endregion
+    }
+
+    /// <summary>
+    /// Type of context menu element.
+    /// </summary>
+    public enum ContextMenuElementType
+    {
+        /// <summary>
+        /// Context menu item element.
+        /// </summary>
+        ContextMenuItem = 0,
+
+        /// <summary>
+        /// Context menu separator element.
+        /// </summary>
+        ContextMenuSeparator = 1
     }
 }

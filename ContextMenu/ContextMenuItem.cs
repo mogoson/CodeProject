@@ -70,11 +70,11 @@ namespace MGS.ContextMenu
 
         #region Protected Method
         /// <summary>
-        /// Initialize menu item.
+        /// Awake UI component.
         /// </summary>
-        protected override void Initialize()
+        protected override void Awake()
         {
-            base.Initialize();
+            base.Awake();
 
             button = GetComponent<Button>();
             button.onClick.AddListener(OnButtonClick);
@@ -95,7 +95,7 @@ namespace MGS.ContextMenu
         /// </summary>
         /// <param name="data">Data of context menu item, type is ContextMenuItemData.</param>
         /// <returns>Succeed?</returns>
-        public override bool Refresh(object data)
+        public override bool Refresh(ContextMenuElementData data)
         {
             if (data is ContextMenuItemData itemData)
             {
@@ -116,13 +116,13 @@ namespace MGS.ContextMenu
     /// <summary>
     /// Data of context menu item.
     /// </summary>
-    public class ContextMenuItemData : IContextMenuElementData
+    public class ContextMenuItemData : ContextMenuElementData
     {
         #region Field and Property
         /// <summary>
         /// Type of context menu element.
         /// </summary>
-        public ContextMenuElementType ElementType { get { return ContextMenuElementType.ContextMenuItem; } }
+        public override ContextMenuElementType ElementType { get { return ContextMenuElementType.ContextMenuItem; } }
 
         /// <summary>
         /// Name of menu item.

@@ -24,25 +24,11 @@ namespace MGS.Tooltip
     {
         #region Field and Property
         /// <summary>
-        /// Margin of tip form base on screen.
-        /// </summary>
-        [Tooltip("Margin of tip form base on screen.")]
-        [SerializeField]
-        protected RectOffset margin;
-
-        /// <summary>
         /// Offset for tip form to align to mouse pointer.
         /// </summary>
         [Tooltip("Offset for tip form to align to mouse pointer.")]
         [SerializeField]
         protected Vector2 offset;
-
-        /// <summary>
-        /// Alignment for tip form to align to target position.
-        /// </summary>
-        [Tooltip("Alignment for tip form to align to target position.")]
-        [SerializeField]
-        protected TextAnchor alignment;
 
         /// <summary>
         /// Tip form auto follow mouse pointer?
@@ -54,15 +40,6 @@ namespace MGS.Tooltip
         }
 
         /// <summary>
-        /// Margin of tip form base on screen.
-        /// </summary>
-        public RectOffset Margin
-        {
-            set { margin = value; }
-            get { return margin; }
-        }
-
-        /// <summary>
         /// Offset for tip form to align to mouse pointer.
         /// </summary>
         public Vector2 Offset
@@ -70,30 +47,18 @@ namespace MGS.Tooltip
             set { offset = value; }
             get { return offset; }
         }
-
-        /// <summary>
-        /// Alignment for tip form to align to target position.
-        /// </summary>
-        public TextAnchor Alignment
-        {
-            set
-            {
-                alignment = value;
-                rectTransform.pivot = Text.GetTextAnchorPivot(alignment);
-            }
-            get { return alignment; }
-        }
         #endregion
 
         #region Protected Method
         /// <summary>
         /// Initialize tip form.
         /// </summary>
-        protected override void Initialize()
+        protected override void Awake()
         {
-            base.Initialize();
-            rectTransform.anchorMin = rectTransform.anchorMax = Vector2.zero;
-            rectTransform.pivot = Text.GetTextAnchorPivot(alignment);
+            base.Awake();
+
+            RectTrans.anchorMin = RectTrans.anchorMax = Vector2.zero;
+            RectTrans.pivot = Text.GetTextAnchorPivot(alignment);
         }
 
         /// <summary>
@@ -109,58 +74,7 @@ namespace MGS.Tooltip
         /// </summary>
         protected void AlignFormToPointer()
         {
-            SetFormPosition((Vector2)Input.mousePosition + offset);
-        }
-
-        /// <summary>
-        /// Set tip form position.
-        /// </summary>
-        /// <param name="screenPos">Target screen position of tip form.</param>
-        protected virtual void SetFormPosition(Vector2 screenPos)
-        {
-            var xPos = screenPos.x;
-            var xMin = margin.left + rectTransform.rect.width * rectTransform.pivot.x;
-            if (xPos <= xMin)
-            {
-                xPos = xMin;
-            }
-            else
-            {
-                var xMax = Screen.width - margin.right - rectTransform.rect.width * (1 - rectTransform.pivot.x);
-                if (xPos > xMax)
-                {
-                    xPos = xMax;
-                }
-            }
-
-            var yPos = screenPos.y;
-            var yMin = margin.bottom + rectTransform.rect.height * rectTransform.pivot.y;
-            if (yPos <= yMin)
-            {
-                yPos = yMin;
-            }
-            else
-            {
-                var yMax = Screen.height - margin.top - rectTransform.rect.height * (1 - rectTransform.pivot.y);
-                if (yPos > yMax)
-                {
-                    yPos = yMax;
-                }
-            }
-
-            rectTransform.anchoredPosition = new Vector2(xPos, yPos);
-        }
-        #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Open tip form.
-        /// </summary>
-        /// <param name="data">Data of tip form.</param>
-        public override void Open(object data = null)
-        {
-            gameObject.SetActive(true);
-            base.Open(data);
+            SetPosition((Vector2)Input.mousePosition + offset);
         }
         #endregion
     }

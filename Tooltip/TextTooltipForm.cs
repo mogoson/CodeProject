@@ -10,7 +10,6 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Logger;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -56,9 +55,9 @@ namespace MGS.Tooltip
         /// <summary>
         /// Initialize tip form.
         /// </summary>
-        protected override void Initialize()
+        protected override void Awake()
         {
-            base.Initialize();
+            base.Awake();
 
             tipLayout = tipContent.GetComponent<LayoutElement>();
             if (tipLayout == null)
@@ -66,76 +65,22 @@ namespace MGS.Tooltip
                 tipLayout = tipContent.gameObject.AddComponent<LayoutElement>();
             }
         }
+        #endregion
 
+        #region Public Method
         /// <summary>
         /// Set content of tip form.
         /// </summary>
         /// <param name="content">Tip content.</param>
-        protected virtual void SetTipContent(string content)
+        public virtual void SetTipContent(string content)
         {
             tipContent.text = content;
             tipLayout.preferredWidth = Mathf.Min(tipContent.preferredWidth, tipMaxWidth);
 
 #if UNITY_5_3_OR_NEWER
-            LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(RectTrans);
 #endif
         }
         #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Refresh tip form.
-        /// </summary>
-        /// <param name="data">Data of tip form, type is string or TextTooltipFormData.</param>
-        /// <returns>Succeed?</returns>
-        public override bool Refresh(object data)
-        {
-            if (data is string content)
-            {
-                AutoFollowPointer = true;
-                SetTipContent(content);
-                AlignFormToPointer();
-            }
-            else if (data is TextTooltipFormData tipData)
-            {
-                AutoFollowPointer = false;
-                SetTipContent(tipData.tipContent);
-                SetFormPosition(tipData.tipPosition);
-            }
-            else
-            {
-                LogUtility.LogWarning(0, "Refresh tip form failed: The type of data is not string or TextTooltipFormData.");
-                return false;
-            }
-            return true;
-        }
-        #endregion
-    }
-
-    /// <summary>
-    /// Data of text tooltip form.
-    /// </summary>
-    public class TextTooltipFormData
-    {
-        /// <summary>
-        /// Tip content text.
-        /// </summary>
-        public string tipContent;
-
-        /// <summary>
-        /// Screen position of tip form.
-        /// </summary>
-        public Vector2 tipPosition;
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        /// <param name="tipContent">Tip content text.</param>
-        /// <param name="tipPosition">Screen position of tip form.</param>
-        public TextTooltipFormData(string tipContent, Vector2 tipPosition)
-        {
-            this.tipContent = tipContent;
-            this.tipPosition = tipPosition;
-        }
     }
 }
