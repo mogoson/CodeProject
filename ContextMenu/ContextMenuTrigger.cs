@@ -11,7 +11,6 @@
  *************************************************************************/
 
 using MGS.Common.Logger;
-using MGS.UCommon.DesignPattern;
 using MGS.UCommon.Utility;
 using UnityEngine;
 
@@ -22,7 +21,7 @@ namespace MGS.ContextMenu
     /// </summary>
     [AddComponentMenu("MGS/ContextMenu/ContextMenuTrigger")]
     [RequireComponent(typeof(Camera))]
-    public sealed class ContextMenuTrigger : SingleMonoBehaviour<ContextMenuTrigger>, IContextMenuTrigger
+    public class ContextMenuTrigger : MonoBehaviour, IContextMenuTrigger
     {
         #region Field and Property
         /// <summary>
