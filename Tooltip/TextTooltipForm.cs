@@ -80,6 +80,10 @@ namespace MGS.Tooltip
 #if UNITY_5_3_OR_NEWER
             LayoutRebuilder.ForceRebuildLayoutImmediate(RectTrans);
 #endif
+            if (AutoFollowPointer)
+            {
+                AlignFormToPointer();
+            }
         }
         #endregion
     }
