@@ -30,7 +30,7 @@ namespace MGS.UCommon.UI
         /// <summary>
         /// RectTransform component of parent UI.
         /// </summary>
-        public RectTransform ParentTrans { private set; get; }
+        public RectTransform ParentTrans { get { return transform.parent as RectTransform; } }
 
         /// <summary>
         /// UI is open?
@@ -60,7 +60,6 @@ namespace MGS.UCommon.UI
         protected virtual void Awake()
         {
             RectTrans = transform as RectTransform;
-            ParentTrans = transform.parent as RectTransform;
         }
 
         /// <summary>
