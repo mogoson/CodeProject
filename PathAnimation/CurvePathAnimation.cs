@@ -76,7 +76,7 @@ namespace MGS.PathAnimation
         {
             Path = curvePath;
         }
-
+        
         /// <summary>
         /// Update animation.
         /// </summary>

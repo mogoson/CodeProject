@@ -15,7 +15,7 @@ namespace MGS.Media.Subtitle
     /// <summary>
     /// Clip of subtitle.
     /// </summary>
-    public class SubtitleClip : ISubtitleClip
+    public class SubtitleClip
     {
         #region Field and Property
         /// <summary>

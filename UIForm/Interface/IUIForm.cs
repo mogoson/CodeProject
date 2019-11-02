@@ -11,6 +11,7 @@
  *************************************************************************/
 
 using MGS.UCommon.UI;
+using UnityEngine;
 
 namespace MGS.UIForm
 {
@@ -34,6 +35,24 @@ namespace MGS.UIForm
         /// Tittle of form.
         /// </summary>
         string Tittle { set; get; }
+
+        /// <summary>
+        /// Margin of form base on parent.
+        /// </summary>
+        RectOffset Margin { set; get; }
+
+        /// <summary>
+        /// Alignment of form to align to target position.
+        /// </summary>
+        TextAnchor Alignment { set; get; }
+        #endregion
+
+        #region Method
+        /// <summary>
+        /// Set form anchored position.
+        /// </summary>
+        /// <param name="anchoredPosition">Target anchored position of form.</param>
+        void SetPosition(Vector2 anchoredPosition);
         #endregion
     }
 }

@@ -25,7 +25,12 @@ namespace MGS.UCommon.UI
         /// <summary>
         /// RectTransform component of UI.
         /// </summary>
-        public RectTransform rectTransform { get { return transform as RectTransform; } }
+        public RectTransform RectTrans { private set; get; }
+
+        /// <summary>
+        /// RectTransform component of parent UI.
+        /// </summary>
+        public RectTransform ParentTrans { private set; get; }
 
         /// <summary>
         /// UI is open?
@@ -49,6 +54,15 @@ namespace MGS.UCommon.UI
         #endregion
 
         #region Protected Method
+        /// <summary>
+        /// Awake UI component.
+        /// </summary>
+        protected virtual void Awake()
+        {
+            RectTrans = transform as RectTransform;
+            ParentTrans = transform.parent as RectTransform;
+        }
+
         /// <summary>
         /// On destroy UI.
         /// </summary>
