@@ -46,54 +46,6 @@ namespace MGS.ContextMenu
         public IContextMenuFormHandler Handler { set; get; }
 
         /// <summary>
-        /// Prefab of menu item to create clone.
-        /// </summary>
-        public GameObject ItemPrefab
-        {
-            set
-            {
-                if (value == null)
-                {
-                    LogUtility.LogError(0, "The prefab of menu item can not be set as null.");
-                    return;
-                }
-
-                if (value.GetComponent<IContextMenuItem>() == null)
-                {
-                    LogUtility.LogError(0, "The prefab of menu item has no component that implement IContextMenuItem interface.");
-                    return;
-                }
-
-                itemPrefab = value;
-            }
-            get { return itemPrefab; }
-        }
-
-        /// <summary>
-        /// Prefab of menu separator to create clone.
-        /// </summary>
-        public GameObject SeparatorPrefab
-        {
-            set
-            {
-                if (value == null)
-                {
-                    LogUtility.LogError(0, "The prefab of menu separator can not be set as null.");
-                    return;
-                }
-
-                if (value.GetComponent<IContextMenuSeparator>() == null)
-                {
-                    LogUtility.LogError(0, "The prefab of menu separator has no component that implement IContextMenuSeparator interface.");
-                    return;
-                }
-
-                separatorPrefab = value;
-            }
-            get { return separatorPrefab; }
-        }
-
-        /// <summary>
         /// List of context menu items.
         /// </summary>
         protected List<IContextMenuItem> items = new List<IContextMenuItem>();
