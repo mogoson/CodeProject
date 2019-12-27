@@ -120,7 +120,7 @@ namespace MGS.ObjectPool
         /// <returns>New gameobject.</returns>
         public virtual GameObject TakeNew()
         {
-            var obj = pool.TakeNew();
+            var obj = pool.Take();
             obj.SetActive(true);
             return obj;
         }
@@ -133,7 +133,7 @@ namespace MGS.ObjectPool
         /// <returns>New gameobject.</returns>
         public virtual GameObject TakeNew(Vector3 position, Quaternion rotation)
         {
-            var obj = pool.TakeNew();
+            var obj = pool.Take();
             obj.transform.position = position;
             obj.transform.rotation = rotation;
             obj.SetActive(true);
@@ -149,7 +149,7 @@ namespace MGS.ObjectPool
         /// <returns>New gameobject.</returns>
         public virtual GameObject TakeNew(Transform parent, Vector3 localPosition, Quaternion localRotation)
         {
-            var obj = pool.TakeNew();
+            var obj = pool.Take();
             obj.transform.parent = parent;
             obj.transform.localPosition = localPosition;
             obj.transform.localRotation = localRotation;
