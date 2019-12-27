@@ -56,6 +56,16 @@ namespace MGS.Common.IO
                 return false;
             }
         }
+
+        /// <summary>
+        /// Require the directory path exist.
+        /// </summary>
+        /// <param name="path">Directory path.</param>
+        /// <returns>Create directory path succeed?</returns>
+        public static bool RequirePath(string path)
+        {
+            return RequirePath(path, out string error);
+        }
         #endregion
     }
 }
