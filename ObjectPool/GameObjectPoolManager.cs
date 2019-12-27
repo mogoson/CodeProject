@@ -42,19 +42,19 @@ namespace MGS.ObjectPool
         {
             if (string.IsNullOrEmpty(name))
             {
-                LogUtility.LogError(0, "Create pool error: The pool name can not be null or empty.");
+                LogUtility.LogError("Create pool error: The pool name can not be null or empty.");
                 return null;
             }
 
             if (poolsInfo.ContainsKey(name))
             {
-                LogUtility.LogWarning(0, "Create pool cancelled: The pool that name is \"{0}\" already exist in this manager.", name);
+                LogUtility.LogWarning("Create pool cancelled: The pool that name is \"{0}\" already exist in this manager.", name);
                 return poolsInfo[name];
             }
 
             if (prefab == null)
             {
-                LogUtility.LogError(0, "Create pool error: The prefab of pool can not be null.");
+                LogUtility.LogError("Create pool error: The prefab of pool can not be null.");
                 return null;
             }
 
@@ -81,7 +81,7 @@ namespace MGS.ObjectPool
             }
             else
             {
-                LogUtility.LogWarning(0, "Find pool error: The pool that name is \"{0}\" does not exist in this manager.", name);
+                LogUtility.LogWarning("Find pool error: The pool that name is \"{0}\" does not exist in this manager.", name);
                 return null;
             }
         }
@@ -99,7 +99,7 @@ namespace MGS.ObjectPool
             }
             else
             {
-                LogUtility.LogWarning(0, "Delete pool error: The pool that name is \"{0}\" does not exist in this manager.", name);
+                LogUtility.LogWarning("Delete pool error: The pool that name is \"{0}\" does not exist in this manager.", name);
             }
         }
         #endregion

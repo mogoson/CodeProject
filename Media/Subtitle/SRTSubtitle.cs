@@ -57,19 +57,19 @@ namespace MGS.Media.Subtitle
         {
             if (string.IsNullOrEmpty(index) || string.IsNullOrEmpty(timeRange))
             {
-                LogUtility.LogError(0, "Parse text to subtitle clip error: The index or timeRange is null.");
+                LogUtility.LogError("Parse text to subtitle clip error: The index or timeRange is null.");
                 return null;
             }
 
             if (!int.TryParse(index, out int clipIndex))
             {
-                LogUtility.LogError(0, "Parse text to subtitle clip error: The index \"{0}\" can not parse to int.", index);
+                LogUtility.LogError("Parse text to subtitle clip error: The index \"{0}\" can not parse to int.", index);
                 return null;
             }
 
             if (!ParseToTimeRange(timeRange, out int startTime, out int endTime))
             {
-                LogUtility.LogError(0, "Parse text to subtitle clip error: The timeRange \"{0}\" can not parse to start and end time.", timeRange);
+                LogUtility.LogError("Parse text to subtitle clip error: The timeRange \"{0}\" can not parse to start and end time.", timeRange);
                 return null;
             }
 
@@ -190,7 +190,7 @@ namespace MGS.Media.Subtitle
 
             if (source == null || source.Length < CLIP_LINES)
             {
-                LogUtility.LogError(0, "Set source of srt subtitle error: The content of source is null or invalid.");
+                LogUtility.LogError("Set source of srt subtitle error: The content of source is null or invalid.");
                 return;
             }
 

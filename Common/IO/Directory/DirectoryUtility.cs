@@ -33,7 +33,7 @@ namespace MGS.Common.IO
             if (string.IsNullOrEmpty(path))
             {
                 error = "The path is null or empty.";
-                LogUtility.LogError(0, "Require path error: {0}", error);
+                LogUtility.LogError("Require path error: {0}", error);
                 return false;
             }
 
@@ -52,7 +52,7 @@ namespace MGS.Common.IO
             catch (Exception ex)
             {
                 error = ex.Message;
-                LogUtility.LogError(0, "Require path exception: {0}", error);
+                LogUtility.LogError("Require path exception: {0}", error);
                 return false;
             }
         }

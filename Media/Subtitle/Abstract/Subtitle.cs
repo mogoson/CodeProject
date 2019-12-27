@@ -50,12 +50,12 @@ namespace MGS.Media.Subtitle
                 }
                 else
                 {
-                    LogUtility.LogWarning(0, "The play time is out of the subtitle range.");
+                    LogUtility.LogWarning("The play time is out of the subtitle range.");
                 }
             }
             else
             {
-                LogUtility.LogWarning(0, "Not any clip in the subtitle.");
+                LogUtility.LogWarning("Not any clip in the subtitle.");
             }
             return isInRange;
         }

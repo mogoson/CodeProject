@@ -78,27 +78,27 @@ namespace MGS.Common.Utility
 
             if (string.IsNullOrEmpty(directory))
             {
-                LogUtility.LogError(0, "Set language error: The directory of multilingualism files is empty.");
+                LogUtility.LogError("Set language error: The directory of multilingualism files is empty.");
                 return;
             }
 
             if (!Directory.Exists(directory))
             {
-                LogUtility.LogError(0, "Set language error: Can not find the directory of multilingualism files at path {0}", directory);
+                LogUtility.LogError("Set language error: Can not find the directory of multilingualism files at path {0}", directory);
                 return;
             }
 
             var languageFile = string.Format("{0}/{1}.txt", directory, name);
             if (!File.Exists(languageFile))
             {
-                LogUtility.LogError(0, "Set language error: Can not find the language file at path {0}", languageFile);
+                LogUtility.LogError("Set language error: Can not find the language file at path {0}", languageFile);
                 return;
             }
 
             var fileLines = FileUtility.ReadAllLines(languageFile, Encoding.Default);
             if (fileLines == null || fileLines.Length == 0)
             {
-                LogUtility.LogError(0, "Set language error: Can not read any content in the language file at path {0}", languageFile);
+                LogUtility.LogError("Set language error: Can not read any content in the language file at path {0}", languageFile);
                 return;
             }
 

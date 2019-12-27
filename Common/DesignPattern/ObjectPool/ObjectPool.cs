@@ -96,7 +96,7 @@ namespace MGS.Common.DesignPattern
             //Null object do not need to recycle.
             if (obj == null)
             {
-                LogUtility.LogWarning(0, "Recycle object to pool cancelled: Null object do not need to recycle.");
+                LogUtility.LogWarning("Recycle object to pool cancelled: Null object do not need to recycle.");
                 return;
             }
 

@@ -32,7 +32,7 @@ namespace MGS.Common.Converter
         {
             if (array == null || array.Length == 0 || row * column != array.Length)
             {
-                LogUtility.LogError(0, "Convert one dimention array to two dimentions array error: The param is invalid.");
+                LogUtility.LogError("Convert one dimention array to two dimentions array error: The param is invalid.");
                 return null;
             }
 
@@ -62,7 +62,7 @@ namespace MGS.Common.Converter
         {
             if (array == null || array.Length == 0 || row * column * layer != array.Length)
             {
-                LogUtility.LogError(0, "Convert one dimention array to three dimentions array error: The param is invalid.");
+                LogUtility.LogError("Convert one dimention array to three dimentions array error: The param is invalid.");
                 return null;
             }
 
@@ -92,7 +92,7 @@ namespace MGS.Common.Converter
         {
             if (array == null || array.Length == 0)
             {
-                LogUtility.LogError(0, "Convert two dimention array to one dimentions array error: The param is invalid.");
+                LogUtility.LogError("Convert two dimention array to one dimentions array error: The param is invalid.");
                 return null;
             }
 
@@ -119,7 +119,7 @@ namespace MGS.Common.Converter
         {
             if (array == null || array.Length == 0)
             {
-                LogUtility.LogError(0, "Convert three dimention array to one dimentions array error: The param is invalid.");
+                LogUtility.LogError("Convert three dimention array to one dimentions array error: The param is invalid.");
                 return null;
             }
 
