@@ -31,7 +31,7 @@ namespace MGS.Common.Utility
         public static readonly char[] SEPARATOR = new char[] { '=' };
 
         /// <summary>
-        /// Current language.
+        /// Current language name.
         /// </summary>
         public string Current { private set; get; }
 
@@ -66,16 +66,10 @@ namespace MGS.Common.Utility
         /// <summary>
         /// Set language by name.
         /// </summary>
-        /// <param name="name">Name of language (Config in the LanguageSettings).</param>
+        /// <param name="name">Name of language.</param>
         /// <returns>Set language succeed?</returns>
         public void SetLanguage(string name)
         {
-            if (languages.ContainsKey(name))
-            {
-                Current = name;
-                return;
-            }
-
             if (string.IsNullOrEmpty(directory))
             {
                 LogUtility.LogError("Set language error: The directory of multilingualism files is empty.");
@@ -100,6 +94,12 @@ namespace MGS.Common.Utility
             {
                 LogUtility.LogError("Set language error: Can not read any content in the language file at path {0}", languageFile);
                 return;
+            }
+
+            //Remove origin language content.
+            if (languages.ContainsKey(name))
+            {
+                languages.Remove(name);
             }
 
             languages.Add(name, new Dictionary<string, string>());
@@ -127,16 +127,30 @@ namespace MGS.Common.Utility
         /// <returns>A paragraph text of key in language.</returns>
         public string GetParagraph(string key)
         {
-            if (string.IsNullOrEmpty(Current))
+            return GetParagraph(Current, key);
+        }
+
+        /// <summary>
+        /// Get a paragraph text of key in language.
+        /// </summary>
+        /// <param name="language">Name of language.</param>
+        /// <param name="key">Key of paragraph text.</param>
+        /// <returns>A paragraph text of key in language.</returns>
+        public string GetParagraph(string language, string key)
+        {
+            if (!languages.ContainsKey(language))
             {
+                LogUtility.LogError("Get paragraph error: The language {0} is not set.", language);
                 return string.Empty;
             }
 
-            if (languages[Current].ContainsKey(key))
+            if (!languages[language].ContainsKey(key))
             {
-                return languages[Current][key];
+                LogUtility.LogError("Get paragraph error: The key {0} can not find in the content of language {1}.", key, language);
+                return string.Empty;
             }
-            return string.Empty;
+
+            return languages[Current][key];
         }
         #endregion
     }
