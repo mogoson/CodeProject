@@ -96,13 +96,16 @@ namespace MGS.Common.Utility
                 return;
             }
 
-            //Remove origin language content.
+            //Clear origin language content.
             if (languages.ContainsKey(name))
             {
-                languages.Remove(name);
+                languages[name].Clear();
+            }
+            else
+            {
+                languages.Add(name, new Dictionary<string, string>());
             }
 
-            languages.Add(name, new Dictionary<string, string>());
             foreach (var line in fileLines)
             {
                 if (string.IsNullOrEmpty(line.Trim()))
