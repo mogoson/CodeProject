@@ -31,19 +31,9 @@ namespace MGS.Common.Utility
         public static readonly char[] SEPARATOR = new char[] { '=' };
 
         /// <summary>
-        /// Current language name.
-        /// </summary>
-        public string Current { private set; get; }
-
-        /// <summary>
         /// Languages content list.
         /// </summary>
         private Dictionary<string, Dictionary<string, string>> languages = new Dictionary<string, Dictionary<string, string>>();
-
-        /// <summary>
-        /// The directory of multilingualism files.
-        /// </summary>
-        private string directory;
         #endregion
 
         #region Private Method
@@ -55,55 +45,34 @@ namespace MGS.Common.Utility
 
         #region Public Method
         /// <summary>
-        /// Initialize the directory of multilingualism files.
+        /// Deserialize language content from local file.
         /// </summary>
-        /// <param name="directory">The directory of multilingualism files.</param>
-        public void Initialize(string directory)
+        /// <param name="languageFile">File path of language content.</param>
+        /// <returns>Deserialize succeed?</returns>
+        public bool Deserialize(string languageFile)
         {
-            this.directory = directory;
-        }
-
-        /// <summary>
-        /// Set language by name.
-        /// </summary>
-        /// <param name="name">Name of language.</param>
-        /// <returns>Set language succeed?</returns>
-        public void SetLanguage(string name)
-        {
-            if (string.IsNullOrEmpty(directory))
-            {
-                LogUtility.LogError("Set language error: The directory of multilingualism files is empty.");
-                return;
-            }
-
-            if (!Directory.Exists(directory))
-            {
-                LogUtility.LogError("Set language error: Can not find the directory of multilingualism files at path {0}", directory);
-                return;
-            }
-
-            var languageFile = string.Format("{0}/{1}.txt", directory, name);
             if (!File.Exists(languageFile))
             {
                 LogUtility.LogError("Set language error: Can not find the language file at path {0}", languageFile);
-                return;
+                return false;
             }
 
             var fileLines = FileUtility.ReadAllLines(languageFile, Encoding.Default);
             if (fileLines == null || fileLines.Length == 0)
             {
                 LogUtility.LogError("Set language error: Can not read any content in the language file at path {0}", languageFile);
-                return;
+                return false;
             }
 
-            //Clear origin language content.
-            if (languages.ContainsKey(name))
+            var language = Path.GetFileNameWithoutExtension(languageFile);
+            if (languages.ContainsKey(language))
             {
-                languages[name].Clear();
+                //Clear origin language content.
+                languages[language].Clear();
             }
             else
             {
-                languages.Add(name, new Dictionary<string, string>());
+                languages.Add(language, new Dictionary<string, string>());
             }
 
             foreach (var line in fileLines)
@@ -118,19 +87,10 @@ namespace MGS.Common.Utility
                 {
                     continue;
                 }
-                languages[name].Add(contents[0], contents[1]);
+                languages[language].Add(contents[0], contents[1]);
             }
-            Current = name;
-        }
 
-        /// <summary>
-        /// Get a paragraph text of key in language.
-        /// </summary>
-        /// <param name="key">Key of paragraph text.</param>
-        /// <returns>A paragraph text of key in language.</returns>
-        public string GetParagraph(string key)
-        {
-            return GetParagraph(Current, key);
+            return true;
         }
 
         /// <summary>
@@ -153,7 +113,7 @@ namespace MGS.Common.Utility
                 return string.Empty;
             }
 
-            return languages[Current][key];
+            return languages[language][key];
         }
         #endregion
     }
