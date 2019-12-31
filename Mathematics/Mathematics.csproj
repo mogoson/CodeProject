@@ -4,15 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</ProjectGuid>
+    <ProjectGuid>{A10BCB41-926E-4068-93A7-805F56B9468D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MGS.Common</RootNamespace>
-    <AssemblyName>MGS.Common</AssemblyName>
+    <RootNamespace>MGS.Mathematics</RootNamespace>
+    <AssemblyName>MGS.Mathematics</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\MGS.Common.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\MGS.Mathematics.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,23 +29,22 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\MGS.Common.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\MGS.Mathematics.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converter\ArrayConverter.cs" />
-    <Compile Include="Converter\ByteConverter.cs" />
-    <Compile Include="Converter\StructureConverter.cs" />
-    <Compile Include="DesignPattern\ObjectPool\ObjectPool.cs" />
-    <Compile Include="DesignPattern\Singleton\Singleton.cs" />
-    <Compile Include="Generic\Event\GenericEvent.cs" />
-    <Compile Include="IO\Directory\DirectoryUtility.cs" />
-    <Compile Include="IO\File\FileUtility.cs" />
-    <Compile Include="Logger\FileLogger.cs" />
-    <Compile Include="Logger\Interface\ILogger.cs" />
-    <Compile Include="Logger\LogUtility.cs" />
+    <Compile Include="Geometry\Planimetry.cs" />
+    <Compile Include="Hermite\Hermite.cs" />
+    <Compile Include="Hermite\HermiteCurve.cs" />
+    <Compile Include="Maths\Maths.cs" />
+    <Compile Include="Maths\MathSmooth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

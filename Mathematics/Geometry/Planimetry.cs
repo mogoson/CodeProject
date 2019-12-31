@@ -13,7 +13,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MGS.Common.Mathematics
+namespace MGS.Mathematics
 {
     #region Struct
     /// <summary>

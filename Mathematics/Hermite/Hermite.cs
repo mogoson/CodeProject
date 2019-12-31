@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.Common.Mathematics
+namespace MGS.Mathematics
 {
     /// <summary>
     /// Hermite interpolation.

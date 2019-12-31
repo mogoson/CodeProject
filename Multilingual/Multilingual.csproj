@@ -4,15 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</ProjectGuid>
+    <ProjectGuid>{E4871D68-B6AE-495D-9DC0-CB3ACEBC5D44}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MGS.Common</RootNamespace>
-    <AssemblyName>MGS.Common</AssemblyName>
+    <RootNamespace>MGS.Multilingual</RootNamespace>
+    <AssemblyName>MGS.Multilingual</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\MGS.Common.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\MGS.Multilingual.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,24 +29,17 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\MGS.Common.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\MGS.Multilingual.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Compile Include="MultilingualUtility.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converter\ArrayConverter.cs" />
-    <Compile Include="Converter\ByteConverter.cs" />
-    <Compile Include="Converter\StructureConverter.cs" />
-    <Compile Include="DesignPattern\ObjectPool\ObjectPool.cs" />
-    <Compile Include="DesignPattern\Singleton\Singleton.cs" />
-    <Compile Include="Generic\Event\GenericEvent.cs" />
-    <Compile Include="IO\Directory\DirectoryUtility.cs" />
-    <Compile Include="IO\File\FileUtility.cs" />
-    <Compile Include="Logger\FileLogger.cs" />
-    <Compile Include="Logger\Interface\ILogger.cs" />
-    <Compile Include="Logger\LogUtility.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
