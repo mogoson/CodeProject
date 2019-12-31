@@ -7,8 +7,8 @@
     <ProjectGuid>{E4871D68-B6AE-495D-9DC0-CB3ACEBC5D44}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MGS.Multilingual</RootNamespace>
-    <AssemblyName>MGS.Multilingual</AssemblyName>
+    <RootNamespace>MGS.Multilingualism</RootNamespace>
+    <AssemblyName>MGS.Multilingualism</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,7 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\MGS.Multilingual.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\MGS.Multilingualism.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,7 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\MGS.Multilingual.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\MGS.Multilingualism.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="MultilingualUtility.cs" />

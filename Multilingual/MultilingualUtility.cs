@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace MGS.Multilingual
+namespace MGS.Multilingualism
 {
     /// <summary>
     /// Utility for multilingualism.

@@ -57,7 +57,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinLibrary", "WinLibrary\Wi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinCommon", "WinCommon\WinCommon.csproj", "{93887DA2-F638-4CA4-8A7D-7FF06407C8CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multilingual", "Multilingual\Multilingual.csproj", "{E4871D68-B6AE-495D-9DC0-CB3ACEBC5D44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multilingualism", "Multilingual\Multilingualism.csproj", "{E4871D68-B6AE-495D-9DC0-CB3ACEBC5D44}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mathematics", "Mathematics\Mathematics.csproj", "{A10BCB41-926E-4068-93A7-805F56B9468D}"
 EndProject
