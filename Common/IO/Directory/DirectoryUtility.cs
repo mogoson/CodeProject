@@ -19,7 +19,7 @@ namespace MGS.Common.IO
     /// <summary>
     /// Utility for directory.
     /// </summary>
-    public static class DirectoryUtility
+    public sealed class DirectoryUtility
     {
         #region Public Method
         /// <summary>

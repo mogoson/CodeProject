@@ -25,7 +25,7 @@ namespace MGS.Graph
     /// <summary>
     /// Utility for graph.
     /// </summary>
-    public static class GraphUtility
+    public sealed class GraphUtility
     {
         #region Public Method
         /// <summary>

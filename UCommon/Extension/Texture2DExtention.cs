@@ -1,7 +1,7 @@
 ﻿/*************************************************************************
  *  Copyright © 2015-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  TextureExtention.cs
+ *  File         :  Texture2DExtention.cs
  *  Description  :  Extention for UnityEngine.Texture2D.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
@@ -19,7 +19,7 @@ namespace MGS.UCommon.Extension
     /// <summary>
     /// Extention for UnityEngine.Texture2D.
     /// </summary>
-    public static class TextureExtention
+    public static class Texture2DExtention
     {
         #region Public Static Method
         /// <summary>

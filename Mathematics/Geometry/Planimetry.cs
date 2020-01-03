@@ -402,7 +402,7 @@ namespace MGS.Mathematics
     /// <summary>
     /// Planimetry.
     /// </summary>
-    public static class Planimetry
+    public sealed class Planimetry
     {
         #region Distance
         /// <summary>

@@ -18,7 +18,7 @@ namespace MGS.UCommon.Utility
     /// <summary>
     /// Utility for RectTransform.
     /// </summary>
-    public static class RectUtility
+    public sealed class RectUtility
     {
         /// <summary>
         /// Mirror RectTransform.

@@ -17,7 +17,7 @@ namespace MGS.WinCommon.Utility
     /// <summary>
     /// Utility for windows explorer.
     /// </summary>
-    public static class ExplorerUtility
+    public sealed class ExplorerUtility
     {
         #region Field and Property
         /// <summary>

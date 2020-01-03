@@ -17,7 +17,7 @@ namespace MGS.Common.Converter
     /// <summary>
     /// Converter of array.
     /// </summary>
-    public static class ArrayConverter
+    public sealed class ArrayConverter
     {
         #region Public Method
         /// <summary>

@@ -51,7 +51,7 @@
     <Compile Include="UI\Abstract\MonoUI.cs" />
     <Compile Include="Extension\GameObjectExtention.cs" />
     <Compile Include="Extension\TerrainExtension.cs" />
-    <Compile Include="Extension\TextureExtention.cs" />
+    <Compile Include="Extension\Texture2DExtention.cs" />
     <Compile Include="Curve\BezierCurve.cs" />
     <Compile Include="Curve\EllipseCurve.cs" />
     <Compile Include="Curve\HelixCurve.cs" />

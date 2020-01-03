@@ -18,7 +18,7 @@ namespace MGS.Common.Converter
     /// <summary>
     /// Converter of byte array.
     /// </summary>
-    public static class ByteConverter
+    public sealed class ByteConverter
     {
         #region Public Method
         /// <summary>

@@ -18,7 +18,7 @@ namespace MGS.WinLibrary
     /// <summary>
     /// API of wininet dll.
     /// </summary>
-    public static class Wininet
+    public sealed class Wininet
     {
         #region Method
         /// <summary>
@@ -37,7 +37,7 @@ namespace MGS.WinLibrary
     /// <summary>
     /// Flags of internet connected state of the local system.
     /// </summary>
-    public static class InetFlags
+    public sealed class InetFlags
     {
         #region Field
         /// <summary>

@@ -18,7 +18,7 @@ namespace MGS.WinLibrary
     /// <summary>
     /// API of Shell32 dll.
     /// </summary>
-    public static class Shell32
+    public sealed class Shell32
     {
         #region Method
         /// <summary>
@@ -97,7 +97,7 @@ namespace MGS.WinLibrary
     /// <summary>
     /// Flags that specify the options for the dialog box.
     /// </summary>
-    public static class BIFlags
+    public sealed class BIFlags
     {
         /// <summary>
         /// Only return file system directories. If the user selects folders 

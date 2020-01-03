@@ -15,7 +15,7 @@ namespace MGS.Mathematics
     /// <summary>
     /// Mathematical concepts and methods.
     /// </summary>
-    public static class Maths
+    public sealed class Maths
     {
         #region Public Method
         /// <summary>

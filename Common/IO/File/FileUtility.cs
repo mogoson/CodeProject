@@ -20,7 +20,7 @@ namespace MGS.Common.IO
     /// <summary>
     /// Utility for file.
     /// </summary>
-    public static class FileUtility
+    public sealed class FileUtility
     {
         #region Public Method
         /// <summary>

@@ -15,7 +15,7 @@ namespace MGS.Mathematics
     /// <summary>
     /// Linear Smooth.
     /// </summary>
-    public static class LinearSmooth
+    public sealed class LinearSmooth
     {
         #region Public Method
         /// <summary>
@@ -126,7 +126,7 @@ namespace MGS.Mathematics
     /// <summary>
     /// Quadratic Smooth.
     /// </summary>
-    public static class QuadraticSmooth
+    public sealed class QuadraticSmooth
     {
         #region Public Method
         /// <summary>
@@ -210,7 +210,7 @@ namespace MGS.Mathematics
     /// <summary>
     /// Cubic Smooth.
     /// </summary>
-    public static class CubicSmooth
+    public sealed class CubicSmooth
     {
         #region Public Method
         /// <summary>

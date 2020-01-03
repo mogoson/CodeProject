@@ -15,7 +15,7 @@ namespace MGS.Common.Logger
     /// <summary>
     /// Utility for log output.
     /// </summary>
-    public static class LogUtility
+    public sealed class LogUtility
     {
         #region Field and Property
         /// <summary>

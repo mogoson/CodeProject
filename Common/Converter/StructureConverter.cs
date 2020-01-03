@@ -18,7 +18,7 @@ namespace MGS.Common.Converter
     /// <summary>
     /// Converter of structure.
     /// </summary>
-    public static class StructureConverter
+    public sealed class StructureConverter
     {
         #region Public Method
         /// <summary>
