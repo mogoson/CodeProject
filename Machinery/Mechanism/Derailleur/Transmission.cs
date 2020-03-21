@@ -18,7 +18,7 @@ namespace MGS.Machinery
     /// <summary>
     /// Transmission for mechanisms.
     /// </summary>
-    [AddComponentMenu("Mogoson/Machinery/Transmission")]
+    [AddComponentMenu("MGS/Machinery/Transmission")]
     public class Transmission : Mechanism
     {
         #region Field and Property

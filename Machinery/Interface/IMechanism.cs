@@ -46,25 +46,4 @@ namespace MGS.Machinery
         void Drive(float velocity, DriveType type);
         #endregion
     }
-
-    /// <summary>
-    /// Type of mechanism drive.
-    /// </summary>
-    public enum DriveType
-    {
-        /// <summary>
-        /// Ignore drive type.
-        /// </summary>
-        Ignore = 0,
-
-        /// <summary>
-        /// Linear drive.
-        /// </summary>
-        Linear = 1,
-
-        /// <summary>
-        /// Angular drive.
-        /// </summary>
-        Angular = 2
-    }
 }

@@ -1,12 +1,12 @@
 ﻿/*************************************************************************
- *  Copyright © 2015-2018 Mogoson. All rights reserved.
+ *  Copyright © 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  MechanismUnit.cs
- *  Description  :  Define mechanism unit.
+ *  Description  :  Mechanism unit.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  6/25/2018
+ *  Date         :  3/20/2020
  *  Description  :  Initial development version.
  *************************************************************************/
 

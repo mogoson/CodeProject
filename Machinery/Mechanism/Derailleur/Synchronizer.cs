@@ -18,7 +18,7 @@ namespace MGS.Machinery
     /// <summary>
     /// Synchronizer for mechanisms.
     /// </summary>
-    [AddComponentMenu("Mogoson/Machinery/Synchronizer")]
+    [AddComponentMenu("MGS/Machinery/Synchronizer")]
     public class Synchronizer : Mechanism
     {
         #region Field and Property

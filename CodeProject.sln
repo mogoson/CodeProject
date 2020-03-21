@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multilingualism", "Multilin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Machinery", "Machinery\Machinery.csproj", "{983323D7-60ED-4A74-AD9E-A207594A6C65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MachineryEditor", "MachineryEditor\MachineryEditor.csproj", "{20DF934B-0B24-4A97-B6BD-391A08E7B4CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -189,6 +191,10 @@ Global
 		{983323D7-60ED-4A74-AD9E-A207594A6C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{983323D7-60ED-4A74-AD9E-A207594A6C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{983323D7-60ED-4A74-AD9E-A207594A6C65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20DF934B-0B24-4A97-B6BD-391A08E7B4CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20DF934B-0B24-4A97-B6BD-391A08E7B4CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20DF934B-0B24-4A97-B6BD-391A08E7B4CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20DF934B-0B24-4A97-B6BD-391A08E7B4CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
