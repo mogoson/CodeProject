@@ -37,6 +37,11 @@ namespace MGS.UCommon.Skin
         protected Mesh mesh;
 
         /// <summary>
+        /// Skin is initialized?
+        /// </summary>
+        protected bool isInitialized = false;
+
+        /// <summary>
         /// Skinned mesh renderer of skin.
         /// </summary>
         public SkinnedMeshRenderer Renderer { get { return meshRenderer; } }
@@ -53,7 +58,6 @@ namespace MGS.UCommon.Skin
         /// </summary>
         protected virtual void Reset()
         {
-            Initialize();
             Rebuild();
         }
 
@@ -62,7 +66,6 @@ namespace MGS.UCommon.Skin
         /// </summary>
         protected virtual void Awake()
         {
-            Initialize();
             Rebuild();
         }
 
@@ -75,11 +78,9 @@ namespace MGS.UCommon.Skin
             meshRenderer = GetComponent<SkinnedMeshRenderer>();
             meshCollider = GetComponent<MeshCollider>();
 
-            //Create mesh if need.
-            if (mesh == null)
-            {
-                mesh = new Mesh { name = "Skin" };
-            }
+            //Create mesh.
+            mesh = new Mesh { name = "Skin" };
+            isInitialized = true;
         }
 
         /// <summary>
@@ -95,6 +96,11 @@ namespace MGS.UCommon.Skin
         /// </summary>
         public virtual void Rebuild()
         {
+            if (!isInitialized)
+            {
+                Initialize();
+            }
+
             RebuildMesh(mesh);
             meshRenderer.sharedMesh = mesh;
             meshRenderer.localBounds = mesh.bounds;
