@@ -273,7 +273,7 @@ namespace MGS.UIForm
             {
                 foreach (var form in forms)
                 {
-                    form.Language(language);
+                    form.SetLanguage(language);
                 }
             }
         }

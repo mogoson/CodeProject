@@ -11,6 +11,7 @@
  *************************************************************************/
 
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace MGS.Machinery
 {
@@ -23,6 +24,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Rockers that link with this mechanism. 
         /// </summary>
+        [Tooltip("Rockers that link with this mechanism. ")]
         public List<RockerMechanism> rockers = new List<RockerMechanism>();
 
         /// <summary>

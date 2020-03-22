@@ -25,16 +25,19 @@ namespace MGS.Machinery
         /// <summary>
         /// Spring of rocker.
         /// </summary>
+        [Tooltip("Spring of rocker.")]
         public HelixHose spring;
 
         /// <summary>
         /// Top padding of spring.
         /// </summary>
+        [Tooltip("Top padding of spring.")]
         public float top = 0;
 
         /// <summary>
         /// Bottom padding of spring.
         /// </summary>
+        [Tooltip("Bottom padding of spring.")]
         public float bottom = 0;
         #endregion
 

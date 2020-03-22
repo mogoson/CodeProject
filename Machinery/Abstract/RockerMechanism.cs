@@ -23,6 +23,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Look at joint.
         /// </summary>
+        [Tooltip("Look at joint.")]
         public Transform joint;
         #endregion
 

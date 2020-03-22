@@ -25,7 +25,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Mechanisms drive by this transmission.
         /// </summary>
-        [Tooltip("")]
+        [Tooltip("Mechanisms drive by this transmission.")]
         public List<MechanismUnit> mechanismUnits = new List<MechanismUnit>();
         #endregion
 

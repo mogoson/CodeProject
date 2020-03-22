@@ -25,6 +25,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Range limit of angle.
         /// </summary>
+        [Tooltip("Range limit of angle.")]
         public Range range = new Range(-45, 45);
         #endregion
 

@@ -2,7 +2,7 @@
  *  Copyright © 2016-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  LerpMode.cs
- *  Description  :  Lerp mode of meter.
+ *  Description  :  Lerp mode.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -10,10 +10,10 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.Meter
+namespace MGS.UCommon.Generic
 {
     /// <summary>
-    /// Lerp mode of meter.
+    /// Lerp mode.
     /// </summary>
     public enum LerpMode
     {

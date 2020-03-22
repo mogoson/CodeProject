@@ -24,25 +24,25 @@ namespace MGS.Machinery
         /// <summary>
         /// Left gear of differential.
         /// </summary>
-        [Tooltip("")]
+        [Tooltip("Left gear of differential.")]
         public Gear leftGear;
 
         /// <summary>
         /// Right gear of differential.
         /// </summary>
-        [Tooltip("")]
+        [Tooltip("Right gear of differential.")]
         public Gear rightGear;
 
         /// <summary>
         /// Left axle of differential.
         /// </summary>
-        [Tooltip("")]
+        [Tooltip("Left axle of differential.")]
         public Axle leftAxle;
 
         /// <summary>
         /// Right axle of differential.
         /// </summary>
-        [Tooltip("")]
+        [Tooltip("Right axle of differential.")]
         public Axle rightAxle;
 
         /// <summary>

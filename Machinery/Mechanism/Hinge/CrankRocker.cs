@@ -26,11 +26,13 @@ namespace MGS.Machinery
         /// <summary>
         /// Rocker joint.
         /// </summary>
+        [Tooltip("Rocker joint.")]
         public RockerMechanism rocker;
 
         /// <summary>
         /// Joint for link and rocker.
         /// </summary>
+        [Tooltip("Joint for link and rocker.")]
         public Transform joint;
 
         /// <summary>

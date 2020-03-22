@@ -24,6 +24,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Stroke of slider.
         /// </summary>
+        [Tooltip("Stroke of slider.")]
         public Range stroke = new Range(-1, 1);
 
         /// <summary>

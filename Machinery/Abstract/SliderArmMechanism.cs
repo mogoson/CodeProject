@@ -24,6 +24,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Slider joints of arm.
         /// </summary>
+        [Tooltip("Slider joints of arm.")]
         public List<SliderMechanism> sliders = new List<SliderMechanism>();
         #endregion
 

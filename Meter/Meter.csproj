@@ -43,7 +43,6 @@
     <Compile Include="Clock\PointerClock\ClockPointer.cs" />
     <Compile Include="Clock\PointerClock\PointerClock.cs" />
     <Compile Include="Clock\Interface\IClock.cs" />
-    <Compile Include="Meter\LerpMode.cs" />
     <Compile Include="Meter\PointerMeter\Interface\IPointerMeter.cs" />
     <Compile Include="Meter\PointerMeter\LerpPointerMeter.cs" />
     <Compile Include="Meter\PointerMeter\PointerMeter.cs" />

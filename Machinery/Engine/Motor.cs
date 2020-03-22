@@ -22,34 +22,11 @@ namespace MGS.Machinery
     {
         #region Field and Property
         /// <summary>
-        /// Max revolution velocity (r/min).
-        /// </summary>
-        public float MaxRPM
-        {
-            set
-            {
-                maxRPM = value;
-                targetRPM = maxRPM;
-            }
-            get { return maxRPM; }
-        }
-
-        /// <summary>
         /// Max revolution velocity.
         /// </summary>
         [Tooltip("Max revolution velocity.")]
         [SerializeField]
         protected float maxRPM = 60;
-
-        /// <summary>
-        /// Target revolution velocity.
-        /// </summary>
-        protected float targetRPM = 0;
-
-        /// <summary>
-        /// Current revolution velocity.
-        /// </summary>
-        protected float currentRPM = 0;
 
         /// <summary>
         /// Threshold of lerp rpm.
@@ -68,6 +45,29 @@ namespace MGS.Machinery
         /// </summary>
         [Tooltip("Axle drive by this motor.")]
         public Mechanism axle;
+
+        /// <summary>
+        /// Max revolution velocity (r/min).
+        /// </summary>
+        public float MaxRPM
+        {
+            set
+            {
+                maxRPM = value;
+                targetRPM = maxRPM;
+            }
+            get { return maxRPM; }
+        }
+
+        /// <summary>
+        /// Target revolution velocity.
+        /// </summary>
+        protected float targetRPM = 0;
+
+        /// <summary>
+        /// Current revolution velocity.
+        /// </summary>
+        protected float currentRPM = 0;
         #endregion
 
         #region Protected Method

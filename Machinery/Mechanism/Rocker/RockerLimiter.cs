@@ -27,6 +27,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Distance range of rocker.
         /// </summary>
+        [Tooltip("Distance range of rocker.")]
         public Range distance = new Range(1, 10);
 
         /// <summary>

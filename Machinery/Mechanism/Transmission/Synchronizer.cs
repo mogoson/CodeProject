@@ -25,7 +25,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Mechanisms drive by this synchronizer.
         /// </summary>
-        [Tooltip("")]
+        [Tooltip("Mechanisms drive by this synchronizer.")]
         public List<Mechanism> mechanisms = new List<Mechanism>();
         #endregion
 

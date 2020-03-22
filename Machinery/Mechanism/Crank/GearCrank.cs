@@ -24,6 +24,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Radius of gear.
         /// </summary>
+        [Tooltip("Radius of gear.")]
         public float radius = 0.5f;
         #endregion
 

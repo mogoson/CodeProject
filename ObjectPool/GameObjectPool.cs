@@ -24,13 +24,11 @@ namespace MGS.ObjectPool
         /// <summary>
         /// Parent of gameobjects.
         /// </summary>
-        [Tooltip("Parent of gameobjects.")]
         public Transform root;
 
         /// <summary>
         /// Prefab to create clone.
         /// </summary>
-        [Tooltip("Prefab to create clone.")]
         public GameObject prefab;
 
         /// <summary>

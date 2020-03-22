@@ -22,7 +22,7 @@ namespace MGS.UCommon.UI
         /// Set language of UI.
         /// </summary>
         /// <param name="name">Language name.</param>
-        void Language(string name);
+        void SetLanguage(string name);
         #endregion
     }
 }

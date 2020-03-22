@@ -25,11 +25,13 @@ namespace MGS.Machinery
         /// <summary>
         /// Keep up mode.
         /// </summary>
+        [Tooltip("Keep up mode.")]
         public KeepUpMode keepUp = KeepUpMode.TransformUp;
 
         /// <summary>
         /// Reference forward as world up for look at.
         /// </summary>
+        [Tooltip("Reference forward as world up for look at.")]
         public Transform reference;
 
         /// <summary>

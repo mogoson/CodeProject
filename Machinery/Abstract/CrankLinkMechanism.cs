@@ -24,11 +24,13 @@ namespace MGS.Machinery
         /// <summary>
         /// Power crank.
         /// </summary>
+        [Tooltip("Power crank.")]
         public CrankMechanism crank;
 
         /// <summary>
         /// Link rocker.
         /// </summary>
+        [Tooltip("Link rocker.")]
         public RockerMechanism link;
 
         /// <summary>

@@ -23,9 +23,9 @@ namespace MGS.Machinery
     {
         #region Field and Property
         /// <summary>
-        /// Coaxed mechanisms.
+        /// Coaxe mechanisms.
         /// </summary>
-        [Tooltip("")]
+        [Tooltip("Coaxe mechanisms.")]
         [SerializeField]
         protected List<Mechanism> coaxes;
         #endregion

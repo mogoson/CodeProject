@@ -23,9 +23,9 @@ namespace MGS.Machinery
     {
         #region Field and Property
         /// <summary>
-        /// Engaged mechanisms.
+        /// Engage mechanisms.
         /// </summary>
-        [Tooltip("Engaged mechanisms.")]
+        [Tooltip("Engage mechanisms.")]
         [SerializeField]
         protected List<Mechanism> engages;
 

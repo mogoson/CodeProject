@@ -26,6 +26,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Slider joint.
         /// </summary>
+        [Tooltip("Slider joint.")]
         public Transform slider;
 
         /// <summary>
