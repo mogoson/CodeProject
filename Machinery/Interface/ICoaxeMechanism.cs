@@ -13,20 +13,20 @@
 namespace MGS.Machinery
 {
     /// <summary>
-    /// Mechanism with coaxed mechanisms.
+    /// Interface for coaxe mechanism.
     /// </summary>
     public interface ICoaxeMechanism : IMechanism
     {
         /// <summary>
-        /// Build coaxe for mechanism.
+        /// Link coaxe.
         /// </summary>
-        /// <param name="coaxe">Coaxe mechanism.</param>
-        void BuildCoaxed(ICoaxedMechanism coaxe);
+        /// <param name="mechanism">Target mechanism.</param>
+        void LinkCoaxe(IMechanism mechanism);
 
         /// <summary>
-        /// Break coaxed.
+        /// Break coaxe.
         /// </summary>
-        /// <param name="coaxe">Coaxe mechanism.</param>
-        void BreakCoaxed(ICoaxedMechanism coaxe);
+        /// <param name="mechanism">Target mechanism.</param>
+        void BreakCoaxe(IMechanism mechanism);
     }
 }

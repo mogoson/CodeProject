@@ -32,7 +32,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Limiter is triggered?
         /// </summary>
-        public override bool IsTriggered
+        public override bool IsTriggerEnter
         {
             get
             {

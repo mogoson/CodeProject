@@ -1,27 +1,31 @@
 ﻿/*************************************************************************
- *  Copyright © 2020 Mogoson. All rights reserved.
+ *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  ITriggerMechanism.cs
- *  Description  :  Interface for trigger mechanism.
+ *  File         :  WormGear.cs
+ *  Description  :  Define WormGear component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  3/20/2020
+ *  Date         :  5/18/2018
  *  Description  :  Initial development version.
  *************************************************************************/
+
+using UnityEngine;
 
 namespace MGS.Machinery
 {
     /// <summary>
-    /// Trigger mechanism.
+    /// Worm gear.
     /// </summary>
-    public interface ITriggerMechanism : IMechanism
+    [AddComponentMenu("MGS/Machinery/WormGear")]
+    public class WormGear : Gear
     {
-        #region Property
+        #region Field and Property
         /// <summary>
-        /// Trigger is enter?
+        /// Count of gear teeth.
         /// </summary>
-        bool IsTriggerEnter { get; }
+        [Tooltip("Count of gear teeth.")]
+        public int teeth = 36;
         #endregion
     }
 }

@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;UNITY_5_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -25,7 +25,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -34,6 +34,8 @@
     <Compile Include="Crank\FreeCrankEditor.cs" />
     <Compile Include="Crank\GearCrankEditor.cs" />
     <Compile Include="Crank\LimitCrankEditor.cs" />
+    <Compile Include="Gear\AxleEditor.cs" />
+    <Compile Include="Gear\GearEditor.cs" />
     <Compile Include="Hinge\CrankLinkEditor.cs" />
     <Compile Include="Hinge\CrankRockerEditor.cs" />
     <Compile Include="Hinge\CrankSliderEditor.cs" />
@@ -43,6 +45,8 @@
     <Compile Include="Rocker\RockerLimiterEditor.cs" />
     <Compile Include="Rocker\RockerRivetEditor.cs" />
     <Compile Include="Slider\SliderEditor.cs" />
+    <Compile Include="Vibrator\CentrifugalVibratorEditor.cs" />
+    <Compile Include="Vibrator\LinearVibratorEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Machinery\Machinery.csproj">
@@ -68,7 +72,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Plugins\MGS"
+    <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Editor\MGS"
 if exist %25targetDir%25\$(TargetFileName) (
     if $(ConfigurationName)==Debug (
         copy "$(TargetName).pdb" %25targetDir%25
@@ -78,7 +82,6 @@ if exist %25targetDir%25\$(TargetFileName) (
          )
     )
     copy "$(TargetFileName)" %25targetDir%25
-    copy "$(TargetName).xml" %25targetDir%25
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>

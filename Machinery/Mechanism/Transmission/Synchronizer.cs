@@ -1,12 +1,12 @@
 ﻿/*************************************************************************
  *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  Transmission.cs
- *  Description  :  Define Transmission component.
+ *  File         :  Synchronizer.cs
+ *  Description  :  Define Synchronizer component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  6/22/2017
+ *  Date         :  6/27/2017
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -16,29 +16,30 @@ using UnityEngine;
 namespace MGS.Machinery
 {
     /// <summary>
-    /// Transmission for mechanisms.
+    /// Synchronizer for mechanisms.
     /// </summary>
-    [AddComponentMenu("MGS/Machinery/Transmission")]
-    public class Transmission : Mechanism
+    [AddComponentMenu("MGS/Machinery/Synchronizer")]
+    public class Synchronizer : Mechanism
     {
         #region Field and Property
         /// <summary>
-        /// Mechanisms drive by this transmission.
+        /// Mechanisms drive by this synchronizer.
         /// </summary>
-        public List<MechanismUnit> mechanismUnits = new List<MechanismUnit>();
+        [Tooltip("")]
+        public List<Mechanism> mechanisms = new List<Mechanism>();
         #endregion
 
         #region Public Method
         /// <summary>
-        /// Drive transmission by velocity.
+        /// Drive synchronizer by velocity.
         /// </summary>
         /// <param name="velocity">Velocity of drive.</param>
         /// <param name="type">Type of drive.</param>
         public override void Drive(float velocity, DriveType type)
         {
-            foreach (var unit in mechanismUnits)
+            foreach (var mechanism in mechanisms)
             {
-                unit.mechanism.Drive(velocity * unit.coefficient, type);
+                mechanism.Drive(velocity, type);
             }
         }
         #endregion

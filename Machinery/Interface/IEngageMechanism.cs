@@ -13,20 +13,20 @@
 namespace MGS.Machinery
 {
     /// <summary>
-    /// Mechanism with engaged mechanisms.
+    /// Interface for engage mechanism.
     /// </summary>
     public interface IEngageMechanism : IMechanism
     {
         /// <summary>
-        /// Build engage for mechanism.
+        /// Link engage.
         /// </summary>
-        /// <param name="engage">Engage mechanism.</param>
-        void BuildEngage(IEngagedMechanism engage);
+        /// <param name="mechanism">Target mechanism.</param>
+        void LinkEngage(IMechanism mechanism);
 
         /// <summary>
         /// Break engage.
         /// </summary>
-        /// <param name="engage">Engage mechanism.</param>
-        void BreakEngage(IEngagedMechanism engage);
+        /// <param name="mechanism">Target mechanism.</param>
+        void BreakEngage(IMechanism mechanism);
     }
 }

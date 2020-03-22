@@ -1,45 +1,47 @@
 ﻿/*************************************************************************
  *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  Synchronizer.cs
- *  Description  :  Define Synchronizer component.
+ *  File         :  CoaxeGear.cs
+ *  Description  :  Define CoaxeGear component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  6/27/2017
+ *  Date         :  5/12/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MGS.Machinery
 {
     /// <summary>
-    /// Synchronizer for mechanisms.
+    /// Coaxe gear with the same axis as another gear.
     /// </summary>
-    [AddComponentMenu("MGS/Machinery/Synchronizer")]
-    public class Synchronizer : Mechanism
+    [AddComponentMenu("MGS/Machinery/CoaxeGear")]
+    public class CoaxeGear : Gear
     {
-        #region Field and Property
-        /// <summary>
-        /// Mechanisms drive by this synchronizer.
-        /// </summary>
-        public List<Mechanism> mechanisms = new List<Mechanism>();
-        #endregion
-
         #region Public Method
         /// <summary>
-        /// Drive synchronizer by velocity.
+        /// Drive gear by velocity.
         /// </summary>
         /// <param name="velocity">Velocity of drive.</param>
         /// <param name="type">Type of drive.</param>
         public override void Drive(float velocity, DriveType type)
         {
-            foreach (var mechanism in mechanisms)
+            var angular = velocity;
+            var linear = velocity;
+
+            if (type == DriveType.Linear)
             {
-                mechanism.Drive(velocity, type);
+                angular = velocity / radius * Mathf.Rad2Deg;
             }
+            else
+            {
+                linear = velocity * Mathf.Deg2Rad * radius;
+            }
+
+            DriveCoaxes(angular);
+            DriveEngages(-linear);
         }
         #endregion
     }

@@ -1,36 +1,47 @@
 ﻿/*************************************************************************
- *  Copyright © 2020 Mogoson. All rights reserved.
+ *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  TriggerMechanism.cs
- *  Description  :  Trigger for mechanism.
+ *  File         :  Transmission.cs
+ *  Description  :  Define Transmission component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  3/20/2020
+ *  Date         :  6/22/2017
  *  Description  :  Initial development version.
  *************************************************************************/
+
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace MGS.Machinery
 {
     /// <summary>
-    /// Trigger for mechanism.
+    /// Transmission for mechanisms.
     /// </summary>
-    public abstract class TriggerMechanism : Mechanism, ITriggerMechanism
+    [AddComponentMenu("MGS/Machinery/Transmission")]
+    public class Transmission : Mechanism
     {
         #region Field and Property
         /// <summary>
-        /// Trigger is triggered?
+        /// Mechanisms drive by this transmission.
         /// </summary>
-        public abstract bool IsTriggerEnter { get; }
+        [Tooltip("")]
+        public List<MechanismUnit> mechanismUnits = new List<MechanismUnit>();
         #endregion
 
         #region Public Method
         /// <summary>
-        /// Drive trigger by velocity.
+        /// Drive transmission by velocity.
         /// </summary>
         /// <param name="velocity">Velocity of drive.</param>
         /// <param name="type">Type of drive.</param>
-        public override void Drive(float velocity = 0, DriveType type = DriveType.Ignore) { }
+        public override void Drive(float velocity, DriveType type)
+        {
+            foreach (var unit in mechanismUnits)
+            {
+                unit.mechanism.Drive(velocity * unit.coefficient, type);
+            }
+        }
         #endregion
     }
 }

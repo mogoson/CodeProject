@@ -45,7 +45,7 @@ namespace MGS.Machinery
         {
             foreach (var trigger in triggers)
             {
-                if (trigger.IsTriggered)
+                if (trigger.IsTriggerEnter)
                 {
                     return true;
                 }

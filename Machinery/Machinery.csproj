@@ -44,15 +44,19 @@
     <Compile Include="Enum\EditMode.cs" />
     <Compile Include="Enum\KeepUpMode.cs" />
     <Compile Include="Enum\TelescopicState.cs" />
-    <Compile Include="Interface\ICoaxedMechanism.cs" />
     <Compile Include="Interface\ICoaxeMechanism.cs" />
-    <Compile Include="Interface\IEngagedMechanism.cs" />
     <Compile Include="Interface\IEngageMechanism.cs" />
     <Compile Include="Interface\IMechanism.cs" />
     <Compile Include="Interface\ITriggerMechanism.cs" />
+    <Compile Include="Mechanism\Belt\Belt.cs" />
     <Compile Include="Mechanism\Crank\FreeCrank.cs" />
     <Compile Include="Mechanism\Crank\GearCrank.cs" />
     <Compile Include="Mechanism\Crank\LimitCrank.cs" />
+    <Compile Include="Mechanism\Gear\Axle.cs" />
+    <Compile Include="Mechanism\Gear\CoaxeGear.cs" />
+    <Compile Include="Mechanism\Gear\Gear.cs" />
+    <Compile Include="Mechanism\Gear\WormGear.cs" />
+    <Compile Include="Mechanism\Gear\WormShaft.cs" />
     <Compile Include="Mechanism\Hinge\CrankRocker.cs" />
     <Compile Include="Mechanism\Hinge\CrankSlider.cs" />
     <Compile Include="Mechanism\Rocker\RockerHinge.cs" />
@@ -62,9 +66,13 @@
     <Compile Include="Mechanism\Rocker\RockerSpring.cs" />
     <Compile Include="Mechanism\Slider\Slider.cs" />
     <Compile Include="Mechanism\Slider\SliderArm.cs" />
+    <Compile Include="Mechanism\Transmission\Differential.cs" />
+    <Compile Include="Engine\Motor.cs" />
+    <Compile Include="Mechanism\Vibrator\CentrifugalVibrator.cs" />
+    <Compile Include="Mechanism\Vibrator\LinearVibrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Mechanism\Derailleur\Synchronizer.cs" />
-    <Compile Include="Mechanism\Derailleur\Transmission.cs" />
+    <Compile Include="Mechanism\Transmission\Synchronizer.cs" />
+    <Compile Include="Mechanism\Transmission\Transmission.cs" />
     <Compile Include="Struct\MechanismUnit.cs" />
   </ItemGroup>
   <ItemGroup>
