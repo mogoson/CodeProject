@@ -11,7 +11,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UCommon.Curve;
+using MGS.Curve;
 using MGS.UCommon.Skin;
 using MGS.UCommon.Utility;
 using System.Collections.Generic;

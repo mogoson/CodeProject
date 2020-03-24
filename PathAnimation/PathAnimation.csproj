@@ -55,6 +55,10 @@
       <Project>{f1d69a8e-1d1c-46e1-9afd-989de797b4f4}</Project>
       <Name>CurvePath</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Curve\Curve.csproj">
+      <Project>{48e8e367-599d-479e-aa24-d5dde2ddba74}</Project>
+      <Name>Curve</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UCommon\UCommon.csproj">
       <Project>{02f92370-d9a3-4a6b-8b7d-717315a01145}</Project>
       <Name>UCommon</Name>

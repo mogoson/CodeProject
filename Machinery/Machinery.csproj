@@ -85,6 +85,10 @@
       <Project>{B02A86FE-256D-4DB9-8617-40635154C3AF}</Project>
       <Name>CurveHose</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Curve\Curve.csproj">
+      <Project>{48e8e367-599d-479e-aa24-d5dde2ddba74}</Project>
+      <Name>Curve</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mathematics\Mathematics.csproj">
       <Project>{A10BCB41-926E-4068-93A7-805F56B9468D}</Project>
       <Name>Mathematics</Name>

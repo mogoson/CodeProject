@@ -18,7 +18,7 @@
 using System;
 using UnityEngine;
 
-namespace MGS.UCommon.Curve
+namespace MGS.Curve
 {
     /// <summary>
     /// Anchor points of linear bezier curve.
