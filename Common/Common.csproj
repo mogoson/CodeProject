@@ -48,6 +48,7 @@
     <Compile Include="Logger\FileLogger.cs" />
     <Compile Include="Logger\Interface\ILogger.cs" />
     <Compile Include="Logger\LogUtility.cs" />
+    <Compile Include="Crypto\MD5CryptoUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
