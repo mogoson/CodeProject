@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.UCommon.UAnimation
+namespace MGS.UAnimation
 {
     /// <summary>
     /// Interface of animation.
@@ -56,26 +56,5 @@ namespace MGS.UCommon.UAnimation
         /// </summary>
         void Stop();
         #endregion
-    }
-
-    /// <summary>
-    /// Loop mode of animation.
-    /// </summary>
-    public enum LoopMode
-    {
-        /// <summary>
-        /// Animation just play once.
-        /// </summary>
-        Once = 0,
-
-        /// <summary>
-        /// Animation loop play.
-        /// </summary>
-        Loop = 1,
-
-        /// <summary>
-        /// Animation play like ping pong.
-        /// </summary>
-        PingPong = 2,
     }
 }
