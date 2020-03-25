@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Mathematics;
+using MGS.Common.Mathematics;
 using UnityEngine;
 
 namespace MGS.Machinery

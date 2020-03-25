@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Mathematics;
+using MGS.Common.Mathematics;
 using UnityEngine;
 
 namespace MGS.Machinery
@@ -82,7 +82,7 @@ namespace MGS.Machinery
             var linkCircle = new Circle(CorrectPoint(GetLinkPosition()), linkRadius);
             var rockerCircle = new Circle(CorrectPoint(rocker.transform.localPosition), rockerRadius);
 
-            var vectors = Planimetry.GetIntersections(linkCircle, rockerCircle);
+            var vectors = Geometry.GetIntersections(linkCircle, rockerCircle);
             if (vectors == null)
             {
                 IsLock = true;

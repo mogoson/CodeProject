@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.Mathematics
+namespace MGS.Common.Mathematics
 {
     /// <summary>
     /// Mathematical concepts and methods.

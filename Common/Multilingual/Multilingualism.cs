@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  MultilingualUtility.cs
- *  Description  :  Utility for multilingualism.
+ *  File         :  Multilingualism.cs
+ *  Description  :  Multilingualism.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -17,12 +17,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace MGS.Multilingualism
+namespace MGS.Common.Multilingual
 {
     /// <summary>
-    /// Utility for multilingualism.
+    /// Multilingualism.
     /// </summary>
-    public sealed class MultilingualUtility : Singleton<MultilingualUtility>
+    public sealed class Multilingualism : Singleton<Multilingualism>
     {
         #region Field and Property
         /// <summary>
@@ -64,7 +64,7 @@ namespace MGS.Multilingualism
         /// <summary>
         /// Constructor.
         /// </summary>
-        private MultilingualUtility() { }
+        private Multilingualism() { }
         #endregion
 
         #region Public Method

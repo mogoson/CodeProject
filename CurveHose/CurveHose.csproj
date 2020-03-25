@@ -51,10 +51,6 @@
     <Compile Include="SinHose.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Curve\Curve.csproj">
-      <Project>{48E8E367-599D-479E-AA24-D5DDE2DDBA74}</Project>
-      <Name>Curve</Name>
-    </ProjectReference>
     <ProjectReference Include="..\UCommon\UCommon.csproj">
       <Project>{02F92370-D9A3-4A6B-8B7D-717315A01145}</Project>
       <Name>UCommon</Name>

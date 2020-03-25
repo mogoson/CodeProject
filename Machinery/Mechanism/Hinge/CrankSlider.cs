@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Mathematics;
+using MGS.Common.Mathematics;
 using UnityEngine;
 
 namespace MGS.Machinery
@@ -60,7 +60,7 @@ namespace MGS.Machinery
             var slideLine = Line.FromPoints(CorrectPoint(slider.localPosition),
                 CorrectPoint(slider.localPosition + transform.InverseTransformDirection(ProjectDirection(slider.forward))));
 
-            var vectors = Planimetry.GetIntersections(linkCircle, slideLine);
+            var vectors = Geometry.GetIntersections(linkCircle, slideLine);
             if (vectors == null)
             {
                 IsLock = true;

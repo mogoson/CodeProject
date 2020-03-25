@@ -43,6 +43,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Curve\BezierCurve.cs" />
+    <Compile Include="Curve\EllipseCurve.cs" />
+    <Compile Include="Curve\HelixCurve.cs" />
+    <Compile Include="Curve\HermiteCurve.cs" />
+    <Compile Include="Curve\Interface\ICurve.cs" />
+    <Compile Include="Curve\SinCurve.cs" />
     <Compile Include="Event\MonoEventTrigger.cs" />
     <Compile Include="Generic\Enum\ColorBlendMode.cs" />
     <Compile Include="Generic\Enum\LerpMode.cs" />
