@@ -11,17 +11,16 @@
  *************************************************************************/
 
 using MGS.Common.Logger;
-using MGS.UGUI;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MGS.ContextMenu
+namespace MGS.UGUI
 {
     /// <summary>
     /// Context menu form.
     /// </summary>
-    [AddComponentMenu("MGS/ContextMenu/ContextMenuForm")]
+    [AddComponentMenu("MGS/UGUI/ContextMenuForm")]
     [FormInfo(UIFromPattern.Single, "ContextMenu")]
     public class ContextMenuForm : MonoForm, IContextMenuForm
     {

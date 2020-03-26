@@ -13,12 +13,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MGS.Tooltip
+namespace MGS.UGUI
 {
     /// <summary>
     /// Text tooltip form.
     /// </summary>
-    [AddComponentMenu("MGS/Tooltip/TextTooltipForm")]
+    [AddComponentMenu("MGS/UGUI/TextTooltipForm")]
     [RequireComponent(typeof(ContentSizeFitter), typeof(LayoutGroup))]
     public class TextTooltipForm : TooltipForm
     {

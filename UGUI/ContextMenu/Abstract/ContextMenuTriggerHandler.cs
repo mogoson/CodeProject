@@ -1,37 +1,48 @@
 ﻿/*************************************************************************
- *  Copyright © 2018-2019 Mogoson. All rights reserved.
+ *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IContextMenuTriggerHandler.cs
- *  Description  :  Define interface for context menu trigger handler.
+ *  File         :  ContextMenuTriggerHandler.cs
+ *  Description  :  Handler of contex menu trigger.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  9/16/2018
+ *  Date         :  4/12/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
 using UnityEngine;
 
-namespace MGS.ContextMenu
+namespace MGS.UGUI
 {
     /// <summary>
-    /// Interface for context menu trigger handler.
+    /// Handler of contex menu trigger.
     /// </summary>
-    public interface IContextMenuTriggerHandler
+    public abstract class ContextMenuTriggerHandler : MonoBehaviour, IContextMenuTriggerHandler
     {
-        #region Method
+        #region Public Method
         /// <summary>
         /// On context menu trigger enter.
         /// </summary>
         /// <param name="hitInfo">Raycast hit info of target.</param>
         /// <returns>Instance of context menu form.</returns>
-        IContextMenuForm OnMenuTriggerEnter(RaycastHit hitInfo);
+        public abstract IContextMenuForm OnMenuTriggerEnter(RaycastHit hitInfo);
 
         /// <summary>
         /// On context menu trigger exit.
         /// </summary>
         /// <param name="menuForm">Instance of context menu form.</param>
-        void OnMenuTriggerExit(IContextMenuForm menuForm);
+        public virtual void OnMenuTriggerExit(IContextMenuForm menuForm)
+        {
+            if (menuForm == null || menuForm.IsDisposed)
+            {
+                return;
+            }
+
+            if (menuForm.IsOpen)
+            {
+                FormManager.Instance.CloseForm(menuForm);
+            }
+        }
         #endregion
     }
 }

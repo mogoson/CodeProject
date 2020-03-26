@@ -10,11 +10,10 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UGUI;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MGS.Tooltip
+namespace MGS.UGUI
 {
     /// <summary>
     /// Tooltip form.

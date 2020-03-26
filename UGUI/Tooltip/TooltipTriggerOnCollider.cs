@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  TooltipTriggerOnUGUI.cs
- *  Description  :  Trigger for Tooltip on UGUI.
+ *  File         :  TooltipTriggerOnCollider.cs
+ *  Description  :  Trigger for Tooltip on collider.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -10,35 +10,31 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UGUI;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-namespace MGS.Tooltip
+namespace MGS.UGUI
 {
     /// <summary>
-    /// Trigger for Tooltip on UGUI.
+    /// Trigger for Tooltip on collider.
     /// </summary>
-    [AddComponentMenu("MGS/Tooltip/TooltipTriggerOnUGUI")]
-    [RequireComponent(typeof(UIBehaviour))]
-    public class TooltipTriggerOnUGUI : TooltipTrigger, IPointerEnterHandler, IPointerExitHandler
+    [AddComponentMenu("MGS/UGUI/TooltipTriggerOnCollider")]
+    [RequireComponent(typeof(Collider))]
+    public class TooltipTriggerOnCollider : TooltipTrigger
     {
         #region Protected Method
         /// <summary>
-        /// On mouse pointer enter UI.
+        /// On mouse pointer enter collider.
         /// </summary>
-        /// <param name="eventData">Event data.</param>
-        public virtual void OnPointerEnter(PointerEventData eventData)
+        protected virtual void OnMouseEnter()
         {
             var tipForm = FormManager.Instance.OpenForm<TextTooltipForm>();
             tipForm.SetTipContent(tipContent);
         }
 
         /// <summary>
-        /// On mouse pointer exit UI.
+        /// On mouse pointer exit collider.
         /// </summary>
-        /// <param name="eventData">Event data.</param>
-        public virtual void OnPointerExit(PointerEventData eventData)
+        protected virtual void OnMouseExit()
         {
             FormManager.Instance.CloseForm<TextTooltipForm>();
         }

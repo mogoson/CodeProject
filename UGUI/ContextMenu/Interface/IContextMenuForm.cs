@@ -10,10 +10,9 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UGUI;
 using System.Collections.Generic;
 
-namespace MGS.ContextMenu
+namespace MGS.UGUI
 {
     /// <summary>
     /// Interface of custom context menu form.

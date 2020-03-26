@@ -10,9 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UGUI;
-
-namespace MGS.ContextMenu
+namespace MGS.UGUI
 {
     /// <summary>
     /// Element of context menu.

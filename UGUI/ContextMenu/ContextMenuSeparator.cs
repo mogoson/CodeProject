@@ -12,12 +12,12 @@
 
 using UnityEngine;
 
-namespace MGS.ContextMenu
+namespace MGS.UGUI
 {
     /// <summary>
     /// Separator of context menu.
     /// </summary>
-    [AddComponentMenu("MGS/ContextMenu/ContextMenuSeparator")]
+    [AddComponentMenu("MGS/UGUI/ContextMenuSeparator")]
     public class ContextMenuSeparator : ContextMenuElement, IContextMenuSeparator
     {
         #region Public Method

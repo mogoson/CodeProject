@@ -15,12 +15,12 @@ using MGS.Common.Logger;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MGS.ContextMenu
+namespace MGS.UGUI
 {
     /// <summary>
     /// Item of context menu.
     /// </summary>
-    [AddComponentMenu("MGS/ContextMenu/ContextMenuItem")]
+    [AddComponentMenu("MGS/UGUI/ContextMenuItem")]
     [RequireComponent(typeof(Button))]
     public class ContextMenuItem : ContextMenuElement, IContextMenuItem
     {

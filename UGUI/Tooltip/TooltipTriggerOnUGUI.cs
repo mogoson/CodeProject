@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  TooltipTriggerOnCollider.cs
- *  Description  :  Trigger for Tooltip on collider.
+ *  File         :  TooltipTriggerOnUGUI.cs
+ *  Description  :  Trigger for Tooltip on UGUI.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -10,32 +10,34 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UGUI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-namespace MGS.Tooltip
+namespace MGS.UGUI
 {
     /// <summary>
-    /// Trigger for Tooltip on collider.
+    /// Trigger for Tooltip on UGUI.
     /// </summary>
-    [AddComponentMenu("MGS/Tooltip/TooltipTriggerOnCollider")]
-    [RequireComponent(typeof(Collider))]
-    public class TooltipTriggerOnCollider : TooltipTrigger
+    [AddComponentMenu("MGS/UGUI/TooltipTriggerOnUGUI")]
+    [RequireComponent(typeof(UIBehaviour))]
+    public class TooltipTriggerOnUGUI : TooltipTrigger, IPointerEnterHandler, IPointerExitHandler
     {
         #region Protected Method
         /// <summary>
-        /// On mouse pointer enter collider.
+        /// On mouse pointer enter UI.
         /// </summary>
-        protected virtual void OnMouseEnter()
+        /// <param name="eventData">Event data.</param>
+        public virtual void OnPointerEnter(PointerEventData eventData)
         {
             var tipForm = FormManager.Instance.OpenForm<TextTooltipForm>();
             tipForm.SetTipContent(tipContent);
         }
 
         /// <summary>
-        /// On mouse pointer exit collider.
+        /// On mouse pointer exit UI.
         /// </summary>
-        protected virtual void OnMouseExit()
+        /// <param name="eventData">Event data.</param>
+        public virtual void OnPointerExit(PointerEventData eventData)
         {
             FormManager.Instance.CloseForm<TextTooltipForm>();
         }

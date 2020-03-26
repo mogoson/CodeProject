@@ -11,9 +11,8 @@
  *************************************************************************/
 
 using MGS.Common.Generic;
-using MGS.UGUI;
 
-namespace MGS.ContextMenu
+namespace MGS.UGUI
 {
     /// <summary>
     /// Interface for context menu item.

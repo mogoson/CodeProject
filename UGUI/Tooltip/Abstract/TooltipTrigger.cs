@@ -12,7 +12,7 @@
 
 using UnityEngine;
 
-namespace MGS.Tooltip
+namespace MGS.UGUI
 {
     /// <summary>
     /// Trigger for Tooltip.

@@ -14,12 +14,12 @@ using MGS.Common.Logger;
 using MGS.UCommon.Utility;
 using UnityEngine;
 
-namespace MGS.ContextMenu
+namespace MGS.UGUI
 {
     /// <summary>
     /// Trigger of context menu.
     /// </summary>
-    [AddComponentMenu("MGS/ContextMenu/ContextMenuTrigger")]
+    [AddComponentMenu("MGS/UGUI/ContextMenuTrigger")]
     [RequireComponent(typeof(Camera))]
     public class ContextMenuTrigger : MonoBehaviour, IContextMenuTrigger
     {

@@ -12,7 +12,7 @@
 
 using UnityEngine;
 
-namespace MGS.ContextMenu
+namespace MGS.UGUI
 {
     /// <summary>
     /// Context menu support object.
