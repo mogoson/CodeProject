@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.CurveHose;
+using MGS.SkinnedMesh;
 using UnityEngine;
 
 namespace MGS.Machinery

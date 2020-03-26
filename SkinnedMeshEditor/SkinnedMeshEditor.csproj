@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0BB4CB52-8530-4D5F-91C2-C8DFBC550267}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MGS.SkinnedMeshEditor</RootNamespace>
+    <AssemblyName>MGS.SkinnedMeshEditor</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UNITY_5_OR_NEWER</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;UNITY_5_OR_NEWER</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="UnityEditor">
+      <HintPath>..\Library\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\Library\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CurveHose\BezierHoseEditor.cs" />
+    <Compile Include="CurveHose\HermiteHoseEditor.cs" />
+    <Compile Include="CurveHose\MonoCurveHoseEditor.cs" />
+    <Compile Include="MonoSkinEditor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SkinnedMesh\SkinnedMesh.csproj">
+      <Project>{AD7E2966-AAEA-4A99-8790-B1C4375CB15F}</Project>
+      <Name>SkinnedMesh</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UCommonEditor\UCommonEditor.csproj">
+      <Project>{522C0820-E5F6-4BD9-A1E3-FE2E1A1E2CE2}</Project>
+      <Name>UCommonEditor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Editor\MGS"
+if exist %25targetDir%25\$(TargetFileName) (
+    if $(ConfigurationName)==Debug (
+        copy "$(TargetName).pdb" %25targetDir%25
+    ) else (
+         if exist "%25targetDir%25\$(TargetName).pdb" (
+            del "%25targetDir%25\$(TargetName).pdb"
+         )
+    )
+    copy "$(TargetFileName)" %25targetDir%25
+)</PostBuildEvent>
+  </PropertyGroup>
+</Project>

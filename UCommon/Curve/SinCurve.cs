@@ -13,7 +13,7 @@
 using System;
 using UnityEngine;
 
-namespace MGS.Curve
+namespace MGS.UCommon.Curve
 {
     /// <summary>
     /// Args of sin.

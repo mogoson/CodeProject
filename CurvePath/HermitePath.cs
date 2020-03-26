@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Curve;
+using MGS.UCommon.Curve;
 using System.Collections.Generic;
 using UnityEngine;
 
