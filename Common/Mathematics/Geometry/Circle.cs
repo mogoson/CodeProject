@@ -1,0 +1,61 @@
+﻿/*************************************************************************
+ *  Copyright © 2015-2019 Mogoson. All rights reserved.
+ *------------------------------------------------------------------------
+ *  File         :  Circle.cs
+ *  Description  :  Circle in plane rectangular coordinate system.
+ *------------------------------------------------------------------------
+ *  Author       :  Mogoson
+ *  Version      :  0.1.0
+ *  Date         :  2/26/2018
+ *  Description  :  Initial development version.
+ *************************************************************************/
+
+using System;
+
+namespace MGS.Common.Mathematics
+{
+    /// <summary>
+    /// Circle in plane rectangular coordinate system.
+    /// </summary>
+    [Serializable]
+    public struct Circle
+    {
+        /*  Circle Definition
+         *                       2            2     2
+         *  Circle is : (x - c.x)  + (y - c.y)  = r
+         */
+
+        #region Field and Property
+        /// <summary>
+        /// Center.
+        /// </summary>
+        public Vector c;
+
+        /// <summary>
+        /// Radius.
+        /// </summary>
+        public double r;
+
+        /// <summary>
+        /// Unit circle.
+        /// </summary>
+        public static Circle Unit
+        {
+            get { return new Circle(Vector.Zero, 1); }
+        }
+        #endregion
+
+        #region Public Method
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="c">Center.</param>
+        /// <param name="r">Radius.</param>
+        public Circle(Vector c, double r)
+        {
+            this.c = c;
+            this.r = r;
+        }
+        #endregion
+    }
+}

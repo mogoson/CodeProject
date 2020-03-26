@@ -18,7 +18,7 @@ namespace MGS.UCommon.Utility
     /// <summary>
     /// Utility for mesh.
     /// </summary>
-    public static class MeshUtility
+    public sealed class MeshUtility
     {
         #region Public Method
         /// <summary>

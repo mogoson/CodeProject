@@ -134,7 +134,7 @@ namespace MGS.ContextMenu
         {
             if (Handler == null)
             {
-                LogUtility.LogWarning(0, "Do nothing on menu trigger enter: The handler of menu trigger is null.");
+                LogUtility.LogWarning("Do nothing on menu trigger enter: The handler of menu trigger is null.");
                 return;
             }
             menuForm = Handler.OnMenuTriggerEnter(hitInfo);
@@ -148,7 +148,7 @@ namespace MGS.ContextMenu
         {
             if (Handler == null)
             {
-                LogUtility.LogWarning(0, "Do nothing on menu trigger exit: The handler of menu trigger is null.");
+                LogUtility.LogWarning("Do nothing on menu trigger exit: The handler of menu trigger is null.");
                 return;
             }
             Handler.OnMenuTriggerExit(menuForm);

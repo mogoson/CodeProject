@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UIForm;
+using MGS.UGUI;
 using UnityEngine;
 
 namespace MGS.ContextMenu
@@ -41,7 +41,7 @@ namespace MGS.ContextMenu
 
             if (menuForm.IsOpen)
             {
-                UIFormManager.Instance.CloseForm(menuForm);
+                FormManager.Instance.CloseForm(menuForm);
             }
         }
         #endregion

@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UIForm;
+using MGS.UGUI;
 using System.Collections.Generic;
 
 namespace MGS.ContextMenu
@@ -18,7 +18,7 @@ namespace MGS.ContextMenu
     /// <summary>
     /// Interface of custom context menu form.
     /// </summary>
-    public interface IContextMenuForm : IUIForm
+    public interface IContextMenuForm : IForm
     {
         #region Property
         /// <summary>

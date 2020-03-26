@@ -247,7 +247,7 @@ namespace MGS.UCommon.Curve
             //No anchor.
             if (anchors == null || anchors.Length == 0)
             {
-                LogUtility.LogWarning(0, "Created a curve with no key frame: The anchors is null or empty.");
+                LogUtility.LogWarning("Created a curve with no key frame: The anchors is null or empty.");
             }
             else
             {

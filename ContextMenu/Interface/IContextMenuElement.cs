@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UCommon.UI;
+using MGS.UGUI;
 
 namespace MGS.ContextMenu
 {

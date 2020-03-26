@@ -21,26 +21,23 @@ namespace MGS.Common.Logger
         /// <summary>
         /// Logs a formatted message.
         /// </summary>
-        /// <param name="level">Level of log message.</param>
         /// <param name="format">A composite format string.</param>
         /// <param name="args">Format arguments.</param>
-        void Log(int level, string format, params object[] args);
+        void Log(string format, params object[] args);
 
         /// <summary>
         /// Logs a formatted error message.
         /// </summary>
-        /// <param name="level">Level of error message.</param>
         /// <param name="format">A composite format string.</param>
         /// <param name="args">Format arguments.</param>
-        void LogError(int level, string format, params object[] args);
+        void LogError(string format, params object[] args);
 
         /// <summary>
         /// Logs a formatted warning message.
         /// </summary>
-        /// <param name="level">Level of warning message.</param>
         /// <param name="format">A composite format string.</param>
         /// <param name="args">Format arguments.</param>
-        void LogWarning(int level, string format, params object[] args);
+        void LogWarning(string format, params object[] args);
         #endregion
     }
 }

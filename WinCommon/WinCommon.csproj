@@ -43,6 +43,7 @@
     <Compile Include="Network\NetworkConnState.cs" />
     <Compile Include="Network\NetworkListener.cs" />
     <Compile Include="Network\NetworkUtility.cs" />
+    <Compile Include="Utility\ExplorerUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

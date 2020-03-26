@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UIForm;
+using MGS.UGUI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -30,7 +30,7 @@ namespace MGS.Tooltip
         /// <param name="eventData">Event data.</param>
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
-            var tipForm = UIFormManager.Instance.OpenForm<TextTooltipForm>();
+            var tipForm = FormManager.Instance.OpenForm<TextTooltipForm>();
             tipForm.SetTipContent(tipContent);
         }
 
@@ -40,7 +40,7 @@ namespace MGS.Tooltip
         /// <param name="eventData">Event data.</param>
         public virtual void OnPointerExit(PointerEventData eventData)
         {
-            UIFormManager.Instance.CloseForm<TextTooltipForm>();
+            FormManager.Instance.CloseForm<TextTooltipForm>();
         }
         #endregion
     }

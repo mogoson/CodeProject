@@ -20,7 +20,7 @@ namespace MGS.WinCommon.Network
     /// <summary>
     /// Utility for windows network.
     /// </summary>
-    public static class NetworkUtility
+    public sealed class NetworkUtility
     {
         #region Public Method
         /// <summary>

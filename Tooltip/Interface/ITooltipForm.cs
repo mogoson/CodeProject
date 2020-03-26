@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UIForm;
+using MGS.UGUI;
 using UnityEngine;
 
 namespace MGS.Tooltip
@@ -18,7 +18,7 @@ namespace MGS.Tooltip
     /// <summary>
     /// Interface for tool tip form.
     /// </summary>
-    public interface ITooltipForm : IUIForm
+    public interface ITooltipForm : IForm
     {
         #region Property
         /// <summary>

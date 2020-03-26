@@ -24,13 +24,11 @@ namespace MGS.ObjectPool
         /// <summary>
         /// Parent of gameobjects.
         /// </summary>
-        [Tooltip("Parent of gameobjects.")]
         public Transform root;
 
         /// <summary>
         /// Prefab to create clone.
         /// </summary>
-        [Tooltip("Prefab to create clone.")]
         public GameObject prefab;
 
         /// <summary>
@@ -115,25 +113,25 @@ namespace MGS.ObjectPool
         }
 
         /// <summary>
-        /// Take a new gameobject from pool.
+        /// Take a gameobject from pool.
         /// </summary>
-        /// <returns>New gameobject.</returns>
-        public virtual GameObject TakeNew()
+        /// <returns>A gameobject.</returns>
+        public virtual GameObject Take()
         {
-            var obj = pool.TakeNew();
+            var obj = pool.Take();
             obj.SetActive(true);
             return obj;
         }
 
         /// <summary>
-        /// Take a new gameobject from pool.
+        /// Take a gameobject from pool.
         /// </summary>
         /// <param name="position">Position of new gameobject.</param>
         /// <param name="rotation">Rotation of new gameobject.</param>
-        /// <returns>New gameobject.</returns>
-        public virtual GameObject TakeNew(Vector3 position, Quaternion rotation)
+        /// <returns>A gameobject.</returns>
+        public virtual GameObject Take(Vector3 position, Quaternion rotation)
         {
-            var obj = pool.TakeNew();
+            var obj = pool.Take();
             obj.transform.position = position;
             obj.transform.rotation = rotation;
             obj.SetActive(true);
@@ -141,15 +139,15 @@ namespace MGS.ObjectPool
         }
 
         /// <summary>
-        /// Take a new gameobject from pool.
+        /// Take a gameobject from pool.
         /// </summary>
         /// <param name="parent">Parent of new gameobject.</param>
         /// <param name="localPosition">Local position of new gameobject.</param>
         /// <param name="localRotation">Local rotation of new gameobject.</param>
-        /// <returns>New gameobject.</returns>
-        public virtual GameObject TakeNew(Transform parent, Vector3 localPosition, Quaternion localRotation)
+        /// <returns>A gameobject.</returns>
+        public virtual GameObject Take(Transform parent, Vector3 localPosition, Quaternion localRotation)
         {
-            var obj = pool.TakeNew();
+            var obj = pool.Take();
             obj.transform.parent = parent;
             obj.transform.localPosition = localPosition;
             obj.transform.localRotation = localRotation;

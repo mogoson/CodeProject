@@ -33,8 +33,8 @@ namespace MGS.UCamera
         /// <summary>
         /// Threshold of linear adsorbent.
         /// </summary>
-        [Range(0, 1)]
         [Tooltip("Threshold of linear adsorbent.")]
+        [Range(0, 1)]
         public float threshold = 0.1f;
 
         /// <summary>

@@ -68,9 +68,9 @@
       <Project>{02f92370-d9a3-4a6b-8b7d-717315a01145}</Project>
       <Name>UCommon</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UIForm\UIForm.csproj">
-      <Project>{c0f3a697-dd0d-4138-822d-c5e8fb432360}</Project>
-      <Name>UIForm</Name>
+    <ProjectReference Include="..\UGUI\UGUI.csproj">
+      <Project>{1CA35D5A-91F0-4480-BDFF-2C8DE47CF5C4}</Project>
+      <Name>UGUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

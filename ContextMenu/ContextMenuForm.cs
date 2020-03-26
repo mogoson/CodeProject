@@ -11,7 +11,7 @@
  *************************************************************************/
 
 using MGS.Common.Logger;
-using MGS.UIForm;
+using MGS.UGUI;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,8 +22,8 @@ namespace MGS.ContextMenu
     /// Context menu form.
     /// </summary>
     [AddComponentMenu("MGS/ContextMenu/ContextMenuForm")]
-    [UIFormInfo(UIFromPattern.Single, "ContextMenu")]
-    public class ContextMenuForm : MonoUIForm, IContextMenuForm
+    [FormInfo(UIFromPattern.Single, "ContextMenu")]
+    public class ContextMenuForm : MonoForm, IContextMenuForm
     {
         #region Field and Property
         /// <summary>
@@ -89,7 +89,7 @@ namespace MGS.ContextMenu
 
             if (Handler == null)
             {
-                LogUtility.LogWarning(0, "Do nothing on menu item click: The handler of menu form is null.");
+                LogUtility.LogWarning("Do nothing on menu item click: The handler of menu form is null.");
                 return;
             }
             Handler.OnMenuItemClick(tag);

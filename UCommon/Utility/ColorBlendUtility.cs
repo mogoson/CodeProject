@@ -18,7 +18,7 @@ namespace MGS.UCommon.Utility
     /// <summary>
     /// Utility for color blend.
     /// </summary>
-    public static class ColorBlendUtility
+    public sealed class ColorBlendUtility
     {
         /// <summary>
         /// Blend color a and color b.

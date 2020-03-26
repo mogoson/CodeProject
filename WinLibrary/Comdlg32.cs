@@ -18,7 +18,7 @@ namespace MGS.WinLibrary
     /// <summary>
     /// API of Comdlg32 dll.
     /// </summary>
-    public static class Comdlg32
+    public sealed class Comdlg32
     {
         /// <summary>
         /// Creates an Open dialog box that lets the user specify the drive, directory, and the name of a
@@ -205,7 +205,7 @@ namespace MGS.WinLibrary
     /// <summary>
     /// A set of bit flags you can use to initialize the dialog box.
     /// </summary>
-    public static class OFNFlags
+    public sealed class OFNFlags
     {
         /// <summary>
         /// The File Name list box allows multiple selections. If you also set the OFN_EXPLORER flag, the
@@ -354,7 +354,7 @@ namespace MGS.WinLibrary
     /// <summary>
     /// A set of bit flags you can use to initialize the dialog box.
     /// </summary>
-    public static class OFNFlagsEx
+    public sealed class OFNFlagsEx
     {
         /// <summary>
         /// If this flag is set, the places bar is not displayed. If this flag is not set, Explorer-style dialog

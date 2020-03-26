@@ -25,7 +25,7 @@ namespace MGS.Graph
     /// <summary>
     /// Utility for graph.
     /// </summary>
-    public static class GraphUtility
+    public sealed class GraphUtility
     {
         #region Public Method
         /// <summary>
@@ -50,7 +50,7 @@ namespace MGS.Graph
         {
             if (progressCallback == null && doneCallback == null)
             {
-                LogUtility.LogWarning(0, "Asynchronous load gif cancelled: All the callbacks is null.");
+                LogUtility.LogWarning("Asynchronous load gif cancelled: All the callbacks is null.");
                 yield break;
             }
 
@@ -62,7 +62,7 @@ namespace MGS.Graph
             }
             catch (Exception ex)
             {
-                LogUtility.LogError(0, "Asynchronous load gif error: {0}", ex.Message);
+                LogUtility.LogError("Asynchronous load gif error: {0}", ex.Message);
                 progressCallback?.Invoke(1.0f, null);
                 doneCallback?.Invoke(null);
                 yield break;
@@ -101,7 +101,7 @@ namespace MGS.Graph
         {
             if (bitmap == null)
             {
-                LogUtility.LogError(0, "Get bytes data of bitmap error: The bitmap can not be null.");
+                LogUtility.LogError("Get bytes data of bitmap error: The bitmap can not be null.");
                 return null;
             }
 

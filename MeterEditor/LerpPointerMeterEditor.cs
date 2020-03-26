@@ -11,6 +11,7 @@
  *************************************************************************/
 
 using MGS.Meter;
+using MGS.UCommon.Generic;
 using UnityEditor;
 
 namespace MGS.MeterEditor

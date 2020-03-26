@@ -11,6 +11,7 @@
  *************************************************************************/
 
 using MGS.Common.Generic;
+using MGS.UCommon.Generic;
 using UnityEngine;
 
 namespace MGS.Meter

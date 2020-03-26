@@ -11,7 +11,7 @@
  *************************************************************************/
 
 using MGS.Common.Generic;
-using MGS.UCommon.UI;
+using MGS.UGUI;
 
 namespace MGS.ContextMenu
 {

@@ -15,7 +15,7 @@ namespace MGS.Common.Mathematics
     /// <summary>
     /// Hermite interpolation.
     /// </summary>
-    public static class Hermite
+    public sealed class Hermite
     {
         #region Public Method
         /// <summary>

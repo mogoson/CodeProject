@@ -48,14 +48,19 @@
     <Compile Include="Logger\FileLogger.cs" />
     <Compile Include="Logger\Interface\ILogger.cs" />
     <Compile Include="Logger\LogUtility.cs" />
-    <Compile Include="Mathematics\Geometry\Planimetry.cs" />
+    <Compile Include="Crypto\MD5CryptoUtility.cs" />
+    <Compile Include="Mathematics\Geometry\Circle.cs" />
+    <Compile Include="Mathematics\Geometry\Geometry.cs" />
+    <Compile Include="Mathematics\Geometry\Relation.cs" />
+    <Compile Include="Mathematics\Geometry\Vector.cs" />
     <Compile Include="Mathematics\Hermite\Hermite.cs" />
     <Compile Include="Mathematics\Hermite\HermiteCurve.cs" />
+    <Compile Include="Mathematics\Hermite\KeyFrame.cs" />
+    <Compile Include="Mathematics\Geometry\Line.cs" />
     <Compile Include="Mathematics\Maths\Maths.cs" />
     <Compile Include="Mathematics\Maths\MathSmooth.cs" />
+    <Compile Include="Multilingual\Multilingualism.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility\ExplorerUtility.cs" />
-    <Compile Include="Utility\MultilingualUtility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

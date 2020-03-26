@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UIForm;
+using MGS.UGUI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,8 +19,8 @@ namespace MGS.Tooltip
     /// <summary>
     /// Tooltip form.
     /// </summary>
-    [UIFormInfo(UIFromPattern.Single, "Tooltip")]
-    public abstract class TooltipForm : MonoUIForm, ITooltipForm
+    [FormInfo(UIFromPattern.Single, "Tooltip")]
+    public abstract class TooltipForm : MonoForm, ITooltipForm
     {
         #region Field and Property
         /// <summary>

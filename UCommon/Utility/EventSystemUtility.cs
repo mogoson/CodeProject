@@ -19,7 +19,7 @@ namespace MGS.UCommon.Utility
     /// <summary>
     /// Utility for EventSystem.
     /// </summary>
-    public static class EventSystemUtility
+    public sealed class EventSystemUtility
     {
         #region Public Method
         /// <summary>

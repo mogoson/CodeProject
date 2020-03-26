@@ -71,10 +71,10 @@ namespace MGS.Common.DesignPattern
         }
 
         /// <summary>
-        /// Take a new object from pool.
+        /// Take a object from pool.
         /// </summary>
-        /// <returns>New object.</returns>
-        public virtual T TakeNew()
+        /// <returns>A object.</returns>
+        public virtual T Take()
         {
             if (objectStack.Count > 0)
             {
@@ -93,10 +93,10 @@ namespace MGS.Common.DesignPattern
         /// <param name="obj">Object to recycle.</param>
         public virtual void Recycle(T obj)
         {
-            //Null object is not allowed to recycle.
+            //Null object do not need to recycle.
             if (obj == null)
             {
-                LogUtility.LogError(0, "Recycle object to pool error: Null object is not allowed to recycle.");
+                LogUtility.LogWarning("Recycle object to pool cancelled: Null object do not need to recycle.");
                 return;
             }
 

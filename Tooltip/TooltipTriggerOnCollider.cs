@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UIForm;
+using MGS.UGUI;
 using UnityEngine;
 
 namespace MGS.Tooltip
@@ -28,7 +28,7 @@ namespace MGS.Tooltip
         /// </summary>
         protected virtual void OnMouseEnter()
         {
-            var tipForm = UIFormManager.Instance.OpenForm<TextTooltipForm>();
+            var tipForm = FormManager.Instance.OpenForm<TextTooltipForm>();
             tipForm.SetTipContent(tipContent);
         }
 
@@ -37,7 +37,7 @@ namespace MGS.Tooltip
         /// </summary>
         protected virtual void OnMouseExit()
         {
-            UIFormManager.Instance.CloseForm<TextTooltipForm>();
+            FormManager.Instance.CloseForm<TextTooltipForm>();
         }
         #endregion
     }

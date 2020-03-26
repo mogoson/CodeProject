@@ -17,7 +17,7 @@ namespace MGS.UCommon.Utility
     /// <summary>
     /// Utility for unity vector.
     /// </summary>
-    public static class VectorUtility
+    public sealed class VectorUtility
     {
         #region Public Method
         /// <summary>

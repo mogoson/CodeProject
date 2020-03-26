@@ -105,7 +105,7 @@ namespace MGS.ContextMenu
             }
             else
             {
-                LogUtility.LogWarning(0, "Refresh menu item failed: The type of info is not ContextMenuItemData.");
+                LogUtility.LogWarning("Refresh menu item failed: The type of info is not ContextMenuItemData.");
                 return false;
             }
             return true;
