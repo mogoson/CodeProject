@@ -44,6 +44,20 @@
     <Compile Include="Abstract\InteractableUI.cs" />
     <Compile Include="Abstract\MonoUI.cs" />
     <Compile Include="Abstract\UIElement.cs" />
+    <Compile Include="ContextMenu\Abstract\ContextMenuElement.cs" />
+    <Compile Include="ContextMenu\Abstract\ContextMenuObject.cs" />
+    <Compile Include="ContextMenu\Abstract\ContextMenuTriggerHandler.cs" />
+    <Compile Include="ContextMenu\ContextMenuForm.cs" />
+    <Compile Include="ContextMenu\ContextMenuItem.cs" />
+    <Compile Include="ContextMenu\ContextMenuSeparator.cs" />
+    <Compile Include="ContextMenu\ContextMenuTrigger.cs" />
+    <Compile Include="ContextMenu\Interface\IContextMenuElement.cs" />
+    <Compile Include="ContextMenu\Interface\IContextMenuForm.cs" />
+    <Compile Include="ContextMenu\Interface\IContextMenuFormHandler.cs" />
+    <Compile Include="ContextMenu\Interface\IContextMenuItem.cs" />
+    <Compile Include="ContextMenu\Interface\IContextMenuSeparator.cs" />
+    <Compile Include="ContextMenu\Interface\IContextMenuTrigger.cs" />
+    <Compile Include="ContextMenu\Interface\IContextMenuTriggerHandler.cs" />
     <Compile Include="Interface\IInteractableUI.cs" />
     <Compile Include="Interface\IMirrorableUI.cs" />
     <Compile Include="Interface\IMonoUI.cs" />
@@ -56,6 +70,12 @@
     <Compile Include="Form\Interface\IFormManager.cs" />
     <Compile Include="Form\FormManager.cs" />
     <Compile Include="Form\FormSettings.cs" />
+    <Compile Include="Tooltip\Abstract\TooltipForm.cs" />
+    <Compile Include="Tooltip\Abstract\TooltipTrigger.cs" />
+    <Compile Include="Tooltip\Interface\ITooltipForm.cs" />
+    <Compile Include="Tooltip\TextTooltipForm.cs" />
+    <Compile Include="Tooltip\TooltipTriggerOnCollider.cs" />
+    <Compile Include="Tooltip\TooltipTriggerOnUGUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
