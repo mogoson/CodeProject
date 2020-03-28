@@ -5,7 +5,7 @@
  *  Description  :  Interface of logger.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  9/5/2015
  *  Description  :  Initial development version.
  *************************************************************************/

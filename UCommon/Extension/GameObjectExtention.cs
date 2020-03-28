@@ -5,7 +5,7 @@
  *  Description  :  Extention for UnityEngine.GameObject.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  09/03/2015
  *  Description  :  Initial development version.
  *************************************************************************/

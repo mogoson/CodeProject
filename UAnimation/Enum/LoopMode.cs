@@ -5,7 +5,7 @@
  *  Description  :  Loop mode of animation.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  03/25/2020
  *  Description  :  Initial development version.
  *************************************************************************/

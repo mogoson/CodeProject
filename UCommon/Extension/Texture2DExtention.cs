@@ -5,7 +5,7 @@
  *  Description  :  Extention for UnityEngine.Texture2D.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  10/24/2015
  *  Description  :  Initial development version.
  *************************************************************************/

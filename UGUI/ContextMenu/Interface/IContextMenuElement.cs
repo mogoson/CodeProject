@@ -5,7 +5,7 @@
  *  Description  :  Define interface for context menu element.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  8/3/2019
  *  Description  :  Initial development version.
  *************************************************************************/

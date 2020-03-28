@@ -5,7 +5,7 @@
  *  Description  :  Mouse pointer drag to translate gameobject.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/9/2018
  *  Description  :  Initial development version.
  *************************************************************************/

@@ -5,7 +5,7 @@
  *  Description  :  Define Synchronizer component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  6/27/2017
  *  Description  :  Initial development version.
  *************************************************************************/

@@ -5,7 +5,7 @@
  *  Description  :  Mathematical method to smooth data.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  6/21/2016
  *  Description  :  Initial development version.
  *************************************************************************/

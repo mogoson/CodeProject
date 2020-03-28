@@ -5,7 +5,7 @@
  *  Description  :  Trigger of context menu.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  3/12/2018
  *  Description  :  Initial development version.
  *************************************************************************/

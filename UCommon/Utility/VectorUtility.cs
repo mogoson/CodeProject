@@ -5,7 +5,7 @@
  *  Description  :  Utility for unity vector.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  5/1/2019
  *  Description  :  Initial development version.
  *************************************************************************/

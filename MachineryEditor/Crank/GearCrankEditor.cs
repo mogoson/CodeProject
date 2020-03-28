@@ -5,7 +5,7 @@
  *  Description  :  Custom editor for GearCrank.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  6/12/2018
  *  Description  :  Initial development version.
  *************************************************************************/

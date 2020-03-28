@@ -5,7 +5,7 @@
  *  Description  :  Render dynamic hose mesh base on sin curve.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  7/31/2018
  *  Description  :  Initial development version.
  *************************************************************************/

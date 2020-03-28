@@ -5,7 +5,7 @@
  *  Description  :  Loggger for log to local file.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  9/19/2018
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -60,7 +60,7 @@ namespace MGS.Common.Logger
         {
             var logFile = LogPath + string.Format("{0}.log", DateTime.Now.Date);
             var formatLog = string.Format("{0} - {1} - {2}\r\n", DateTime.Now, tag, string.Format(format, args));
-            if (DirectoryUtility.RequirePath(logFile, out string error))
+            if (DirectoryUtility.RequireDirectory(logFile))
             {
                 try
                 {
@@ -75,12 +75,6 @@ namespace MGS.Common.Logger
                 catch { }
 #endif
             }
-#if DEBUG
-            else
-            {
-                throw new Exception(error);
-            }
-#endif
         }
         #endregion
 

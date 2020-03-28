@@ -5,7 +5,7 @@
  *  Description  :  Define Skin to render dynamic mesh.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  3/20/2018
  *  Description  :  Initial development version.
  *************************************************************************/

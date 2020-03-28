@@ -5,7 +5,7 @@
  *  Description  :  Interface for coaxe mechanism.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  3/20/2020
  *  Description  :  Initial development version.
  *************************************************************************/

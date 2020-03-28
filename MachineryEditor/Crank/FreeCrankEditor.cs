@@ -5,12 +5,12 @@
  *  Description  :  Custom editor for FreeCrank.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/11/2018
  *  Description  :  Initial development version.
  *  
  *  Author       :  Mogoson
- *  Version      :  0.1.1
+ *  Version      :  1.1
  *  Date         :  6/20/2018
  *  Description  :  Optimize display of node and axis.
  *************************************************************************/

@@ -5,12 +5,11 @@
  *  Description  :  Interface of custom UI form.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/12/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using UnityEngine;
 using UnityEngine;
 
 namespace MGS.UGUI

@@ -5,7 +5,7 @@
  *  Description  :  Define RockerSpring component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  7/24/2018
  *  Description  :  Initial development version.
  *************************************************************************/

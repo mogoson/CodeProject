@@ -5,7 +5,7 @@
  *  Description  :  Custom editor for LimitCrank.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/11/2018
  *  Description  :  Initial development version.
  *************************************************************************/

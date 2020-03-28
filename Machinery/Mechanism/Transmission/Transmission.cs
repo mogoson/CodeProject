@@ -5,7 +5,7 @@
  *  Description  :  Define Transmission component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  6/22/2017
  *  Description  :  Initial development version.
  *************************************************************************/

@@ -5,12 +5,12 @@
  *  Description  :  Define bezier curve.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  1/7/2017
  *  Description  :  Initial development version.
  *  
  *  Author       :  Mogoson
- *  Version      :  0.1.1
+ *  Version      :  1.1
  *  Date         :  2/28/2018
  *  Description  :  Add static method GetPoint.
  *************************************************************************/

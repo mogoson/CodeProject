@@ -5,7 +5,7 @@
  *  Description  :  Render dynamic hose mesh base on cubic bezier curve.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  3/20/2018
  *  Description  :  Initial development version.
  *************************************************************************/

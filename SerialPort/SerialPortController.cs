@@ -5,7 +5,7 @@
  *  Description  :  Synchronous read and write serialport data.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/5/2017
  *  Description  :  Initial development version.
  *  
@@ -120,7 +120,7 @@ namespace MGS.IO.Ports
         /// </summary>
         private SerialPortController()
         {
-            InitializeSerialPort(out string error);
+            InitializeSerialPort();
         }
 
         /// <summary>
@@ -252,12 +252,11 @@ namespace MGS.IO.Ports
         /// <summary>
         /// Initialize serialport.
         /// </summary>
-        /// <param name="error">Error message.</param>
         /// <returns>Initialize serialport use config file succeed?</returns>
-        public bool InitializeSerialPort(out string error)
+        public bool InitializeSerialPort()
         {
             //Read config and initialize serialport.
-            config = SerialPortConfigurer.Instance.ReadConfig(out error);
+            config = SerialPortConfigurer.Instance.ReadConfig();
             var isReadConfig = true;
             if (config == null)
             {

@@ -5,7 +5,7 @@
  *  Description  :  Editor for BezierPath.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  3/3/2018
  *  Description  :  Initial development version.
  *************************************************************************/

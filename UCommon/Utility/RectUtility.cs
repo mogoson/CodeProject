@@ -5,7 +5,7 @@
  *  Description  :  Utility for RectTransform.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  10/26/2018
  *  Description  :  Initial development version.
  *************************************************************************/

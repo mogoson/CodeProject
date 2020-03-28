@@ -5,7 +5,7 @@
  *  Description  :  Windows network listener.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  8/8/2019
  *  Description  :  Initial development version.
  *************************************************************************/

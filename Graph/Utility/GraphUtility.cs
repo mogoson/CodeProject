@@ -5,7 +5,7 @@
  *  Description  :  Utility for graph.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/19/2019
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -33,10 +33,10 @@ namespace MGS.Graph
         /// </summary>
         /// <param name="filePath">Path of gif file.</param>
         /// <param name="progressCallback">On loading callback.</param>
-        /// <param name="doneCallback">On loaded callback.</param>
-        public static void AsyncLoadGifAsFrames(string filePath, Action<float, Texture2D> progressCallback, Action<List<Texture2D>> doneCallback)
+        /// <param name="completeCallback">On loaded callback.</param>
+        public static void AsyncLoadGifAsFrames(string filePath, Action<float, Texture2D> progressCallback, Action<List<Texture2D>> completeCallback)
         {
-            SingleBehaviour.Instance.StartCoroutine(AsyncLoadGifFromFile(filePath, progressCallback, doneCallback));
+            SingleBehaviour.Instance.StartCoroutine(AsyncLoadGifFromFile(filePath, progressCallback, completeCallback));
         }
 
         /// <summary>
@@ -44,11 +44,11 @@ namespace MGS.Graph
         /// </summary>
         /// <param name="filePath">Path of gif file.</param>
         /// <param name="progressCallback">On loading callback.</param>
-        /// <param name="doneCallback">On loaded callback.</param>
+        /// <param name="completeCallback">On loaded callback.</param>
         /// <returns>IEnumerator.</returns>
-        public static IEnumerator AsyncLoadGifFromFile(string filePath, Action<float, Texture2D> progressCallback, Action<List<Texture2D>> doneCallback)
+        public static IEnumerator AsyncLoadGifFromFile(string filePath, Action<float, Texture2D> progressCallback, Action<List<Texture2D>> completeCallback)
         {
-            if (progressCallback == null && doneCallback == null)
+            if (progressCallback == null && completeCallback == null)
             {
                 LogUtility.LogWarning("Asynchronous load gif cancelled: All the callbacks is null.");
                 yield break;
@@ -64,7 +64,7 @@ namespace MGS.Graph
             {
                 LogUtility.LogError("Asynchronous load gif error: {0}", ex.Message);
                 progressCallback?.Invoke(1.0f, null);
-                doneCallback?.Invoke(null);
+                completeCallback?.Invoke(null);
                 yield break;
             }
 
@@ -89,7 +89,7 @@ namespace MGS.Graph
                 progressCallback?.Invoke(progress, frame);
                 yield return null;
             }
-            doneCallback?.Invoke(frames);
+            completeCallback?.Invoke(frames);
         }
 
         /// <summary>

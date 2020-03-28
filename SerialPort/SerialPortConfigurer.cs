@@ -6,17 +6,17 @@
  *                  local file.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/4/2017
  *  Description  :  Initial development version.
  *  
  *  Author       :  Mogoson
- *  Version      :  0.1.1
+ *  Version      :  1.1
  *  Date         :  10/3/2017
  *  Description  :  Use JsonUtility to serialize and deserialize config.
  *  
  *  Author       :  Mogoson
- *  Version      :  0.1.2
+ *  Version      :  1.2
  *  Date         :  3/2/2018
  *  Description  :  Optimize.
  *************************************************************************/
@@ -61,11 +61,9 @@ namespace MGS.IO.Ports
         /// <summary>
         /// Read SerialPortConfig from config file.
         /// </summary>
-        /// <param name="error">Error message.</param>
         /// <returns>Config of serialport.</returns>
-        public SerialPortConfig ReadConfig(out string error)
+        public SerialPortConfig ReadConfig()
         {
-            error = string.Empty;
             try
             {
                 var json = File.ReadAllText(ConfigPath);
@@ -78,8 +76,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception ex)
             {
-                error = ex.Message;
-                LogUtility.LogError("Read serialport config from file exception: {0}", error);
+                LogUtility.LogError("Read serialport config from file exception: {0}", ex.Message);
                 return null;
             }
         }
@@ -88,11 +85,9 @@ namespace MGS.IO.Ports
         /// Write SerialPortConfig to config file.
         /// </summary>
         /// <param name="config">Config of serialport.</param>
-        /// <param name="error">Error message.</param>
         /// <returns>succeed?</returns>
-        public bool WriteConfig(SerialPortConfig config, out string error)
+        public bool WriteConfig(SerialPortConfig config)
         {
-            error = string.Empty;
             try
             {
 #if UNITY_5_3_OR_NEWER
@@ -100,7 +95,7 @@ namespace MGS.IO.Ports
 #else
                 var configJson = JsonMapper.ToJson(config);
 #endif
-                if (DirectoryUtility.RequirePath(ConfigPath, out error))
+                if (DirectoryUtility.RequireDirectory(ConfigPath))
                 {
                     File.WriteAllText(ConfigPath, configJson);
                     return true;
@@ -108,10 +103,9 @@ namespace MGS.IO.Ports
             }
             catch (Exception ex)
             {
-                error = ex.Message;
+                LogUtility.LogError("Write serialport config to file exception: {0}", ex.Message);
             }
 
-            LogUtility.LogError("Write serialport config to file exception: {0}", error);
             return false;
         }
         #endregion

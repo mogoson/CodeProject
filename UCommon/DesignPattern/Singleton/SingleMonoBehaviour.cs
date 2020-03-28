@@ -5,7 +5,7 @@
  *  Description  :  Define the base of single MonoBehaviour.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  2/12/2018
  *  Description  :  Initial development version.
  *************************************************************************/

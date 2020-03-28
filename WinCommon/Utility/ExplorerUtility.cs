@@ -5,7 +5,7 @@
  *  Description  :  Utility for windows explorer.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  8/25/2019
  *  Description  :  Initial development version.
  *************************************************************************/

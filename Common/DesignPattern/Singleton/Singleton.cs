@@ -5,7 +5,7 @@
  *  Description  :  Define base class of singleton.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  2/13/2018
  *  Description  :  Initial development version.
  *************************************************************************/

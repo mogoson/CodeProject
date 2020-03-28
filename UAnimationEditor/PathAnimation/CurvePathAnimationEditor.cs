@@ -5,7 +5,7 @@
  *  DeTargetion  :  Editor for CurvePathAnimation.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  2/28/2018
  *  DeTargetion  :  Initial development version.
  *************************************************************************/
