@@ -11,7 +11,6 @@
  *************************************************************************/
 
 using UnityEngine;
-using UnityEngine;
 
 namespace MGS.UGUI
 {
