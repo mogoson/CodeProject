@@ -131,7 +131,9 @@ namespace MGS.Common.IO
                                         completeCallback?.Invoke(succeed, info);
                                         return;
                                     }
+                                    finishCount++;
                                 });
+                            continue;
                         }
                     }
                     else  //文件
