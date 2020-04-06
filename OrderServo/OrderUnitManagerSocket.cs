@@ -42,6 +42,7 @@ namespace MGS.OrderServo
             {
                 unitMr.AddUnit(unit);
             }
+            Destroy(this);
         }
         #endregion
     }

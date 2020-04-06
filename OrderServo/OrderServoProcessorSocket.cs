@@ -44,6 +44,7 @@ namespace MGS.OrderServo
         protected virtual void Awake()
         {
             GetComponent<IOrderServoProcessor>().Initialize(orderManager, unitManager);
+            Destroy(this);
         }
         #endregion
     }
