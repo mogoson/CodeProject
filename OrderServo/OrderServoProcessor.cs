@@ -11,15 +11,13 @@
  *************************************************************************/
 
 using MGS.UCommon.DesignPattern;
-using System.Collections;
-using UnityEngine;
 
 namespace MGS.OrderServo
 {
     /// <summary>
     /// Order servo processor.
     /// </summary>
-    public sealed class OrderServoProcessor : SingleUpdater<OrderServoProcessor>, IOrderServoProcessor
+    public sealed class OrderServoProcessor : SingleUpdater<IOrderServoProcessor>, IOrderServoProcessor
     {
         #region Field and Property
         /// <summary>
@@ -61,22 +59,17 @@ namespace MGS.OrderServo
         private OrderServoProcessor() { }
 
         /// <summary>
-        /// Processor update.
+        /// On update.
         /// </summary>
-        protected override IEnumerator Update()
+        protected override void OnUpdate()
         {
-            while (IsTurnOn)
+            var orders = OrderManager.ReadOrders();
+            if (orders != null)
             {
-                var orders = OrderManager.ReadOrders();
-                if (orders != null)
+                foreach (var order in orders)
                 {
-                    foreach (var order in orders)
-                    {
-                        orderUnitManager.Execute(order);
-                    }
+                    orderUnitManager.Execute(order);
                 }
-
-                yield return new WaitForEndOfFrame();
             }
         }
 

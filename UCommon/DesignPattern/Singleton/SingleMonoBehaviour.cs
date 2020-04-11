@@ -19,7 +19,7 @@ namespace MGS.UCommon.DesignPattern
     /// </summary>
     /// <typeparam name="T">Specified type.</typeparam>
     [DisallowMultipleComponent]
-    public abstract class SingleMonoBehaviour<T> : MonoBehaviour where T : SingleMonoBehaviour<T>
+    public abstract class SingleMonoBehaviour<T> : MonoBehaviour where T : Component
     {
         #region Nested Class
         /// <summary>

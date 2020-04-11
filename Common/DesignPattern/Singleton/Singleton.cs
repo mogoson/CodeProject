@@ -18,7 +18,7 @@ namespace MGS.Common.DesignPattern
     /// Provide a single instance of the specified type T.
     /// </summary>
     /// <typeparam name="T">Specified type.</typeparam>
-    public abstract class Singleton<T> where T : Singleton<T>
+    public abstract class Singleton<T> where T : class
     {
         #region Nested Class
         /// <summary>

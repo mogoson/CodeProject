@@ -22,6 +22,11 @@ namespace MGS.UCommon.DesignPattern
         /// Updater is turn on?
         /// </summary>
         bool IsTurnOn { get; }
+
+        /// <summary>
+        /// Yield instruction.
+        /// </summary>
+        object YieldInstruction { set; get; }
         #endregion
 
         #region Method

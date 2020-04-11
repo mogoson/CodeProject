@@ -12,19 +12,25 @@
 
 using MGS.Common.DesignPattern;
 using System.Collections;
+using UnityEngine;
 
 namespace MGS.UCommon.DesignPattern
 {
     /// <summary>
     /// Single updater.
     /// </summary>
-    public abstract class SingleUpdater<T> : Singleton<SingleUpdater<T>>, IMonoUpdater
+    public abstract class SingleUpdater<T> : Singleton<T>, IMonoUpdater where T : class
     {
         #region Field and Property
         /// <summary>
         /// Updater is turn on?
         /// </summary>
         public bool IsTurnOn { protected set; get; }
+
+        /// <summary>
+        /// Yield instruction.
+        /// </summary>
+        public object YieldInstruction { set; get; } = new WaitForEndOfFrame();
 
         /// <summary>
         /// Updater to update.
@@ -44,7 +50,19 @@ namespace MGS.UCommon.DesignPattern
         /// <summary>
         /// Processor update.
         /// </summary>
-        protected abstract IEnumerator Update();
+        protected IEnumerator Update()
+        {
+            while (IsTurnOn)
+            {
+                OnUpdate();
+                yield return YieldInstruction;
+            }
+        }
+
+        /// <summary>
+        /// On update.
+        /// </summary>
+        protected abstract void OnUpdate();
         #endregion
 
         #region Public Method
