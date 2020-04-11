@@ -19,30 +19,42 @@ namespace MGS.OrderServo
     /// </summary>
     public interface IOrderManager
     {
+        #region Property
+        /// <summary>
+        /// Order parser.
+        /// </summary>
+        IOrderParser OrderParser { set; get; }
+
+        /// <summary>
+        /// Order IO.
+        /// </summary>
+        IOrderIO OrderIO { set; get; }
+        #endregion
+
         #region Method
         /// <summary>
-        /// Read orders from pending buffer.
+        /// Read orders from manager.
         /// </summary>
         /// <returns>Current orders.</returns>
         IEnumerable<Order> ReadOrders();
 
         /// <summary>
-        /// Add order to pending buffer.
+        /// Add order to manager.
         /// </summary>
         /// <param name="order">Order to add.</param>
         void AddOrder(Order order);
 
         /// <summary>
-        /// Remove order from pending buffer.
+        /// Remove order from manager.
         /// </summary>
         /// <param name="order">Order to remove.</param>
         void RemoveOrder(Order order);
 
         /// <summary>
-        /// Send order to remote.
+        /// Respond order to manager.
         /// </summary>
-        /// <param name="order">Order to send.</param>
-        void SendOrder(Order order);
+        /// <param name="order">Order to respond.</param>
+        void RespondOrder(Order order);
         #endregion
     }
 }

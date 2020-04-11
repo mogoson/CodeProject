@@ -10,12 +10,14 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.UCommon.DesignPattern;
+
 namespace MGS.OrderServo
 {
     /// <summary>
     /// Interface for order servo processor.
     /// </summary>
-    public interface IOrderServoProcessor
+    public interface IOrderServoProcessor : IMonoUpdater
     {
         #region Property
         /// <summary>
@@ -27,11 +29,6 @@ namespace MGS.OrderServo
         /// Manager of order units.
         /// </summary>
         IOrderUnitManager OrderUnitManager { set; get; }
-
-        /// <summary>
-        /// Processor is turn on?
-        /// </summary>
-        bool IsTurnOn { get; }
         #endregion
 
         #region Method
@@ -41,16 +38,6 @@ namespace MGS.OrderServo
         /// <param name="orderManager">Manager of orders.</param>
         /// <param name="unitManager">Manager of order units.</param>
         void Initialize(IOrderManager orderManager, IOrderUnitManager unitManager);
-
-        /// <summary>
-        /// Turn on processor.
-        /// </summary>
-        void TurnOn();
-
-        /// <summary>
-        /// Turn off processor.
-        /// </summary>
-        void TurnOff();
         #endregion
     }
 }

@@ -1,8 +1,8 @@
-/*************************************************************************
+﻿/*************************************************************************
  *  Copyright © 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  OrderUnit.cs
- *  Description  :  Order unit.
+ *  File         :  MonoOrderUnit.cs
+ *  Description  :  Mono order unit.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -11,19 +11,31 @@
  *************************************************************************/
 
 using MGS.Common.Generic;
+using UnityEngine;
 
 namespace MGS.OrderServo
 {
     /// <summary>
-    /// Order unit.
+    /// Mono order unit.
     /// </summary>
-    public abstract class OrderUnit : IOrderUnit
+    public abstract class MonoOrderUnit : MonoBehaviour, IOrderUnit
     {
         #region Field and Property
         /// <summary>
         /// Code of order unit.
         /// </summary>
-        public virtual string Code { set; get; }
+        [Tooltip("Code of order unit.")]
+        [SerializeField]
+        protected string code;
+
+        /// <summary>
+        /// Code of order unit.
+        /// </summary>
+        public string Code
+        {
+            set { code = value; }
+            get { return code; }
+        }
 
         /// <summary>
         /// On order unit respond.

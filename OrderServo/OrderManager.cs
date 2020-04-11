@@ -11,16 +11,25 @@
  *************************************************************************/
 
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace MGS.OrderServo
 {
     /// <summary>
     /// Manager of orders.
     /// </summary>
-    public abstract class OrderManager : MonoBehaviour, IOrderManager
+    public class OrderManager : IOrderManager
     {
         #region Field and Property
+        /// <summary>
+        /// Order parser.
+        /// </summary>
+        public IOrderParser OrderParser { set; get; }
+
+        /// <summary>
+        /// Order IO.
+        /// </summary>
+        public IOrderIO OrderIO { set; get; }
+
         /// <summary>
         /// Order pending buffer.
         /// </summary>
@@ -34,6 +43,10 @@ namespace MGS.OrderServo
         /// <returns>Current orders.</returns>
         public virtual IEnumerable<Order> ReadOrders()
         {
+            var orderBytes = OrderIO.ReadBuffer();
+            var ioOrders = OrderParser.ToOrders(orderBytes);
+            orderBuffer.AddRange(ioOrders);
+
             var currentOrders = new List<Order>(orderBuffer);
             orderBuffer.Clear();
             return currentOrders;
@@ -63,10 +76,14 @@ namespace MGS.OrderServo
         }
 
         /// <summary>
-        /// Send order to remote.
+        /// Respond order to manager.
         /// </summary>
-        /// <param name="order">Order to send.</param>
-        public abstract void SendOrder(Order order);
+        /// <param name="order">Order to respond.</param>
+        public virtual void RespondOrder(Order order)
+        {
+            var orderBytes = OrderParser.ToBuffer(order);
+            OrderIO.WriteBuffer(orderBytes);
+        }
         #endregion
     }
 }

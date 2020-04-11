@@ -10,6 +10,8 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.UCommon.DesignPattern;
+using System.Collections;
 using UnityEngine;
 
 namespace MGS.OrderServo
@@ -17,18 +19,13 @@ namespace MGS.OrderServo
     /// <summary>
     /// Order servo processor.
     /// </summary>
-    [AddComponentMenu("MGS/OrderServo/OrderServoProcessor")]
-    public abstract class OrderServoProcessor : MonoBehaviour, IOrderServoProcessor
+    public sealed class OrderServoProcessor : SingleUpdater, IOrderServoProcessor
     {
         #region Field and Property
         /// <summary>
         /// Manager of orders.
         /// </summary>
-        public IOrderManager OrderManager
-        {
-            set { orderManager = value; }
-            get { return orderManager; }
-        }
+        public IOrderManager OrderManager { set; get; }
 
         /// <summary>
         /// Manager of order units.
@@ -52,36 +49,34 @@ namespace MGS.OrderServo
         }
 
         /// <summary>
-        /// Processor is turn on?
-        /// </summary>
-        public bool IsTurnOn { get { return enabled; } }
-
-        /// <summary>
-        /// Manager of orders.
-        /// </summary>
-        protected IOrderManager orderManager;
-
-        /// <summary>
         /// Manager of order units.
         /// </summary>
-        protected IOrderUnitManager orderUnitManager;
+        private IOrderUnitManager orderUnitManager;
         #endregion
 
         #region Private Method
         /// <summary>
+        /// Constructor.
+        /// </summary>
+        private OrderServoProcessor() { }
+
+        /// <summary>
         /// Processor update.
         /// </summary>
-        protected virtual void Update()
+        protected override IEnumerator Update()
         {
-            var orders = orderManager.ReadOrders();
-            if (orders == null)
+            while (IsTurnOn)
             {
-                return;
-            }
+                var orders = OrderManager.ReadOrders();
+                if (orders != null)
+                {
+                    foreach (var order in orders)
+                    {
+                        orderUnitManager.Execute(order);
+                    }
+                }
 
-            foreach (var order in orders)
-            {
-                orderUnitManager.Execute(order);
+                yield return new WaitForEndOfFrame();
             }
         }
 
@@ -89,9 +84,9 @@ namespace MGS.OrderServo
         /// On unit respond.
         /// </summary>
         /// <param name="order">Respond order.</param>
-        protected virtual void OnUnitRespond(Order order)
+        private void OnUnitRespond(Order order)
         {
-            orderManager.SendOrder(order);
+            OrderManager.RespondOrder(order);
         }
         #endregion
 
@@ -105,22 +100,6 @@ namespace MGS.OrderServo
         {
             OrderManager = orderManager;
             OrderUnitManager = unitManager;
-        }
-
-        /// <summary>
-        /// Turn on processor.
-        /// </summary>
-        public void TurnOn()
-        {
-            enabled = true;
-        }
-
-        /// <summary>
-        /// Turn off processor.
-        /// </summary>
-        public void TurnOff()
-        {
-            enabled = false;
         }
         #endregion
     }

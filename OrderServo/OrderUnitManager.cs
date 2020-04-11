@@ -12,15 +12,13 @@
 
 using MGS.Common.Generic;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace MGS.OrderServo
 {
     /// <summary>
     /// Manager of order units.
     /// </summary>
-    [AddComponentMenu("MGS/OrderServo/OrderUnitManager")]
-    public class OrderUnitManager : MonoBehaviour, IOrderUnitManager
+    public class OrderUnitManager : IOrderUnitManager
     {
         #region Field and Property
         /// <summary>

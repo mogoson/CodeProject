@@ -49,6 +49,9 @@
     <Compile Include="Curve\HermiteCurve.cs" />
     <Compile Include="Curve\Interface\ICurve.cs" />
     <Compile Include="Curve\SinCurve.cs" />
+    <Compile Include="DesignPattern\Updater\MonoUpdater.cs" />
+    <Compile Include="DesignPattern\Updater\IMonoUpdater.cs" />
+    <Compile Include="DesignPattern\Updater\SingleUpdater.cs" />
     <Compile Include="Event\MonoEventTrigger.cs" />
     <Compile Include="Generic\Enum\ColorBlendMode.cs" />
     <Compile Include="Generic\Enum\LerpMode.cs" />

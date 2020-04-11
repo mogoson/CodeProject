@@ -38,11 +38,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\OrderManager.cs" />
+    <Compile Include="Abstract\MonoOrderUnit.cs" />
+    <Compile Include="OrderManager.cs" />
+    <Compile Include="Interface\IOrderParser.cs" />
+    <Compile Include="Interface\IOrderIO.cs" />
     <Compile Include="OrderServoProcessor.cs" />
     <Compile Include="Abstract\OrderUnit.cs" />
-    <Compile Include="OrderServoProcessorSocket.cs" />
-    <Compile Include="OrderUnitManagerSocket.cs" />
     <Compile Include="OrderUnitManager.cs" />
     <Compile Include="Interface\IOrderManager.cs" />
     <Compile Include="Interface\IOrderServoProcessor.cs" />
@@ -55,6 +56,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UCommon\UCommon.csproj">
+      <Project>{02F92370-D9A3-4A6B-8B7D-717315A01145}</Project>
+      <Name>UCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
