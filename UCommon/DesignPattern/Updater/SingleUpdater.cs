@@ -18,7 +18,7 @@ namespace MGS.UCommon.DesignPattern
     /// <summary>
     /// Single updater.
     /// </summary>
-    public abstract class SingleUpdater : Singleton<SingleUpdater>, IMonoUpdater
+    public abstract class SingleUpdater<T> : Singleton<SingleUpdater<T>>, IMonoUpdater
     {
         #region Field and Property
         /// <summary>
