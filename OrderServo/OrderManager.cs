@@ -21,15 +21,15 @@ namespace MGS.OrderServo
     {
         #region Field and Property
         /// <summary>
-        /// Order parser.
-        /// </summary>
-        public IOrderParser OrderParser { set; get; }
-
-        /// <summary>
         /// Order IO.
         /// </summary>
         public IOrderIO OrderIO { set; get; }
 
+        /// <summary>
+        /// Order parser.
+        /// </summary>
+        public IOrderParser OrderParser { set; get; }
+        
         /// <summary>
         /// Order pending buffer.
         /// </summary>

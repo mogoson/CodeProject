@@ -21,14 +21,14 @@ namespace MGS.OrderServo
     {
         #region Property
         /// <summary>
-        /// Order parser.
-        /// </summary>
-        IOrderParser OrderParser { set; get; }
-
-        /// <summary>
         /// Order IO.
         /// </summary>
         IOrderIO OrderIO { set; get; }
+
+        /// <summary>
+        /// Order parser.
+        /// </summary>
+        IOrderParser OrderParser { set; get; }
         #endregion
 
         #region Method
