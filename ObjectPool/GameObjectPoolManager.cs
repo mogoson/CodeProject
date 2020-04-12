@@ -10,8 +10,8 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.Common.DesignPattern;
 using MGS.Common.Logger;
-using MGS.UCommon.DesignPattern;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,14 +20,30 @@ namespace MGS.ObjectPool
     /// <summary>
     /// Manager of gameobject pool.
     /// </summary>
-    [AddComponentMenu("MGS/ObjectPool/GameObjectPoolManager")]
-    public sealed class GameObjectPoolManager : SingleMonoBehaviour<GameObjectPoolManager>
+    public sealed class GameObjectPoolManager : Singleton<GameObjectPoolManager>
     {
         #region Field and Property
         /// <summary>
         /// Dictionary store pools info(name and pool).
         /// </summary>
         private Dictionary<string, GameObjectPool> poolsInfo = new Dictionary<string, GameObjectPool>();
+
+        /// <summary>
+        /// Root transform for pools.
+        /// </summary>
+        private Transform poolRoot;
+        #endregion
+
+        #region Private Method
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        private GameObjectPoolManager()
+        {
+            //Create root for pools.
+            poolRoot = new GameObject("GameObjectPool").transform;
+            Object.DontDestroyOnLoad(poolRoot);
+        }
         #endregion
 
         #region Public Method
@@ -58,12 +74,12 @@ namespace MGS.ObjectPool
                 return null;
             }
 
-            //Create new root for pool.
-            var poolRoot = new GameObject(name);
-            poolRoot.transform.parent = transform;
+            //Create new gameobject for pool.
+            var poolTrans = new GameObject(name).transform;
+            poolTrans.parent = poolRoot;
 
             //Create new pool.
-            var newPool = new GameObjectPool(poolRoot.transform, prefab, maxCount);
+            var newPool = new GameObjectPool(poolTrans, prefab, maxCount);
             poolsInfo.Add(name, newPool);
             return newPool;
         }
@@ -94,7 +110,7 @@ namespace MGS.ObjectPool
         {
             if (poolsInfo.ContainsKey(name))
             {
-                Destroy(poolsInfo[name].root.gameObject);
+                Object.Destroy(poolsInfo[name].root.gameObject);
                 poolsInfo.Remove(name);
             }
             else
