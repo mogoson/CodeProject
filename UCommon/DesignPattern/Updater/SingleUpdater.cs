@@ -69,7 +69,7 @@ namespace MGS.UCommon.DesignPattern
         /// <summary>
         /// Turn on processor.
         /// </summary>
-        public void TurnOn()
+        public virtual void TurnOn()
         {
             if (IsTurnOn)
             {
@@ -83,7 +83,7 @@ namespace MGS.UCommon.DesignPattern
         /// <summary>
         /// Turn off processor.
         /// </summary>
-        public void TurnOff()
+        public virtual void TurnOff()
         {
             if (!IsTurnOn)
             {
