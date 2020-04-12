@@ -29,7 +29,7 @@ namespace MGS.OrderServo
         /// Order parser.
         /// </summary>
         public IOrderParser OrderParser { set; get; }
-        
+
         /// <summary>
         /// Order pending buffer.
         /// </summary>
@@ -45,7 +45,10 @@ namespace MGS.OrderServo
         {
             var orderBytes = OrderIO.ReadBuffer();
             var ioOrders = OrderParser.ToOrders(orderBytes);
-            orderBuffer.AddRange(ioOrders);
+            if (ioOrders != null)
+            {
+                orderBuffer.AddRange(ioOrders);
+            }
 
             var currentOrders = new List<Order>(orderBuffer);
             orderBuffer.Clear();

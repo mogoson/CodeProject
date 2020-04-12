@@ -39,6 +39,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\MonoOrderIO.cs" />
     <Compile Include="Abstract\MonoOrderUnit.cs" />
     <Compile Include="OrderManager.cs" />
     <Compile Include="Interface\IOrderParser.cs" />

@@ -17,7 +17,7 @@ namespace MGS.OrderServo
     /// <summary>
     /// Order servo processor.
     /// </summary>
-    public sealed class OrderServoProcessor : SingleUpdater<IOrderServoProcessor>, IOrderServoProcessor
+    public sealed class OrderServoProcessor : SingleUpdater<OrderServoProcessor>, IOrderServoProcessor
     {
         #region Field and Property
         /// <summary>

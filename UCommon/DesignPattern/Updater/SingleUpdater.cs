@@ -76,8 +76,8 @@ namespace MGS.UCommon.DesignPattern
                 return;
             }
 
-            SingleBehaviour.Instance.StartCoroutine(updater);
             IsTurnOn = true;
+            SingleBehaviour.Instance.StartCoroutine(updater);
         }
 
         /// <summary>
@@ -90,8 +90,8 @@ namespace MGS.UCommon.DesignPattern
                 return;
             }
 
-            SingleBehaviour.Instance.StopCoroutine(updater);
             IsTurnOn = false;
+            SingleBehaviour.Instance.StopCoroutine(updater);
         }
         #endregion
     }
