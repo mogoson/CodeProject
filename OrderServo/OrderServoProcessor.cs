@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.Common.Logger;
 using MGS.UCommon.DesignPattern;
 
 namespace MGS.OrderServo
@@ -50,6 +51,23 @@ namespace MGS.OrderServo
         /// Manager of order units.
         /// </summary>
         private IOrderUnitManager orderUnitManager;
+
+        /// <summary>
+        /// The settings of processor is valid?
+        /// </summary>
+        private bool IsSettingsValid
+        {
+            get
+            {
+                if (OrderManager == null || orderUnitManager == null)
+                {
+                    LogUtility.LogError("Order servo processor settings error: " +
+                        "The order manager or order unit manager does not set an instance.");
+                    return false;
+                }
+                return true;
+            }
+        }
         #endregion
 
         #region Private Method
@@ -63,6 +81,11 @@ namespace MGS.OrderServo
         /// </summary>
         protected override void OnUpdate()
         {
+            if (!IsSettingsValid)
+            {
+                return;
+            }
+
             var orders = OrderManager.ReadOrders();
             if (orders != null)
             {
@@ -79,6 +102,11 @@ namespace MGS.OrderServo
         /// <param name="order">Respond order.</param>
         private void OnUnitRespond(Order order)
         {
+            if (!IsSettingsValid)
+            {
+                return;
+            }
+
             OrderManager.RespondOrder(order);
         }
         #endregion

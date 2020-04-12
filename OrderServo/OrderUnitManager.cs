@@ -11,6 +11,7 @@
  *************************************************************************/
 
 using MGS.Common.Generic;
+using MGS.Common.Logger;
 using System.Collections.Generic;
 
 namespace MGS.OrderServo
@@ -40,6 +41,12 @@ namespace MGS.OrderServo
         /// <param name="args">Order args.</param>
         protected void OnUnitRespond(string code, object args)
         {
+            if (string.IsNullOrEmpty(code))
+            {
+                LogUtility.LogError("Unit respond error: The code is null or empty.");
+                return;
+            }
+
             OnRespond.Invoke(new Order(code, args));
         }
         #endregion
@@ -51,8 +58,9 @@ namespace MGS.OrderServo
         /// <param name="unit">Order unit.</param>
         public void AddUnit(IOrderUnit unit)
         {
-            if (unit == null || string.IsNullOrEmpty(unit.Code) || units.ContainsKey(unit.Code))
+            if (unit == null || string.IsNullOrEmpty(unit.Code))
             {
+                LogUtility.LogError("Add unit to manager error: The unit or code of unit is null or empty.");
                 return;
             }
 

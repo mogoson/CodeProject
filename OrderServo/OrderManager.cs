@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.Common.Logger;
 using System.Collections.Generic;
 
 namespace MGS.OrderServo
@@ -34,6 +35,23 @@ namespace MGS.OrderServo
         /// Order pending buffer.
         /// </summary>
         protected List<Order> orderBuffer = new List<Order>();
+
+        /// <summary>
+        /// The settings of manager is valid?
+        /// </summary>
+        protected bool IsSettingsValid
+        {
+            get
+            {
+                if (OrderIO == null || OrderParser == null)
+                {
+                    LogUtility.LogError("OrderManager settings error: " +
+                        "The order IO or order parser does not set an instance.");
+                    return false;
+                }
+                return true;
+            }
+        }
         #endregion
 
         #region Public Method
@@ -43,6 +61,11 @@ namespace MGS.OrderServo
         /// <returns>Current orders.</returns>
         public virtual IEnumerable<Order> ReadOrders()
         {
+            if (!IsSettingsValid)
+            {
+                return null;
+            }
+
             var orderBytes = OrderIO.ReadBuffer();
             var ioOrders = OrderParser.ToOrders(orderBytes);
             if (ioOrders != null)
@@ -84,6 +107,11 @@ namespace MGS.OrderServo
         /// <param name="order">Order to respond.</param>
         public virtual void RespondOrder(Order order)
         {
+            if (!IsSettingsValid)
+            {
+                return;
+            }
+
             var orderBytes = OrderParser.ToBuffer(order);
             OrderIO.WriteBuffer(orderBytes);
         }
