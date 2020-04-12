@@ -93,7 +93,7 @@ namespace MGS.OrderServo
         {
             if (units.ContainsKey(order.code))
             {
-                units[order.code].Execute(order);
+                units[order.code].Execute(order.args);
             }
         }
         #endregion
