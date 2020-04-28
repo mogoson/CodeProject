@@ -10,7 +10,6 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.DesignPattern;
 using System;
 using System.Collections;
 
@@ -19,28 +18,21 @@ namespace MGS.Common.Threading
     /// <summary>
     /// Bridge for thread.
     /// </summary>
-    internal sealed class ThreadBridge : Singleton<ThreadBridge>
+    public sealed class ThreadBridge
     {
         #region Field and Property
         /// <summary>
         /// Queue for actions.
         /// </summary>
-        private Queue queue = new Queue();
-        #endregion
-
-        #region Private Method
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        private ThreadBridge() { }
+        private static Queue queue = new Queue();
         #endregion
 
         #region Public Method
         /// <summary>
-        /// Enqueue action.
+        /// Enqueue an action.
         /// </summary>
         /// <param name="action">Register action.</param>
-        public void Enqueue(Action action)
+        public static void Enqueue(Action action)
         {
             if (action == null)
             {
@@ -54,9 +46,9 @@ namespace MGS.Common.Threading
         }
 
         /// <summary>
-        /// Dequeue actions.
+        /// Dequeue all actions.
         /// </summary>
-        public void Dequeue()
+        public static void Dequeue()
         {
             if (queue.Count > 0)
             {
@@ -66,6 +58,32 @@ namespace MGS.Common.Threading
                     {
                         var action = queue.Dequeue() as Action;
                         action.Invoke();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Dequeue the number of count actions.
+        /// </summary>
+        /// <param name="count">Count of dequeue actions once.</param>
+        public static void Dequeue(int count)
+        {
+            if (queue.Count > 0)
+            {
+                lock (queue.SyncRoot)
+                {
+                    var deCount = 0;
+                    while (queue.Count > 0)
+                    {
+                        var action = queue.Dequeue() as Action;
+                        action.Invoke();
+
+                        deCount++;
+                        if (deCount >= count)
+                        {
+                            break;
+                        }
                     }
                 }
             }

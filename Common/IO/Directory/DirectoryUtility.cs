@@ -166,15 +166,19 @@ namespace MGS.Common.IO
         /// <param name="sourceDir">Source dir.</param>
         /// <param name="destDir">Dest dir.</param>
         /// <param name="ignores">Ignore files or directories.</param>
+        /// <param name="guid">Guid of async threadGuid of async thread [System will automatically assign if it is null or empty].</param>
         /// <param name="progressCallback">Progress callback.</param>
         /// <param name="completeCallback">Complete callback.</param>
-        public static void CopyChildEntriesAsync(string sourceDir, string destDir, IEnumerable<string> ignores = null,
+        /// <returns>Guid of async thread.</returns>
+        public static string CopyChildEntriesAsync(string sourceDir, string destDir, IEnumerable<string> ignores = null, string guid = null,
             Action<float> progressCallback = null, Action<bool, string> completeCallback = null)
         {
-            ThreadUtility.RunAsync(() =>
+            guid = ThreadUtility.RunAsync(() =>
             {
                 CopyChildEntries(sourceDir, destDir, ignores, progressCallback, completeCallback);
-            });
+            }, guid);
+
+            return guid;
         }
 
         /// <summary>
@@ -250,15 +254,28 @@ namespace MGS.Common.IO
         /// </summary>
         /// <param name="destDir">Dest dir.</param>
         /// <param name="ignores">Ignore files or directories.</param>
+        /// <param name="guid">Guid of async threadGuid of async thread [System will automatically assign if it is null or empty].</param>
         /// <param name="progressCallback">Progress callback.</param>
         /// <param name="completeCallback">Complete callback.</param>
-        public static void DeleteChildEntriesAsync(string destDir, IEnumerable<string> ignores = null,
+        /// <returns>Guid of async thread.</returns>
+        public static string DeleteChildEntriesAsync(string destDir, IEnumerable<string> ignores = null, string guid = null,
             Action<float> progressCallback = null, Action<bool, string> completeCallback = null)
         {
-            ThreadUtility.RunAsync(() =>
+            guid = ThreadUtility.RunAsync(() =>
             {
                 DeleteChildEntries(destDir, ignores, progressCallback, completeCallback);
-            });
+            }, guid);
+
+            return guid;
+        }
+
+        /// <summary>
+        /// Abort Async thread.
+        /// </summary>
+        /// <param name="guid">Guid of async thread.</param>
+        public static void AbortAsync(string guid)
+        {
+            ThreadUtility.AbortAsync(guid);
         }
         #endregion
     }
