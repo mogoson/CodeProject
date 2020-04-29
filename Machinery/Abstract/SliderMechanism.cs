@@ -18,6 +18,7 @@ namespace MGS.Machinery
     /// <summary>
     /// Slider joint mechanism.
     /// </summary>
+    [DisallowMultipleComponent]
     public abstract class SliderMechanism : RockerLinkMechanism
     {
         #region Field and Property

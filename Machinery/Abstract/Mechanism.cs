@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MGS.Machinery
@@ -19,6 +20,18 @@ namespace MGS.Machinery
     /// </summary>
     public abstract class Mechanism : MonoBehaviour, IMechanism
     {
+        #region Field And Property
+        /// <summary>
+        /// Mechanism is stuck?
+        /// </summary>
+        public virtual bool IsStuck { get { return CheckLimiters(); } }
+
+        /// <summary>
+        /// Limiters attached on mechanism.
+        /// </summary>
+        protected List<ILimiter> limiters = new List<ILimiter>();
+        #endregion
+
         #region Protected Method
         /// <summary>
         /// Awake mechanism.
@@ -27,13 +40,33 @@ namespace MGS.Machinery
         {
             Initialize();
         }
+
+        /// <summary>
+        /// Check if one of limiters is triggered?
+        /// </summary>
+        /// <returns></returns>
+        protected virtual bool CheckLimiters()
+        {
+            foreach (var limiter in limiters)
+            {
+                if (limiter.IsTriggered)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
         #endregion
 
         #region Public Method
         /// <summary>
         /// Initialize mechanism.
         /// </summary>
-        public virtual void Initialize() { }
+        public virtual void Initialize()
+        {
+            limiters.AddRange(GetComponents<ILimiter>());
+        }
 
         /// <summary>
         /// Drive mechanism by velocity.

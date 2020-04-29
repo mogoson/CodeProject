@@ -72,7 +72,8 @@ namespace MGS.Machinery
         /// <summary>
         /// Drive joints those link with this mechanism.
         /// </summary>
-        protected override void DriveLinkJoints()
+        /// <returns>Succeed?</returns>
+        protected override bool DriveLinkJoints()
         {
             //Rivet joints.
             crank.transform.localPosition = CorrectPosition(crank.transform.localPosition);
@@ -85,11 +86,9 @@ namespace MGS.Machinery
             var vectors = Geometry.GetIntersections(linkCircle, rockerCircle);
             if (vectors == null)
             {
-                IsLock = true;
-                return;
+                return false;
             }
 
-            IsLock = false;
             var vector = Vector.Zero;
             if (vectors.Count == 1)
             {
@@ -120,6 +119,8 @@ namespace MGS.Machinery
             joint.localPosition = new Vector3((float)vector.x, (float)vector.y);
             link.Drive(0, DriveType.Ignore);
             rocker.Drive(0, DriveType.Ignore);
+
+            return true;
         }
         #endregion
 

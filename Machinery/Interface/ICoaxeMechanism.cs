@@ -17,6 +17,7 @@ namespace MGS.Machinery
     /// </summary>
     public interface ICoaxeMechanism : IMechanism
     {
+        #region Method
         /// <summary>
         /// Link coaxe.
         /// </summary>
@@ -28,5 +29,6 @@ namespace MGS.Machinery
         /// </summary>
         /// <param name="mechanism">Target mechanism.</param>
         void BreakCoaxe(IMechanism mechanism);
+        #endregion
     }
 }

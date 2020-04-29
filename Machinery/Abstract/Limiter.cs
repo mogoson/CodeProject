@@ -1,34 +1,29 @@
 ﻿/*************************************************************************
  *  Copyright © 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IEngageMechanism.cs
- *  Description  :  Interface for engage mechanism.
+ *  File         :  Limiter.cs
+ *  Description  :  Abstract limiter.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  1.0
- *  Date         :  3/20/2020
+ *  Date         :  4/29/2020
  *  Description  :  Initial development version.
  *************************************************************************/
+
+using UnityEngine;
 
 namespace MGS.Machinery
 {
     /// <summary>
-    /// Interface for engage mechanism.
+    /// Abstract limiter.
     /// </summary>
-    public interface IEngageMechanism : IMechanism
+    public abstract class Limiter : MonoBehaviour, ILimiter
     {
-        #region Method
+        #region Field And Property
         /// <summary>
-        /// Link engage.
+        /// Limiter is triggered?
         /// </summary>
-        /// <param name="mechanism">Target mechanism.</param>
-        void LinkEngage(IMechanism mechanism);
-
-        /// <summary>
-        /// Break engage.
-        /// </summary>
-        /// <param name="mechanism">Target mechanism.</param>
-        void BreakEngage(IMechanism mechanism);
+        public abstract bool IsTriggered { get; }
         #endregion
     }
 }

@@ -34,20 +34,22 @@
   <ItemGroup>
     <Compile Include="Abstract\CrankLinkMechanism.cs" />
     <Compile Include="Abstract\CrankMechanism.cs" />
+    <Compile Include="Abstract\Limiter.cs" />
     <Compile Include="Abstract\Mechanism.cs" />
     <Compile Include="Abstract\RockerLinkMechanism.cs" />
     <Compile Include="Abstract\RockerMechanism.cs" />
     <Compile Include="Abstract\SliderArmMechanism.cs" />
     <Compile Include="Abstract\SliderMechanism.cs" />
-    <Compile Include="Abstract\TriggerMechanism.cs" />
     <Compile Include="Enum\DriveType.cs" />
     <Compile Include="Enum\EditMode.cs" />
     <Compile Include="Enum\KeepUpMode.cs" />
     <Compile Include="Enum\TelescopicState.cs" />
     <Compile Include="Interface\ICoaxeMechanism.cs" />
     <Compile Include="Interface\IEngageMechanism.cs" />
+    <Compile Include="Interface\ILimiter.cs" />
     <Compile Include="Interface\IMechanism.cs" />
-    <Compile Include="Interface\ITriggerMechanism.cs" />
+    <Compile Include="Limiter\AngleLimiter.cs" />
+    <Compile Include="Limiter\DistanceLimiter.cs" />
     <Compile Include="Mechanism\Belt\Belt.cs" />
     <Compile Include="Mechanism\Crank\FreeCrank.cs" />
     <Compile Include="Mechanism\Crank\GearCrank.cs" />
@@ -94,6 +96,7 @@
       <Name>UCommon</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Plugins\MGS"

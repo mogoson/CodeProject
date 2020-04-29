@@ -54,11 +54,6 @@ namespace MGS.Machinery
         /// Is dead lock?
         /// </summary>
         public bool IsLock { protected set; get; }
-
-        /// <summary>
-        /// Drive speed is positive?
-        /// </summary>
-        private bool isPositive = false;
         #endregion
 
         #region Protected Method
@@ -140,7 +135,8 @@ namespace MGS.Machinery
         /// <summary>
         /// Drive joints those link with this mechanism.
         /// </summary>
-        protected abstract void DriveLinkJoints();
+        /// <returns>Succeed?</returns>
+        protected abstract bool DriveLinkJoints();
         #endregion
 
         #region Public Method
@@ -151,24 +147,12 @@ namespace MGS.Machinery
         /// <param name="type">Type of drive.</param>
         public override void Drive(float velocity, DriveType type)
         {
-            if (velocity >= 0)
-            {
-                if (IsLock && isPositive)
-                {
-                    return;
-                }
-                isPositive = true;
-            }
-            else
-            {
-                if (IsLock && !isPositive)
-                {
-                    return;
-                }
-                isPositive = false;
-            }
             crank.Drive(velocity, type);
-            DriveLinkJoints();
+            IsLock = DriveLinkJoints();
+            if (IsLock)
+            {
+                crank.Drive(-velocity, type);
+            }
         }
         #endregion
     }

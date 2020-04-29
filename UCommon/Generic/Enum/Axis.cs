@@ -1,27 +1,35 @@
 ﻿/*************************************************************************
- *  Copyright © 2020 Mogoson. All rights reserved.
+ *  Copyright © 2017-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  ITriggerMechanism.cs
- *  Description  :  Interface for trigger mechanism.
+ *  File         :  Axis.cs
+ *  Description  :  Define Coordinate axis.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  1.0
- *  Date         :  3/20/2020
+ *  Date         :  4/29/2020
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.Machinery
+namespace MGS.UCommon.Generic
 {
     /// <summary>
-    /// Trigger mechanism.
+    /// Coordinate axis.
     /// </summary>
-    public interface ITriggerMechanism : IMechanism
+    public enum Axis
     {
-        #region Property
         /// <summary>
-        /// Trigger is enter?
+        /// X axis.
         /// </summary>
-        bool IsTriggerEnter { get; }
-        #endregion
+        X = 0,
+
+        /// <summary>
+        /// Y axis.
+        /// </summary>
+        Y = 1,
+
+        /// <summary>
+        /// Z axis.
+        /// </summary>
+        Z = 2
     }
 }

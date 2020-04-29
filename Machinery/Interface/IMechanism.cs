@@ -32,6 +32,13 @@ namespace MGS.Machinery
     /// </summary>
     public interface IMechanism
     {
+        #region Property
+        /// <summary>
+        /// Mechanism is stuck?
+        /// </summary>
+        bool IsStuck { get; }
+        #endregion
+
         #region Method
         /// <summary>
         /// Initialize mechanism.

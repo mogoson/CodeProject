@@ -53,6 +53,7 @@
     <Compile Include="DesignPattern\Updater\IMonoUpdater.cs" />
     <Compile Include="DesignPattern\Updater\SingleUpdater.cs" />
     <Compile Include="Event\MonoEventTrigger.cs" />
+    <Compile Include="Generic\Enum\Axis.cs" />
     <Compile Include="Generic\Enum\ColorBlendMode.cs" />
     <Compile Include="Generic\Enum\LerpMode.cs" />
     <Compile Include="Extension\GameObjectExtention.cs" />

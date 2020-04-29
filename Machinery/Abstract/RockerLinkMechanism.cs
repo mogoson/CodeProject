@@ -30,7 +30,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Triggers attached on link rockers.
         /// </summary>
-        protected List<TriggerMechanism> triggers = new List<TriggerMechanism>();
+        protected List<ILimiter> triggers = new List<ILimiter>();
 
         /// <summary>
         /// Record value on trigger is triggered.
@@ -47,7 +47,7 @@ namespace MGS.Machinery
         {
             foreach (var trigger in triggers)
             {
-                if (trigger.IsTriggerEnter)
+                if (trigger.IsTriggered)
                 {
                     return true;
                 }
@@ -76,8 +76,8 @@ namespace MGS.Machinery
             triggers.Clear();
             foreach (var rocker in rockers)
             {
-                var trigger = rocker.GetComponent<TriggerMechanism>();
-                if (trigger)
+                var trigger = rocker.GetComponent<ILimiter>();
+                if (trigger != null)
                 {
                     triggers.Add(trigger);
                 }

@@ -21,7 +21,7 @@ namespace MGS.Machinery
     [AddComponentMenu("MGS/Machinery/RockerLimiter")]
     [RequireComponent(typeof(RockerJoint))]
     [ExecuteInEditMode]
-    public class RockerLimiter : TriggerMechanism
+    public class RockerLimiter : Limiter
     {
         #region Field and Property
         /// <summary>
@@ -33,7 +33,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Limiter is triggered?
         /// </summary>
-        public override bool IsTriggerEnter
+        public override bool IsTriggered
         {
             get
             {
@@ -52,7 +52,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Initialize limiter.
         /// </summary>
-        public override void Initialize()
+        public virtual void Awake()
         {
             Rocker = GetComponent<RockerJoint>();
         }
