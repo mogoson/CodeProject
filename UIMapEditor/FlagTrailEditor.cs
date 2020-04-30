@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.Common.Reflection;
 using MGS.UCommonEditor;
 using MGS.UIMap;
 using UnityEditor;
@@ -30,7 +31,7 @@ namespace MGS.UIMapEditor
         {
             if (GUILayout.Button("Clear Trail"))
             {
-                InvokeMethod(Target, "Initialize");
+                Reflector.InvokeMethod(Target, "Initialize");
                 Target.ClearTrail();
 
                 MarkSceneDirty();

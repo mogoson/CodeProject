@@ -50,6 +50,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UCommonEditor\UCommonEditor.csproj">
       <Project>{522c0820-e5f6-4bd9-a1e3-fe2e1a1e2ce2}</Project>
       <Name>UCommonEditor</Name>

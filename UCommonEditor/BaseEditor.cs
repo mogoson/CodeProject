@@ -18,7 +18,6 @@
 using System;
 using UnityEditor;
 using UnityEngine;
-using System.Reflection;
 
 #if UNITY_5_3_OR_NEWER
 using UnityEditor.SceneManagement;
@@ -50,18 +49,6 @@ namespace MGS.UCommonEditor
         #endregion
 
         #region Protected Method
-        protected object InvokeMethod(object target, string method, object[] parameters = null)
-        {
-            var flags = BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.NonPublic;
-            var type = target.GetType();
-            var methodInfo = type.GetMethod(method, flags);
-            if (methodInfo == null)
-            {
-                return null;
-            }
-            return methodInfo.Invoke(target, parameters);
-        }
-
         protected void DrawCircleCap(Vector3 position, Quaternion rotation, float size)
         {
 #if UNITY_5_5_OR_NEWER

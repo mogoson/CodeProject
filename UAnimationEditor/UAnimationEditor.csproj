@@ -44,6 +44,10 @@
     <Compile Include="TwoDAnimation\UVFramesAnimationEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CurvePath\CurvePath.csproj">
       <Project>{f1d69a8e-1d1c-46e1-9afd-989de797b4f4}</Project>
       <Name>CurvePath</Name>

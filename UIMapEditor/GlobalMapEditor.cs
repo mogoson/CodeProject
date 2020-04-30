@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.Common.Reflection;
 using MGS.UCommonEditor;
 using MGS.UIMap;
 using UnityEditor;
@@ -34,7 +35,7 @@ namespace MGS.UIMapEditor
                 {
                     return false;
                 }
-                InvokeMethod(flag, "Initialize");
+                Reflector.InvokeMethod(flag, "Initialize");
             }
             return true;
         }

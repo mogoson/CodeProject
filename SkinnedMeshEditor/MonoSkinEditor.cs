@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.Common.Reflection;
 using MGS.SkinnedMesh;
 using MGS.UCommonEditor;
 using UnityEditor;
@@ -29,7 +30,7 @@ namespace MGS.SkinnedMeshEditor
         {
             if (!Application.isPlaying)
             {
-                InvokeMethod(Target, "Initialize");
+                Reflector.InvokeMethod(Target, "Initialize", null);
                 Target.Rebuild();
 
                 Undo.undoRedoPerformed += Target.Rebuild;

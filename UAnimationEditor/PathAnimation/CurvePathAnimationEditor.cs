@@ -10,6 +10,7 @@
  *  DeTargetion  :  Initial development version.
  *************************************************************************/
 
+using MGS.Common.Reflection;
 using MGS.UAnimation;
 using MGS.UCommonEditor;
 using UnityEditor;
@@ -55,7 +56,7 @@ namespace MGS.UAnimationEditor
 
             if (GUILayout.Button("Align To Path"))
             {
-                InvokeMethod(Target, "Initialize");
+                Reflector.InvokeMethod(Target, "Initialize");
                 Target.Path.Rebuild();
                 Target.Rewind();
 
