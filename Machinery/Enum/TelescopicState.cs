@@ -23,9 +23,9 @@ namespace MGS.Machinery
         Minimum = 0,
 
         /// <summary>
-        /// State between minimum and maximum.
+        /// Free state.
         /// </summary>
-        Between = 1,
+        Free = 1,
 
         /// <summary>
         /// Maximum state.

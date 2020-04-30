@@ -15,6 +15,7 @@
  *  Description  :  Optimize display of coordinate system.
  *************************************************************************/
 
+using MGS.Common.Reflection;
 using UnityEditor;
 using UnityEngine;
 
@@ -52,7 +53,7 @@ namespace MGS.Machinery
                     if (Target.enabled)
                     {
                         Target.enabled = false;
-                        Target.isInitialized = false;
+                        Reflector.SetProperty(Target, "IsInitialized", false);
                     }
                 }
                 else

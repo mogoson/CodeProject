@@ -1,7 +1,7 @@
 ﻿/*************************************************************************
  *  Copyright © 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  RockerLinkMechanism.cs
+ *  File         :  LinkRockerMechanism.cs
  *  Description  :  Mechanism with link rockers.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
@@ -18,7 +18,7 @@ namespace MGS.Machinery
     /// <summary>
     /// Mechanism with link rockers.
     /// </summary>
-    public abstract class RockerLinkMechanism : Mechanism
+    public abstract class LinkRockerMechanism : Mechanism
     {
         #region Field and Property
         /// <summary>
@@ -28,26 +28,31 @@ namespace MGS.Machinery
         public List<RockerMechanism> rockers = new List<RockerMechanism>();
 
         /// <summary>
-        /// Triggers attached on link rockers.
+        /// Mechanism is stuck?
         /// </summary>
-        protected List<ILimiter> triggers = new List<ILimiter>();
-
-        /// <summary>
-        /// Record value on trigger is triggered.
-        /// </summary>
-        protected float triggerRecord = 0;
+        public override bool IsStuck
+        {
+            get
+            {
+                if (CheckRockerStuck())
+                {
+                    return true;
+                }
+                return base.IsStuck;
+            }
+        }
         #endregion
 
         #region Protected Method
         /// <summary>
-        /// Check trigger is triggered.
+        /// Check one of the rockers is stuck?
         /// </summary>
-        /// <returns>Return true if one of the triggers is triggered.</returns>
-        protected bool CheckTriggers()
+        /// <returns>Return true if one of the rockers is stuck.</returns>
+        protected bool CheckRockerStuck()
         {
-            foreach (var trigger in triggers)
+            foreach (var rocker in rockers)
             {
-                if (trigger.IsTriggered)
+                if (rocker.IsStuck)
                 {
                     return true;
                 }
@@ -58,30 +63,19 @@ namespace MGS.Machinery
         /// <summary>
         /// Drive the rockers that join at this mechanism.
         /// </summary>
-        protected void DriveRockers()
+        /// <param name="velocity">Velocity of drive.</param>
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected bool DriveRockers(float velocity, DriveMode mode)
         {
             foreach (var rocker in rockers)
             {
-                rocker.Drive(0, DriveType.Ignore);
-            }
-        }
-        #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Initialize mechanism.
-        /// </summary>
-        public override void Initialize()
-        {
-            triggers.Clear();
-            foreach (var rocker in rockers)
-            {
-                var trigger = rocker.GetComponent<ILimiter>();
-                if (trigger != null)
+                if (!rocker.Drive(velocity, mode))
                 {
-                    triggers.Add(trigger);
+                    return false;
                 }
             }
+            return true;
         }
         #endregion
     }

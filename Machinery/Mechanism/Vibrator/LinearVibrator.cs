@@ -31,7 +31,7 @@ namespace MGS.Machinery
         /// Start loacal position.
         /// </summary>
         public Vector3 StartPosition { protected set; get; }
-        
+
         /// <summary>
         /// Vibrate local axis.
         /// </summary>
@@ -59,21 +59,14 @@ namespace MGS.Machinery
         protected int direction = 1;
         #endregion
 
-        #region Public Method
+        #region Protected Method
         /// <summary>
-        /// Initialize vibrator.
+        /// Drive mechanism by velocity.
         /// </summary>
-        public override void Initialize()
-        {
-            StartPosition = transform.localPosition;
-        }
-
-        /// <summary>
-        /// Drive vibrator by linear velocity.
-        /// </summary>
-        /// <param name="velocity">Linear velocity of drive.</param>
-        /// <param name="type">Invalid parameter (LinearVibrator can only drived by linear velocity).</param>
-        public override void Drive(float velocity, DriveType type = DriveType.Ignore)
+        /// <param name="velocity">Velocity of drive.</param>
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode = DriveMode.Ignore)
         {
             currentOffset += velocity * Mathf.Deg2Rad * direction * Time.deltaTime;
             if (currentOffset < -amplitudeRadius || currentOffset > amplitudeRadius)
@@ -82,6 +75,18 @@ namespace MGS.Machinery
                 currentOffset = Mathf.Clamp(currentOffset, -amplitudeRadius, amplitudeRadius);
             }
             transform.localPosition = StartPosition + LocalAxis * currentOffset;
+            return true;
+        }
+        #endregion
+
+        #region Public Method
+        /// <summary>
+        /// Initialize vibrator.
+        /// </summary>
+        public override void Initialize()
+        {
+            base.Initialize();
+            StartPosition = transform.localPosition;
         }
         #endregion
     }

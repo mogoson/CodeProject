@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.Common.Logger;
 using UnityEngine;
 
 namespace MGS.Machinery
@@ -91,7 +92,13 @@ namespace MGS.Machinery
             }
             else
             {
-                axle.Drive(currentRPM * 6, DriveType.Angular);
+                if (axle.IsStuck)
+                {
+                    LogUtility.LogWarning("The axle is stuck, drive is cancelled.");
+                    return;
+                }
+
+                axle.Drive(currentRPM * 6, DriveMode.Angular);
             }
         }
         #endregion

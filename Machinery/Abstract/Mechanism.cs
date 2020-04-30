@@ -22,14 +22,40 @@ namespace MGS.Machinery
     {
         #region Field And Property
         /// <summary>
+        /// Mechanism is initialized?
+        /// </summary>
+        public virtual bool IsInitialized { protected set; get; }
+
+        /// <summary>
         /// Mechanism is stuck?
         /// </summary>
-        public virtual bool IsStuck { get { return CheckLimiters(); } }
+        public virtual bool IsStuck
+        {
+            get
+            {
+                if (!isDriveUnrestricted)
+                {
+                    return true;
+                }
+
+                return CheckLimiterTriggered();
+            }
+        }
 
         /// <summary>
         /// Limiters attached on mechanism.
         /// </summary>
         protected List<ILimiter> limiters = new List<ILimiter>();
+
+        /// <summary>
+        /// The last velocity drive succeed.
+        /// </summary>
+        protected float lastVelocity = 0;
+
+        /// <summary>
+        /// The last drive is unrestricted?
+        /// </summary>
+        protected bool isDriveUnrestricted = false;
         #endregion
 
         #region Protected Method
@@ -45,7 +71,7 @@ namespace MGS.Machinery
         /// Check if one of limiters is triggered?
         /// </summary>
         /// <returns></returns>
-        protected virtual bool CheckLimiters()
+        protected bool CheckLimiterTriggered()
         {
             foreach (var limiter in limiters)
             {
@@ -57,6 +83,14 @@ namespace MGS.Machinery
 
             return false;
         }
+
+        /// <summary>
+        /// Drive mechanism by velocity.
+        /// </summary>
+        /// <param name="velocity">Velocity of drive.</param>
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected abstract bool OnDrive(float velocity, DriveMode mode);
         #endregion
 
         #region Public Method
@@ -65,15 +99,41 @@ namespace MGS.Machinery
         /// </summary>
         public virtual void Initialize()
         {
+            if (IsInitialized)
+            {
+                return;
+            }
+
             limiters.AddRange(GetComponents<ILimiter>());
+            IsInitialized = true;
         }
 
         /// <summary>
         /// Drive mechanism by velocity.
         /// </summary>
         /// <param name="velocity">Velocity of drive.</param>
-        /// <param name="type">Type of drive.</param>
-        public abstract void Drive(float velocity, DriveType type);
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        public virtual bool Drive(float velocity, DriveMode mode)
+        {
+            if (Application.isPlaying)
+            {
+                if (IsStuck)
+                {
+                    if (velocity * lastVelocity > 0)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    lastVelocity = velocity;
+                }
+            }
+
+            isDriveUnrestricted = OnDrive(velocity, mode);
+            return isDriveUnrestricted;
+        }
         #endregion
     }
 }

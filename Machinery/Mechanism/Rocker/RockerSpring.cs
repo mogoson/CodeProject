@@ -43,13 +43,30 @@ namespace MGS.Machinery
 
         #region Protected Method
         /// <summary>
+        /// Drive mechanism by velocity.
+        /// </summary>
+        /// <param name="velocity">Velocity of drive.</param>
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode)
+        {
+            if (!base.OnDrive(velocity, mode))
+            {
+                return false;
+            }
+
+            return DriveSpring();
+        }
+
+        /// <summary>
         /// Drive spring.
         /// </summary>
-        protected void DriveSpring()
+        /// <returns>Drive spring is unrestricted?</returns>
+        protected virtual bool DriveSpring()
         {
             if (!Application.isPlaying && spring == null)
             {
-                return;
+                return false;
             }
 
             //Rivet spring.
@@ -60,19 +77,7 @@ namespace MGS.Machinery
             spring.bottomEllipse.center.y = bottom;
             spring.topEllipse.center.y = Vector3.Distance(transform.position, joint.position) - top;
             spring.Rebuild();
-        }
-        #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Drive rocker by velocity.
-        /// </summary>
-        /// <param name="velocity">Velocity of drive.</param>
-        /// <param name="type">Type of drive.</param>
-        public override void Drive(float velocity = 0, DriveType type = DriveType.Ignore)
-        {
-            base.Drive(velocity, type);
-            DriveSpring();
+            return true;
         }
         #endregion
     }

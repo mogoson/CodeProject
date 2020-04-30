@@ -48,6 +48,21 @@ namespace MGS.Machinery
         public bool restrict = false;
 
         /// <summary>
+        /// Mechanism is stuck?
+        /// </summary>
+        public override bool IsStuck
+        {
+            get
+            {
+                if (rocker.IsStuck)
+                {
+                    return true;
+                }
+                return base.IsStuck;
+            }
+        }
+
+        /// <summary>
         /// All the joints of this mechanism are set intact.
         /// </summary>
         public override bool IsIntact { get { return crank && link && rocker && joint; } }
@@ -72,7 +87,7 @@ namespace MGS.Machinery
         /// <summary>
         /// Drive joints those link with this mechanism.
         /// </summary>
-        /// <returns>Succeed?</returns>
+        /// <returns>Drive joints is unrestricted?</returns>
         protected override bool DriveLinkJoints()
         {
             //Rivet joints.
@@ -117,9 +132,8 @@ namespace MGS.Machinery
             }
 
             joint.localPosition = new Vector3((float)vector.x, (float)vector.y);
-            link.Drive(0, DriveType.Ignore);
-            rocker.Drive(0, DriveType.Ignore);
-
+            link.Drive(0, DriveMode.Ignore);
+            rocker.Drive(0, DriveMode.Ignore);
             return true;
         }
         #endregion
@@ -130,6 +144,8 @@ namespace MGS.Machinery
         /// </summary>
         public override void Initialize()
         {
+            base.Initialize();
+
             //Correct crank.
             crank.transform.localEulerAngles = CorrectAngles(crank.transform.localEulerAngles);
             crank.Initialize();

@@ -28,34 +28,71 @@ namespace MGS.Machinery
         [Tooltip("Coaxe mechanisms.")]
         [SerializeField]
         protected List<Mechanism> coaxes;
-        #endregion
 
-        #region Protected Method
         /// <summary>
-        /// Drive coaxial mechanisms by angular velocity.
+        /// Mechanism is stuck?
         /// </summary>
-        /// <param name="velocity">Angular velocity of drive.</param>
-        protected void DriveCoaxes(float velocity)
+        public override bool IsStuck
         {
-            foreach (var coaxe in coaxes)
+            get
             {
-                coaxe.Drive(velocity, DriveType.Angular);
+                if (CheckCoaxeStuck())
+                {
+                    return true;
+                }
+                return base.IsStuck;
             }
         }
         #endregion
 
-        #region Public Method
+        #region Protected Method
         /// <summary>
-        /// Drive axle by angular velocity.
+        /// Check one of the coaxes is stuck?
         /// </summary>
-        /// <param name="velocity">Angular velocity of drive.</param>
-        /// <param name="type">Invalid parameter (Axle can only drived by angular velocity).</param>
-        public override void Drive(float velocity, DriveType type = DriveType.Ignore)
+        /// <returns>Return true if one of the coaxes is stuck.</returns>
+        protected bool CheckCoaxeStuck()
         {
-            transform.Rotate(Vector3.forward, velocity * Time.deltaTime, Space.Self);
-            DriveCoaxes(velocity);
+            foreach (var coaxe in coaxes)
+            {
+                if (coaxe.IsStuck)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
+        /// <summary>
+        /// Drive mechanism by velocity.
+        /// </summary>
+        /// <param name="velocity">Velocity of drive.</param>
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode = DriveMode.Ignore)
+        {
+            transform.Rotate(Vector3.forward, velocity * Time.deltaTime, Space.Self);
+            return DriveCoaxes(velocity);
+        }
+
+        /// <summary>
+        /// Drive coaxial mechanisms by angular velocity.
+        /// </summary>
+        /// <param name="velocity">Angular velocity of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected bool DriveCoaxes(float velocity)
+        {
+            foreach (var coaxe in coaxes)
+            {
+                if (!coaxe.Drive(velocity, DriveMode.Angular))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        #endregion
+
+        #region Public Method
         /// <summary>
         /// Link coaxe.
         /// </summary>

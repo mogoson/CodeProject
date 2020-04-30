@@ -30,6 +30,11 @@ namespace MGS.Machinery
         /// Coefficient of velocity.
         /// </summary>
         public float coefficient;
+
+        /// <summary>
+        /// Mechanism is stuck?
+        /// </summary>
+        public bool IsStuck { get { return mechanism.IsStuck; } }
         #endregion
 
         #region Public Method
@@ -42,6 +47,17 @@ namespace MGS.Machinery
         {
             this.mechanism = mechanism;
             this.coefficient = coefficient;
+        }
+
+        /// <summary>
+        /// Drive mechanism by velocity.
+        /// </summary>
+        /// <param name="velocity">Velocity of drive.</param>
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        public bool Drive(float velocity, DriveMode mode)
+        {
+            return mechanism.Drive(velocity * coefficient, mode);
         }
         #endregion
     }

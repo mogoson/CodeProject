@@ -36,11 +36,11 @@
     <Compile Include="Abstract\CrankMechanism.cs" />
     <Compile Include="Abstract\Limiter.cs" />
     <Compile Include="Abstract\Mechanism.cs" />
-    <Compile Include="Abstract\RockerLinkMechanism.cs" />
+    <Compile Include="Abstract\LinkRockerMechanism.cs" />
     <Compile Include="Abstract\RockerMechanism.cs" />
     <Compile Include="Abstract\SliderArmMechanism.cs" />
     <Compile Include="Abstract\SliderMechanism.cs" />
-    <Compile Include="Enum\DriveType.cs" />
+    <Compile Include="Enum\DriveMode.cs" />
     <Compile Include="Enum\EditMode.cs" />
     <Compile Include="Enum\KeepUpMode.cs" />
     <Compile Include="Enum\TelescopicState.cs" />

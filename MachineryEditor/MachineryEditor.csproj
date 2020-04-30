@@ -49,6 +49,10 @@
     <Compile Include="Vibrator\LinearVibratorEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Machinery\Machinery.csproj">
       <Project>{983323d7-60ed-4a74-ad9e-a207594a6c65}</Project>
       <Name>Machinery</Name>

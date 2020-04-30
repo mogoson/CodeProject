@@ -33,32 +33,71 @@ namespace MGS.Machinery
         /// </summary>
         [Tooltip("Count of worm threads.")]
         public int threads = 1;
-        #endregion
 
-        #region Protected Method
         /// <summary>
-        /// Drive worm gears by angular velocity.
+        /// Mechanism is stuck?
         /// </summary>
-        /// <param name="velocity">Angular velocity of drive.</param>
-        protected void DriveGears(float velocity)
+        public override bool IsStuck
         {
-            foreach (var gear in gears)
+            get
             {
-                gear.Drive(velocity * threads / gear.teeth, DriveType.Angular);
+                if (CheckGearStuck())
+                {
+                    return true;
+                }
+                return base.IsStuck;
             }
         }
         #endregion
 
-        #region Public Method
+        #region Protected Method
         /// <summary>
-        /// Drive worm shaft by angular velocity.
+        /// Check one of the gears is stuck?
+        /// </summary>
+        /// <returns>Return true if one of the gears is stuck.</returns>
+        protected bool CheckGearStuck()
+        {
+            foreach (var gear in gears)
+            {
+                if (gear.IsStuck)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Drive mechanism by velocity.
+        /// </summary>
+        /// <param name="velocity">Velocity of drive.</param>
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode)
+        {
+            if (!base.OnDrive(velocity, mode))
+            {
+                return false;
+            }
+
+            return DriveGears(velocity);
+        }
+
+        /// <summary>
+        /// Drive worm gears by angular velocity.
         /// </summary>
         /// <param name="velocity">Angular velocity of drive.</param>
-        /// <param name="type">Invalid parameter (WormShaft can only drived by angular velocity).</param>
-        public override void Drive(float velocity, DriveType type = DriveType.Ignore)
+        /// <returns>Drive gears is unrestricted?</returns>
+        protected bool DriveGears(float velocity)
         {
-            base.Drive(velocity);
-            DriveGears(velocity);
+            foreach (var gear in gears)
+            {
+                if (!gear.Drive(velocity * threads / gear.teeth, DriveMode.Angular))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         #endregion
     }

@@ -40,6 +40,20 @@ namespace MGS.Machinery
 
         #region Protected Method
         /// <summary>
+        /// Drive mechanism by velocity.
+        /// </summary>
+        /// <param name="velocity">Velocity of drive.</param>
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode = DriveMode.Ignore)
+        {
+            currentAngle += velocity * Time.deltaTime;
+            var direction = Quaternion.AngleAxis(currentAngle, transform.forward) * transform.right;
+            transform.localPosition = StartPosition + GetLocalDirection(direction) * amplitudeRadius;
+            return true;
+        }
+
+        /// <summary>
         /// Get local direction from wold direction.
         /// </summary>
         /// <param name="direction">Wold direction.</param>
@@ -60,19 +74,8 @@ namespace MGS.Machinery
         /// </summary>
         public override void Initialize()
         {
+            base.Initialize();
             StartPosition = transform.localPosition;
-        }
-
-        /// <summary>
-        /// Drive vibrator by angular velocity.
-        /// </summary>
-        /// <param name="velocity">Angular velocity of drive.</param>
-        /// <param name="type">Invalid parameter (CentrifugalVibrator can only drived by angular velocity).</param>
-        public override void Drive(float velocity, DriveType type = DriveType.Ignore)
-        {
-            currentAngle += velocity * Time.deltaTime;
-            var direction = Quaternion.AngleAxis(currentAngle, transform.forward) * transform.right;
-            transform.localPosition = StartPosition + GetLocalDirection(direction) * amplitudeRadius;
         }
         #endregion
     }

@@ -34,6 +34,11 @@ namespace MGS.Machinery
     {
         #region Property
         /// <summary>
+        /// Mechanism is initialized?
+        /// </summary>
+        bool IsInitialized { get; }
+
+        /// <summary>
         /// Mechanism is stuck?
         /// </summary>
         bool IsStuck { get; }
@@ -49,8 +54,9 @@ namespace MGS.Machinery
         /// Drive mechanism by velocity.
         /// </summary>
         /// <param name="velocity">Velocity of drive.</param>
-        /// <param name="type">Type of drive.</param>
-        void Drive(float velocity, DriveType type);
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        bool Drive(float velocity, DriveMode mode);
         #endregion
     }
 }

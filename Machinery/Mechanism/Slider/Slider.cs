@@ -40,21 +40,18 @@ namespace MGS.Machinery
 
         #region Protected Method
         /// <summary>
-        /// Move slider.
+        /// Drive mechanism by velocity.
         /// </summary>
-        /// <param name="velocity">Move velocity.</param>
-        protected override void DriveSlider(float velocity)
+        /// <param name="velocity">Velocity of drive.</param>
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode)
         {
-            triggerRecord = Displacement;
             Displacement += velocity * Time.deltaTime;
             Displacement = Mathf.Clamp(Displacement, stroke.min, stroke.max);
-            MoveSlider(Displacement);
 
-            if (CheckTriggers())
-            {
-                Displacement = triggerRecord;
-                MoveSlider(Displacement);
-            }
+            MoveSlider(Displacement);
+            return DriveRockers(velocity, mode);
         }
 
         /// <summary>
@@ -64,7 +61,6 @@ namespace MGS.Machinery
         protected void MoveSlider(float displacement)
         {
             transform.localPosition = StartPosition + Aixs * displacement;
-            DriveRockers();
         }
         #endregion
     }

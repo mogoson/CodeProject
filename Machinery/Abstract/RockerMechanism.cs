@@ -43,17 +43,8 @@ namespace MGS.Machinery
                 return;
             }
 
-            Drive(0, DriveType.Ignore);
+            Drive(0, DriveMode.Ignore);
         }
-        #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Drive rocker by velocity.
-        /// </summary>
-        /// <param name="velocity">Velocity of drive.</param>
-        /// <param name="type">Type of drive.</param>
-        public override abstract void Drive(float velocity = 0, DriveType type = DriveType.Ignore);
         #endregion
     }
 }

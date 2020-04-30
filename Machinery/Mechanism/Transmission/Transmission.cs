@@ -27,20 +27,56 @@ namespace MGS.Machinery
         /// </summary>
         [Tooltip("Mechanisms drive by this transmission.")]
         public List<MechanismUnit> mechanismUnits = new List<MechanismUnit>();
+
+        /// <summary>
+        /// Mechanism is stuck?
+        /// </summary>
+        public override bool IsStuck
+        {
+            get
+            {
+                if (CheckUnitStuck())
+                {
+                    return true;
+                }
+                return base.IsStuck;
+            }
+        }
         #endregion
 
-        #region Public Method
+        #region Protected Method
         /// <summary>
-        /// Drive transmission by velocity.
+        /// Check if one of the units is stuck.
         /// </summary>
-        /// <param name="velocity">Velocity of drive.</param>
-        /// <param name="type">Type of drive.</param>
-        public override void Drive(float velocity, DriveType type)
+        /// <returns>One of the units is stuck?</returns>
+        protected bool CheckUnitStuck()
         {
             foreach (var unit in mechanismUnits)
             {
-                unit.mechanism.Drive(velocity * unit.coefficient, type);
+                if (unit.IsStuck)
+                {
+                    return true;
+                }
             }
+            return false;
+        }
+
+        /// <summary>
+        /// Drive mechanism by velocity.
+        /// </summary>
+        /// <param name="velocity">Velocity of drive.</param>
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode)
+        {
+            foreach (var unit in mechanismUnits)
+            {
+                if (!unit.Drive(velocity, mode))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         #endregion
     }

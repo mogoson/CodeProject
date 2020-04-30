@@ -21,15 +21,17 @@ namespace MGS.Machinery
     [ExecuteInEditMode]
     public class RockerRivet : RockerMechanism
     {
-        #region Public Method
+        #region Protected Method
         /// <summary>
-        /// Drive rocker by velocity.
+        /// Drive mechanism by velocity.
         /// </summary>
         /// <param name="velocity">Velocity of drive.</param>
-        /// <param name="type">Type of drive.</param>
-        public override void Drive(float velocity = 0, DriveType type = DriveType.Ignore)
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity = 0, DriveMode mode = DriveMode.Ignore)
         {
             transform.position = joint.position;
+            return true;
         }
         #endregion
     }

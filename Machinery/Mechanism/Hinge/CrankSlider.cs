@@ -49,8 +49,8 @@ namespace MGS.Machinery
         /// <summary>
         /// Drive joints those link with this mechanism.
         /// </summary>
-        /// <returns>Succeed?</returns>
-		protected override bool DriveLinkJoints()
+        /// <returns>Drive joints is unrestricted?</returns>
+        protected override bool DriveLinkJoints()
         {
             //Rivet joints.
             crank.transform.localPosition = CorrectPosition(crank.transform.localPosition);
@@ -78,7 +78,7 @@ namespace MGS.Machinery
             }
 
             slider.localPosition = new Vector3((float)vector.x, (float)vector.y);
-            link.Drive(0, DriveType.Ignore);
+            link.Drive(0, DriveMode.Ignore);
             return true;
         }
 
@@ -114,6 +114,8 @@ namespace MGS.Machinery
         /// </summary>
         public override void Initialize()
         {
+            base.Initialize();
+
             //Correct crank.
             crank.transform.localEulerAngles = CorrectAngles(crank.transform.localEulerAngles);
             crank.Initialize();
