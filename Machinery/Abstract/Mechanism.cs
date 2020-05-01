@@ -55,7 +55,7 @@ namespace MGS.Machinery
         /// <summary>
         /// The last drive is unrestricted?
         /// </summary>
-        protected bool isDriveUnrestricted = false;
+        protected bool isDriveUnrestricted = true;
         #endregion
 
         #region Protected Method
