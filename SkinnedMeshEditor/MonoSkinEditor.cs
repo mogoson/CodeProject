@@ -30,7 +30,7 @@ namespace MGS.SkinnedMeshEditor
         {
             if (!Application.isPlaying)
             {
-                Reflector.InvokeMethod(Target, "Initialize", null);
+                Reflector.InvokeMethod(Target, "Initialize");
                 Target.Rebuild();
 
                 Undo.undoRedoPerformed += Target.Rebuild;

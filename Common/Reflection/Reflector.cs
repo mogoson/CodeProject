@@ -28,7 +28,7 @@ namespace MGS.Common.Reflection
         /// <param name="value">The value to assign to the field.</param>
         /// <param name="bindingAttr">A bitwise combination of the enumeration values that specify how the search is conducted.</param>
         public static void SetField(object obj, string name, object value,
-            BindingFlags bindingAttr = BindingFlags.Default)
+            BindingFlags bindingAttr = BindingFlags.Instance | BindingFlags.NonPublic)
         {
             if (obj == null)
             {
@@ -61,7 +61,7 @@ namespace MGS.Common.Reflection
         /// <param name="bindingAttr">A bitwise combination of the enumeration values that specify how the search is conducted.</param>
         /// <param name="index">Optional index values for indexed properties.</param>
         public static void SetProperty(object obj, string name, object value,
-            BindingFlags bindingAttr = BindingFlags.Default, object[] index = null)
+            BindingFlags bindingAttr = BindingFlags.Instance | BindingFlags.NonPublic, object[] index = null)
         {
             if (obj == null)
             {
@@ -93,8 +93,8 @@ namespace MGS.Common.Reflection
         /// <param name="parameters">An argument list for the invoked method or constructor.</param>
         /// <param name="bindingAttr">A bitwise combination of the enumeration values that specify how the search is conducted.</param>
         /// <returns></returns>
-        public static object InvokeMethod(object obj, string name, object[] parameters = null,
-            BindingFlags bindingAttr = BindingFlags.Default)
+        public static object InvokeMethod(object obj, string name,
+            BindingFlags bindingAttr = BindingFlags.Instance | BindingFlags.NonPublic, object[] parameters = null)
         {
             if (obj == null)
             {
