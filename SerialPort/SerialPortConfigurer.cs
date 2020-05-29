@@ -76,7 +76,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception ex)
             {
-                LogUtility.LogError("Read serialport config from file exception: {0}", ex.Message);
+                LogUtility.LogError("Read serialport config from file exception: {0}\r\n{1}", ex.Message, ex.StackTrace);
                 return null;
             }
         }
@@ -103,7 +103,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception ex)
             {
-                LogUtility.LogError("Write serialport config to file exception: {0}", ex.Message);
+                LogUtility.LogError("Write serialport config to file exception: {0}\r\n{1}", ex.Message, ex.StackTrace);
             }
 
             return false;

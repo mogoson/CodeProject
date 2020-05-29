@@ -50,25 +50,25 @@ namespace MGS.Common.IO
             }
             catch (Exception ex)
             {
-                LogUtility.LogError("Require directory exception: {0}", ex.Message);
+                LogUtility.LogError("Require directory exception: {0}\r\n{1}", ex.Message, ex.StackTrace);
                 return false;
             }
         }
 
         /// <summary>
-        /// Copy the child entries of source to dest directory.
+        /// Copy the children entries of source to dest directory.
         /// </summary>
         /// <param name="sourceDir">Source dir.</param>
         /// <param name="destDir">Dest dir.</param>
         /// <param name="ignores">Ignore files or directories.</param>
         /// <param name="progressCallback">Progress callback.</param>
         /// <param name="completeCallback">Complete callback.</param>
-        public static void CopyChildEntries(string sourceDir, string destDir, IEnumerable<string> ignores = null,
+        public static void CopyChildrenEntries(string sourceDir, string destDir, IEnumerable<string> ignores = null,
             Action<float> progressCallback = null, Action<bool, string> completeCallback = null)
         {
             if (!Directory.Exists(sourceDir))
             {
-                var error = string.Format("Copy child entries error: The source directory {0} does not exist.", sourceDir);
+                var error = string.Format("Copy children entries error: The source directory {0} does not exist.", sourceDir);
                 completeCallback?.Invoke(false, error);
                 return;
             }
@@ -89,7 +89,7 @@ namespace MGS.Common.IO
                 }
                 catch (Exception ex)
                 {
-                    var error = string.Format("Copy child entries exception: {0}", ex.Message);
+                    var error = string.Format("Copy children entries exception: {0}\r\n{1}", ex.Message, ex.StackTrace);
                     completeCallback?.Invoke(false, error);
                     return;
                 }
@@ -118,7 +118,7 @@ namespace MGS.Common.IO
                                 Directory.CreateDirectory(cloneDirName);
                             }
 
-                            CopyChildEntries(entrie, cloneDirName, ignores,
+                            CopyChildrenEntries(entrie, cloneDirName, ignores,
                                 progress =>
                                 {
                                     var childProgress = (finishCount + progress) / entries.Length;
@@ -152,7 +152,7 @@ namespace MGS.Common.IO
                 }
                 catch (Exception ex)
                 {
-                    var error = string.Format("Copy child entries exception: {0}", ex.Message);
+                    var error = string.Format("Copy children entries exception: {0}\r\n{1}", ex.Message, ex.StackTrace);
                     completeCallback?.Invoke(false, error);
                 }
             }
@@ -161,7 +161,7 @@ namespace MGS.Common.IO
         }
 
         /// <summary>
-        /// Copy the child entries of source to dest directory async.
+        /// Copy the children entries of source to dest directory async.
         /// </summary>
         /// <param name="sourceDir">Source dir.</param>
         /// <param name="destDir">Dest dir.</param>
@@ -170,30 +170,30 @@ namespace MGS.Common.IO
         /// <param name="progressCallback">Progress callback.</param>
         /// <param name="completeCallback">Complete callback.</param>
         /// <returns>Guid of async thread.</returns>
-        public static string CopyChildEntriesAsync(string sourceDir, string destDir, IEnumerable<string> ignores = null, string guid = null,
+        public static string CopyChildrenEntriesAsync(string sourceDir, string destDir, IEnumerable<string> ignores = null, string guid = null,
             Action<float> progressCallback = null, Action<bool, string> completeCallback = null)
         {
             guid = ThreadUtility.RunAsync(() =>
             {
-                CopyChildEntries(sourceDir, destDir, ignores, progressCallback, completeCallback);
+                CopyChildrenEntries(sourceDir, destDir, ignores, progressCallback, completeCallback);
             }, guid);
 
             return guid;
         }
 
         /// <summary>
-        /// Delete the child entries of the directory.
+        /// Delete the children entries of the directory.
         /// </summary>
         /// <param name="destDir">Dest dir.</param>
         /// <param name="ignores">Ignore files or directories.</param>
         /// <param name="progressCallback">Progress callback.</param>
         /// <param name="completeCallback">Complete callback.</param>
-        public static void DeleteChildEntries(string destDir, IEnumerable<string> ignores = null,
+        public static void DeleteChildrenEntries(string destDir, IEnumerable<string> ignores = null,
             Action<float> progressCallback = null, Action<bool, string> completeCallback = null)
         {
             if (!Directory.Exists(destDir))
             {
-                var error = string.Format("Delete child entries error: The target dir {0} does not exist.", destDir);
+                var error = string.Format("Delete children entries error: The target dir {0} does not exist.", destDir);
                 completeCallback?.Invoke(false, error);
                 return;
             }
@@ -241,7 +241,7 @@ namespace MGS.Common.IO
                 }
                 catch (Exception ex)
                 {
-                    var error = string.Format("Delete child entries error: {0}", ex.Message);
+                    var error = string.Format("Delete children entries error: {0}", ex.Message);
                     completeCallback?.Invoke(false, error);
                 }
             }
@@ -250,7 +250,7 @@ namespace MGS.Common.IO
         }
 
         /// <summary>
-        /// Delete the child entries of the directory async.
+        /// Delete the children entries of the directory async.
         /// </summary>
         /// <param name="destDir">Dest dir.</param>
         /// <param name="ignores">Ignore files or directories.</param>
@@ -258,12 +258,12 @@ namespace MGS.Common.IO
         /// <param name="progressCallback">Progress callback.</param>
         /// <param name="completeCallback">Complete callback.</param>
         /// <returns>Guid of async thread.</returns>
-        public static string DeleteChildEntriesAsync(string destDir, IEnumerable<string> ignores = null, string guid = null,
+        public static string DeleteChildrenEntriesAsync(string destDir, IEnumerable<string> ignores = null, string guid = null,
             Action<float> progressCallback = null, Action<bool, string> completeCallback = null)
         {
             guid = ThreadUtility.RunAsync(() =>
             {
-                DeleteChildEntries(destDir, ignores, progressCallback, completeCallback);
+                DeleteChildrenEntries(destDir, ignores, progressCallback, completeCallback);
             }, guid);
 
             return guid;

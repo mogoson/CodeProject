@@ -82,7 +82,7 @@ namespace MGS.Common.Crypto
             }
             catch (Exception ex)
             {
-                LogUtility.LogError("Compute hash exception: {0}", ex.Message);
+                LogUtility.LogError("Compute hash exception: {0}\r\n{1}", ex.Message, ex.StackTrace);
                 return null;
             }
         }
