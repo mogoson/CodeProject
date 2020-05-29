@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2019 Mogoson. All rights reserved.
+ *  Copyright (c) 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  SubtitleClipState.cs
  *  Description  :  State of subtitle clip.

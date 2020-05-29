@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2020 Mogoson. All rights reserved.
+ *  Copyright (c) 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  MonoOrderUnit.cs
  *  Description  :  Mono order unit.

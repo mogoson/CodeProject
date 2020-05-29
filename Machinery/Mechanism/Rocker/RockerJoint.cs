@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2015-2018 Mogoson. All rights reserved.
+ *  Copyright (c) 2015-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  RockerJoint.cs
  *  Description  :  Define RockerJoint component.

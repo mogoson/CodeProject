@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2019 Mogoson. All rights reserved.
+ *  Copyright (c) 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ContextMenuTriggerHandler.cs
  *  Description  :  Handler of contex menu trigger.

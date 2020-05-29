@@ -1,5 +1,5 @@
 /*************************************************************************
- *  Copyright © 2019 Mogoson. All rights reserved.
+ *  Copyright (c) 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  IForm.cs
  *  Description  :  Interface of custom UI form.

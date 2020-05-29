@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2019 Mogoson. All rights reserved.
+ *  Copyright (c) 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  IMultilingualUI.cs
  *  Description  :  Interface for multilingual UI.

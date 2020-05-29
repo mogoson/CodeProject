@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2018-2019 Mogoson. All rights reserved.
+ *  Copyright (c) 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  MonoAnimation.cs
  *  Description  :  Define mono animation.

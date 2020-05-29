@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2020 Mogoson. All rights reserved.
+ *  Copyright (c) 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  DistanceLimiter.cs
  *  Description  :  Distance limiter.

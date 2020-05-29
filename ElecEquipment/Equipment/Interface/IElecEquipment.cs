@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2018-2019 Mogoson. All rights reserved.
+ *  Copyright (c) 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  IElecEquipment.cs
  *  Description  :  Interface for electronic equipment.

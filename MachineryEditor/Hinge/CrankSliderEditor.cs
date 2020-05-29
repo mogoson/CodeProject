@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2017-2018 Mogoson. All rights reserved.
+ *  Copyright (c) 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  CrankSliderEditor.cs
  *  Description  :  Custom editor for CrankSlider.

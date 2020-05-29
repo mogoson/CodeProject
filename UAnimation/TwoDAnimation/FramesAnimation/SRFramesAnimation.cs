@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2017-2019 Mogoson. All rights reserved.
+ *  Copyright (c) 2017-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  SRFramesAnimation.cs
  *  Description  :  Define sequence frames animation base on

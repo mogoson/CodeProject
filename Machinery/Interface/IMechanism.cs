@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2015-2020 Mogoson. All rights reserved.
+ *  Copyright (c) 2015-2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  IMechanism.cs
  *  Description  :  Define interface for mechanism.

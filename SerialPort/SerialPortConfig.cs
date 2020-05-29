@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2017-2019 Mogoson. All rights reserved.
+ *  Copyright (c) 2017-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  SerialPortConfig.cs
  *  Description  :  Config of serialport parameters.

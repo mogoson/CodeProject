@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright © 2017-2019 Mogoson. All rights reserved.
+ *  Copyright (c) 2017-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  MouseTranslate.cs
  *  Description  :  Mouse pointer drag to translate gameobject.
