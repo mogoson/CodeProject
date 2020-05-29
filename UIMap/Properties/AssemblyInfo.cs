@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MGS.UIMap")]
-[assembly: AssemblyCopyright("Copyright (c)  2019 Mogoson")]
+[assembly: AssemblyCopyright("Copyright ©  2019 Mogoson")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

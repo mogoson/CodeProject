@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (c) 2019 Mogoson. All rights reserved.
+ *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ITooltipForm.cs
  *  Description  :  Interface for tool tip form.

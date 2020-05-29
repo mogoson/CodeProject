@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (c) 2020 Mogoson. All rights reserved.
+ *  Copyright © 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ProcessUtility.cs
  *  Description  :  Utility for process.

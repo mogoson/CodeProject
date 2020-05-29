@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (c) 2016-2019 Mogoson. All rights reserved.
+ *  Copyright © 2016-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  MonoLED.cs
  *  Description  :  Define LED component.

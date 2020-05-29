@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (c) 2017-2019 Mogoson. All rights reserved.
+ *  Copyright © 2017-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  UVFramesAnimation.cs
  *  Description  :  Define sequence frames animation base on UV offset.

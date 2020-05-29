@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (c) 2019 Mogoson. All rights reserved.
+ *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  InteractableUI.cs
  *  Description  :  Base class for interactable UI.

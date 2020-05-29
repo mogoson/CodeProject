@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MGS.Machinery")]
-[assembly: AssemblyCopyright("Copyright (c)  2020 Mogoson")]
+[assembly: AssemblyCopyright("Copyright ©  2020 Mogoson")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

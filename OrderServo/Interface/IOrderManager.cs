@@ -1,5 +1,5 @@
 /*************************************************************************
- *  Copyright (c) 2020 Mogoson. All rights reserved.
+ *  Copyright ? 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  IOrderManager.cs
  *  Description  :  Interface for order manager.

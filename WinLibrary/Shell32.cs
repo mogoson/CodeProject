@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (c) 2019 Mogoson. All rights reserved.
+ *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  Shell32.cs
  *  Description  :  API of Shell32 dll.

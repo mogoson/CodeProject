@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (c) 2016-2018 Mogoson. All rights reserved.
+ *  Copyright © 2016-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  RockerHinge.cs
  *  Description  :  Define RockerHinge component.

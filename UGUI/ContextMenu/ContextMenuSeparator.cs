@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (c) 2018-2019 Mogoson. All rights reserved.
+ *  Copyright © 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ContextMenuSeparator.cs
  *  Description  :  Define context menu separator.

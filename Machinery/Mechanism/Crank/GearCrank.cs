@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (c) 2015-2018 Mogoson. All rights reserved.
+ *  Copyright © 2015-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  GearCrank.cs
  *  Description  :  Define GearCrank component.

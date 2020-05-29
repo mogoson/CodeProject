@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (c) 2017-2019 Mogoson. All rights reserved.
+ *  Copyright © 2017-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  PlaneArea.cs
  *  Description  :  Define rectangle area on plane.

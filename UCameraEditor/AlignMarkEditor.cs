@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (c) 2017-2019 Mogoson. All rights reserved.
+ *  Copyright © 2017-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  AlignMarkEditor.cs
  *  Description  :  Custom editor for AlignMark component.

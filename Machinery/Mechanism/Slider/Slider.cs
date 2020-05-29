@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (c) 2015-2018 Mogoson. All rights reserved.
+ *  Copyright © 2015-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  Slider.cs
  *  Description  :  Define Slider component.

@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (c) 2016-2019 Mogoson. All rights reserved.
+ *  Copyright © 2016-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  Button.cs
  *  Description  :  Define button component.

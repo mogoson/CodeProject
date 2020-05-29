@@ -1,5 +1,5 @@
 /*************************************************************************
- *  Copyright (c) 2018-2019 Mogoson. All rights reserved.
+ *  Copyright ? 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  IButton.cs
  *  Description  :  Interface for button.
