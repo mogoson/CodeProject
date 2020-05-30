@@ -11,6 +11,7 @@
  *************************************************************************/
 
 using MGS.Common.DesignPattern;
+using MGS.Common.Threading;
 using System;
 using System.Collections.Generic;
 
@@ -21,9 +22,36 @@ namespace MGS.Compress
     /// </summary>
     public class CompressManager : Singleton<CompressManager>, ICompressManager
     {
-        public ICompressor Compressor { set; get; }
+        #region Field and Property
+        /// <summary>
+        /// Compressor for manager.
+        /// </summary>
+        public ICompressor Compressor { set; get; } = IonicCompressor.Instance;
 
-        public string Compress(string entrie, string desFile,
+        /// <summary>
+        /// Max run count of async operate.
+        /// </summary>
+        public int MaxRunCount { set; get; } = 3;
+        #endregion
+
+        #region Private Method
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        private CompressManager() { }
+        #endregion
+
+        #region Public Method
+        /// <summary>
+        /// Compress entrie[File or Directory] to dest file async.
+        /// </summary>
+        /// <param name="entrie">Target entrie[File or Directory].</param>
+        /// <param name="destFile">The dest file.</param>
+        /// <param name="progressCallback">Progress callback.</param>
+        /// <param name="completeCallback">Complete callback.</param>
+        /// <param name="errorCallback">Error callback.</param>
+        /// <returns>Guid of async thread.</returns>
+        public string CompressAsync(string entrie, string destFile,
             Action<float> progressCallback = null,
             Action<string> completeCallback = null,
             Action<string> errorCallback = null)
@@ -31,7 +59,16 @@ namespace MGS.Compress
             throw new NotImplementedException();
         }
 
-        public string Compress(IEnumerable<string> entries, string desFile,
+        /// <summary>
+        /// Compress entrie[Files or Directories] to dest file async.
+        /// </summary>
+        /// <param name="entries">Target entrie[Files or Directories].</param>
+        /// <param name="destFile">The dest file.</param>
+        /// <param name="progressCallback">Progress callback.</param>
+        /// <param name="completeCallback">Complete callback.</param>
+        /// <param name="errorCallback">Error callback.</param>
+        /// <returns>Guid of async thread.</returns>
+        public string CompressAsync(IEnumerable<string> entries, string destFile,
             Action<float> progressCallback = null,
             Action<string> completeCallback = null,
             Action<string> errorCallback = null)
@@ -39,12 +76,37 @@ namespace MGS.Compress
             throw new NotImplementedException();
         }
 
-        public string Decompress(string filePath, string desDir,
+        /// <summary>
+        /// Decompress file to dest dir async.
+        /// </summary>
+        /// <param name="filePath">Target file.</param>
+        /// <param name="destDir">The dest decompress directory.</param>
+        /// <param name="clear">Clear the dest dir before decompress.</param>
+        /// <param name="guid">Guid of async thread [System will automatically assign if it is null or empty].</param>
+        /// <param name="progressCallback">Progress callback.</param>
+        /// <param name="completeCallback">Complete callback.</param>
+        /// <param name="errorCallback">Error callback.</param>
+        /// <returns>Guid of async thread.</returns>
+        public string DecompressAsync(string filePath, string destDir,
+            bool clear = false, string guid = null,
             Action<float> progressCallback = null,
             Action<string> completeCallback = null,
             Action<string> errorCallback = null)
         {
-            throw new NotImplementedException();
+            return ThreadUtility.RunAsync(() =>
+            {
+
+            }, string.Empty);
         }
+
+        /// <summary>
+        /// Abort Async thread.
+        /// </summary>
+        /// <param name="guid">Guid of async thread.</param>
+        public void AbortAsync(string guid)
+        {
+            ThreadUtility.AbortAsync(guid);
+        }
+        #endregion
     }
 }

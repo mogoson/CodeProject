@@ -28,6 +28,7 @@ namespace MGS.Common.Threading
         private static Dictionary<string, Thread> asyncs = new Dictionary<string, Thread>();
         #endregion
 
+        #region Public Method
         /// <summary>
         /// Async run action in a thread.
         /// </summary>
@@ -52,7 +53,7 @@ namespace MGS.Common.Threading
         /// <param name="action">Run action.</param>
         /// <param name="guid">Guid of async thread [System will automatically assign if it is null or empty].</param>
         /// <returns>Thread instance.</returns>
-        public static string RunAsync(Action action, string guid = null)
+        public static string RunAsync(Action action, string guid)
         {
             if (action == null)
             {
@@ -99,5 +100,6 @@ namespace MGS.Common.Threading
                 asyncs[guid].Abort();
             }
         }
+        #endregion
     }
 }
