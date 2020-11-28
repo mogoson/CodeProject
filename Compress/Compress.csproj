@@ -35,7 +35,7 @@
       <HintPath>..\..\MGS-OrderServo\CodeProject\Library\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="SharpCompress">
-      <HintPath>..\..\..\..\NdProjects\vlab-player-ComponentBase\CodeRepos\vlab-deltaupdate\Libs\SharpCompress.dll</HintPath>
+      <HintPath>..\Library\SharpCompress.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>

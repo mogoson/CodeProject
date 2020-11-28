@@ -1,5 +1,5 @@
-/*************************************************************************
- *  Copyright ? 2018-2019 Mogoson. All rights reserved.
+﻿/*************************************************************************
+ *  Copyright © 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  FileLogger.cs
  *  Description  :  Loggger for log to local file.
@@ -10,7 +10,6 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.DesignPattern;
 using MGS.Common.IO;
 using System;
 using System.IO;
@@ -20,36 +19,16 @@ namespace MGS.Common.Logger
     /// <summary>
     /// Loggger for log to local file.
     /// </summary>
-    public sealed class FileLogger : Singleton<FileLogger>, ILogger
+    public sealed class FileLogger : ILogger
     {
         #region Field and Property
         /// <summary>
-        /// Root path of log files.
+        /// Root directory of log files.
         /// </summary>
-        public string LogPath
-        {
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    logPath = Path.GetDirectoryName(value);
-                }
-            }
-            get { return logPath; }
-        }
-
-        /// <summary>
-        /// Root path of log files.
-        /// </summary>
-        private string logPath = Environment.CurrentDirectory + "/Log/";
+        public string RootDir { get; } = Environment.CurrentDirectory + "/Log/";
         #endregion
 
         #region Private Method
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        private FileLogger() { }
-
         /// <summary>
         /// Logs a formatted message to local file.
         /// </summary>
@@ -58,7 +37,7 @@ namespace MGS.Common.Logger
         /// <param name="args">Format arguments.</param>
         private void LogToFile(string tag, string format, params object[] args)
         {
-            var logFile = LogPath + string.Format("{0}.log", DateTime.Now.Date);
+            var logFile = string.Format("{0}/{1}/{2}.log", RootDir, DateTime.Now.Month, DateTime.Now.Date);
             var formatLog = string.Format("{0} - {1} - {2}\r\n", DateTime.Now, tag, string.Format(format, args));
             if (DirectoryUtility.RequireDirectory(logFile))
             {
@@ -79,6 +58,39 @@ namespace MGS.Common.Logger
         #endregion
 
         #region Public Method
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public FileLogger() { }
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="rootDir">Root directory of log files.</param>
+        public FileLogger(string rootDir)
+        {
+            if (!Directory.Exists(rootDir))
+            {
+                try
+                {
+                    Directory.CreateDirectory(rootDir);
+                }
+#if DEBUG
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+#else
+                catch
+                {
+                    return;
+                }
+#endif
+            }
+
+            RootDir = rootDir;
+        }
+
         /// <summary>
         /// Logs a formatted message to local file.
         /// </summary>

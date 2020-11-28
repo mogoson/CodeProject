@@ -10,6 +10,8 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using System.Collections.Generic;
+
 namespace MGS.Common.Logger
 {
     /// <summary>
@@ -19,12 +21,59 @@ namespace MGS.Common.Logger
     {
         #region Field and Property
         /// <summary>
-        /// Logger of utility.
+        /// Loggers of utility.
         /// </summary>
-        public static ILogger Logger { set; get; }
+        private static ICollection<ILogger> loggers = new List<ILogger>();
         #endregion
 
         #region Public Method
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        static LogUtility()
+        {
+            loggers.Add(new FileLogger());
+        }
+
+        /// <summary>
+        /// Add logger to utility.
+        /// </summary>
+        /// <param name="logger">Logger for output message.</param>
+        public static void AddLogger(ILogger logger)
+        {
+            if (logger == null)
+            {
+                return;
+            }
+
+            if (loggers.Contains(logger))
+            {
+                return;
+            }
+
+            loggers.Add(logger);
+        }
+
+        /// <summary>
+        /// Remove logger from utility.
+        /// </summary>
+        /// <param name="logger">Logger for output message.</param>
+        public static void RemoveLogger(ILogger logger)
+        {
+            if (loggers.Contains(logger))
+            {
+                loggers.Remove(logger);
+            }
+        }
+
+        /// <summary>
+        /// Clear the loggers of utility.
+        /// </summary>
+        public static void ClearLoggers()
+        {
+            loggers.Clear();
+        }
+
         /// <summary>
         /// Logs a formatted message.
         /// </summary>
@@ -32,9 +81,9 @@ namespace MGS.Common.Logger
         /// <param name="args">Format arguments.</param>
         public static void Log(string format, params object[] args)
         {
-            if (Logger != null)
+            foreach (var logger in loggers)
             {
-                Logger.Log(format, args);
+                logger.Log(format, args);
             }
         }
 
@@ -45,9 +94,9 @@ namespace MGS.Common.Logger
         /// <param name="args">Format arguments.</param>
         public static void LogError(string format, params object[] args)
         {
-            if (Logger != null)
+            foreach (var logger in loggers)
             {
-                Logger.LogError(format, args);
+                logger.LogError(format, args);
             }
         }
 
@@ -58,9 +107,9 @@ namespace MGS.Common.Logger
         /// <param name="args">Format arguments.</param>
         public static void LogWarning(string format, params object[] args)
         {
-            if (Logger != null)
+            foreach (var logger in loggers)
             {
-                Logger.LogWarning(format, args);
+                logger.LogWarning(format, args);
             }
         }
         #endregion
