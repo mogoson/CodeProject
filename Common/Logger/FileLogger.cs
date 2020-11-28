@@ -10,7 +10,6 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.IO;
 using System;
 using System.IO;
 
@@ -25,7 +24,7 @@ namespace MGS.Common.Logger
         /// <summary>
         /// Root directory of log files.
         /// </summary>
-        public string RootDir { get; } = string.Format("{0}/Log/", AppDomain.CurrentDomain.BaseDirectory);
+        public string RootDir { get; } = string.Format("{0}/Log/", Environment.CurrentDirectory);
         #endregion
 
         #region Private Method
@@ -37,13 +36,16 @@ namespace MGS.Common.Logger
         /// <param name="args">Format arguments.</param>
         private void LogToFile(string tag, string format, params object[] args)
         {
-            var logFile = string.Format("{0}/{1}/{2}.log", RootDir, DateTime.Now.Month, DateTime.Now.Date);
-            var formatLog = string.Format("{0} - {1} - {2}\r\n", DateTime.Now, tag, string.Format(format, args));
-            if (DirectoryUtility.RequireDirectory(logFile))
+            var logFileName = DateTime.Now.ToString("MM-dd-yyyy");
+            var logFilePath = string.Format("{0}/{1}.log", RootDir, logFileName);
+            if (RequireDirectory(logFilePath))
             {
                 try
                 {
-                    File.AppendAllText(logFile, formatLog);
+                    var logTimeStamp = DateTime.Now.ToLongTimeString();
+                    var logContent = string.Format(format, args);
+                    var formatLog = string.Format("{0}-{1}-{2}\r\n", logTimeStamp, tag, logContent);
+                    File.AppendAllText(logFilePath, formatLog);
                 }
 #if DEBUG
                 catch (Exception ex)
@@ -55,11 +57,48 @@ namespace MGS.Common.Logger
 #endif
             }
         }
+
+        /// <summary>
+        /// Require the directory of path exist.
+        /// </summary>
+        /// <param name="path">Directory or file path.</param>
+        /// <returns>Succeed?</returns>
+        private bool RequireDirectory(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                return false;
+            }
+
+            var dir = Path.GetDirectoryName(path);
+            if (Directory.Exists(dir))
+            {
+                return true;
+            }
+
+            try
+            {
+                Directory.CreateDirectory(dir);
+                return true;
+            }
+#if DEBUG
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+#else
+            catch
+            {
+                return false;
+            }
+#endif
+        }
         #endregion
 
         #region Public Method
         /// <summary>
         /// Constructor.
+        /// Default dir is Environment.CurrentDirectory/Log
         /// </summary>
         public FileLogger() { }
 
@@ -69,26 +108,10 @@ namespace MGS.Common.Logger
         /// <param name="rootDir">Root directory of log files.</param>
         public FileLogger(string rootDir)
         {
-            if (!Directory.Exists(rootDir))
+            if (RequireDirectory(rootDir))
             {
-                try
-                {
-                    Directory.CreateDirectory(rootDir);
-                }
-#if DEBUG
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-#else
-                catch
-                {
-                    return;
-                }
-#endif
+                RootDir = rootDir;
             }
-
-            RootDir = rootDir;
         }
 
         /// <summary>

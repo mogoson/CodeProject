@@ -23,18 +23,10 @@ namespace MGS.Common.Logger
         /// <summary>
         /// Loggers of utility.
         /// </summary>
-        private static ICollection<ILogger> loggers = new List<ILogger>();
+        private static ICollection<ILogger> loggers = new List<ILogger>() { new FileLogger() };
         #endregion
 
         #region Public Method
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        static LogUtility()
-        {
-            loggers.Add(new FileLogger());
-        }
-
         /// <summary>
         /// Add logger to utility.
         /// </summary>
