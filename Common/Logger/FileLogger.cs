@@ -25,7 +25,7 @@ namespace MGS.Common.Logger
         /// <summary>
         /// Root directory of log files.
         /// </summary>
-        public string RootDir { get; } = Environment.CurrentDirectory + "/Log/";
+        public string RootDir { get; } = string.Format("{0}/Log/", AppDomain.CurrentDomain.BaseDirectory);
         #endregion
 
         #region Private Method

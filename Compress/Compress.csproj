@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ionic.Zip">
-      <HintPath>..\..\MGS-OrderServo\CodeProject\Library\Ionic.Zip.dll</HintPath>
+      <HintPath>..\Library\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="SharpCompress">
       <HintPath>..\Library\SharpCompress.dll</HintPath>
