@@ -11,7 +11,7 @@
  *************************************************************************/
 
 using MGS.Common.IO;
-using MGS.Common.Logger;
+using MGS.Logger;
 using System;
 using System.Collections.Generic;
 using System.Text;

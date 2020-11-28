@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Logger;
+using MGS.Logger;
 
 namespace MGS.Common.Converter
 {

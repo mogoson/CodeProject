@@ -87,6 +87,10 @@
       <Project>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{E77FBCC0-1D82-41A0-A771-9D356E2D68F6}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SkinnedMesh\SkinnedMesh.csproj">
       <Project>{AD7E2966-AAEA-4A99-8790-B1C4375CB15F}</Project>
       <Name>SkinnedMesh</Name>

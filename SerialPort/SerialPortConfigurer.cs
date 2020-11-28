@@ -23,7 +23,7 @@
 
 using MGS.Common.DesignPattern;
 using MGS.Common.IO;
-using MGS.Common.Logger;
+using MGS.Logger;
 using System;
 using System.IO;
 using UnityEngine;

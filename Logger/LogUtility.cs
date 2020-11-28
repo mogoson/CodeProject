@@ -12,7 +12,7 @@
 
 using System.Collections.Generic;
 
-namespace MGS.Common.Logger
+namespace MGS.Logger
 {
     /// <summary>
     /// Utility for log output.

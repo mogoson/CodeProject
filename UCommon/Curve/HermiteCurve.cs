@@ -15,7 +15,7 @@
  *  Description  :  Add static method FromAnchors.
  *************************************************************************/
 
-using MGS.Common.Logger;
+using MGS.Logger;
 using System;
 using UnityEngine;
 

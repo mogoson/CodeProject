@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.Common.Logger
+namespace MGS.Logger
 {
     /// <summary>
     /// Interface of logger.

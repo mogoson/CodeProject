@@ -16,7 +16,7 @@
  *************************************************************************/
 
 using MGS.Common.DesignPattern;
-using MGS.Common.Logger;
+using MGS.Logger;
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;

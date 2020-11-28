@@ -11,7 +11,7 @@
  *************************************************************************/
 
 using MGS.Common.Generic;
-using MGS.Common.Logger;
+using MGS.Logger;
 using System.Collections.Generic;
 
 namespace MGS.OrderServo

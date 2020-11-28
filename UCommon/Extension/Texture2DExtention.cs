@@ -11,7 +11,7 @@
  *************************************************************************/
 
 using MGS.Common.Converter;
-using MGS.Common.Logger;
+using MGS.Logger;
 using UnityEngine;
 
 namespace MGS.UCommon.Extension

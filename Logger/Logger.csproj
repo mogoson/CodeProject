@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{70F450E1-4E5F-45F7-9202-78803C8CC225}</ProjectGuid>
+    <ProjectGuid>{E77FBCC0-1D82-41A0-A771-9D356E2D68F6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MGS.OrderServo</RootNamespace>
-    <AssemblyName>MGS.OrderServo</AssemblyName>
+    <RootNamespace>MGS.Logger</RootNamespace>
+    <AssemblyName>MGS.Logger</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\MGS.OrderServo.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,44 +28,20 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\MGS.OrderServo.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Library\UnityEngine.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\MonoOrderIO.cs" />
-    <Compile Include="Abstract\MonoOrderUnit.cs" />
-    <Compile Include="OrderManager.cs" />
-    <Compile Include="Interface\IOrderParser.cs" />
-    <Compile Include="Interface\IOrderIO.cs" />
-    <Compile Include="OrderServoProcessor.cs" />
-    <Compile Include="Abstract\OrderUnit.cs" />
-    <Compile Include="OrderUnitManager.cs" />
-    <Compile Include="Interface\IOrderManager.cs" />
-    <Compile Include="Interface\IOrderServoProcessor.cs" />
-    <Compile Include="Interface\IOrderUnit.cs" />
-    <Compile Include="Interface\IOrderUnitManager.cs" />
+    <Compile Include="FileLogger.cs" />
+    <Compile Include="Interface\ILogger.cs" />
+    <Compile Include="LogUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Struct\Order.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Logger\Logger.csproj">
-      <Project>{E77FBCC0-1D82-41A0-A771-9D356E2D68F6}</Project>
-      <Name>Logger</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UCommon\UCommon.csproj">
-      <Project>{02F92370-D9A3-4A6B-8B7D-717315A01145}</Project>
-      <Name>UCommon</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

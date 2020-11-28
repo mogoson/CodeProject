@@ -13,7 +13,7 @@
 using System;
 using System.IO;
 
-namespace MGS.Common.Logger
+namespace MGS.Logger
 {
     /// <summary>
     /// Loggger for log to local file.

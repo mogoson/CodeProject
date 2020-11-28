@@ -11,7 +11,7 @@
  *************************************************************************/
 
 using MGS.Common.DesignPattern;
-using MGS.Common.Logger;
+using MGS.Logger;
 using System.Collections.Generic;
 using UnityEngine;
 

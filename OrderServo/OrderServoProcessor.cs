@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Logger;
+using MGS.Logger;
 using MGS.UCommon.DesignPattern;
 
 namespace MGS.OrderServo

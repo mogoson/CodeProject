@@ -46,9 +46,6 @@
     <Compile Include="Generic\Event\GenericEvent.cs" />
     <Compile Include="IO\Directory\DirectoryUtility.cs" />
     <Compile Include="IO\File\FileUtility.cs" />
-    <Compile Include="Logger\FileLogger.cs" />
-    <Compile Include="Logger\Interface\ILogger.cs" />
-    <Compile Include="Logger\LogUtility.cs" />
     <Compile Include="Crypto\MD5CryptoUtility.cs" />
     <Compile Include="Mathematics\Geometry\Circle.cs" />
     <Compile Include="Mathematics\Geometry\Geometry.cs" />
@@ -65,6 +62,12 @@
     <Compile Include="Reflection\Reflector.cs" />
     <Compile Include="Threading\ThreadBridge.cs" />
     <Compile Include="Threading\ThreadUtility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{E77FBCC0-1D82-41A0-A771-9D356E2D68F6}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
