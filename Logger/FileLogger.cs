@@ -18,7 +18,7 @@ namespace MGS.Logger
     /// <summary>
     /// Loggger for log to local file.
     /// </summary>
-    public sealed class FileLogger : ILogger
+    public class FileLogger : ILogger
     {
         #region Field and Property
         /// <summary>
@@ -36,16 +36,13 @@ namespace MGS.Logger
         /// <param name="args">Format arguments.</param>
         private void LogToFile(string tag, string format, params object[] args)
         {
-            var logFileName = DateTime.Now.ToString("MM-dd-yyyy");
-            var logFilePath = string.Format("{0}/{1}.log", RootDir, logFileName);
+            var logFilePath = ResolveLogFile(RootDir);
             if (RequireDirectory(logFilePath))
             {
                 try
                 {
-                    var logTimeStamp = DateTime.Now.ToLongTimeString();
-                    var logContent = string.Format(format, args);
-                    var formatLog = string.Format("{0}-{1}-{2}\r\n", logTimeStamp, tag, logContent);
-                    File.AppendAllText(logFilePath, formatLog);
+                    var logContent = ResolveLogContent(tag, format, args);
+                    File.AppendAllText(logFilePath, logContent);
                 }
 #if DEBUG
                 catch (Exception ex)
@@ -92,6 +89,33 @@ namespace MGS.Logger
                 return false;
             }
 #endif
+        }
+        #endregion
+
+        #region Protected Method
+        /// <summary>
+        /// Resolve the path of log file.
+        /// </summary>
+        /// <param name="rootDir">Root directory of log files.</param>
+        /// <returns>The path of log file.</returns>
+        protected virtual string ResolveLogFile(string rootDir)
+        {
+            var fileName = DateTime.Now.ToString("MM-dd-yyyy");
+            return string.Format("{0}/{1}.log", rootDir, fileName);
+        }
+
+        /// <summary>
+        /// Resolve the log content.
+        /// </summary>
+        /// <param name="tag">Tag of log message.</param>
+        /// <param name="format">A composite format string.</param>
+        /// <param name="args">Format arguments.</param>
+        /// <returns>The log content.</returns>
+        protected virtual string ResolveLogContent(string tag, string format, params object[] args)
+        {
+            var logTimeStamp = DateTime.Now.ToLongTimeString();
+            var formatMsg = string.Format(format, args);
+            return string.Format("{0}-{1}-{2}\r\n", logTimeStamp, tag, formatMsg);
         }
         #endregion
 
