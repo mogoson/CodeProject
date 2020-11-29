@@ -70,10 +70,13 @@ namespace MGS.OrderServo
             var ioOrders = OrderParser.ToOrders(orderBytes);
             if (ioOrders != null)
             {
+                //Append the orders from OrderIO.
                 orderBuffer.AddRange(ioOrders);
             }
 
             var currentOrders = new List<Order>(orderBuffer);
+
+            //Clear order buffer, already output to currentOrders.
             orderBuffer.Clear();
             return currentOrders;
         }
