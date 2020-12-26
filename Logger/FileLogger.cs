@@ -24,7 +24,7 @@ namespace MGS.Logger
         /// <summary>
         /// Root directory of log files.
         /// </summary>
-        public string RootDir { get; } = string.Format("{0}/Log/", Environment.CurrentDirectory);
+        public string RootDir { get; }
         #endregion
 
         #region Private Method
@@ -120,12 +120,6 @@ namespace MGS.Logger
         #endregion
 
         #region Public Method
-        /// <summary>
-        /// Constructor.
-        /// Default dir is Environment.CurrentDirectory/Log
-        /// </summary>
-        public FileLogger() { }
-
         /// <summary>
         /// Constructor.
         /// </summary>
