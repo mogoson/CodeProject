@@ -17,7 +17,7 @@ namespace MGS.UAnimation
     /// <summary>
     /// Sequence frames animation base on Renderer.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/RFramesAnimation")]
+    [AddComponentMenu("MGS/Animation/RFramesAnimation")]
     [RequireComponent(typeof(Renderer))]
     public class RFramesAnimation : TFramesAnimation
     {

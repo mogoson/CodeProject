@@ -18,7 +18,7 @@ namespace MGS.UAnimation
     /// <summary>
     /// Sequence frames animation base on RawImage.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/RIFramesAnimation")]
+    [AddComponentMenu("MGS/Animation/RIFramesAnimation")]
     [RequireComponent(typeof(RawImage))]
     public class RIFramesAnimation : TFramesAnimation
     {

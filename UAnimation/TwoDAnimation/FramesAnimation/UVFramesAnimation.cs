@@ -17,7 +17,7 @@ namespace MGS.UAnimation
     /// <summary>
     /// Sequence frames animation base on UV offset.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/UVFramesAnimation")]
+    [AddComponentMenu("MGS/Animation/UVFramesAnimation")]
     [RequireComponent(typeof(Renderer))]
     public class UVFramesAnimation : FramesAnimation
     {

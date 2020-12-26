@@ -18,7 +18,7 @@ namespace MGS.UAnimation
     /// <summary>
     /// Sequence frames animation base on SpriteRenderer.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/SRFramesAnimation")]
+    [AddComponentMenu("MGS/Animation/SRFramesAnimation")]
     [RequireComponent(typeof(SpriteRenderer))]
     public class SRFramesAnimation : SFramesAnimation
     {

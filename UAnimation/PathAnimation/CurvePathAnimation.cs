@@ -18,7 +18,7 @@ namespace MGS.UAnimation
     /// <summary>
     /// Animation base on curve path.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/CurvePathAnimation")]
+    [AddComponentMenu("MGS/Animation/CurvePathAnimation")]
     public class CurvePathAnimation : MonoAnimation, IPathAnimation
     {
         #region Field and Property

@@ -18,7 +18,7 @@ namespace MGS.UAnimation
     /// <summary>
     /// Sequence frames animation base on Image.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/IFramesAnimation")]
+    [AddComponentMenu("MGS/Animation/IFramesAnimation")]
     [RequireComponent(typeof(Image))]
     public class ImgFramesAnimation : SFramesAnimation
     {
