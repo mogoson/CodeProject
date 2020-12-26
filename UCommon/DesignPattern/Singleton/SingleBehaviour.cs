@@ -17,6 +17,6 @@ namespace MGS.UCommon.DesignPattern
     /// <summary>
     /// MonoBehaviour with a single instance.
     /// </summary>
-    [AddComponentMenu("MGS/Common/DesignPattern/SingleBehaviour")]
+    [AddComponentMenu("MGS/Common/SingleBehaviour")]
     public sealed class SingleBehaviour : SingleMonoBehaviour<SingleBehaviour> { }
 }
