@@ -91,6 +91,10 @@
       <Project>{E77FBCC0-1D82-41A0-A771-9D356E2D68F6}</Project>
       <Name>Logger</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Mathematics\Mathematics.csproj">
+      <Project>{C5493F23-494F-48E3-8319-FC5A06BA4F48}</Project>
+      <Name>Mathematics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SkinnedMesh\SkinnedMesh.csproj">
       <Project>{AD7E2966-AAEA-4A99-8790-B1C4375CB15F}</Project>
       <Name>SkinnedMesh</Name>

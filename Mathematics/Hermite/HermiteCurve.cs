@@ -12,7 +12,7 @@
 
 using System.Collections.Generic;
 
-namespace MGS.Common.Mathematics
+namespace MGS.Mathematics
 {
     /// <summary>
     /// Piecewise three hermite spline curve.

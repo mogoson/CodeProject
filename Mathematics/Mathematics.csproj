@@ -7,8 +7,8 @@
     <ProjectGuid>{C5493F23-494F-48E3-8319-FC5A06BA4F48}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mathematics</RootNamespace>
-    <AssemblyName>Mathematics</AssemblyName>
+    <RootNamespace>MGS.Mathematics</RootNamespace>
+    <AssemblyName>MGS.Mathematics</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\MGS.Mathematics.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,7 +34,31 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Geometry\Circle.cs" />
+    <Compile Include="Geometry\Geometry.cs" />
+    <Compile Include="Geometry\Line.cs" />
+    <Compile Include="Geometry\Relation.cs" />
+    <Compile Include="Geometry\Vector.cs" />
+    <Compile Include="Hermite\Hermite.cs" />
+    <Compile Include="Hermite\HermiteCurve.cs" />
+    <Compile Include="Hermite\KeyFrame.cs" />
+    <Compile Include="Maths\Maths.cs" />
+    <Compile Include="Maths\MathSmooth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Plugins\MGS"
+if exist %25targetDir%25\$(TargetFileName) (
+    if $(ConfigurationName)==Debug (
+        copy "$(TargetName).pdb" %25targetDir%25
+    ) else (
+         if exist "%25targetDir%25\$(TargetName).pdb" (
+            del "%25targetDir%25\$(TargetName).pdb"
+         )
+    )
+    copy "$(TargetFileName)" %25targetDir%25
+    copy "$(TargetName).xml" %25targetDir%25
+)</PostBuildEvent>
+  </PropertyGroup>
 </Project>

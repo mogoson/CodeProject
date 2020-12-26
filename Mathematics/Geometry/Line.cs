@@ -12,7 +12,7 @@
 
 using System;
 
-namespace MGS.Common.Mathematics
+namespace MGS.Mathematics
 {
     /// <summary>
     /// Line in plane rectangular coordinate system.

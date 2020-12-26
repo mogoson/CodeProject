@@ -12,7 +12,7 @@
 
 using System;
 
-namespace MGS.Common.Mathematics
+namespace MGS.Mathematics
 {
     /// <summary>
     /// Key frame base on time and value.
