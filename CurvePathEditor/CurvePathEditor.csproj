@@ -55,10 +55,6 @@
       <Project>{522C0820-E5F6-4BD9-A1E3-FE2E1A1E2CE2}</Project>
       <Name>UCommonEditor</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UCommon\UCommon.csproj">
-      <Project>{02f92370-d9a3-4a6b-8b7d-717315a01145}</Project>
-      <Name>UCommon</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

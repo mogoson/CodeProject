@@ -45,17 +45,9 @@
     <Compile Include="Utility\GraphUtility.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{55e27c1e-ecfb-4e6f-b5e0-508c882dddab}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{E77FBCC0-1D82-41A0-A771-9D356E2D68F6}</Project>
       <Name>Logger</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UCommon\UCommon.csproj">
-      <Project>{02f92370-d9a3-4a6b-8b7d-717315a01145}</Project>
-      <Name>UCommon</Name>
     </ProjectReference>
     <ProjectReference Include="..\UDesignPattern\UDesignPattern.csproj">
       <Project>{BB6AB83B-B3D1-4D0C-A86E-0AA6F4CD43F2}</Project>

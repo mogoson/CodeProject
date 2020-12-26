@@ -47,10 +47,6 @@
     <Compile Include="Updater\SingleUpdater.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DesignPattern\DesignPattern.csproj">
       <Project>{1ac97d40-2405-4fb6-91f3-225e2f036fb6}</Project>
       <Name>DesignPattern</Name>
