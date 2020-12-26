@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  Multilingualism.cs
- *  Description  :  Multilingualism.
+ *  File         :  Internationalizer.cs
+ *  Description  :  Internationalizer.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  1.0
@@ -10,19 +10,18 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.IO;
 using MGS.DesignPattern;
 using MGS.Logger;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace MGS.Common.Multilingual
+namespace MGS.Internation
 {
     /// <summary>
-    /// Multilingualism.
+    /// Internationalizer.
     /// </summary>
-    public sealed class Multilingualism : Singleton<Multilingualism>
+    public sealed class Internationalizer : Singleton<Internationalizer>
     {
         #region Field and Property
         /// <summary>
@@ -64,7 +63,7 @@ namespace MGS.Common.Multilingual
         /// <summary>
         /// Constructor.
         /// </summary>
-        private Multilingualism() { }
+        private Internationalizer() { }
         #endregion
 
         #region Public Method
@@ -81,7 +80,7 @@ namespace MGS.Common.Multilingual
                 return false;
             }
 
-            var fileLines = FileUtility.ReadAllLines(languageFile, Encoding.Default);
+            var fileLines = File.ReadAllLines(languageFile, Encoding.Default);
             if (fileLines == null || fileLines.Length == 0)
             {
                 LogUtility.LogError("Deserialize language error: Can not read any content in the language file at path {0}", languageFile);
