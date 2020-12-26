@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UCommon.Curve;
+using MGS.UCurve;
 
 namespace MGS.CurvePath
 {

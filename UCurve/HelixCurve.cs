@@ -12,7 +12,7 @@
 
 using UnityEngine;
 
-namespace MGS.UCommon.Curve
+namespace MGS.UCurve
 {
     /// <summary>
     /// Helix curve.

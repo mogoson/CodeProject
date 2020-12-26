@@ -62,6 +62,10 @@
       <Project>{02f92370-d9a3-4a6b-8b7d-717315a01145}</Project>
       <Name>UCommon</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UCurve\UCurve.csproj">
+      <Project>{1D301377-2284-4FAF-9847-503896CE63DF}</Project>
+      <Name>UCurve</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

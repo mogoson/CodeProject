@@ -11,8 +11,8 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UCommon.Curve;
 using MGS.UCommon.Utility;
+using MGS.UCurve;
 using System.Collections.Generic;
 using UnityEngine;
 

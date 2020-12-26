@@ -7,8 +7,8 @@
     <ProjectGuid>{1D301377-2284-4FAF-9847-503896CE63DF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UCurve</RootNamespace>
-    <AssemblyName>UCurve</AssemblyName>
+    <RootNamespace>MGS.UCurve</RootNamespace>
+    <AssemblyName>MGS.UCurve</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\MGS.UCurve.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,9 +32,38 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\Library\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BezierCurve.cs" />
+    <Compile Include="EllipseCurve.cs" />
+    <Compile Include="HelixCurve.cs" />
+    <Compile Include="HermiteCurve.cs" />
+    <Compile Include="Interface\ICurve.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SinCurve.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{E77FBCC0-1D82-41A0-A771-9D356E2D68F6}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Plugins\MGS"
+if exist %25targetDir%25\$(TargetFileName) (
+    if $(ConfigurationName)==Debug (
+        copy "$(TargetName).pdb" %25targetDir%25
+    ) else (
+         if exist "%25targetDir%25\$(TargetName).pdb" (
+            del "%25targetDir%25\$(TargetName).pdb"
+         )
+    )
+    copy "$(TargetFileName)" %25targetDir%25
+    copy "$(TargetName).xml" %25targetDir%25
+)</PostBuildEvent>
+  </PropertyGroup>
 </Project>
