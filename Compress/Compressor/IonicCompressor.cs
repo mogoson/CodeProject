@@ -11,7 +11,7 @@
  *************************************************************************/
 
 using Ionic.Zip;
-using MGS.Common.DesignPattern;
+using MGS.DesignPattern;
 using System;
 using System.Collections.Generic;
 using System.IO;

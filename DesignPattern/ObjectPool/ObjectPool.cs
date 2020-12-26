@@ -14,7 +14,7 @@ using MGS.Logger;
 using System;
 using System.Collections.Generic;
 
-namespace MGS.Common.DesignPattern
+namespace MGS.DesignPattern
 {
     /// <summary>
     /// Generic object pool.

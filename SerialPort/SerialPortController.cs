@@ -15,7 +15,7 @@
  *  Description  :  Singleton pattern version.
  *************************************************************************/
 
-using MGS.Common.DesignPattern;
+using MGS.DesignPattern;
 using MGS.Logger;
 using System;
 using System.Collections.Generic;

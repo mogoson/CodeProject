@@ -55,6 +55,10 @@
       <Project>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DesignPattern\DesignPattern.csproj">
+      <Project>{1AC97D40-2405-4FB6-91F3-225E2F036FB6}</Project>
+      <Name>DesignPattern</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

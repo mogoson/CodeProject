@@ -50,6 +50,10 @@
       <Project>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DesignPattern\DesignPattern.csproj">
+      <Project>{1AC97D40-2405-4FB6-91F3-225E2F036FB6}</Project>
+      <Name>DesignPattern</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UCommon\UCommon.csproj">
       <Project>{02f92370-d9a3-4a6b-8b7d-717315a01145}</Project>
       <Name>UCommon</Name>

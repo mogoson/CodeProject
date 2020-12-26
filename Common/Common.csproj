@@ -40,8 +40,6 @@
     <Compile Include="Converter\ArrayConverter.cs" />
     <Compile Include="Converter\ByteConverter.cs" />
     <Compile Include="Converter\StructureConverter.cs" />
-    <Compile Include="DesignPattern\ObjectPool\ObjectPool.cs" />
-    <Compile Include="DesignPattern\Singleton\Singleton.cs" />
     <Compile Include="Diagnostics\ProcessUtility.cs" />
     <Compile Include="Generic\Event\GenericEvent.cs" />
     <Compile Include="IO\Directory\DirectoryUtility.cs" />
@@ -64,6 +62,10 @@
     <Compile Include="Threading\ThreadUtility.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DesignPattern\DesignPattern.csproj">
+      <Project>{1AC97D40-2405-4FB6-91F3-225E2F036FB6}</Project>
+      <Name>DesignPattern</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{E77FBCC0-1D82-41A0-A771-9D356E2D68F6}</Project>
       <Name>Logger</Name>

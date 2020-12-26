@@ -12,7 +12,7 @@
 
 using System;
 
-namespace MGS.Common.DesignPattern
+namespace MGS.DesignPattern
 {
     /// <summary>
     /// Provide a single instance of the specified type T.

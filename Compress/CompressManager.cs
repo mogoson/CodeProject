@@ -10,8 +10,8 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.DesignPattern;
 using MGS.Common.Threading;
+using MGS.DesignPattern;
 using System;
 using System.Collections.Generic;
 

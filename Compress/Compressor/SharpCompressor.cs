@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.DesignPattern;
+using MGS.DesignPattern;
 using SharpCompress.Archives;
 using SharpCompress.Common;
 using System;
