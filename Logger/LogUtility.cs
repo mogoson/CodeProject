@@ -23,7 +23,7 @@ namespace MGS.Logger
         /// <summary>
         /// Loggers of utility.
         /// </summary>
-        private static ICollection<ILogger> loggers = new List<ILogger>() { new FileLogger() };
+        private static ICollection<ILogger> loggers = new List<ILogger>();
         #endregion
 
         #region Public Method
