@@ -200,6 +200,23 @@ namespace MGS.Internation
         }
 
         /// <summary>
+        /// Clear paragraphs of language.
+        /// </summary>
+        /// <param name="language">Name of language.</param>
+        public void ClearLanguage(string language)
+        {
+            if (languages.ContainsKey(language))
+            {
+                languages.Remove(language);
+            }
+
+            if (language == current)
+            {
+                current = string.Empty;
+            }
+        }
+
+        /// <summary>
         /// Clear paragraphs of languages.
         /// </summary>
         public void ClearLanguages()
