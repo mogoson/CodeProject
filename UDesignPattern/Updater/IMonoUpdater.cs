@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.UCommon.DesignPattern
+namespace MGS.DesignPattern
 {
     /// <summary>
     /// Interface for mono updater.

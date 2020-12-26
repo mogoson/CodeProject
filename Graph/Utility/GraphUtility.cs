@@ -10,8 +10,8 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.DesignPattern;
 using MGS.Logger;
-using MGS.UCommon.DesignPattern;
 using System;
 using System.Collections;
 using System.Collections.Generic;

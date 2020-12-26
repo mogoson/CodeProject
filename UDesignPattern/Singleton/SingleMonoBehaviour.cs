@@ -12,7 +12,7 @@
 
 using UnityEngine;
 
-namespace MGS.UCommon.DesignPattern
+namespace MGS.DesignPattern
 {
     /// <summary>
     /// MonoBehaviour with a single instance.

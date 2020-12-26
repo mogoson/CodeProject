@@ -13,7 +13,7 @@
 using MGS.Common.DesignPattern;
 using UnityEngine;
 
-namespace MGS.ObjectPool
+namespace MGS.DesignPattern
 {
     /// <summary>
     /// Pool of gameobject.

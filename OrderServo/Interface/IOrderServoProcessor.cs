@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UCommon.DesignPattern;
+using MGS.DesignPattern;
 
 namespace MGS.OrderServo
 {

@@ -15,7 +15,7 @@ using MGS.Logger;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MGS.ObjectPool
+namespace MGS.DesignPattern
 {
     /// <summary>
     /// Manager of gameobject pool.

@@ -57,6 +57,10 @@
       <Project>{02f92370-d9a3-4a6b-8b7d-717315a01145}</Project>
       <Name>UCommon</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UDesignPattern\UDesignPattern.csproj">
+      <Project>{BB6AB83B-B3D1-4D0C-A86E-0AA6F4CD43F2}</Project>
+      <Name>UDesignPattern</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

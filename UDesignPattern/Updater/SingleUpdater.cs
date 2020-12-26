@@ -14,7 +14,7 @@ using MGS.Common.DesignPattern;
 using System.Collections;
 using UnityEngine;
 
-namespace MGS.UCommon.DesignPattern
+namespace MGS.DesignPattern
 {
     /// <summary>
     /// Single updater.

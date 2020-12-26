@@ -12,7 +12,7 @@
 
 using MGS.Common.Generic;
 using MGS.Common.Threading;
-using MGS.UCommon.DesignPattern;
+using MGS.DesignPattern;
 using System.Threading;
 
 namespace MGS.WinCommon.Network

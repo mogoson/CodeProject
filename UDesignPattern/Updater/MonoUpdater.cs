@@ -13,7 +13,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace MGS.UCommon.DesignPattern
+namespace MGS.DesignPattern
 {
     /// <summary>
     /// Mono updater.
