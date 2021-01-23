@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ionic.Zip">
-      <HintPath>..\Library\Ionic.Zip.dll</HintPath>
+      <HintPath>..\lib\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="SharpCompress">
-      <HintPath>..\Library\SharpCompress.dll</HintPath>
+      <HintPath>..\lib\SharpCompress.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>

@@ -68,10 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEditor">
-      <HintPath>..\Library\UnityEditor.dll</HintPath>
+      <HintPath>..\lib\UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\Library\UnityEngine.dll</HintPath>
+      <HintPath>..\lib\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
