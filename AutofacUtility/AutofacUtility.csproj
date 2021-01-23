@@ -44,7 +44,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Plugins\Autofac"
+    <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\AutofacToolkit\Plugins"
 if exist %25targetDir%25\$(TargetFileName) (
     if $(ConfigurationName)==Debug (
         copy "$(TargetName).pdb" %25targetDir%25

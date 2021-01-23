@@ -20,10 +20,15 @@ namespace Autofac.Editor
 {
     public class AutofacEditor : AssetPostprocessor
     {
-        static readonly string CONFIGURATOR_FILE_PATH = string.Format("{0}/Scripts/Autofac/AutofacConfigurator.cs", Application.dataPath);
+        static readonly string CONFIGURATOR_FILE_PATH = string.Format("{0}/AutofacToolkit/Scripts/AutofacConfigurator.cs", Application.dataPath);
         const string INFO_CODES = "/*INFOCODES*/";
 
-        [MenuItem("Tool/Autofac Editor/Update Configurator")]
+        [UnityEditor.Callbacks.DidReloadScripts]
+        static void OnDidReloadScripts()
+        {
+            UpdateConfigurator();
+        }
+
         static void UpdateConfigurator()
         {
             var infoCodes = INFO_CODES;
@@ -38,12 +43,6 @@ namespace Autofac.Editor
 
             File.WriteAllText(CONFIGURATOR_FILE_PATH, configuratorCodes);
             AssetDatabase.Refresh();
-        }
-
-        [UnityEditor.Callbacks.DidReloadScripts]
-        static void OnDidReloadScripts()
-        {
-            UpdateConfigurator();
         }
 
         static IDictionary<string, ICollection<string>> SearchRegisterInfos()
@@ -82,7 +81,7 @@ namespace Autofac.Editor
                 }
 
                 var typeListCodes = string.Format("new List<string>(){{{0}}}", typeCodeLines);
-                infoCodes += string.Format("            {{\"{0}\", {1} \r\n            }},\r\n", assemblyName, typeListCodes);
+                infoCodes += string.Format("{{\"{0}\", {1}\r\n            }},\r\n", assemblyName, typeListCodes);
             }
             return infoCodes;
         }
