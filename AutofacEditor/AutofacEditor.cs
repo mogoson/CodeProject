@@ -41,6 +41,12 @@ namespace Autofac.Editor
             var configuratorTempCodes = Properties.Resources.AutofacConfigurator;
             var configuratorCodes = configuratorTempCodes.Replace(INFO_CODES, infoCodes);
 
+            var configuratorDir = Path.GetDirectoryName(CONFIGURATOR_FILE_PATH);
+            if (!Directory.Exists(configuratorDir))
+            {
+                Directory.CreateDirectory(configuratorDir);
+            }
+
             File.WriteAllText(CONFIGURATOR_FILE_PATH, configuratorCodes);
             AssetDatabase.Refresh();
         }
