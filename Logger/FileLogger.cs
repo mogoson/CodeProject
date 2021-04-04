@@ -139,7 +139,7 @@ namespace MGS.Logger
         /// <param name="args">Format arguments.</param>
         public void Log(string format, params object[] args)
         {
-            LogToFile("Log", format, args);
+            LogToFile("LOG", format, args);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace MGS.Logger
         /// <param name="args">Format arguments.</param>
         public void LogError(string format, params object[] args)
         {
-            LogToFile("Error", format, args);
+            LogToFile("ERROR", format, args);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace MGS.Logger
         /// <param name="args">Format arguments.</param>
         public void LogWarning(string format, params object[] args)
         {
-            LogToFile("Warning", format, args);
+            LogToFile("WARNING", format, args);
         }
         #endregion
     }
