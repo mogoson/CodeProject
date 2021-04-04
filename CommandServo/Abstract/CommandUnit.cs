@@ -1,8 +1,8 @@
 /*************************************************************************
  *  Copyright ? 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  OrderUnit.cs
- *  Description  :  Order unit.
+ *  File         :  CommandUnit.cs
+ *  Description  :  Command unit.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -12,31 +12,31 @@
 
 using MGS.Common.Generic;
 
-namespace MGS.OrderServo
+namespace MGS.CommandServo
 {
     /// <summary>
-    /// Order unit.
+    /// Command unit.
     /// </summary>
-    public abstract class OrderUnit : IOrderUnit
+    public abstract class CommandUnit : ICommandUnit
     {
         #region Field and Property
         /// <summary>
-        /// Code of order unit.
+        /// Code of Command unit.
         /// </summary>
         public virtual string Code { set; get; }
 
         /// <summary>
-        /// On order unit respond.
+        /// On Command unit respond.
         /// </summary>
-        public GenericEvent<string, object> OnRespond { get; } = new GenericEvent<string, object>();
+        public GenericEvent<string, object[]> OnRespond { get; } = new GenericEvent<string, object[]>();
         #endregion
 
         #region Public Method
         /// <summary>
-        /// Execute order.
+        /// Execute Command.
         /// </summary>
-        /// <param name="args">Order args.</param>
-        public abstract void Execute(object args);
+        /// <param name="args">Command args.</param>
+        public abstract void Execute(params object[] args);
         #endregion
     }
 }

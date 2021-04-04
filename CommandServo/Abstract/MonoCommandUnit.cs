@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  MonoOrderUnit.cs
- *  Description  :  Mono order unit.
+ *  File         :  MonoCommandUnit.cs
+ *  Description  :  Mono Command unit.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -13,23 +13,23 @@
 using MGS.Common.Generic;
 using UnityEngine;
 
-namespace MGS.OrderServo
+namespace MGS.CommandServo
 {
     /// <summary>
-    /// Mono order unit.
+    /// Mono Command unit.
     /// </summary>
-    public abstract class MonoOrderUnit : MonoBehaviour, IOrderUnit
+    public abstract class MonoCommandUnit : MonoBehaviour, ICommandUnit
     {
         #region Field and Property
         /// <summary>
-        /// Code of order unit.
+        /// Code of Command unit.
         /// </summary>
-        [Tooltip("Code of order unit.")]
+        [Tooltip("Code of Command unit.")]
         [SerializeField]
         protected string code;
 
         /// <summary>
-        /// Code of order unit.
+        /// Code of Command unit.
         /// </summary>
         public string Code
         {
@@ -38,17 +38,17 @@ namespace MGS.OrderServo
         }
 
         /// <summary>
-        /// On order unit respond.
+        /// On Command unit respond.
         /// </summary>
-        public GenericEvent<string, object> OnRespond { get; } = new GenericEvent<string, object>();
+        public GenericEvent<string, object[]> OnRespond { get; } = new GenericEvent<string, object[]>();
         #endregion
 
         #region Public Method
         /// <summary>
-        /// Execute order.
+        /// Execute Command.
         /// </summary>
-        /// <param name="args">Order args.</param>
-        public abstract void Execute(object args);
+        /// <param name="args">Command args.</param>
+        public abstract void Execute(params object[] args);
         #endregion
     }
 }

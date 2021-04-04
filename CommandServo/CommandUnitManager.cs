@@ -1,8 +1,8 @@
 /*************************************************************************
  *  Copyright ? 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  OrderUnitManager.cs
- *  Description  :  Manager of order units.
+ *  File         :  CommandUnitManager.cs
+ *  Description  :  Manager of Command units.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -14,32 +14,32 @@ using MGS.Common.Generic;
 using MGS.Logger;
 using System.Collections.Generic;
 
-namespace MGS.OrderServo
+namespace MGS.CommandServo
 {
     /// <summary>
-    /// Manager of order units.
+    /// Manager of Command units.
     /// </summary>
-    public class OrderUnitManager : IOrderUnitManager
+    public class CommandUnitManager : ICommandUnitManager
     {
         #region Field and Property
         /// <summary>
-        /// On order respond.
+        /// On Command respond.
         /// </summary>
-        public GenericEvent<Order> OnRespond { get; } = new GenericEvent<Order>();
+        public GenericEvent<Command> OnRespond { get; } = new GenericEvent<Command>();
 
         /// <summary>
         /// units managed by this manager.
         /// </summary>
-        protected Dictionary<string, IOrderUnit> units = new Dictionary<string, IOrderUnit>();
+        protected Dictionary<string, ICommandUnit> units = new Dictionary<string, ICommandUnit>();
         #endregion
 
         #region Private Method
         /// <summary>
-        /// On order unit respond.
+        /// On Command unit respond.
         /// </summary>
-        /// <param name="code">Order code.</param>
-        /// <param name="args">Order args.</param>
-        protected void OnUnitRespond(string code, object args)
+        /// <param name="code">Command code.</param>
+        /// <param name="args">Command args.</param>
+        protected void OnUnitRespond(string code, params object[] args)
         {
             if (string.IsNullOrEmpty(code))
             {
@@ -47,16 +47,16 @@ namespace MGS.OrderServo
                 return;
             }
 
-            OnRespond.Invoke(new Order(code, args));
+            OnRespond.Invoke(new Command(code, args));
         }
         #endregion
 
         #region Public Method
         /// <summary>
-        /// Add order unit.
+        /// Register Command unit.
         /// </summary>
-        /// <param name="unit">Order unit.</param>
-        public void AddUnit(IOrderUnit unit)
+        /// <param name="unit">Command unit.</param>
+        public void RegisterUnit(ICommandUnit unit)
         {
             if (unit == null || string.IsNullOrEmpty(unit.Code))
             {
@@ -69,10 +69,10 @@ namespace MGS.OrderServo
         }
 
         /// <summary>
-        /// Remove order unit.
+        /// Unregister Command unit.
         /// </summary>
         /// <param name="code">Unit code.</param>
-        public void RemoveUnit(string code)
+        public void UnregisterUnit(string code)
         {
             if (units.ContainsKey(code))
             {
@@ -82,9 +82,9 @@ namespace MGS.OrderServo
         }
 
         /// <summary>
-        /// Clear order units.
+        /// Unregister Command units.
         /// </summary>
-        public void ClearUnits()
+        public void UnregisterUnits()
         {
             foreach (var unit in units.Values)
             {
@@ -94,14 +94,14 @@ namespace MGS.OrderServo
         }
 
         /// <summary>
-        /// Execute order.
+        /// Execute Command.
         /// </summary>
-        /// <param name="order">Order to execute.</param>
-        public void Execute(Order order)
+        /// <param name="Command">Command to execute.</param>
+        public void Execute(Command Command)
         {
-            if (units.ContainsKey(order.code))
+            if (units.ContainsKey(Command.code))
             {
-                units[order.code].Execute(order.args);
+                units[Command.code].Execute(Command.args);
             }
         }
         #endregion

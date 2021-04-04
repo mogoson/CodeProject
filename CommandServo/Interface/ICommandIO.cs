@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IOrderIO.cs
- *  Description  :  Interface for order IO.
+ *  File         :  ICommandIO.cs
+ *  Description  :  Interface for Command IO.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -10,12 +10,12 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace MGS.OrderServo
+namespace MGS.CommandServo
 {
     /// <summary>
-    /// Interface for order IO.
+    /// Interface for Command IO.
     /// </summary>
-    public interface IOrderIO
+    public interface ICommandIO
     {
         #region Method
         /// <summary>

@@ -1,8 +1,8 @@
 /*************************************************************************
  *  Copyright ? 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IOrderUnit.cs
- *  Description  :  Interface for order Unit.
+ *  File         :  Command.cs
+ *  Description  :  Define Command content.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -10,33 +10,36 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Generic;
-
-namespace MGS.OrderServo
+namespace MGS.CommandServo
 {
     /// <summary>
-    /// Interface for order Unit.
+    /// Command content.
     /// </summary>
-    public interface IOrderUnit
+    public struct Command
     {
-        #region Property
+        #region Field and Property
         /// <summary>
-        /// Order unit code.
+        /// Command unit code.
         /// </summary>
-        string Code { set; get; }
+        public string code;
 
         /// <summary>
-        /// On order unit respond.
+        /// Command args.
         /// </summary>
-        GenericEvent<string, object> OnRespond { get; }
+        public object[] args;
         #endregion
 
-        #region Method
+        #region Public Method
         /// <summary>
-        /// Execute order.
+        /// Constructor.
         /// </summary>
-        /// <param name="args">Order args.</param>
-        void Execute(object args);
+        /// <param name="code">Command code.</param>
+        /// <param name="args">Command args.</param>
+        public Command(string code, params object[] args)
+        {
+            this.code = code;
+            this.args = args;
+        }
         #endregion
     }
 }

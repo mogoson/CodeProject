@@ -1,8 +1,8 @@
 /*************************************************************************
  *  Copyright ? 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IOrderUnitManager.cs
- *  Description  :  Interface for order units manager.
+ *  File         :  ICommandUnitManager.cs
+ *  Description  :  Interface for Command units manager.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -12,43 +12,43 @@
 
 using MGS.Common.Generic;
 
-namespace MGS.OrderServo
+namespace MGS.CommandServo
 {
     /// <summary>
-    /// Interface for order units manager.
+    /// Interface for Command units manager.
     /// </summary>
-    public interface IOrderUnitManager
+    public interface ICommandUnitManager
     {
         #region Property
         /// <summary>
-        /// On order respond.
+        /// On Command respond.
         /// </summary>
-        GenericEvent<Order> OnRespond { get; }
+        GenericEvent<Command> OnRespond { get; }
         #endregion
 
         #region Method
         /// <summary>
-        /// Add order unit.
+        /// Register Command unit.
         /// </summary>
-        /// <param name="unit">Order unit.</param>
-        void AddUnit(IOrderUnit unit);
+        /// <param name="unit">Command unit.</param>
+        void RegisterUnit(ICommandUnit unit);
 
         /// <summary>
-        /// Remove order unit.
+        /// Unregister Command unit.
         /// </summary>
         /// <param name="code">Unit code.</param>
-        void RemoveUnit(string code);
+        void UnregisterUnit(string code);
 
         /// <summary>
-        /// Clear order units.
+        /// Unregister Command units.
         /// </summary>
-        void ClearUnits();
+        void UnregisterUnits();
 
         /// <summary>
-        /// Execute order.
+        /// Execute Command.
         /// </summary>
-        /// <param name="order">Order to execute.</param>
-        void Execute(Order order);
+        /// <param name="Command">Command to execute.</param>
+        void Execute(Command Command);
         #endregion
     }
 }

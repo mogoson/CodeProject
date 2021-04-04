@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IOrderParser.cs
- *  Description  :  Interface for order parser.
+ *  File         :  ICommandParser.cs
+ *  Description  :  Interface for Command parser.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -12,27 +12,27 @@
 
 using System.Collections.Generic;
 
-namespace MGS.OrderServo
+namespace MGS.CommandServo
 {
     /// <summary>
-    /// Interface for order parser.
+    /// Interface for Command parser.
     /// </summary>
-    public interface IOrderParser
+    public interface ICommandParser
     {
         #region Method
         /// <summary>
-        /// Parser byte buffer to orders.
+        /// Parser byte buffer to Commands.
         /// </summary>
         /// <param name="buffer">Buffer to parse.</param>
-        /// <returns>Orders from buffer.</returns>
-        IEnumerable<Order> ToOrders(byte[] buffer);
+        /// <returns>Commands from buffer.</returns>
+        IEnumerable<Command> ToCommands(byte[] buffer);
 
         /// <summary>
-        /// Parser order to byte buffer.
+        /// Parser Command to byte buffer.
         /// </summary>
-        /// <param name="order">Order to parse.</param>
-        /// <returns>Buffer from order.</returns>
-        byte[] ToBuffer(Order order);
+        /// <param name="Command">Command to parse.</param>
+        /// <returns>Buffer from Command.</returns>
+        byte[] ToBuffer(Command Command);
         #endregion
     }
 }

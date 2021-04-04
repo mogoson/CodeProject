@@ -1,8 +1,8 @@
 /*************************************************************************
  *  Copyright ? 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  IOrderServoProcessor.cs
- *  Description  :  Interface for order servo processor.
+ *  File         :  ICommandServoProcessor.cs
+ *  Description  :  Interface for Command servo processor.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -12,32 +12,32 @@
 
 using MGS.DesignPattern;
 
-namespace MGS.OrderServo
+namespace MGS.CommandServo
 {
     /// <summary>
-    /// Interface for order servo processor.
+    /// Interface for Command servo processor.
     /// </summary>
-    public interface IOrderServoProcessor : IMonoUpdater
+    public interface ICommandServoProcessor : IMonoUpdater
     {
         #region Property
         /// <summary>
-        /// Manager of orders.
+        /// Manager of Commands.
         /// </summary>
-        IOrderManager OrderManager { set; get; }
+        ICommandManager CommandManager { set; get; }
 
         /// <summary>
-        /// Manager of order units.
+        /// Manager of Command units.
         /// </summary>
-        IOrderUnitManager OrderUnitManager { set; get; }
+        ICommandUnitManager CommandUnitManager { set; get; }
         #endregion
 
         #region Method
         /// <summary>
         /// Initialize processor.
         /// </summary>
-        /// <param name="orderManager">Manager of orders.</param>
-        /// <param name="unitManager">Manager of order units.</param>
-        void Initialize(IOrderManager orderManager, IOrderUnitManager unitManager);
+        /// <param name="CommandManager">Manager of Commands.</param>
+        /// <param name="unitManager">Manager of Command units.</param>
+        void Initialize(ICommandManager CommandManager, ICommandUnitManager unitManager);
         #endregion
     }
 }

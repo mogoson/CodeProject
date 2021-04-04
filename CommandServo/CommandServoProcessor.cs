@@ -1,8 +1,8 @@
 /*************************************************************************
  *  Copyright ? 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  OrderServoProcessor.cs
- *  Description  :  Order servo processor.
+ *  File         :  CommandServoProcessor.cs
+ *  Description  :  Command servo processor.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -13,44 +13,44 @@
 using MGS.DesignPattern;
 using MGS.Logger;
 
-namespace MGS.OrderServo
+namespace MGS.CommandServo
 {
     /// <summary>
-    /// Order servo processor.
+    /// Command servo processor.
     /// </summary>
-    public sealed class OrderServoProcessor : SingleUpdater<OrderServoProcessor>, IOrderServoProcessor
+    public sealed class CommandServoProcessor : SingleUpdater<CommandServoProcessor>, ICommandServoProcessor
     {
         #region Field and Property
         /// <summary>
-        /// Manager of orders.
+        /// Manager of Commands.
         /// </summary>
-        public IOrderManager OrderManager { set; get; }
+        public ICommandManager CommandManager { set; get; }
 
         /// <summary>
-        /// Manager of order units.
+        /// Manager of Command units.
         /// </summary>
-        public IOrderUnitManager OrderUnitManager
+        public ICommandUnitManager CommandUnitManager
         {
             set
             {
-                if (orderUnitManager != null)
+                if (commandUnitManager != null)
                 {
-                    orderUnitManager.OnRespond.RemoveListener(OnUnitRespond);
+                    commandUnitManager.OnRespond.RemoveListener(OnUnitRespond);
                 }
 
                 if (value != null)
                 {
                     value.OnRespond.AddListener(OnUnitRespond);
                 }
-                orderUnitManager = value;
+                commandUnitManager = value;
             }
-            get { return orderUnitManager; }
+            get { return commandUnitManager; }
         }
 
         /// <summary>
-        /// Manager of order units.
+        /// Manager of Command units.
         /// </summary>
-        private IOrderUnitManager orderUnitManager;
+        private ICommandUnitManager commandUnitManager;
 
         /// <summary>
         /// The settings of processor is valid?
@@ -59,10 +59,10 @@ namespace MGS.OrderServo
         {
             get
             {
-                if (OrderManager == null || orderUnitManager == null)
+                if (CommandManager == null || CommandUnitManager == null)
                 {
-                    LogUtility.LogError("Order servo processor settings error: " +
-                        "The order manager or order unit manager does not set an instance.");
+                    LogUtility.LogError("Command servo processor settings error: " +
+                        "The Command manager or Command unit manager does not set an instance.");
                     return false;
                 }
                 return true;
@@ -74,7 +74,7 @@ namespace MGS.OrderServo
         /// <summary>
         /// Constructor.
         /// </summary>
-        private OrderServoProcessor() { }
+        private CommandServoProcessor() { }
 
         /// <summary>
         /// On update.
@@ -86,12 +86,12 @@ namespace MGS.OrderServo
                 return;
             }
 
-            var orders = OrderManager.ReadOrders();
-            if (orders != null)
+            var Commands = CommandManager.DequeueCommands();
+            if (Commands != null)
             {
-                foreach (var order in orders)
+                foreach (var Command in Commands)
                 {
-                    orderUnitManager.Execute(order);
+                    CommandUnitManager.Execute(Command);
                 }
             }
         }
@@ -99,15 +99,15 @@ namespace MGS.OrderServo
         /// <summary>
         /// On unit respond.
         /// </summary>
-        /// <param name="order">Respond order.</param>
-        private void OnUnitRespond(Order order)
+        /// <param name="Command">Respond Command.</param>
+        private void OnUnitRespond(Command Command)
         {
             if (!IsSettingsValid)
             {
                 return;
             }
 
-            OrderManager.RespondOrder(order);
+            CommandManager.RespondCommand(Command);
         }
         #endregion
 
@@ -115,12 +115,12 @@ namespace MGS.OrderServo
         /// <summary>
         /// Initialize processor.
         /// </summary>
-        /// <param name="orderManager">Manager of orders.</param>
-        /// <param name="unitManager">Manager of order units.</param>
-        public void Initialize(IOrderManager orderManager, IOrderUnitManager unitManager)
+        /// <param name="commandManager">Manager of Commands.</param>
+        /// <param name="unitManager">Manager of Command units.</param>
+        public void Initialize(ICommandManager commandManager, ICommandUnitManager unitManager)
         {
-            OrderManager = orderManager;
-            OrderUnitManager = unitManager;
+            CommandManager = commandManager;
+            CommandUnitManager = unitManager;
         }
         #endregion
     }
