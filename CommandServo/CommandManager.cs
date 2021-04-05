@@ -56,6 +56,17 @@ namespace MGS.CommandServo
 
         #region Public Method
         /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="commandIO">Command IO.</param>
+        /// <param name="commandParser">Command parser.</param>
+        public CommandManager(ICommandIO commandIO, ICommandParser commandParser)
+        {
+            CommandIO = commandIO;
+            CommandParser = commandParser;
+        }
+
+        /// <summary>
         /// Enqueue Command to pending buffer.
         /// </summary>
         /// <param name="command">Command to enqueue.</param>
