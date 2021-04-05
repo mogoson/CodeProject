@@ -34,7 +34,7 @@ namespace MGS.CommandServo
         /// <summary>
         /// Command pending buffer.
         /// </summary>
-        protected List<Command> CommandBuffer = new List<Command>();
+        protected List<Command> commandBuffer = new List<Command>();
 
         /// <summary>
         /// The settings of manager is valid?
@@ -58,24 +58,24 @@ namespace MGS.CommandServo
         /// <summary>
         /// Enqueue Command to pending buffer.
         /// </summary>
-        /// <param name="Command">Command to enqueue.</param>
-        public void EnqueueCommand(Command Command)
+        /// <param name="command">Command to enqueue.</param>
+        public void EnqueueCommand(Command command)
         {
-            if (CommandBuffer.Contains(Command))
+            if (commandBuffer.Contains(command))
             {
                 return;
             }
 
-            CommandBuffer.Add(Command);
+            commandBuffer.Add(command);
         }
 
         /// <summary>
         /// Discard Command from pending buffer.
         /// </summary>
-        /// <param name="Command">Command to discard.</param>
-        public void DiscardCommand(Command Command)
+        /// <param name="command">Command to discard.</param>
+        public void DiscardCommand(Command command)
         {
-            CommandBuffer.Remove(Command);
+            commandBuffer.Remove(command);
         }
 
         /// <summary>
@@ -89,31 +89,31 @@ namespace MGS.CommandServo
                 return null;
             }
 
-            var CommandBytes = CommandIO.ReadBuffer();
-            var ioCommands = CommandParser.ToCommands(CommandBytes);
+            var commandBytes = CommandIO.ReadBuffer();
+            var ioCommands = CommandParser.ToCommands(commandBytes);
             if (ioCommands != null)
             {
-                CommandBuffer.AddRange(ioCommands);
+                commandBuffer.AddRange(ioCommands);
             }
 
-            var currentCommands = new List<Command>(CommandBuffer);
-            CommandBuffer.Clear();
+            var currentCommands = new List<Command>(commandBuffer);
+            commandBuffer.Clear();
             return currentCommands;
         }
 
         /// <summary>
         /// Respond Command to manager.
         /// </summary>
-        /// <param name="Command">Command to respond.</param>
-        public virtual void RespondCommand(Command Command)
+        /// <param name="command">Command to respond.</param>
+        public virtual void RespondCommand(Command command)
         {
             if (!IsSettingsValid)
             {
                 return;
             }
 
-            var CommandBytes = CommandParser.ToBuffer(Command);
-            CommandIO.WriteBuffer(CommandBytes);
+            var commandBytes = CommandParser.ToBuffer(command);
+            CommandIO.WriteBuffer(commandBytes);
         }
         #endregion
     }

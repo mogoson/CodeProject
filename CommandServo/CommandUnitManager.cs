@@ -96,12 +96,12 @@ namespace MGS.CommandServo
         /// <summary>
         /// Execute Command.
         /// </summary>
-        /// <param name="Command">Command to execute.</param>
-        public void Execute(Command Command)
+        /// <param name="command">Command to execute.</param>
+        public void Execute(Command command)
         {
-            if (units.ContainsKey(Command.code))
+            if (units.ContainsKey(command.code))
             {
-                units[Command.code].Execute(Command.args);
+                units[command.code].Execute(command.args);
             }
         }
         #endregion

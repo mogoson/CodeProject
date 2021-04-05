@@ -86,12 +86,12 @@ namespace MGS.CommandServo
                 return;
             }
 
-            var Commands = CommandManager.DequeueCommands();
-            if (Commands != null)
+            var commands = CommandManager.DequeueCommands();
+            if (commands != null)
             {
-                foreach (var Command in Commands)
+                foreach (var command in commands)
                 {
-                    CommandUnitManager.Execute(Command);
+                    CommandUnitManager.Execute(command);
                 }
             }
         }
@@ -99,15 +99,15 @@ namespace MGS.CommandServo
         /// <summary>
         /// On unit respond.
         /// </summary>
-        /// <param name="Command">Respond Command.</param>
-        private void OnUnitRespond(Command Command)
+        /// <param name="command">Respond Command.</param>
+        private void OnUnitRespond(Command command)
         {
             if (!IsSettingsValid)
             {
                 return;
             }
 
-            CommandManager.RespondCommand(Command);
+            CommandManager.RespondCommand(command);
         }
         #endregion
 
