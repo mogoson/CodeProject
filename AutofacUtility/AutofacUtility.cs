@@ -10,7 +10,6 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using Autofac.Core;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -91,7 +90,10 @@ namespace Autofac
             var types = new List<Type>();
             foreach (var assemblyName in infos.Keys)
             {
-                var assembly = AppDomain.CurrentDomain.Load(assemblyName);
+                Assembly assembly = null;
+                try { assembly = AppDomain.CurrentDomain.Load(assemblyName); }
+                catch { continue; }
+
                 if (assembly == null)
                 {
                     continue;
@@ -105,7 +107,10 @@ namespace Autofac
 
                 foreach (var typeName in typeNames)
                 {
-                    var type = assembly.GetType(typeName);
+                    Type type = null;
+                    try { type = assembly.GetType(typeName); }
+                    catch { continue; }
+
                     if (type == null)
                     {
                         continue;
@@ -189,18 +194,18 @@ namespace Autofac
         }
 
         /// <summary>
-        /// Resolve TService.
+        /// Resolve keyed TService.
         /// </summary>
         /// <typeparam name="TService">TService type.</typeparam>
-        /// <param name="parameters">Parameters for Resolve.</param>
+        /// <param name="serviceKey">Service key.</param>
         /// <returns>TService</returns>
-        public static TService Resolve<TService>(params Parameter[] parameters)
+        public static TService ResolveKeyed<TService>(object serviceKey)
         {
-            if (Container == null)
+            if (Container == null || serviceKey == null)
             {
                 return default(TService);
             }
-            return Container.Resolve<TService>(parameters);
+            return Container.ResolveKeyed<TService>(serviceKey);
         }
         #endregion
     }
