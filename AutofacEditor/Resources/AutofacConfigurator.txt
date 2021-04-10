@@ -31,13 +31,13 @@ namespace Autofac
 #endif
         private static void Awake()
         {
-            AutofacUtility.Initialize(registerInfos);
+            AutofacUtility.Register(registerInfos);
         }
 
         /// <summary>
         /// Register infos(assemblyName, typeNames)
         /// </summary>
-        private static IDictionary<string, ICollection<string>> registerInfos = new Dictionary<string, ICollection<string>>()
+        private static readonly IDictionary<string, ICollection<string>> registerInfos = new Dictionary<string, ICollection<string>>()
         {
             /*INFOCODES*/
         };
