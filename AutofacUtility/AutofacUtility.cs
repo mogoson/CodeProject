@@ -13,6 +13,7 @@
 using Autofac.Core;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Autofac
 {
@@ -26,74 +27,151 @@ namespace Autofac
         /// Autofac container.
         /// </summary>
         public static IContainer Container { private set; get; }
+
+        /// <summary>
+        /// Container builder.
+        /// </summary>
+        private static readonly ContainerBuilder builder = new ContainerBuilder();
         #endregion
 
         #region Private Method
         /// <summary>
         /// Build container.
         /// </summary>
-        /// <param name="registerInfos">Register infos.</param>
-        /// <returns>IContainer.</returns>
-        private static IContainer BuildContainer(IDictionary<string, ICollection<string>> registerInfos)
+        /// <param name="types">Register types.</param>
+        /// <returns>Container.</returns>
+        private static IContainer BuildContainer(IEnumerable<Type> types)
         {
-            if (registerInfos == null || registerInfos.Count <= 0)
-            {
-                return null;
-            }
-
-            var builder = new ContainerBuilder();
-            RegisterTypes(builder, registerInfos);
-            return builder.Build(Builder.ContainerBuildOptions.None);
+            RegisterTypes(builder, types);
+            Container = builder.Build(Builder.ContainerBuildOptions.None);
+            return Container;
         }
 
         /// <summary>
         /// Register types to builder.
         /// </summary>
         /// <param name="builder">Container builder.</param>
-        /// <param name="registerInfos">Register infos.</param>
-        private static void RegisterTypes(ContainerBuilder builder, IDictionary<string, ICollection<string>> registerInfos)
+        /// <param name="types">Register types.</param>
+        private static void RegisterTypes(ContainerBuilder builder, IEnumerable<Type> types)
         {
-            if (builder == null || registerInfos == null || registerInfos.Count <= 0)
+            foreach (var type in types)
             {
-                return;
+                if (!Attribute.IsDefined(type, typeof(AutofacRegisterAttribute)))
+                {
+                    continue;
+                }
+
+                var irBuilder = builder.RegisterType(type).AsImplementedInterfaces().AsSelf();
+                var attribute = (AutofacRegisterAttribute)Attribute.GetCustomAttribute(type, typeof(AutofacRegisterAttribute));
+                if (attribute.Singleton)
+                {
+                    irBuilder.SingleInstance();
+                }
+
+                if (attribute.ServiceKey == null || attribute.ServiceType == null)
+                {
+                    continue;
+                }
+
+                irBuilder.Keyed(attribute.ServiceKey, attribute.ServiceType);
+            }
+        }
+
+        /// <summary>
+        /// Resolve register types.
+        /// </summary>
+        /// <param name="infos">Register infos(assemblyName, typeNames).</param>
+        private static IEnumerable<Type> ResolveTypes(IDictionary<string, ICollection<string>> infos)
+        {
+            if (infos == null || infos.Count <= 0)
+            {
+                return null;
             }
 
-            foreach (var assemblyName in registerInfos.Keys)
+            var types = new List<Type>();
+            foreach (var assemblyName in infos.Keys)
             {
                 var assembly = AppDomain.CurrentDomain.Load(assemblyName);
-                var typeNames = registerInfos[assemblyName];
+                if (assembly == null)
+                {
+                    continue;
+                }
+
+                var typeNames = infos[assemblyName];
+                if (typeNames == null || typeNames.Count <= 0)
+                {
+                    continue;
+                }
+
                 foreach (var typeName in typeNames)
                 {
                     var type = assembly.GetType(typeName);
-                    var irBuilder = builder.RegisterType(type).AsImplementedInterfaces().AsSelf();
-
-                    var register = (AutofacRegisterAttribute)Attribute.GetCustomAttribute(type, typeof(AutofacRegisterAttribute));
-                    if (register.Singleton)
-                    {
-                        irBuilder.SingleInstance();
-                    }
-
-                    if (register.ServiceKey == null || register.ServiceType == null)
+                    if (type == null)
                     {
                         continue;
                     }
-
-                    irBuilder.Keyed(register.ServiceKey, register.ServiceType);
+                    types.Add(type);
                 }
             }
+            return types;
         }
         #endregion
 
         #region Public Method
         /// <summary>
-        /// Initialize utility.
+        /// Register types of current domain assemblies.
         /// </summary>
-        /// <param name="registerInfos">Register infos(assemblyName, typeNames).</param>
         /// <returns>IContainer.</returns>
-        public static IContainer Initialize(IDictionary<string, ICollection<string>> registerInfos)
+        public static IContainer Register()
         {
-            Container = BuildContainer(registerInfos);
-            return Container;
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            return Register(assemblies);
+        }
+
+        /// <summary>
+        /// Register types of target assemblies.
+        /// </summary>
+        /// <param name="assemblies">Target assemblies.</param>
+        /// <returns>IContainer.</returns>
+        public static IContainer Register(IEnumerable<Assembly> assemblies)
+        {
+            if (assemblies == null)
+            {
+                return null;
+            }
+
+            var types = new List<Type>();
+            foreach (var assembly in assemblies)
+            {
+                types.AddRange(assembly.GetTypes());
+            }
+            return Register(types);
+        }
+
+        /// <summary>
+        /// Register target types.
+        /// </summary>
+        /// <param name="types">Target types.</param>
+        /// <returns>IContainer.</returns>
+        public static IContainer Register(IEnumerable<Type> types)
+        {
+            if (types == null)
+            {
+                return null;
+            }
+
+            return BuildContainer(types);
+        }
+
+        /// <summary>
+        /// Register types of assemblies.
+        /// </summary>
+        /// <param name="infos">Register infos(assemblyName, typeNames).</param>
+        /// <returns>IContainer.</returns>
+        public static IContainer Register(IDictionary<string, ICollection<string>> infos)
+        {
+            var types = ResolveTypes(infos);
+            return Register(types);
         }
 
         /// <summary>
@@ -103,6 +181,10 @@ namespace Autofac
         /// <returns>TService</returns>
         public static TService Resolve<TService>()
         {
+            if (Container == null)
+            {
+                return default(TService);
+            }
             return Container.Resolve<TService>();
         }
 
@@ -114,6 +196,10 @@ namespace Autofac
         /// <returns>TService</returns>
         public static TService Resolve<TService>(params Parameter[] parameters)
         {
+            if (Container == null)
+            {
+                return default(TService);
+            }
             return Container.Resolve<TService>(parameters);
         }
         #endregion
