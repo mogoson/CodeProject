@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
  *  Copyright © 2021 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  Serialization.cs
- *  Description  :  Define Generic serialization for JsonUtility.
+ *  File         :  DictionaryAvatar.cs
+ *  Description  :  Avatar for Dictionary serialize by JsonUtility.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  1.0
@@ -13,41 +13,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MGS.UCommon.Generic
+namespace MGS.UCommon.Serialization
 {
     /// <summary>
-    /// Serialization for List.
-    /// </summary>
-    /// <typeparam name="T">Type of list item.</typeparam>
-    public class Serialization<T>
-    {
-        /// <summary>
-        /// Source list.
-        /// </summary>
-        [SerializeField]
-        private List<T> source;
-
-        /// <summary>
-        /// Source list.
-        /// </summary>
-        public List<T> Source { get { return source; } }
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        /// <param name="source">Source list.</param>
-        public Serialization(List<T> source)
-        {
-            this.source = source;
-        }
-    }
-
-    /// <summary>
-    /// Serialization for Dictionary.
+    /// Avatar for Dictionary serialize by JsonUtility.
     /// </summary>
     /// <typeparam name="TKey">Type of key.</typeparam>
     /// <typeparam name="TValue">Type of value.</typeparam>
-    public class Serialization<TKey, TValue> : ISerializationCallbackReceiver
+    public class DictionaryAvatar<TKey, TValue> : ISerializationCallbackReceiver
     {
         /// <summary>
         /// List of keys.
@@ -70,7 +43,7 @@ namespace MGS.UCommon.Generic
         /// Constructor.
         /// </summary>
         /// <param name="source">Source dictionary.</param>
-        public Serialization(Dictionary<TKey, TValue> source)
+        public DictionaryAvatar(Dictionary<TKey, TValue> source)
         {
             Source = source;
         }
