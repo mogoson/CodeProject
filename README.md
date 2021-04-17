@@ -38,11 +38,6 @@
 - [WinCommon](./WinCommon/README.md)
 - [WinLibrary](./WinLibrary/README.md)
 
-## Contact
-- If you have any questions, feel free to contact me at mogoson@outlook.com.
-
-
-
 ------
 
-Copyright © 2021 Mogoson. All rights reserved.
+Copyright © 2021 Mogoson. All rights reserved.	mogoson@outlook.com
