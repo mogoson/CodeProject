@@ -28,10 +28,10 @@ namespace MGS.Logger
 
         #region Public Method
         /// <summary>
-        /// Add logger to utility.
+        /// Register logger to utility.
         /// </summary>
         /// <param name="logger">Logger for output message.</param>
-        public static void AddLogger(ILogger logger)
+        public static void Register(ILogger logger)
         {
             if (logger == null)
             {
@@ -47,10 +47,10 @@ namespace MGS.Logger
         }
 
         /// <summary>
-        /// Remove logger from utility.
+        /// Unregister logger from utility.
         /// </summary>
         /// <param name="logger">Logger for output message.</param>
-        public static void RemoveLogger(ILogger logger)
+        public static void Unregister(ILogger logger)
         {
             if (loggers.Contains(logger))
             {
@@ -61,7 +61,7 @@ namespace MGS.Logger
         /// <summary>
         /// Clear the loggers of utility.
         /// </summary>
-        public static void ClearLoggers()
+        public static void Clear()
         {
             loggers.Clear();
         }
