@@ -55,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Generic\Struct\PlaneArea.cs" />
     <Compile Include="Serialization\DictionaryAvatar.cs" />
+    <Compile Include="Serialization\JsonUtilityPro.cs" />
     <Compile Include="Serialization\ListAvatar.cs" />
     <Compile Include="Utility\ColorBlendUtility.cs" />
     <Compile Include="Utility\EventSystemUtility.cs" />
