@@ -18,7 +18,9 @@ namespace MGS.UCommon.Serialization
     /// <summary>
     /// Avatar for List serialize by JsonUtility.
     /// </summary>
-    /// <typeparam name="T">Type of list item.</typeparam>
+    /// <typeparam name="T">Type of list item.
+    /// The T must with SerializableAttribute and public field or private property with SerializeField Attribute if custom type.
+    /// </typeparam>
     public class ListAvatar<T>
     {
         /// <summary>

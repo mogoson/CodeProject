@@ -18,8 +18,12 @@ namespace MGS.UCommon.Serialization
     /// <summary>
     /// Avatar for Dictionary serialize by JsonUtility.
     /// </summary>
-    /// <typeparam name="TKey">Type of key.</typeparam>
-    /// <typeparam name="TValue">Type of value.</typeparam>
+    /// <typeparam name="TKey">Type of key.
+    /// The T must with SerializableAttribute and public field or private property with SerializeField Attribute if custom type.
+    /// </typeparam>
+    /// <typeparam name="TValue">Type of value.
+    /// The T must with SerializableAttribute and public field or private property with SerializeField Attribute if custom type.
+    /// </typeparam>
     public class DictionaryAvatar<TKey, TValue> : ISerializationCallbackReceiver
     {
         /// <summary>

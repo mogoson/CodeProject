@@ -23,7 +23,9 @@ namespace MGS.UCommon.Serialization
         /// <summary>
         /// Deserialize List from json.
         /// </summary>
-        /// <typeparam name="T">Type of List item.</typeparam>
+        /// <typeparam name="T">Type of List item.
+        /// The T must with SerializableAttribute and public field or private property with SerializeField Attribute if custom type.
+        /// </typeparam>
         /// <param name="json">Json text.</param>
         /// <returns>List object.</returns>
         public static List<T> FromJson<T>(string json)
@@ -40,7 +42,9 @@ namespace MGS.UCommon.Serialization
         /// <summary>
         /// Serialize List to json.
         /// </summary>
-        /// <typeparam name="T">Type of List item.</typeparam>
+        /// <typeparam name="T">Type of List item.
+        /// The T must with SerializableAttribute and public field or private property with SerializeField Attribute if custom type.
+        /// </typeparam>
         /// <param name="list">Source list.</param>
         /// <returns>Json text.</returns>
         public static string ToJson<T>(List<T> list)
@@ -52,8 +56,12 @@ namespace MGS.UCommon.Serialization
         /// <summary>
         /// Deserialize Dictionary from json.
         /// </summary>
-        /// <typeparam name="TKey">Type of Dictionary key.</typeparam>
-        /// <typeparam name="TValue">Type of Dictionary velue.</typeparam>
+        /// <typeparam name="TKey">Type of Dictionary key.
+        /// The T must with SerializableAttribute and public field or private property with SerializeField Attribute if custom type.
+        /// </typeparam>
+        /// <typeparam name="TValue">Type of Dictionary velue.
+        /// The T must with SerializableAttribute and public field or private property with SerializeField Attribute if custom type.
+        /// </typeparam>
         /// <param name="json">Json text.</param>
         /// <returns>Dictionary object.</returns>
         public static Dictionary<TKey, TValue> FromJson<TKey, TValue>(string json)
@@ -70,8 +78,12 @@ namespace MGS.UCommon.Serialization
         /// <summary>
         /// Serialize Dictionary to json.
         /// </summary>
-        /// <typeparam name="TKey">Type of Dictionary key.</typeparam>
-        /// <typeparam name="TValue">Type of Dictionary velue.</typeparam>
+        /// <typeparam name="TKey">Type of Dictionary key.
+        /// The T must with SerializableAttribute and public field or private property with SerializeField Attribute if custom type.
+        /// </typeparam>
+        /// <typeparam name="TValue">Type of Dictionary velue.
+        /// The T must with SerializableAttribute and public field or private property with SerializeField Attribute if custom type.
+        /// </typeparam>
         /// <param name="dictionary">Source dictionary.</param>
         /// <returns>Json text.</returns>
         public static string ToJson<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
