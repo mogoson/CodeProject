@@ -79,5 +79,36 @@ namespace MGS.UCommon.Serialization
             var avatar = new DictionaryAvatar<TKey, TValue>(dictionary);
             return JsonUtility.ToJson(avatar);
         }
+
+        /// <summary>
+        /// Link avatar shell to list.
+        /// </summary>
+        /// <param name="listJson">Json text of list.</param>
+        /// <returns>Json text of list avatar.</returns>
+        public static string LinkAvatarShellToList(string listJson)
+        {
+            if (string.IsNullOrEmpty(listJson))
+            {
+                return listJson;
+            }
+
+            return "{\"source\":" + listJson + "}";
+        }
+
+        /// <summary>
+        /// Unlink avatar shell from list.
+        /// </summary>
+        /// <param name="listAvatarJson">Json text of list avatar.</param>
+        /// <returns>Json text of list.</returns>
+        public static string UnlinkAvatarShellFromList(string listAvatarJson)
+        {
+            if (string.IsNullOrEmpty(listAvatarJson))
+            {
+                return listAvatarJson;
+            }
+
+            var listJson = listAvatarJson.Replace("{\"source\":", string.Empty);
+            return listJson.Remove(listJson.LastIndexOf("}"));
+        }
     }
 }
