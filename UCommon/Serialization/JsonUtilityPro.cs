@@ -26,7 +26,7 @@ namespace MGS.UCommon.Serialization
         /// <typeparam name="T">Type of List item.
         /// The T must with SerializableAttribute and public field or private property with SerializeField Attribute if custom type.
         /// </typeparam>
-        /// <param name="json">Json text.</param>
+        /// <param name="json">Json text of ListAvatar.</param>
         /// <returns>List object.</returns>
         public static List<T> FromJson<T>(string json)
         {
@@ -46,7 +46,7 @@ namespace MGS.UCommon.Serialization
         /// The T must with SerializableAttribute and public field or private property with SerializeField Attribute if custom type.
         /// </typeparam>
         /// <param name="list">Source list.</param>
-        /// <returns>Json text.</returns>
+        /// <returns>Json text of ListAvatar.</returns>
         public static string ToJson<T>(List<T> list)
         {
             var avatar = new ListAvatar<T>(list);
@@ -62,7 +62,7 @@ namespace MGS.UCommon.Serialization
         /// <typeparam name="TValue">Type of Dictionary velue.
         /// The T must with SerializableAttribute and public field or private property with SerializeField Attribute if custom type.
         /// </typeparam>
-        /// <param name="json">Json text.</param>
+        /// <param name="json">Json text of DictionaryAvatar.</param>
         /// <returns>Dictionary object.</returns>
         public static Dictionary<TKey, TValue> FromJson<TKey, TValue>(string json)
         {
@@ -85,7 +85,7 @@ namespace MGS.UCommon.Serialization
         /// The T must with SerializableAttribute and public field or private property with SerializeField Attribute if custom type.
         /// </typeparam>
         /// <param name="dictionary">Source dictionary.</param>
-        /// <returns>Json text.</returns>
+        /// <returns>Json text of DictionaryAvatar.</returns>
         public static string ToJson<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
         {
             var avatar = new DictionaryAvatar<TKey, TValue>(dictionary);
