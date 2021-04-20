@@ -93,33 +93,33 @@ namespace MGS.UCommon.Serialization
         }
 
         /// <summary>
-        /// Link avatar shell to list.
+        /// Parse list json to ListAvatar json.
         /// </summary>
-        /// <param name="listJson">Json text of list.</param>
-        /// <returns>Json text of list avatar.</returns>
-        public static string LinkAvatarShellToList(string listJson)
+        /// <param name="json">Json text of list.</param>
+        /// <returns>Json text of ListAvatar.</returns>
+        public static string ToListAvatar(string json)
         {
-            if (string.IsNullOrEmpty(listJson))
+            if (string.IsNullOrEmpty(json))
             {
-                return listJson;
+                return json;
             }
 
-            return "{\"source\":" + listJson + "}";
+            return "{\"source\":" + json + "}";
         }
 
         /// <summary>
-        /// Unlink avatar shell from list.
+        /// Parse ListAvatar json to list json.
         /// </summary>
-        /// <param name="listAvatarJson">Json text of list avatar.</param>
+        /// <param name="json">Json text of ListAvatar.</param>
         /// <returns>Json text of list.</returns>
-        public static string UnlinkAvatarShellFromList(string listAvatarJson)
+        public static string FromListAvatar(string json)
         {
-            if (string.IsNullOrEmpty(listAvatarJson))
+            if (string.IsNullOrEmpty(json))
             {
-                return listAvatarJson;
+                return json;
             }
 
-            var listJson = listAvatarJson.Replace("{\"source\":", string.Empty);
+            var listJson = json.Replace("{\"source\":", string.Empty);
             return listJson.Remove(listJson.LastIndexOf("}"));
         }
     }
