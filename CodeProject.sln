@@ -75,6 +75,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutofacEditor", "AutofacEdi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandServo", "CommandServo\CommandServo.csproj", "{20823512-91D2-41BF-A11D-6D6703B1FE50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{DF243958-1D22-4721-BD40-CC99DF512305}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -225,6 +227,10 @@ Global
 		{20823512-91D2-41BF-A11D-6D6703B1FE50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20823512-91D2-41BF-A11D-6D6703B1FE50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20823512-91D2-41BF-A11D-6D6703B1FE50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF243958-1D22-4721-BD40-CC99DF512305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF243958-1D22-4721-BD40-CC99DF512305}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF243958-1D22-4721-BD40-CC99DF512305}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF243958-1D22-4721-BD40-CC99DF512305}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
