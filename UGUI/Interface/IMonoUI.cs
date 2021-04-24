@@ -5,7 +5,7 @@
  *  Description  :  Interface for mono UI.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  6/24/2019
  *  Description  :  Initial development version.
  *************************************************************************/

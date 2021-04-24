@@ -5,12 +5,12 @@
  *  Description  :  Define interface of path that base on curve.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  2/28/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UCommon.Curve;
+using MGS.UCurve;
 
 namespace MGS.CurvePath
 {

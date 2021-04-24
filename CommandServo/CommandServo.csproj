@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{20823512-91D2-41BF-A11D-6D6703B1FE50}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MGS.CommandServo</RootNamespace>
+    <AssemblyName>MGS.CommandServo</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\MGS.CommandServo.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\MGS.CommandServo.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\lib\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\MonoCommandIO.cs" />
+    <Compile Include="Abstract\MonoCommandUnit.cs" />
+    <Compile Include="CommandManager.cs" />
+    <Compile Include="Interface\ICommandParser.cs" />
+    <Compile Include="Interface\ICommandIO.cs" />
+    <Compile Include="CommandServoProcessor.cs" />
+    <Compile Include="Abstract\CommandUnit.cs" />
+    <Compile Include="CommandUnitManager.cs" />
+    <Compile Include="Interface\ICommandManager.cs" />
+    <Compile Include="Interface\ICommandServoProcessor.cs" />
+    <Compile Include="Interface\ICommandUnit.cs" />
+    <Compile Include="Interface\ICommandUnitManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Struct\Command.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{55e27c1e-ecfb-4e6f-b5e0-508c882dddab}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DesignPattern\DesignPattern.csproj">
+      <Project>{1ac97d40-2405-4fb6-91f3-225e2f036fb6}</Project>
+      <Name>DesignPattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{E77FBCC0-1D82-41A0-A771-9D356E2D68F6}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UDesignPattern\UDesignPattern.csproj">
+      <Project>{BB6AB83B-B3D1-4D0C-A86E-0AA6F4CD43F2}</Project>
+      <Name>UDesignPattern</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Plugins\MGS"
+if exist %25targetDir%25\$(TargetFileName) (
+    if $(ConfigurationName)==Debug (
+        copy "$(TargetName).pdb" %25targetDir%25
+    ) else (
+         if exist "%25targetDir%25\$(TargetName).pdb" (
+            del "%25targetDir%25\$(TargetName).pdb"
+         )
+    )
+    copy "$(TargetFileName)" %25targetDir%25
+    copy "$(TargetName).xml" %25targetDir%25
+)</PostBuildEvent>
+  </PropertyGroup>
+</Project>

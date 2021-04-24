@@ -5,7 +5,7 @@
  *  Description  :  Event trigger for UI behaviour.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  8/30/2019
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -19,7 +19,7 @@ namespace MGS.UCommon.Event
     /// <summary>
     /// Event trigger for UI behaviour.
     /// </summary>
-    [AddComponentMenu("MGS/UCommon/Event/MonoEventTrigger")]
+    [AddComponentMenu("MGS/Common/MonoEventTrigger")]
     public class MonoEventTrigger : MonoBehaviour, IEventSystemHandler, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler,
         IPointerClickHandler, IBeginDragHandler, IInitializePotentialDragHandler, IDragHandler, IEndDragHandler,
         IDropHandler, IScrollHandler, IUpdateSelectedHandler, ISelectHandler, IDeselectHandler, IMoveHandler, ISubmitHandler, ICancelHandler

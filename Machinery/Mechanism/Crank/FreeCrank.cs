@@ -2,10 +2,10 @@
  *  Copyright © 2015-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  FreeCrank.cs
- *  Description  :  Define FreeCrank component.
+ *  Description  :  Define free crank component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/17/2018
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -22,31 +22,25 @@ namespace MGS.Machinery
     {
         #region Protected Method
         /// <summary>
-        /// Rotate crank by velocity.
+        /// Drive mechanism by velocity.
         /// </summary>
         /// <param name="velocity">Velocity of drive.</param>
-        /// <param name="type">Type of drive.</param>
-        protected override void DriveCrank(float velocity, DriveType type = DriveType.Ignore)
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode)
         {
-            triggerRecord = Angle;
             Angle += velocity * Time.deltaTime;
             RotateCrank(Angle);
-
-            if (CheckTriggers())
-            {
-                Angle = triggerRecord;
-                RotateCrank(Angle);
-            }
+            return DriveRockers(velocity, mode);
         }
 
         /// <summary>
         /// Rotate crank.
         /// </summary>
         /// <param name="angle">Current rotate angle of crank.</param>
-        protected void RotateCrank(float angle)
+        protected virtual void RotateCrank(float angle)
         {
             transform.localRotation = Quaternion.Euler(StartAngles + new Vector3(0, 0, angle));
-            DriveRockers();
         }
         #endregion
     }

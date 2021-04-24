@@ -5,7 +5,7 @@
  *  Description  :  Slider joint mechanism.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  3/20/2020
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -18,7 +18,7 @@ namespace MGS.Machinery
     /// <summary>
     /// Slider joint mechanism.
     /// </summary>
-    public abstract class SliderMechanism : RockerLinkMechanism
+    public abstract class SliderMechanism : LinkRockerMechanism
     {
         #region Field and Property
         /// <summary>
@@ -26,6 +26,21 @@ namespace MGS.Machinery
         /// </summary>
         [Tooltip("Stroke of slider.")]
         public Range stroke = new Range(-1, 1);
+
+        /// <summary>
+        /// Mechanism is stuck?
+        /// </summary>
+        public override bool IsStuck
+        {
+            get
+            {
+                if (State != TelescopicState.Free)
+                {
+                    return true;
+                }
+                return base.IsStuck;
+            }
+        }
 
         /// <summary>
         /// Displacement of slider.
@@ -39,7 +54,7 @@ namespace MGS.Machinery
         {
             get
             {
-                var state = TelescopicState.Between;
+                var state = TelescopicState.Free;
                 if (Displacement <= stroke.min)
                 {
                     state = TelescopicState.Minimum;
@@ -58,14 +73,6 @@ namespace MGS.Machinery
         public Vector3 StartPosition { protected set; get; }
         #endregion
 
-        #region Protected Method
-        /// <summary>
-        /// Move slider by velocity.
-        /// </summary>
-        /// <param name="velocity">Velocity of move.</param>
-        protected abstract void DriveSlider(float velocity);
-        #endregion
-
         #region Public Method
         /// <summary>
         /// Initialize joint.
@@ -74,16 +81,6 @@ namespace MGS.Machinery
         {
             base.Initialize();
             StartPosition = transform.localPosition;
-        }
-
-        /// <summary>
-        /// Drive slider by velocity.
-        /// </summary>
-        /// <param name="velocity">Velocity of drive.</param>
-        /// <param name="type">Type of drive.</param>
-        public override void Drive(float velocity, DriveType type = DriveType.Ignore)
-        {
-            DriveSlider(velocity);
         }
         #endregion
     }

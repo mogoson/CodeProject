@@ -5,12 +5,12 @@
  *  Description  :  Define CrankRocker component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/17/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Mathematics;
+using MGS.Mathematics;
 using UnityEngine;
 
 namespace MGS.Machinery
@@ -48,6 +48,21 @@ namespace MGS.Machinery
         public bool restrict = false;
 
         /// <summary>
+        /// Mechanism is stuck?
+        /// </summary>
+        public override bool IsStuck
+        {
+            get
+            {
+                if (rocker.IsStuck)
+                {
+                    return true;
+                }
+                return base.IsStuck;
+            }
+        }
+
+        /// <summary>
         /// All the joints of this mechanism are set intact.
         /// </summary>
         public override bool IsIntact { get { return crank && link && rocker && joint; } }
@@ -72,7 +87,8 @@ namespace MGS.Machinery
         /// <summary>
         /// Drive joints those link with this mechanism.
         /// </summary>
-        protected override void DriveLinkJoints()
+        /// <returns>Drive joints is unrestricted?</returns>
+        protected override bool DriveLinkJoints()
         {
             //Rivet joints.
             crank.transform.localPosition = CorrectPosition(crank.transform.localPosition);
@@ -85,11 +101,9 @@ namespace MGS.Machinery
             var vectors = Geometry.GetIntersections(linkCircle, rockerCircle);
             if (vectors == null)
             {
-                IsLock = true;
-                return;
+                return false;
             }
 
-            IsLock = false;
             var vector = Vector.Zero;
             if (vectors.Count == 1)
             {
@@ -118,8 +132,9 @@ namespace MGS.Machinery
             }
 
             joint.localPosition = new Vector3((float)vector.x, (float)vector.y);
-            link.Drive(0, DriveType.Ignore);
-            rocker.Drive(0, DriveType.Ignore);
+            link.Drive(0, DriveMode.Ignore);
+            rocker.Drive(0, DriveMode.Ignore);
+            return true;
         }
         #endregion
 
@@ -129,6 +144,8 @@ namespace MGS.Machinery
         /// </summary>
         public override void Initialize()
         {
+            base.Initialize();
+
             //Correct crank.
             crank.transform.localEulerAngles = CorrectAngles(crank.transform.localEulerAngles);
             crank.Initialize();

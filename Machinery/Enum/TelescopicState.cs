@@ -5,7 +5,7 @@
  *  Description  :  Mode of keep up.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  3/20/2020
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -23,9 +23,9 @@ namespace MGS.Machinery
         Minimum = 0,
 
         /// <summary>
-        /// State between minimum and maximum.
+        /// Free state.
         /// </summary>
-        Between = 1,
+        Free = 1,
 
         /// <summary>
         /// Maximum state.

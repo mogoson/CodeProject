@@ -5,7 +5,7 @@
  *  Description  :  Define Belt component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  6/22/2017
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -37,6 +37,21 @@ namespace MGS.Machinery
         public float coefficient = 1;
 
         /// <summary>
+        /// Mechanism is stuck?
+        /// </summary>
+        public override bool IsStuck
+        {
+            get
+            {
+                if (CheckEngageStuck())
+                {
+                    return true;
+                }
+                return base.IsStuck;
+            }
+        }
+
+        /// <summary>
         /// Renderer of belt.
         /// </summary>
         protected Renderer beltRenderer;
@@ -44,15 +59,48 @@ namespace MGS.Machinery
 
         #region Protected Method
         /// <summary>
-        /// Drive engage mechanisms by linear velocity.
+        /// Check one of the engages is stuck?
         /// </summary>
-        /// <param name="velocity">Linear velocity of drive.</param>
-        protected void DriveEngages(float velocity)
+        /// <returns>One of the engages is stuck?</returns>
+        protected bool CheckEngageStuck()
         {
             foreach (var engage in engages)
             {
-                engage.Drive(velocity, DriveType.Linear);
+                if (engage.IsStuck)
+                {
+                    return true;
+                }
             }
+            return false;
+        }
+
+        /// <summary>
+        /// Drive mechanism by velocity.
+        /// </summary>
+        /// <param name="velocity">Velocity of drive.</param>
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode = DriveMode.Ignore)
+        {
+            beltRenderer.material.mainTextureOffset += new Vector2(velocity * coefficient * Time.deltaTime, 0);
+            return DriveEngages(-velocity);
+        }
+
+        /// <summary>
+        /// Drive engage mechanisms by linear velocity.
+        /// </summary>
+        /// <param name="velocity">Linear velocity of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected bool DriveEngages(float velocity)
+        {
+            foreach (var engage in engages)
+            {
+                if (!engage.Drive(velocity, DriveMode.Linear))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         #endregion
 
@@ -63,17 +111,6 @@ namespace MGS.Machinery
         public override void Initialize()
         {
             beltRenderer = GetComponent<Renderer>();
-        }
-
-        /// <summary>
-        /// Drive belt by linear velocity.
-        /// </summary>
-        /// <param name="velocity">Linear velocity of drive.</param>
-        /// <param name="type">Invalid parameter (Belt can only drived by linear velocity).</param>
-        public override void Drive(float velocity, DriveType type = DriveType.Ignore)
-        {
-            beltRenderer.material.mainTextureOffset += new Vector2(velocity * coefficient * Time.deltaTime, 0);
-            DriveEngages(-velocity);
         }
 
         /// <summary>

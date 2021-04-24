@@ -5,7 +5,7 @@
  *  Description  :  Define CoaxeGear component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  5/12/2018
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -20,18 +20,19 @@ namespace MGS.Machinery
     [AddComponentMenu("MGS/Machinery/CoaxeGear")]
     public class CoaxeGear : Gear
     {
-        #region Public Method
+        #region Protected Method
         /// <summary>
-        /// Drive gear by velocity.
+        /// Drive mechanism by velocity.
         /// </summary>
         /// <param name="velocity">Velocity of drive.</param>
-        /// <param name="type">Type of drive.</param>
-        public override void Drive(float velocity, DriveType type)
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode)
         {
             var angular = velocity;
             var linear = velocity;
 
-            if (type == DriveType.Linear)
+            if (mode == DriveMode.Linear)
             {
                 angular = velocity / radius * Mathf.Rad2Deg;
             }
@@ -40,8 +41,12 @@ namespace MGS.Machinery
                 linear = velocity * Mathf.Deg2Rad * radius;
             }
 
-            DriveCoaxes(angular);
-            DriveEngages(-linear);
+            if (!DriveCoaxes(angular))
+            {
+                return false;
+            }
+
+            return DriveEngages(-linear);
         }
         #endregion
     }

@@ -5,7 +5,7 @@
  *  Description  :  Define sequence frames animation base on UV offset.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  3/8/2018
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -17,7 +17,7 @@ namespace MGS.UAnimation
     /// <summary>
     /// Sequence frames animation base on UV offset.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/UVFramesAnimation")]
+    [AddComponentMenu("MGS/Animation/UVFramesAnimation")]
     [RequireComponent(typeof(Renderer))]
     public class UVFramesAnimation : FramesAnimation
     {

@@ -5,7 +5,7 @@
  *  Description  :  Define Differential component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  6/1/2018
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -46,6 +46,22 @@ namespace MGS.Machinery
         public Axle rightAxle;
 
         /// <summary>
+        /// Mechanism is stuck?
+        /// </summary>
+        public override bool IsStuck
+        {
+            get
+            {
+                if (leftGear.IsStuck || rightGear.IsStuck ||
+                    leftAxle.IsStuck || rightAxle.IsStuck)
+                {
+                    return true;
+                }
+                return base.IsStuck;
+            }
+        }
+
+        /// <summary>
         /// Offset coefficient of differential.
         /// </summary>
         public float Coefficient
@@ -75,20 +91,33 @@ namespace MGS.Machinery
         protected float rightCoefficient = 1;
         #endregion
 
-        #region Public Method
+        #region Protected Method
         /// <summary>
-        /// Drive differential by angular velocity.
+        /// Drive mechanism by velocity.
         /// </summary>
-        /// <param name="velocity">Angular velocity of drive.</param>
-        /// <param name="type">Invalid parameter (Differential can only drived by angular velocity).</param>
-        public override void Drive(float velocity, DriveType type = DriveType.Ignore)
+        /// <param name="velocity">Velocity of drive.</param>
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode = DriveMode.Ignore)
         {
-            type = DriveType.Angular;
-            leftGear.Drive(velocity * coefficient, type);
-            rightGear.Drive(velocity * coefficient, type);
+            mode = DriveMode.Angular;
 
-            leftAxle.Drive(-velocity * leftCoefficient, type);
-            rightAxle.Drive(velocity * rightCoefficient, type);
+            if (!leftGear.Drive(velocity * coefficient, mode))
+            {
+                return false;
+            }
+
+            if (!rightGear.Drive(velocity * coefficient, mode))
+            {
+                return false;
+            }
+
+            if (!leftAxle.Drive(-velocity * leftCoefficient, mode))
+            {
+                return false;
+            }
+
+            return rightAxle.Drive(velocity * rightCoefficient, mode);
         }
         #endregion
     }

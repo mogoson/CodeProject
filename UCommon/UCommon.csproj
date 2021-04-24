@@ -36,20 +36,15 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="UnityEngine">
-      <HintPath>..\Library\UnityEngine.dll</HintPath>
+      <HintPath>..\lib\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\Library\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\lib\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Curve\BezierCurve.cs" />
-    <Compile Include="Curve\EllipseCurve.cs" />
-    <Compile Include="Curve\HelixCurve.cs" />
-    <Compile Include="Curve\HermiteCurve.cs" />
-    <Compile Include="Curve\Interface\ICurve.cs" />
-    <Compile Include="Curve\SinCurve.cs" />
     <Compile Include="Event\MonoEventTrigger.cs" />
+    <Compile Include="Generic\Enum\Axis.cs" />
     <Compile Include="Generic\Enum\ColorBlendMode.cs" />
     <Compile Include="Generic\Enum\LerpMode.cs" />
     <Compile Include="Extension\GameObjectExtention.cs" />
@@ -58,9 +53,10 @@
     <Compile Include="Generic\Enum\MirrorMode.cs" />
     <Compile Include="Generic\Struct\Range.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DesignPattern\Singleton\SingleBehaviour.cs" />
-    <Compile Include="DesignPattern\Singleton\SingleMonoBehaviour.cs" />
     <Compile Include="Generic\Struct\PlaneArea.cs" />
+    <Compile Include="Serialization\DictionaryAvatar.cs" />
+    <Compile Include="Serialization\JsonUtilityPro.cs" />
+    <Compile Include="Serialization\ListAvatar.cs" />
     <Compile Include="Utility\ColorBlendUtility.cs" />
     <Compile Include="Utility\EventSystemUtility.cs" />
     <Compile Include="Utility\MeshUtility.cs" />
@@ -71,6 +67,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{55e27c1e-ecfb-4e6f-b5e0-508c882dddab}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{E77FBCC0-1D82-41A0-A771-9D356E2D68F6}</Project>
+      <Name>Logger</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

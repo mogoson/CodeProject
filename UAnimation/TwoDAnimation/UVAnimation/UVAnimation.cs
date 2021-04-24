@@ -5,7 +5,7 @@
  *  Description  :  Define UV offset animation.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  3/8/2018
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -17,7 +17,7 @@ namespace MGS.UAnimation
     /// <summary>
     /// Animation base on UV offset.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/UVAnimation")]
+    [AddComponentMenu("MGS/Animation/UVAnimation")]
     [RequireComponent(typeof(Renderer))]
     public class UVAnimation : MonoAnimation
     {

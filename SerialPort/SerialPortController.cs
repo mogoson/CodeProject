@@ -5,7 +5,7 @@
  *  Description  :  Synchronous read and write serialport data.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/5/2017
  *  Description  :  Initial development version.
  *  
@@ -15,8 +15,8 @@
  *  Description  :  Singleton pattern version.
  *************************************************************************/
 
-using MGS.Common.DesignPattern;
-using MGS.Common.Logger;
+using MGS.DesignPattern;
+using MGS.Logger;
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;
@@ -120,7 +120,7 @@ namespace MGS.IO.Ports
         /// </summary>
         private SerialPortController()
         {
-            InitializeSerialPort(out string error);
+            InitializeSerialPort();
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace MGS.IO.Ports
                 }
                 catch (TimeoutException tEx)
                 {
-                    LogUtility.Log("Read bytes from serialport buffer exception: {0}", tEx.Message);
+                    LogUtility.Log("Read bytes from serialport buffer exception: {0}\r\n{1}", tEx.Message, tEx.StackTrace);
                     ClearReadBytes();
                     IsReadTimeout = true;
                     Thread.Sleep(config.readCycle);
@@ -191,7 +191,7 @@ namespace MGS.IO.Ports
                 }
                 catch (Exception ex)
                 {
-                    LogUtility.LogError("Read bytes from serialport buffer exception: {0}", ex.Message);
+                    LogUtility.LogError("Read bytes from serialport buffer {0}\r\n{1}", ex.Message, ex.StackTrace);
                     readThread.Abort();
                     ClearReadBytes();
                     IsReadTimeout = false;
@@ -224,14 +224,14 @@ namespace MGS.IO.Ports
                 }
                 catch (TimeoutException tEx)
                 {
-                    LogUtility.Log("Write bytes to serialport exception: {0}", tEx.Message);
+                    LogUtility.Log("Write bytes to serialport exception: {0}\r\n{1}", tEx.Message, tEx.StackTrace);
                     IsWriteTimeout = true;
                     Thread.Sleep(config.writeCycle);
                     continue;
                 }
                 catch (Exception ex)
                 {
-                    LogUtility.LogError("Write bytes to serialport buffer exception: {0}", ex.Message);
+                    LogUtility.LogError("Write bytes to serialport buffer {0}\r\n{1}", ex.Message, ex.StackTrace);
                     writeThread.Abort();
                     IsWriteTimeout = false;
                     break;
@@ -252,12 +252,11 @@ namespace MGS.IO.Ports
         /// <summary>
         /// Initialize serialport.
         /// </summary>
-        /// <param name="error">Error message.</param>
         /// <returns>Initialize serialport use config file succeed?</returns>
-        public bool InitializeSerialPort(out string error)
+        public bool InitializeSerialPort()
         {
             //Read config and initialize serialport.
-            config = SerialPortConfigurer.Instance.ReadConfig(out error);
+            config = SerialPortConfigurer.Instance.ReadConfig();
             var isReadConfig = true;
             if (config == null)
             {
@@ -304,7 +303,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception ex)
             {
-                error = ex.Message;
+                error = string.Format("{0}\r\n{1}", ex.Message, ex.StackTrace);
                 LogUtility.LogError("Open serialport exception: {0}", error);
                 return false;
             }
@@ -347,7 +346,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception ex)
             {
-                error = ex.Message;
+                error = string.Format("{0}\r\n{1}", ex.Message, ex.StackTrace);
                 LogUtility.LogError("Close serialport exception: {0}", error);
                 return false;
             }
@@ -393,7 +392,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception ex)
             {
-                error = ex.Message;
+                error = string.Format("{0}\r\n{1}", ex.Message, ex.StackTrace);
                 LogUtility.LogError("Start read serialport data exception: {0}", error);
                 return false;
             }
@@ -421,7 +420,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception ex)
             {
-                error = ex.Message;
+                error = string.Format("{0}\r\n{1}", ex.Message, ex.StackTrace);
                 LogUtility.LogError("Stop read serialport data exception: {0}", error);
                 return false;
             }
@@ -463,7 +462,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception ex)
             {
-                error = ex.Message;
+                error = string.Format("{0}\r\n{1}", ex.Message, ex.StackTrace);
                 LogUtility.LogError("Start write data to serialport exception: {0}", error);
                 return false;
             }
@@ -490,7 +489,7 @@ namespace MGS.IO.Ports
             }
             catch (Exception ex)
             {
-                error = ex.Message;
+                error = string.Format("{0}\r\n{1}", ex.Message, ex.StackTrace);
                 LogUtility.LogError("Stop write data to serialport exception: {0}", error);
                 return false;
             }

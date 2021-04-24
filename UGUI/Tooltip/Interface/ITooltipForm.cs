@@ -5,7 +5,7 @@
  *  Description  :  Interface for tool tip form.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  7/2/2019
  *  Description  :  Initial development version.
  *************************************************************************/

@@ -1,11 +1,11 @@
 /*************************************************************************
- *  Copyright © 2018-2019 Mogoson. All rights reserved.
+ *  Copyright ? 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  MeshUtility.cs
  *  Description  :  Utility for mesh.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  10/26/2018
  *  Description  :  Initial development version.
  *************************************************************************/

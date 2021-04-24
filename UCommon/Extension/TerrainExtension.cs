@@ -5,7 +5,7 @@
  *  Description  :  Extension for UnityEngine.Terrain.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/29/2016
  *  Description  :  Initial development version.
  *************************************************************************/

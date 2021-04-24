@@ -1,11 +1,11 @@
 /*************************************************************************
- *  Copyright © 2019 Mogoson. All rights reserved.
+ *  Copyright ? 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ISubtitle.cs
  *  Description  :  Interface of subtitle.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/25/2019
  *  Description  :  Initial development version.
  *************************************************************************/

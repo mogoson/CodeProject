@@ -1,16 +1,16 @@
 ﻿/*************************************************************************
- *  Copyright © 2020 NetDragon Websoft Inc. All rights reserved.
+ *  Copyright © 2020 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  MD5CryptoUtility.cs
  *  Description  :  Utility for MD5 crypto service provider.
  *------------------------------------------------------------------------
- *  Author       :  LinLang(525015)
- *  Version      :  0.1
+ *  Author       :  Mogoson
+ *  Version      :  1.0
  *  Date         :  3/23/2020
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Logger;
+using MGS.Logger;
 using System;
 using System.IO;
 using System.Security.Cryptography;
@@ -82,7 +82,7 @@ namespace MGS.Common.Crypto
             }
             catch (Exception ex)
             {
-                LogUtility.LogError("Compute hash exception: {0}", ex.Message);
+                LogUtility.LogError("Compute hash exception: {0}\r\n{1}", ex.Message, ex.StackTrace);
                 return null;
             }
         }

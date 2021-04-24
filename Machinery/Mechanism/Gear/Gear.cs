@@ -5,7 +5,7 @@
  *  Description  :  Define Gear component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  6/22/2017
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -34,34 +34,52 @@ namespace MGS.Machinery
         /// </summary>
         [Tooltip("Radius of gear.")]
         public float radius = 0.5f;
-        #endregion
 
-        #region Protected Method
         /// <summary>
-        /// Drive engage mechanisms by linear velocity.
+        /// Mechanism is stuck?
         /// </summary>
-        /// <param name="velocity">Linear velocity of drive.</param>
-        protected void DriveEngages(float velocity)
+        public override bool IsStuck
         {
-            foreach (var engage in engages)
+            get
             {
-                engage.Drive(velocity, DriveType.Linear);
+                if (CheckEngageStuck())
+                {
+                    return true;
+                }
+                return base.IsStuck;
             }
         }
         #endregion
 
-        #region Public Method
+        #region Protected Method
         /// <summary>
-        /// Drive gear by velocity.
+        /// Check one of the engages is stuck?
+        /// </summary>
+        /// <returns>Return true if one of the engages is stuck.</returns>
+        protected bool CheckEngageStuck()
+        {
+            foreach (var engage in engages)
+            {
+                if (engage.IsStuck)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Drive mechanism by velocity.
         /// </summary>
         /// <param name="velocity">Velocity of drive.</param>
-        /// <param name="type">Type of drive.</param>
-        public override void Drive(float velocity, DriveType type)
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode)
         {
             var angular = velocity;
             var linear = velocity;
 
-            if (type == DriveType.Linear)
+            if (mode == DriveMode.Linear)
             {
                 angular = velocity / radius * Mathf.Rad2Deg;
             }
@@ -71,10 +89,32 @@ namespace MGS.Machinery
             }
 
             transform.Rotate(Vector3.forward, angular * Time.deltaTime, Space.Self);
-            DriveCoaxes(angular);
-            DriveEngages(-linear);
+            if (!DriveCoaxes(angular))
+            {
+                return false;
+            }
+            return DriveEngages(-linear);
         }
 
+        /// <summary>
+        /// Drive engage mechanisms by linear velocity.
+        /// </summary>
+        /// <param name="velocity">Linear velocity of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected bool DriveEngages(float velocity)
+        {
+            foreach (var engage in engages)
+            {
+                if (!engage.Drive(velocity, DriveMode.Linear))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        #endregion
+
+        #region Public Method
         /// <summary>
         /// Link engage.
         /// </summary>

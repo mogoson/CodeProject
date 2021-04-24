@@ -1,17 +1,17 @@
 /*************************************************************************
- *  Copyright © 2019 Mogoson. All rights reserved.
+ *  Copyright ? 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  SRTSubtitle.cs
  *  Description  :  SRT subtitle of video.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/25/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
 using MGS.Common.IO;
-using MGS.Common.Logger;
+using MGS.Logger;
 using System;
 using System.Collections.Generic;
 using System.Text;

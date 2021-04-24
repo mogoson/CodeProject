@@ -5,12 +5,12 @@
  *  Description  :  Converter of structure.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  10/12/2015
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Logger;
+using MGS.Logger;
 using System.Runtime.InteropServices;
 
 namespace MGS.Common.Converter

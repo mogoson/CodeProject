@@ -5,15 +5,14 @@
  *  Description  :  Context menu form.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/12/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Logger;
+using MGS.Logger;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace MGS.UGUI
 {

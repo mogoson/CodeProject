@@ -1,17 +1,17 @@
 /*************************************************************************
- *  Copyright © 2018-2019 Mogoson. All rights reserved.
+ *  Copyright ? 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ContextMenuItem.cs
  *  Description  :  Define context menu item.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  9/16/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
 using MGS.Common.Generic;
-using MGS.Common.Logger;
+using MGS.Logger;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -5,7 +5,7 @@
  *  Description  :  Define Synchronizer component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  6/27/2017
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -27,20 +27,56 @@ namespace MGS.Machinery
         /// </summary>
         [Tooltip("Mechanisms drive by this synchronizer.")]
         public List<Mechanism> mechanisms = new List<Mechanism>();
+
+        /// <summary>
+        /// Mechanism is stuck?
+        /// </summary>
+        public override bool IsStuck
+        {
+            get
+            {
+                if (CheckMechanismStuck())
+                {
+                    return true;
+                }
+                return base.IsStuck;
+            }
+        }
         #endregion
 
-        #region Public Method
+        #region Protected Method
         /// <summary>
-        /// Drive synchronizer by velocity.
+        /// Check if one of the mechanisms is stuck.
         /// </summary>
-        /// <param name="velocity">Velocity of drive.</param>
-        /// <param name="type">Type of drive.</param>
-        public override void Drive(float velocity, DriveType type)
+        /// <returns>One of the mechanisms is stuck?</returns>
+        protected bool CheckMechanismStuck()
         {
             foreach (var mechanism in mechanisms)
             {
-                mechanism.Drive(velocity, type);
+                if (mechanism.IsStuck)
+                {
+                    return true;
+                }
             }
+            return false;
+        }
+
+        /// <summary>
+        /// Drive mechanism by velocity.
+        /// </summary>
+        /// <param name="velocity">Velocity of drive.</param>
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode)
+        {
+            foreach (var mechanism in mechanisms)
+            {
+                if (!mechanism.Drive(velocity, mode))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         #endregion
     }

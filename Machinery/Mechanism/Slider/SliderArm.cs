@@ -5,7 +5,7 @@
  *  Description  :  Define SliderArm component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/17/2018
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -27,31 +27,38 @@ namespace MGS.Machinery
         protected int sliderIndex = 0;
         #endregion
 
-        #region Public Method
+        #region Protected Method
         /// <summary>
-        /// Drive arm by velocity.
+        /// Drive mechanism by velocity.
         /// </summary>
         /// <param name="velocity">Velocity of drive.</param>
-        /// <param name="type">Type of drive.</param>
-        public override void Drive(float velocity, DriveType type = DriveType.Ignore)
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode)
         {
-            var currentJoint = sliders[sliderIndex];
-            currentJoint.Drive(velocity, DriveType.Ignore);
+            var current = sliders[sliderIndex];
+            if (!current.Drive(velocity, mode))
+            {
+                return false;
+            }
+
             if (velocity >= 0)
             {
-                if (currentJoint.State == TelescopicState.Maximum)
+                if (current.State == TelescopicState.Maximum)
                 {
                     sliderIndex++;
                 }
             }
             else
             {
-                if (currentJoint.State == TelescopicState.Minimum)
+                if (current.State == TelescopicState.Minimum)
                 {
                     sliderIndex--;
                 }
             }
-            sliderIndex = ClampIndex(sliderIndex);
+
+            sliderIndex = ClampSliderIndex(sliderIndex);
+            return true;
         }
         #endregion
     }

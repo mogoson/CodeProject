@@ -5,11 +5,12 @@
  *  DeTargetion  :  Editor for CurvePathAnimation.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  2/28/2018
  *  DeTargetion  :  Initial development version.
  *************************************************************************/
 
+using MGS.Common.Reflection;
 using MGS.UAnimation;
 using MGS.UCommonEditor;
 using UnityEditor;
@@ -55,7 +56,7 @@ namespace MGS.UAnimationEditor
 
             if (GUILayout.Button("Align To Path"))
             {
-                InvokeMethod(Target, "Initialize");
+                Reflector.InvokeMethod(Target, "Initialize");
                 Target.Path.Rebuild();
                 Target.Rewind();
 

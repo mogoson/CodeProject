@@ -5,7 +5,7 @@
  *  Description  :  Define animation base on curve path.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  2/28/2018
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -18,7 +18,7 @@ namespace MGS.UAnimation
     /// <summary>
     /// Animation base on curve path.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/CurvePathAnimation")]
+    [AddComponentMenu("MGS/Animation/CurvePathAnimation")]
     public class CurvePathAnimation : MonoAnimation, IPathAnimation
     {
         #region Field and Property

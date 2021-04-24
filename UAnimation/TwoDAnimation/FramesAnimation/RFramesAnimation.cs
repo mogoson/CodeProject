@@ -5,7 +5,7 @@
  *  Description  :  Define sequence frames animation base on Renderer.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  3/8/2018
  *  Description  :  Initial development version.
  *************************************************************************/
@@ -17,7 +17,7 @@ namespace MGS.UAnimation
     /// <summary>
     /// Sequence frames animation base on Renderer.
     /// </summary>
-    [AddComponentMenu("MGS/UAnimation/RFramesAnimation")]
+    [AddComponentMenu("MGS/Animation/RFramesAnimation")]
     [RequireComponent(typeof(Renderer))]
     public class RFramesAnimation : TFramesAnimation
     {

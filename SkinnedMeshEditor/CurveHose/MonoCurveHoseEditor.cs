@@ -1,11 +1,11 @@
 /*************************************************************************
- *  Copyright © 2018-2019 Mogoson. All rights reserved.
+ *  Copyright ? 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  MonoCurveHoseEditor.cs
  *  Description  :  Editor for MonoCurveHose component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  3/20/2018
  *  Description  :  Initial development version.
  *************************************************************************/

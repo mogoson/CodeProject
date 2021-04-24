@@ -5,11 +5,12 @@
  *  Description  :  Editor for GlobalMap component.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  3/8/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using MGS.Common.Reflection;
 using MGS.UCommonEditor;
 using MGS.UIMap;
 using UnityEditor;
@@ -34,7 +35,7 @@ namespace MGS.UIMapEditor
                 {
                     return false;
                 }
-                InvokeMethod(flag, "Initialize");
+                Reflector.InvokeMethod(flag, "Initialize");
             }
             return true;
         }

@@ -5,7 +5,7 @@
  *  Description  :  Interface for interactable UI.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  6/28/2019
  *  Description  :  Initial development version.
  *************************************************************************/

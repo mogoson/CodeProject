@@ -1,16 +1,16 @@
 /*************************************************************************
- *  Copyright © 2018-2019 Mogoson. All rights reserved.
+ *  Copyright ? 2018-2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  BaseEditor.cs
  *  Description  :  Define base editor.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  2/26/2018
  *  Description  :  Initial development version.
  *  
  *  Author       :  Mogoson
- *  Version      :  0.1.1
+ *  Version      :  1.1
  *  Date         :  6/20/2018
  *  Description  :  Add method for draw adaptive graph.
  *************************************************************************/
@@ -18,7 +18,6 @@
 using System;
 using UnityEditor;
 using UnityEngine;
-using System.Reflection;
 
 #if UNITY_5_3_OR_NEWER
 using UnityEditor.SceneManagement;
@@ -50,18 +49,6 @@ namespace MGS.UCommonEditor
         #endregion
 
         #region Protected Method
-        protected object InvokeMethod(object target, string method, object[] parameters = null)
-        {
-            var flags = BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.NonPublic;
-            var type = target.GetType();
-            var methodInfo = type.GetMethod(method, flags);
-            if (methodInfo == null)
-            {
-                return null;
-            }
-            return methodInfo.Invoke(target, parameters);
-        }
-
         protected void DrawCircleCap(Vector3 position, Quaternion rotation, float size)
         {
 #if UNITY_5_5_OR_NEWER

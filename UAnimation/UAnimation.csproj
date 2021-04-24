@@ -58,17 +58,17 @@
       <Project>{F1D69A8E-1D1C-46E1-9AFD-989DE797B4F4}</Project>
       <Name>CurvePath</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UCommon\UCommon.csproj">
-      <Project>{02f92370-d9a3-4a6b-8b7d-717315a01145}</Project>
-      <Name>UCommon</Name>
+    <ProjectReference Include="..\UCurve\UCurve.csproj">
+      <Project>{1D301377-2284-4FAF-9847-503896CE63DF}</Project>
+      <Name>UCurve</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
-      <HintPath>..\Library\UnityEngine.dll</HintPath>
+      <HintPath>..\lib\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\Library\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\lib\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

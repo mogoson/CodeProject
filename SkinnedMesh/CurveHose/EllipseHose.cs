@@ -5,12 +5,12 @@
  *  Description  :  Render dynamic hose mesh base on ellipse curve.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  7/18/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.UCommon.Curve;
+using MGS.UCurve;
 using UnityEngine;
 
 namespace MGS.SkinnedMesh

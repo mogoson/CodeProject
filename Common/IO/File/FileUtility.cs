@@ -1,16 +1,16 @@
 /*************************************************************************
- *  Copyright © 2019 Mogoson. All rights reserved.
+ *  Copyright ? 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  FileUtility.cs
  *  Description  :  Utility for file.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/25/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Logger;
+using MGS.Logger;
 using System;
 using System.IO;
 using System.Text;
@@ -52,7 +52,7 @@ namespace MGS.Common.IO
             }
             catch (Exception ex)
             {
-                LogUtility.LogError("Calculate page count exception: {0}", ex.Message);
+                LogUtility.LogError("Calculate page count exception: {0}\r\n{1}", ex.Message, ex.StackTrace);
                 return 0;
             }
         }
@@ -106,7 +106,7 @@ namespace MGS.Common.IO
             }
             catch (Exception ex)
             {
-                LogUtility.LogError("Read the index page of file exception: {0}", ex.Message);
+                LogUtility.LogError("Read the index page of file exception: {0}\r\n{1}", ex.Message, ex.StackTrace);
                 return null;
             }
         }
@@ -131,7 +131,7 @@ namespace MGS.Common.IO
             }
             catch (Exception ex)
             {
-                LogUtility.LogError("Read all lines of file exception: {0}", ex.Message);
+                LogUtility.LogError("Read all lines of file exception: {0}\r\n{1}", ex.Message, ex.StackTrace);
                 return null;
             }
         }

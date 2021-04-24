@@ -5,7 +5,7 @@
  *  Description  :  Mouse click to align camera to target.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/9/2018
  *  Description  :  Initial development version.
  *************************************************************************/

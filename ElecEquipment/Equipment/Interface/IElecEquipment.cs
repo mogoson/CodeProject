@@ -5,7 +5,7 @@
  *  Description  :  Interface for electronic equipment.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  03/26/2020
  *  Description  :  Initial development version.
  *************************************************************************/

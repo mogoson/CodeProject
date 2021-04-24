@@ -5,12 +5,12 @@
  *  Description  :  Config of serialport parameters.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/5/2017
  *  Description  :  Initial development version.
  *  
  *  Author       :  Mogoson
- *  Version      :  0.1.1
+ *  Version      :  1.1
  *  Date         :  3/2/2018
  *  Description  :  Optimize.
  *************************************************************************/

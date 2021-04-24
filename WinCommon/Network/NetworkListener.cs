@@ -5,29 +5,28 @@
  *  Description  :  Windows network listener.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  8/8/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
 using MGS.Common.Generic;
-using MGS.UCommon.DesignPattern;
+using MGS.Common.Threading;
+using MGS.DesignPattern;
 using System.Threading;
-using UnityEngine;
 
 namespace MGS.WinCommon.Network
 {
     /// <summary>
     /// Windows network listener.
     /// </summary>
-    [AddComponentMenu("MGS/WinCommon/Network/NetworkListener")]
-    public sealed class NetworkListener : SingleMonoBehaviour<NetworkListener>
+    public sealed class NetworkListener : SingleUpdater<NetworkListener>
     {
         #region Field and Property
         /// <summary>
-        /// Listener refresh rate(milliseconds).
+        /// Listener refresh cycle(ms).
         /// </summary>
-        public int RefreshRate { set; get; } = 250;
+        public int RefreshCycle { set; get; } = 250;
 
         /// <summary>
         /// Current state of windows network.
@@ -52,9 +51,14 @@ namespace MGS.WinCommon.Network
 
         #region Private Method
         /// <summary>
-        /// Update listener.
+        /// Constructor.
         /// </summary>
-        private void Update()
+        private NetworkListener() { }
+
+        /// <summary>
+        /// On update.
+        /// </summary>
+        protected override void OnUpdate()
         {
             //Check state change and notify event.
             if (lastState != CurrentState)
@@ -69,37 +73,35 @@ namespace MGS.WinCommon.Network
         /// <summary>
         /// Turn on listener.
         /// </summary>
-        public void TurnOn()
+        public override void TurnOn()
         {
             //Thread can not restart after abort.
             if (refreshThread == null || !refreshThread.IsAlive)
             {
-                refreshThread = new Thread(() =>
+                base.TurnOn();
+
+                refreshThread = ThreadUtility.RunAsync(() =>
                 {
                     lastState = CurrentState = NetworkUtility.GetNetworkConnectState();
-                    Thread.Sleep(RefreshRate);
+                    Thread.Sleep(RefreshCycle);
 
-                    while (true)
+                    while (IsTurnOn)
                     {
                         CurrentState = NetworkUtility.GetNetworkConnectState();
-                        Thread.Sleep(RefreshRate);
+                        Thread.Sleep(RefreshCycle);
                     }
-                })
-                { IsBackground = true };
-
-                refreshThread.Start();
+                });
             }
-            enabled = true;
         }
 
         /// <summary>
         /// Turn off listener.
         /// </summary>
-        public void TurnOff()
+        public override void TurnOff()
         {
-            enabled = false;
-            lastState = CurrentState;
+            base.TurnOff();
 
+            lastState = CurrentState;
             if (refreshThread == null)
             {
                 return;

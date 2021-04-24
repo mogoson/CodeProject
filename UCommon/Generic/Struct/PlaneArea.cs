@@ -5,7 +5,7 @@
  *  Description  :  Define rectangle area on plane.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/8/2018
  *  Description  :  Initial development version.
  *************************************************************************/

@@ -36,7 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="UnityEngine">
-      <HintPath>..\Library\UnityEngine.dll</HintPath>
+      <HintPath>..\lib\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -51,9 +51,9 @@
     <Compile Include="SinPath.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UCommon\UCommon.csproj">
-      <Project>{02F92370-D9A3-4A6B-8B7D-717315A01145}</Project>
-      <Name>UCommon</Name>
+    <ProjectReference Include="..\UCurve\UCurve.csproj">
+      <Project>{1D301377-2284-4FAF-9847-503896CE63DF}</Project>
+      <Name>UCurve</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

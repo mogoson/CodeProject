@@ -5,7 +5,7 @@
  *  Description  :  Camera rotate around and align to target gameobject.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/9/2018
  *  Description  :  Initial development version.
  *************************************************************************/

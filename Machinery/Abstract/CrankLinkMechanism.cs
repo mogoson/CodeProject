@@ -5,12 +5,12 @@
  *  Description  :  Crank mechanism with link joints.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  3/20/2020
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Mathematics;
+using MGS.Mathematics;
 using UnityEngine;
 
 namespace MGS.Machinery
@@ -40,25 +40,24 @@ namespace MGS.Machinery
         public EditMode editMode = EditMode.Lock;
 
         /// <summary>
-        /// This mechanism is initialized?
+        /// Mechanism is stuck?
         /// </summary>
-        [HideInInspector]
-        public bool isInitialized = false;
+        public override bool IsStuck
+        {
+            get
+            {
+                if (crank.IsStuck || link.IsStuck)
+                {
+                    return true;
+                }
+                return base.IsStuck;
+            }
+        }
 
         /// <summary>
         /// All the joints of this mechanism are set intact.
         /// </summary>
         public abstract bool IsIntact { get; }
-
-        /// <summary>
-        /// Is dead lock?
-        /// </summary>
-        public bool IsLock { protected set; get; }
-
-        /// <summary>
-        /// Drive speed is positive?
-        /// </summary>
-        private bool isPositive = false;
         #endregion
 
         #region Protected Method
@@ -67,10 +66,15 @@ namespace MGS.Machinery
         /// </summary>
         protected override void Awake()
         {
-            if (IsIntact)
+            if (!Application.isPlaying)
             {
-                Initialize();
+                if (!IsIntact)
+                {
+                    return;
+                }
             }
+
+            Initialize();
         }
 
         /// <summary>
@@ -85,26 +89,49 @@ namespace MGS.Machinery
 
             if (IsIntact)
             {
-                if (!isInitialized)
+                if (!IsInitialized)
                 {
                     Initialize();
-                    isInitialized = true;
                 }
-                DriveLinkJoints();
+
+                Drive(0, DriveMode.Ignore);
             }
             else
             {
-                isInitialized = false;
+                IsInitialized = false;
             }
         }
 
         /// <summary>
-        /// Get local position of link rocker base on this transform.
+        /// Drive mechanism by velocity.
         /// </summary>
-        /// <returns>Local position of link rocker.</returns>
-        protected virtual Vector3 GetLinkPosition()
+        /// <param name="velocity">Velocity of drive.</param>
+        /// <param name="mode">Mode of drive.</param>
+        /// <returns>Drive is unrestricted?</returns>
+        protected override bool OnDrive(float velocity, DriveMode mode)
         {
-            return transform.InverseTransformPoint(link.transform.position);
+            if (!crank.Drive(velocity, mode))
+            {
+                return false;
+            }
+
+            return DriveLinkJoints();
+        }
+
+        /// <summary>
+        /// Drive joints those link with this mechanism.
+        /// </summary>
+        /// <returns>Drive joints is unrestricted?</returns>
+        protected abstract bool DriveLinkJoints();
+
+        /// <summary>
+        /// Clear angles x and y.
+        /// </summary>
+        /// <param name="angles">Local euler angles.</param>
+        /// <returns>Correct angles.</returns>
+        protected Vector3 CorrectAngles(Vector3 angles)
+        {
+            return new Vector3(0, 0, angles.z);
         }
 
         /// <summary>
@@ -118,16 +145,6 @@ namespace MGS.Machinery
         }
 
         /// <summary>
-        /// Clear angles x and y.
-        /// </summary>
-        /// <param name="angles">Local euler angles.</param>
-        /// <returns>Correct angles.</returns>
-        protected Vector3 CorrectAngles(Vector3 angles)
-        {
-            return new Vector3(0, 0, angles.z);
-        }
-
-        /// <summary>
         /// Clear position Z.
         /// </summary>
         /// <param name="position">Local position.</param>
@@ -138,37 +155,12 @@ namespace MGS.Machinery
         }
 
         /// <summary>
-        /// Drive joints those link with this mechanism.
+        /// Get local position of link rocker base on this transform.
         /// </summary>
-        protected abstract void DriveLinkJoints();
-        #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Drive crank link mechanism by velocity.
-        /// </summary>
-        /// <param name="velocity">Velocity of drive.</param>
-        /// <param name="type">Type of drive.</param>
-        public override void Drive(float velocity, DriveType type)
+        /// <returns>Local position of link rocker.</returns>
+        protected virtual Vector3 GetLinkPosition()
         {
-            if (velocity >= 0)
-            {
-                if (IsLock && isPositive)
-                {
-                    return;
-                }
-                isPositive = true;
-            }
-            else
-            {
-                if (IsLock && !isPositive)
-                {
-                    return;
-                }
-                isPositive = false;
-            }
-            crank.Drive(velocity, type);
-            DriveLinkJoints();
+            return transform.InverseTransformPoint(link.transform.position);
         }
         #endregion
     }

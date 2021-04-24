@@ -1,17 +1,17 @@
 /*************************************************************************
- *  Copyright © 2019 Mogoson. All rights reserved.
+ *  Copyright ? 2019 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  GraphUtility.cs
  *  Description  :  Utility for graph.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
- *  Version      :  0.1.0
+ *  Version      :  1.0
  *  Date         :  4/19/2019
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using MGS.Common.Logger;
-using MGS.UCommon.DesignPattern;
+using MGS.DesignPattern;
+using MGS.Logger;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,32 +29,40 @@ namespace MGS.Graph
     {
         #region Public Method
         /// <summary>
-        /// Asynchronous load gif as frames textures.
+        /// Load gif from local file async(Coroutine).
         /// </summary>
         /// <param name="filePath">Path of gif file.</param>
         /// <param name="progressCallback">On loading callback.</param>
-        /// <param name="doneCallback">On loaded callback.</param>
-        public static void AsyncLoadGifAsFrames(string filePath, Action<float, Texture2D> progressCallback, Action<List<Texture2D>> doneCallback)
+        /// <param name="completeCallback">On loaded callback.</param>
+        /// <param name="errorCallback">On error callback.</param>
+        public static void LoadGifFromFileAsycn(string filePath,
+            Action<float, Texture2D> progressCallback = null,
+            Action<List<Texture2D>> completeCallback = null,
+            Action<string> errorCallback = null)
         {
-            SingleBehaviour.Instance.StartCoroutine(AsyncLoadGifFromFile(filePath, progressCallback, doneCallback));
+            SingleBehaviour.Instance.StartCoroutine(LoadGifFromFile(filePath, progressCallback, completeCallback, errorCallback));
         }
 
         /// <summary>
-        /// Asynchronous load gif from local file.
+        /// Load gif from local file.
         /// </summary>
         /// <param name="filePath">Path of gif file.</param>
         /// <param name="progressCallback">On loading callback.</param>
-        /// <param name="doneCallback">On loaded callback.</param>
+        /// <param name="completeCallback">On loaded callback.</param>
+        /// <param name="errorCallback">On error callback.</param>
         /// <returns>IEnumerator.</returns>
-        public static IEnumerator AsyncLoadGifFromFile(string filePath, Action<float, Texture2D> progressCallback, Action<List<Texture2D>> doneCallback)
+        public static IEnumerator LoadGifFromFile(string filePath,
+            Action<float, Texture2D> progressCallback = null,
+            Action<List<Texture2D>> completeCallback = null,
+            Action<string> errorCallback = null)
         {
-            if (progressCallback == null && doneCallback == null)
+            if (!File.Exists(filePath))
             {
-                LogUtility.LogWarning("Asynchronous load gif cancelled: All the callbacks is null.");
+                var error = string.Format("Load gif error: The source file can not find in the path {0}", filePath);
+                errorCallback?.Invoke(error);
                 yield break;
             }
 
-            yield return null;
             Image gif = null;
             try
             {
@@ -62,9 +70,8 @@ namespace MGS.Graph
             }
             catch (Exception ex)
             {
-                LogUtility.LogError("Asynchronous load gif error: {0}", ex.Message);
-                progressCallback?.Invoke(1.0f, null);
-                doneCallback?.Invoke(null);
+                var error = string.Format("Load gif exception: {0}\r\n{1}", ex.Message, ex.StackTrace);
+                errorCallback?.Invoke(error);
                 yield break;
             }
 
@@ -89,7 +96,7 @@ namespace MGS.Graph
                 progressCallback?.Invoke(progress, frame);
                 yield return null;
             }
-            doneCallback?.Invoke(frames);
+            completeCallback?.Invoke(frames);
         }
 
         /// <summary>

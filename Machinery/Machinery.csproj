@@ -34,20 +34,22 @@
   <ItemGroup>
     <Compile Include="Abstract\CrankLinkMechanism.cs" />
     <Compile Include="Abstract\CrankMechanism.cs" />
+    <Compile Include="Abstract\Limiter.cs" />
     <Compile Include="Abstract\Mechanism.cs" />
-    <Compile Include="Abstract\RockerLinkMechanism.cs" />
+    <Compile Include="Abstract\LinkRockerMechanism.cs" />
     <Compile Include="Abstract\RockerMechanism.cs" />
     <Compile Include="Abstract\SliderArmMechanism.cs" />
     <Compile Include="Abstract\SliderMechanism.cs" />
-    <Compile Include="Abstract\TriggerMechanism.cs" />
-    <Compile Include="Enum\DriveType.cs" />
+    <Compile Include="Enum\DriveMode.cs" />
     <Compile Include="Enum\EditMode.cs" />
     <Compile Include="Enum\KeepUpMode.cs" />
     <Compile Include="Enum\TelescopicState.cs" />
     <Compile Include="Interface\ICoaxeMechanism.cs" />
     <Compile Include="Interface\IEngageMechanism.cs" />
+    <Compile Include="Interface\ILimiter.cs" />
     <Compile Include="Interface\IMechanism.cs" />
-    <Compile Include="Interface\ITriggerMechanism.cs" />
+    <Compile Include="Limiter\AngleLimiter.cs" />
+    <Compile Include="Limiter\DistanceLimiter.cs" />
     <Compile Include="Mechanism\Belt\Belt.cs" />
     <Compile Include="Mechanism\Crank\FreeCrank.cs" />
     <Compile Include="Mechanism\Crank\GearCrank.cs" />
@@ -77,13 +79,21 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
-      <HintPath>..\Library\UnityEngine.dll</HintPath>
+      <HintPath>..\lib\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{55E27C1E-ECFB-4E6F-B5E0-508C882DDDAB}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{E77FBCC0-1D82-41A0-A771-9D356E2D68F6}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mathematics\Mathematics.csproj">
+      <Project>{C5493F23-494F-48E3-8319-FC5A06BA4F48}</Project>
+      <Name>Mathematics</Name>
     </ProjectReference>
     <ProjectReference Include="..\SkinnedMesh\SkinnedMesh.csproj">
       <Project>{AD7E2966-AAEA-4A99-8790-B1C4375CB15F}</Project>
@@ -93,7 +103,12 @@
       <Project>{02F92370-D9A3-4A6B-8B7D-717315A01145}</Project>
       <Name>UCommon</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UCurve\UCurve.csproj">
+      <Project>{1D301377-2284-4FAF-9847-503896CE63DF}</Project>
+      <Name>UCurve</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>set targetDir="$(SolutionDir)..\UnityProject\Assets\Plugins\MGS"
